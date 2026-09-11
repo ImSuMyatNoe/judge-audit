@@ -1,0 +1,1055 @@
+<title>Your Judge Is Lying</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    --ground:      #eceef1;
+    --panel:       #ffffff;
+    --panel-2:     #f5f7f9;
+    --ink:         #10151c;
+    --ink-2:       #3f4a57;
+    --muted:       #79838f;
+    --rule:        #d3d8de;
+    --rule-strong: #aeb6c0;
+    --accent:      #1f5fd0;
+    --accent-soft: #d9e5fa;
+    --alarm:       #c2352f;
+    --alarm-soft:  #f8e0de;
+    --warn:        #b45a12;
+    --warn-soft:   #fae7d6;
+    --good:        #12733a;
+    --good-soft:   #d9efe1;
+
+    --display: "IBM Plex Sans Condensed", "Helvetica Neue", Arial, sans-serif;
+    --body:    "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+    --mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --pad: clamp(20px, 4.5vw, 72px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #0e1217;
+      --panel:       #161b22;
+      --panel-2:     #1c222b;
+      --ink:         #eef1f5;
+      --ink-2:       #b7c0cb;
+      --muted:       #7e8896;
+      --rule:        #283039;
+      --rule-strong: #3b4653;
+      --accent:      #6ba3f5;
+      --accent-soft: #16304f;
+      --alarm:       #ef6f66;
+      --alarm-soft:  #3a1d1b;
+      --warn:        #e0913f;
+      --warn-soft:   #3a2715;
+      --good:        #4fc27c;
+      --good-soft:   #14301f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:      #0e1217;
+    --panel:       #161b22;
+    --panel-2:     #1c222b;
+    --ink:         #eef1f5;
+    --ink-2:       #b7c0cb;
+    --muted:       #7e8896;
+    --rule:        #283039;
+    --rule-strong: #3b4653;
+    --accent:      #6ba3f5;
+    --accent-soft: #16304f;
+    --alarm:       #ef6f66;
+    --alarm-soft:  #3a1d1b;
+    --warn:        #e0913f;
+    --warn-soft:   #3a2715;
+    --good:        #4fc27c;
+    --good-soft:   #14301f;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------------------------------------------------------------- deck */
+
+  .deck { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+
+  .slide {
+    display: none;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: calc(var(--pad) * 0.9) var(--pad) calc(var(--pad) * 0.6);
+    animation: rise .28s ease-out both;
+  }
+  .slide.is-active { display: flex; flex-direction: column; }
+  @media (prefers-reduced-motion: reduce) { .slide { animation: none; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  .inner { width: 100%; max-width: 1120px; margin: 0 auto; flex: 1;
+           display: flex; flex-direction: column; justify-content: center;
+           gap: clamp(14px, 2vh, 26px); }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: clamp(11px, 1.15vw, 13px);
+    text-transform: uppercase; letter-spacing: .14em; color: var(--accent);
+    display: flex; align-items: center; gap: 12px; margin: 0;
+  }
+  .eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+  .eyebrow.is-alarm { color: var(--alarm); }
+
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.06; }
+  h1 { font-size: clamp(34px, 6.4vw, 76px); font-weight: 700; letter-spacing: -.015em; }
+  h2 { font-size: clamp(26px, 4.1vw, 50px); font-weight: 700; letter-spacing: -.01em; }
+  h3 { font-size: clamp(17px, 2vw, 23px); font-weight: 600; }
+
+  p { margin: 0; max-width: 62ch; }
+  .lead { font-size: clamp(16px, 1.85vw, 22px); color: var(--ink-2); line-height: 1.45; }
+  .small { font-size: clamp(13px, 1.3vw, 15px); color: var(--ink-2); }
+  strong { font-weight: 600; color: var(--ink); }
+  em { font-style: italic; color: var(--accent); }
+
+  .cite {
+    font-family: var(--mono); font-size: clamp(10.5px, 1.05vw, 12.5px);
+    color: var(--muted); letter-spacing: .01em; max-width: none;
+  }
+  .cite a { color: inherit; }
+
+  /* --------------------------------------------------------------- parts */
+
+  .cols { display: grid; gap: clamp(16px, 2.4vw, 34px); grid-template-columns: 1fr 1fr; align-items: start; }
+  .cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .cols-wide { grid-template-columns: 1.25fr 1fr; }
+  @media (max-width: 820px) { .cols, .cols-3, .cols-wide { grid-template-columns: 1fr; } }
+
+  .stat-row { display: flex; flex-wrap: wrap; gap: clamp(16px, 3vw, 46px); }
+  .stat { display: flex; flex-direction: column; gap: 4px; min-width: 120px; }
+  .stat .n {
+    font-family: var(--display); font-weight: 700; line-height: 1;
+    font-size: clamp(38px, 6.6vw, 78px); letter-spacing: -.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat .n.alarm { color: var(--alarm); }
+  .stat .n.good  { color: var(--good); }
+  .stat .n.warn  { color: var(--warn); }
+  .stat .k { font-family: var(--mono); font-size: clamp(11px, 1.15vw, 13px);
+             color: var(--muted); text-transform: uppercase; letter-spacing: .1em; max-width: 24ch; }
+
+  .panel {
+    background: var(--panel); border: 1px solid var(--rule);
+    padding: clamp(14px, 1.8vw, 24px); border-radius: 3px;
+  }
+  .quote {
+    border-left: 3px solid var(--rule-strong); padding: 4px 0 4px 18px;
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(19px, 2.7vw, 32px); line-height: 1.2; color: var(--ink);
+  }
+  .verdict {
+    border-left: 3px solid var(--alarm); background: var(--alarm-soft);
+    padding: 12px 18px; font-size: clamp(14px, 1.5vw, 17px); color: var(--ink);
+  }
+  .verdict.is-good { border-left-color: var(--good); background: var(--good-soft); }
+  .verdict.is-plain { border-left-color: var(--accent); background: var(--accent-soft); }
+
+  ul.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  ul.ticks li { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start;
+                font-size: clamp(14px, 1.5vw, 17.5px); color: var(--ink-2); }
+  ul.ticks li::before {
+    content: attr(data-n); font-family: var(--mono); font-size: .82em; color: var(--accent);
+    border: 1px solid var(--rule); padding: 1px 6px; border-radius: 2px; margin-top: 2px;
+  }
+  ul.ticks li b { color: var(--ink); font-weight: 600; }
+
+  table { border-collapse: collapse; width: 100%; font-size: clamp(12.5px, 1.35vw, 15.5px); }
+  th, td { text-align: left; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--rule); }
+  th { font-family: var(--mono); font-size: .82em; text-transform: uppercase;
+       letter-spacing: .08em; color: var(--muted); font-weight: 500; }
+  td.num, th.num { text-align: right; font-family: var(--mono);
+                   font-variant-numeric: tabular-nums; padding-right: 0; }
+  td.bad { color: var(--alarm); }
+  td.ok  { color: var(--good); }
+  .table-wrap { overflow-x: auto; }
+
+  pre {
+    font-family: var(--mono); font-size: clamp(12px, 1.35vw, 15px);
+    background: var(--panel); border: 1px solid var(--rule); border-left: 3px solid var(--accent);
+    padding: 14px 16px; margin: 0; overflow-x: auto; color: var(--ink);
+  }
+  pre .c { color: var(--muted); }
+  code { font-family: var(--mono); font-size: .92em; }
+
+  figure { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  figcaption { font-size: clamp(12px, 1.25vw, 14px); color: var(--muted); }
+  svg { max-width: 100%; height: auto; display: block; }
+  .svg-t { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+  .svg-v { font-family: var(--mono); font-size: 12px; font-weight: 500; fill: var(--ink); }
+
+  /* ---------------------------------------------------------- title page */
+
+  .title-slide .inner { justify-content: center; gap: clamp(18px, 3vh, 40px); }
+  .kicker {
+    font-family: var(--mono); font-size: clamp(11px, 1.2vw, 14px); color: var(--alarm);
+    text-transform: uppercase; letter-spacing: .18em;
+  }
+  .byline { display: flex; flex-wrap: wrap; gap: 8px 28px; font-family: var(--mono);
+            font-size: clamp(12px, 1.3vw, 14.5px); color: var(--ink-2); }
+  .byline span::before { content: "· "; color: var(--rule-strong); }
+  .byline span:first-child::before { content: ""; }
+
+  /* ------------------------------------------------------------- chrome */
+
+  .rail {
+    display: flex; align-items: center; gap: 14px;
+    padding: 10px var(--pad); border-top: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+    background: var(--ground);
+  }
+  .rail .track { flex: 1; height: 2px; background: var(--rule); position: relative; }
+  .rail .fill { position: absolute; inset: 0 auto 0 0; background: var(--accent); width: 0; }
+  .rail button {
+    font: inherit; color: var(--muted); background: none; border: 1px solid var(--rule);
+    border-radius: 2px; padding: 2px 8px; cursor: pointer;
+  }
+  .rail button:hover { color: var(--ink); border-color: var(--rule-strong); }
+  .rail .count { font-variant-numeric: tabular-nums; color: var(--ink-2); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .notes {
+    display: none; border-top: 1px solid var(--rule); background: var(--panel-2);
+    padding: 14px var(--pad) 18px; font-size: 14px; color: var(--ink-2);
+    max-height: 34vh; overflow-y: auto;
+  }
+  body.notes-on .notes.is-active { display: block; }
+  .notes b { color: var(--ink); }
+  .notes .time { font-family: var(--mono); color: var(--accent); font-size: 12px;
+                 text-transform: uppercase; letter-spacing: .1em; display: block; margin-bottom: 6px; }
+
+  @media print {
+    .slide { display: flex !important; page-break-after: always; min-height: 100vh; }
+    .rail { display: none; }
+    body.notes-on .notes { display: block !important; }
+  }
+</style>
+
+<div class="deck" id="deck">
+
+<!-- 1 ------------------------------------------------------------------ -->
+<section class="slide title-slide">
+  <div class="inner">
+    <div class="kicker">Evaluation methodology · 30 minutes</div>
+    <h1>LLM-as-a-Judge Is Probably Lying to You</h1>
+    <p class="lead">Your judge is a measuring instrument. Nobody calibrated it,
+      nobody reports its error bars, and it goes quiet exactly when the answer
+      is hard. Here is how to catch it &mdash; and what to publish instead.</p>
+    <div class="byline">
+      <span>Su Myat Noe</span><span>NII / LLMC, Tokyo</span>
+      <span>github.com/ImSuMyatNoe/judge-audit</span>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="time">0:00 &ndash; 1:00</span>
+    <b>Open cold.</b> "Everyone in this room has shipped a number that came out of an LLM judge.
+    I have. This talk is about the four things that number does not tell you, and the seven-line
+    checklist that fixes it."<br>
+    Do not apologise for the title. Say up front: judges are not useless &mdash; unaudited judges are.
+    Everything in the live demo runs offline; the repo link is on this slide and the last slide.
+  </div>
+</section>
+
+<!-- 2 ------------------------------------------------------------------ -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">The number that convinced us</p>
+    <h2>&ldquo;GPT-4 agrees with humans 85% of the time.&rdquo;</h2>
+    <div class="cols">
+      <div style="display:grid;gap:18px">
+        <p class="lead">It is a real result, from a good paper, and it is the sentence
+          that put a judge in your pipeline.</p>
+        <div class="verdict">It is also <strong>85% of non-tie pairs</strong>.
+          Count the ties and the same paper reports <strong>66%</strong>.</div>
+        <p class="small">The most cited summarization result for a GPT-4 judge is Spearman
+          <strong>0.514</strong> with humans. Not 0.9.</p>
+      </div>
+      <div class="panel" style="display:grid;gap:14px">
+        <h3>What we actually bought</h3>
+        <p class="small">Cheap, fast, reproducible-looking, and it scales past what any
+          annotation budget can reach. Those are real wins. I am not here to take them away.</p>
+        <p class="small">But we bought a measuring instrument and never asked for its
+          datasheet: precision, drift, failure modes, dead zones.</p>
+      </div>
+    </div>
+    <p class="cite">Zheng et al. 2023, <em>Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena</em>, NeurIPS D&amp;B (arXiv:2306.05685) &middot; Liu et al. 2023, <em>G-Eval</em>, EMNLP (arXiv:2303.16634)</p>
+  </div>
+  <div class="notes">
+    <span class="time">1:00 &ndash; 3:00</span>
+    The point is not that Zheng et al. were wrong &mdash; they were careful and the caveat is in their
+    own table. The point is what <b>survived the telephone game</b> into your team's eval doc.
+    Ask the room: who has an 85% or an r=0.8 in a slide somewhere? Hands go up. Good.
+  </div>
+</section>
+
+<!-- 3 ------------------------------------------------------------------ -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">The frame for the next 25 minutes</p>
+    <h2>A judge is an instrument.<br>Treat it like one.</h2>
+    <div class="cols">
+      <p class="lead">No lab would accept a thermometer with no repeatability spec, no
+        documented dead zone, and no calibration date. We accept exactly that from a
+        judge, because it answers in fluent English and the answer has a decimal point in it.</p>
+      <div class="panel">
+        <h3 style="margin-bottom:10px">Four lies, in order of how much they cost you</h3>
+        <ul class="ticks">
+          <li data-n="1"><b>&ldquo;I am a function.&rdquo;</b> Same input, different score.</li>
+          <li data-n="2"><b>&ldquo;I answered.&rdquo;</b> It went quiet on the hard ones.</li>
+          <li data-n="3"><b>&ldquo;We agree 75% of the time.&rdquo;</b> Before chance.</li>
+          <li data-n="4"><b>&ldquo;I read the answer.&rdquo;</b> It read the formatting.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="small">Then: a live demo you can re-run tonight, and the checklist.</p>
+  </div>
+  <div class="notes">
+    <span class="time">3:00 &ndash; 4:00</span>
+    Set expectations: four lies, one demo, one checklist. Say that the demo data is
+    <b>synthetic and labelled as such</b> &mdash; you will say it again when the terminal is up,
+    because someone always asks, and you want to be the one who raised it.
+  </div>
+</section>
+
+<!-- 4 ------------------------------------------------------------------ -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow is-alarm">Lie one</p>
+    <h2>&ldquo;I am a function of the input.&rdquo;</h2>
+    <div class="cols-wide cols">
+      <figure>
+        <svg viewBox="0 0 560 210" role="img" aria-label="Eighteen items scored three times each; most items show a range of one to three points across identical passes.">
+          <g id="stab-marks"></g>
+          <line x1="34" y1="176" x2="548" y2="176" stroke="var(--rule-strong)" stroke-width="1"></line>
+          <text class="svg-t" x="34" y="196">18 items, ordered by mean score &rarr;</text>
+          <text class="svg-t" x="4" y="30">10</text>
+          <text class="svg-t" x="10" y="176">0</text>
+        </svg>
+        <figcaption>Three passes over the same items. Identical prompt, identical model,
+          identical settings. Each column is one item; each dot is one pass.</figcaption>
+      </figure>
+      <div style="display:grid;gap:16px">
+        <div class="stat-row">
+          <div class="stat"><span class="n alarm">21%</span><span class="k">of items scored the same on all three passes</span></div>
+          <div class="stat"><span class="n alarm">27%</span><span class="k">changed pass/fail verdict between passes</span></div>
+        </div>
+        <div class="verdict">If you ran it once, a quarter of your labels are a coin flip
+          you did not know you were flipping.</div>
+      </div>
+    </div>
+    <p class="cite">Demo figures, run live in Act 1 &middot; Haldar et al. 2025, EMNLP (arXiv:2510.27106): identical-verdict-on-all-three-runs for one judge, 61.3% &middot; Lau et al. 2026 (arXiv:2603.04417): score variability at temperature 0</p>
+  </div>
+  <div class="notes">
+    <span class="time">4:00 &ndash; 6:30</span>
+    <b>The single most persuasive slide in the deck.</b> Let the picture sit for a beat before
+    you say a number. "Same input. Same model. Same temperature. Three passes."<br>
+    If someone says "set temperature to 0": that is the next slide &mdash; and Tamba 2026 shows
+    even pinned temperature leaves some borderline items non-reproducible, while newer judge
+    models have removed the temperature control altogether.
+  </div>
+</section>
+
+<!-- 5 ------------------------------------------------------------------ -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow is-alarm">Lie one &middot; what to do</p>
+    <h2>Temperature 0 is necessary and not sufficient</h2>
+    <div class="cols-3 cols">
+      <div class="panel"><h3>If you set nothing</h3>
+        <p class="small">Providers default to temperature 1.0. Up to <strong>~50%</strong>
+          per-item pass/fail disagreement across 20 identical runs.</p></div>
+      <div class="panel"><h3>If you pin it</h3>
+        <p class="small">Better &mdash; and still not deterministic. Borderline items stay
+          unstable, and some recent judge models removed the temperature control.</p></div>
+      <div class="panel"><h3>What survives</h3>
+        <p class="small">Run <strong>three passes</strong> and report the spread. Stability is
+          something you measure, not something you configure.</p></div>
+    </div>
+    <div class="verdict is-plain">Report the score <strong>and</strong> the spread. Add
+      ICC(1) &mdash; the share of score variance that comes from real differences between items
+      rather than from the judge's own noise. In the demo: <strong>0.74</strong>.</div>
+    <p class="cite">Tamba 2026 (arXiv:2606.26185) &middot; Norman et al. 2026 (arXiv:2606.19544): two production judges show test-retest reliability &gt;0.95 <em>and</em> position bias &gt;0.10 &mdash; stable is not the same as unbiased</p>
+  </div>
+  <div class="notes">
+    <span class="time">6:30 &ndash; 8:00</span>
+    Pre-empt the room's favourite objection and then give them the positive move: three passes,
+    report spread, report ICC. Note that "reliable" and "valid" are different words
+    &mdash; a judge can be perfectly repeatable and perfectly biased.
+  </div>
+</section>
+
+<!-- 6 ------------------------------------------------------------------ -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow is-alarm">Lie two</p>
+    <h2>&ldquo;I answered your question.&rdquo;</h2>
+    <p class="lead">Blank. Unparseable. Refused. Filtered. Timed out. Your harness has a
+      <code>try / except: continue</code> in it, and that line is deleting your most
+      important data.</p>
+    <div class="cols">
+      <figure>
+        <svg viewBox="0 0 480 220" role="img" aria-label="Blank rate by ambiguity quartile: 1 percent, 7 percent, 24 percent, 57 percent.">
+          <g id="blank-bars"></g>
+        </svg>
+        <figcaption>Blank / unparseable rate, by ambiguity quartile of the item.</figcaption>
+      </figure>
+      <div style="display:grid;gap:16px">
+        <div class="quote">Missing is not random. It is a map of where the judge could not tell.</div>
+        <p class="small">The items that come back empty are the contested ones &mdash; the occluded
+          sign, the hedged answer, the case that needed a judgement call. Exactly the items
+          you built the eval to cover.</p>
+        <p class="small">And when you retry them, the judge does not say &ldquo;I cannot tell&rdquo;.
+          It returns a safe middling score.</p>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="time">8:00 &ndash; 10:00</span>
+    Personal hook here: describe finding blank cells in your own judge output and assuming it was
+    a parsing bug. It was not &mdash; rerunning the blanks returned valid scores, so it was the API
+    being nondeterministic, and the blanks clustered on the weakest models' most ambiguous outputs.
+    That is when this talk started.
+  </div>
+</section>
+
+<!-- 7 ------------------------------------------------------------------ -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow is-alarm">Lie two &middot; the consequence</p>
+    <h2>Your correlation lives on the easy items</h2>
+    <div class="cols-wide cols">
+      <figure>
+        <svg viewBox="0 0 480 230" role="img" aria-label="Judge-human correlation by ambiguity quartile: 0.74, 0.69, 0.59, 0.41.">
+          <g id="corr-bars"></g>
+        </svg>
+        <figcaption>Agreement with the human reference, same judge, same prompt,
+          same eval set &mdash; split by how ambiguous the item is.</figcaption>
+      </figure>
+      <div style="display:grid;gap:16px">
+        <p class="lead">On the quarter of items where the answer was never in doubt, the judge
+          agrees with you. On the quarter that needed judgement, it is guessing &mdash; and that
+          is the quarter it also refused to score 57% of the time.</p>
+        <div class="verdict">A pooled correlation averages those two populations and reports
+          a number that describes neither.</div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="time">10:00 &ndash; 11:30</span>
+    This is the analytical heart of the talk. Say it plainly:
+    <b>your judge is confirming the cases you did not need a judge for.</b><br>
+    Stratify by anything you have: annotator confidence, occlusion, item length, source dataset,
+    which model produced the response.
+  </div>
+</section>
+
+<!-- 8 ------------------------------------------------------------------ -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow is-alarm">Lie two &middot; from my own runs</p>
+    <h2>The honest number is the worse number</h2>
+    <div class="cols">
+      <div style="display:grid;gap:16px">
+        <p class="lead">In a Japanese multimodal-safety evaluation I ran this year, one hosted
+          judge returned blanks on a slice of items. I added a retry-on-blank loop, up to three
+          attempts, and recovered almost all of them.</p>
+        <div class="stat-row">
+          <div class="stat"><span class="n">0.73</span><span class="k">judge&ndash;human correlation, blanks dropped</span></div>
+          <div class="stat"><span class="n alarm">~0.5</span><span class="k">after the blanks were recovered</span></div>
+        </div>
+      </div>
+      <div class="panel" style="display:grid;gap:12px">
+        <h3>What that drop is not</h3>
+        <p class="small">It is not the judge getting worse. Nothing about the judge changed.</p>
+        <h3>What it is</h3>
+        <p class="small">The dataset finally including the hard, low-agreement cases the judge
+          had been silently excluding. The 0.73 was a survivorship artefact. The lower number
+          is the real estimate, and it is the one that belongs in the paper.</p>
+      </div>
+    </div>
+    <div class="verdict is-plain">Publish the correlation <strong>after</strong> recovery, and say
+      how many items were recovered. A reviewer who sees only the first number is being misled,
+      even if nobody meant to.</div>
+  </div>
+  <div class="notes">
+    <span class="time">11:30 &ndash; 13:00</span>
+    Own this one in the first person &mdash; it is your result and it is the most credible moment
+    in the talk. Emphasise that you nearly reported the 0.73, because it was the number that came
+    out of the clean run.<br>
+    If asked which judge: say it is not the point, the mechanism is general, and the same
+    nondeterminism is documented across providers.
+  </div>
+</section>
+
+<!-- 9 ------------------------------------------------------------------ -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow is-alarm">Lie three</p>
+    <h2>&ldquo;We agree 75% of the time.&rdquo;</h2>
+    <div class="cols-wide cols">
+      <figure>
+        <svg viewBox="0 0 470 180" role="img" aria-label="Raw agreement 75 percent, majority-guess baseline 57 percent, Cohen's kappa 0.50.">
+          <g id="kappa-bars"></g>
+        </svg>
+        <figcaption>The same judge, the same items, three ways of saying how well it did.</figcaption>
+      </figure>
+      <div style="display:grid;gap:16px">
+        <p class="lead">Most eval items are easy and both raters say &ldquo;fine&rdquo; a lot.
+          Raw agreement prices that in as skill.</p>
+        <p class="small">A judge that says <strong>pass</strong> to literally everything scores
+          80% agreement on a set that is 80% passes, and knows nothing. Its &kappa; is exactly zero.</p>
+        <div class="verdict">Chance-correcting deflates raw agreement by
+          <strong>33&ndash;41 points of &kappa;</strong> on MT-Bench across 21 judges and
+          ~541,000 judgments.</div>
+      </div>
+    </div>
+    <p class="cite">Norman et al. 2026 (arXiv:2606.19544) &middot; Gao et al. 2025, NAACL (arXiv:2410.16834): which correlation measure you pick changes the meta-evaluation conclusion</p>
+  </div>
+  <div class="notes">
+    <span class="time">13:00 &ndash; 14:30</span>
+    Keep this act short and mechanical &mdash; it is the least controversial of the four and the
+    room will accept it quickly. The memorable line is the always-says-pass judge.
+    Practical ask: never ship a raw agreement percentage without the majority baseline next to it.
+  </div>
+</section>
+
+<!-- 10 ----------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow is-alarm">Lie four</p>
+    <h2>&ldquo;I read the answer.&rdquo;</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>What the judge was actually keying on</th><th class="num">Effect</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Which candidate was shown first</td><td class="num bad">65.0% / 23.8%</td><td class="cite">swap consistency, GPT-4 / Claude-v1 &mdash; Zheng 2023 Tab. 2</td></tr>
+          <tr><td>Reordering alone flips the winner</td><td class="num bad">66 of 80</td><td class="cite">queries &mdash; Wang et al. 2023 (arXiv:2305.17926)</td></tr>
+          <tr><td>Padding and reformatting the same content</td><td class="num bad">91.3%</td><td class="cite">attack success on GPT-3.5 / Claude-v1 &mdash; Zheng 2023 Tab. 3</td></tr>
+          <tr><td>Recognising its own generations</td><td class="num bad">+10 to +25 pts</td><td class="cite">self-preference in win rate &mdash; Panickssery 2024; Zheng 2023</td></tr>
+          <tr><td>Surface features, not meaning</td><td class="num bad">67.4%</td><td class="cite">of MT-Bench human votes reproduced from surface alone &mdash; Chen et al. 2026</td></tr>
+          <tr><td>On pairs with a <em>verifiable</em> right answer</td><td class="num bad">50.86%</td><td class="cite">vanilla GPT-4o judge vs 50% random &mdash; JudgeBench, ICLR 2025</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="verdict">The same judges score 70&ndash;90% on preference benchmarks. Preference
+      is not correctness, and a judge can be excellent at the first while being a coin flip at the second.</div>
+  </div>
+  <div class="notes">
+    <span class="time">14:30 &ndash; 16:30</span>
+    Do <b>not</b> read the table aloud. Point at two rows: the 91.3% padding attack, and the
+    JudgeBench 50.86%. Let the rest be something they photograph.<br>
+    The JudgeBench row is the one that lands with engineers: on questions with a checkable right
+    answer, the judge is at chance, while looking great on the benchmark you chose it with.
+  </div>
+</section>
+
+<!-- 11 ----------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow is-alarm">Lie four &middot; the case that matters</p>
+    <h2>Confident, fluent, and wrong</h2>
+    <div class="cols-wide cols">
+      <div style="display:grid;gap:16px">
+        <p class="lead">A graded 0&ndash;10 judge answers one question: <em>is this a good answer?</em>
+          It never answers the other one: <em>does this mean what the reference means?</em></p>
+        <p class="small">In a legally grounded task those come apart exactly where it hurts. A
+          response that confidently misreads a sign &mdash; fluent, well-formatted, decisive &mdash;
+          scores well on style and fails on law.</p>
+        <div class="verdict is-good">Pair the graded judge with a <strong>strict binary
+          semantic-equivalence judge</strong> against a human-curated reference, and require both to pass.</div>
+      </div>
+      <figure>
+        <svg viewBox="0 0 400 250" role="img" aria-label="False-accept rate on fluent-but-wrong responses: graded judge alone 89 percent, graded plus binary equivalence judge 10 percent.">
+          <g id="dual-bars"></g>
+        </svg>
+        <figcaption>Share of fluent-but-wrong responses each protocol passes as acceptable.
+          False rejects are unchanged: 36% either way.</figcaption>
+      </figure>
+    </div>
+    <p class="cite">Dual-judge protocol: Noe, Nguyen, Zin &amp; Satoh 2026, <em>Beyond Accuracy: A Dual-Judge Evaluation Protocol for Vision-Language Models in Legally Grounded Tasks</em> &middot; github.com/ImSuMyatNoe/dual-judge-traffic-signs</p>
+  </div>
+  <div class="notes">
+    <span class="time">16:30 &ndash; 18:00</span>
+    This is your contribution &mdash; say so, briefly, and keep it about the mechanism rather than
+    the paper. The design is cheap: one extra binary call, and the two judges answer different
+    questions rather than voting on the same one.<br>
+    Key honest detail: the false-reject rate does <b>not</b> get worse. That is what makes it a
+    free lunch, and it is the first thing a careful listener will check.
+  </div>
+</section>
+
+<!-- 12 ----------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Worse in multimodal</p>
+    <h2>When the judge cannot see, it still answers</h2>
+    <div class="cols-3 cols">
+      <div class="panel"><h3>Modality neglect</h3>
+        <p class="small">Across 26 multimodal judges and 9 bias types: judges systematically
+          <strong>ignore the image or the text</strong> when evidence is missing or conflicting.</p>
+        <p class="cite">Lee et al. 2026, ACL Main (arXiv:2604.18164)</p></div>
+      <div class="panel"><h3>Pointwise is worse than pairwise</h3>
+        <p class="small">Multimodal judges look human-like on pairwise comparison and diverge
+          sharply on pointwise scoring &mdash; with hallucinated justifications.</p>
+        <p class="cite">Chen et al. 2024, ICML oral (arXiv:2402.04788)</p></div>
+      <div class="panel"><h3>And the reference moves</h3>
+        <p class="small">A traffic sign means what the local statute says it means. &ldquo;Plausible
+          reading&rdquo; and &ldquo;legally correct reading&rdquo; are different targets, and only
+          one of them is what you are evaluating.</p></div>
+    </div>
+    <div class="verdict is-plain">If your judge grades text about an image, verify that it used
+      the image. The cheapest probe: re-run a sample with the image removed and see how much the
+      score moves.</div>
+  </div>
+  <div class="notes">
+    <span class="time">18:00 &ndash; 19:00</span>
+    Short bridge slide, grounded in your own domain (traffic-sign interpretation for legally
+    grounded AI). The image-ablation probe is a concrete, memorable thing anyone can run this week.
+  </div>
+</section>
+
+<!-- 13 ----------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Live</p>
+    <h2>Six audits, one command, no API keys</h2>
+    <pre><span class="c"># pip install -r requirements.txt</span>
+python -m judge_audit.demo
+python -m judge_audit.demo --act 2      <span class="c"># just the survivorship act</span>
+python -m judge_audit.audit --input my_trace.csv   <span class="c"># your data</span></pre>
+    <div class="cols">
+      <div class="panel"><h3>What you are about to see</h3>
+        <ul class="ticks" style="margin-top:10px">
+          <li data-n="1">Stability across three identical passes</li>
+          <li data-n="2">Blank rate, and where the agreement lives</li>
+          <li data-n="3">Agreement after chance correction</li>
+          <li data-n="4">Graded judge vs graded + binary</li>
+          <li data-n="5">Position and verbosity probes</li>
+          <li data-n="6">Decision risk at your eval size</li>
+        </ul>
+      </div>
+      <div class="panel"><h3>Said out loud, on the record</h3>
+        <p class="small">The demo's trace is <strong>synthetic</strong> and labelled as such in
+          every file. No real model's output ships in this repo and nothing here is evidence
+          about a named model.</p>
+        <p class="small">The parameters are calibrated to published effect sizes
+          (<code>docs/calibration.md</code> gives the table, source by source) so the demo runs
+          offline and reproducibly on a laptop.</p>
+        <p class="small">The <strong>metrics</strong> are the reusable part. Point them at your
+          own trace and the same audit runs on real data.</p>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="time">19:00 &ndash; 19:30</span>
+    Switch to the terminal <b>now</b>, before the slide gets stale. Have the repo already cloned,
+    the venv already active, and the font size already up. Run the whole demo once; it takes
+    about 20 seconds.<br>
+    Say the synthetic-data disclaimer out loud while it runs. Do not skip it &mdash; it is what
+    makes the rest of the talk trustworthy.
+  </div>
+</section>
+
+<!-- 14 ----------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Demo &middot; running</p>
+    <h2>&nbsp;</h2>
+    <div class="quote">Leave this slide up and talk to the terminal.</div>
+    <div class="cols">
+      <div class="panel"><h3>If the terminal dies</h3>
+        <p class="small">Every number from the run is already on the slides that follow, and the
+          five figures are in <code>figures/</code> in the repo. Say &ldquo;here is what it prints&rdquo;
+          and move on &mdash; do not debug on stage.</p></div>
+      <div class="panel"><h3>Where to slow down</h3>
+        <p class="small">Act 2's stratified table and Act 4's dual-judge block. Those are the two
+          the audience will want to photograph.</p></div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="time">19:30 &ndash; 25:00 &middot; the demo itself</span>
+    Budget: ~5:30 at the terminal. Act 1 (1 min), Act 2 (1:30 &mdash; the stratified table),
+    Act 3 (30s), Act 4 (1 min &mdash; the dual-judge block), Acts 5&ndash;6 (1 min),
+    Act 7 (30s, the before/after).<br>
+    <b>Do not scroll back up.</b> If someone asks for an earlier number, tell them it is on the
+    following slides and keep moving.
+  </div>
+</section>
+
+<!-- 15 ----------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">The number your team can act on</p>
+    <h2>&ldquo;r = 0.7&rdquo; is not a decision</h2>
+    <div class="cols-wide cols">
+      <figure>
+        <svg viewBox="0 0 500 250" role="img" aria-label="Probability the judge picks the better system rises from 62 percent at 25 items to 98 percent at 800 items, crossing 90 percent around 400 items.">
+          <g id="risk-chart"></g>
+        </svg>
+        <figcaption>Bootstrap over items. The two systems genuinely differ; the judge has to find it.</figcaption>
+      </figure>
+      <div style="display:grid;gap:16px">
+        <div class="stat-row">
+          <div class="stat"><span class="n alarm">74%</span><span class="k">correct calls at 100 items per system</span></div>
+          <div class="stat"><span class="n">400</span><span class="k">items needed for 90% correct calls</span></div>
+        </div>
+        <div class="verdict">Nobody can act on a correlation. Everybody can act on
+          &ldquo;at our eval size, this judge names the wrong winner one time in four&rdquo;.</div>
+      </div>
+    </div>
+    <p class="cite">And a hard ceiling: when the judge is no more accurate than the model under test, no debiasing method can cut the ground-truth labels you need by more than half &mdash; Dorner &amp; Hardt 2025, ICLR (arXiv:2410.13341)</p>
+  </div>
+  <div class="notes">
+    <span class="time">25:00 &ndash; 26:30</span>
+    This is the slide that changes behaviour in an industry room, because it is the only one
+    phrased as a shipping decision. Convert judge noise into P(wrong call) at <i>their</i> eval size.<br>
+    The Dorner &amp; Hardt line is the one to leave them with if there is time: a weak judge cannot
+    rank models better than itself, no matter how you post-process it.
+  </div>
+</section>
+
+<!-- 16 ----------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">The checklist &middot; before you trust it</p>
+    <h2>Six things, none of them expensive</h2>
+    <ul class="ticks">
+      <li data-n="1"><b>Run it three times</b> on the same inputs. Report the score and the spread.</li>
+      <li data-n="2"><b>Count the blanks, then retry them.</b> Report the correlation after recovery &mdash; the worse, honest one.</li>
+      <li data-n="3"><b>Stratify by difficulty</b> before you believe any correlation.</li>
+      <li data-n="4"><b>Chance-correct</b> every agreement number, with the majority baseline beside it.</li>
+      <li data-n="5"><b>Swap the order and re-judge</b> every pairwise comparison. One extra call per pair.</li>
+      <li data-n="6"><b>Regress score on length</b> with quality controlled for. If length wins, your leaderboard ranks verbosity.</li>
+    </ul>
+  </div>
+  <div class="notes">
+    <span class="time">26:30 &ndash; 27:30</span>
+    Go fast &mdash; one line each, no elaboration. They have the repo. The whole checklist is in
+    <code>docs/checklist.md</code> as one printable page.
+  </div>
+</section>
+
+<!-- 17 ----------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">The checklist &middot; before you let it decide</p>
+    <h2>Three more, and what to publish</h2>
+    <div class="cols">
+      <ul class="ticks">
+        <li data-n="7"><b>Pair the graded judge with a binary check</b> against a human reference. Require both.</li>
+        <li data-n="8"><b>Convert noise into decision risk</b> at your eval size, and report that.</li>
+        <li data-n="9"><b>Pin and log everything</b> &mdash; model version, temperature, score range, prompt, parser &mdash; and re-audit when the vendor ships.</li>
+      </ul>
+      <div class="panel">
+        <h3 style="margin-bottom:10px">In the paper or the eval report</h3>
+        <p class="small">Number of judge passes and the spread &middot; blank rate and how blanks
+          were handled &middot; correlation before <em>and</em> after recovery &middot; agreement
+          chance-corrected, with the baseline &middot; judge version, temperature, score range,
+          prompt, parser &middot; whether both orders were judged &middot; eval-set size and the
+          decision risk at that size.</p>
+      </div>
+    </div>
+    <div class="verdict">A pinned model <em>name</em> is not a pinned model: same endpoint, same
+      prompts, GPT-4's accuracy on one task fell from <strong>84% to 51%</strong> over three months in 2023.</div>
+    <p class="cite">Chen, Zaharia &amp; Zou 2023 (arXiv:2307.09009)</p>
+  </div>
+  <div class="notes">
+    <span class="time">27:30 &ndash; 28:30</span>
+    The drift number is the one that makes people re-run an old eval. If the room is engineering-
+    heavy, mention logging grader disagreement as a first-class eval health metric &mdash; a
+    dashboard line, not a one-off study.
+  </div>
+</section>
+
+<!-- 18 ----------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">What the audit buys</p>
+    <h2>Same eval set. Audited protocol.</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Measure</th><th class="num">As shipped</th><th class="num">After the audit</th></tr></thead>
+        <tbody>
+          <tr><td>All three passes identical</td><td class="num bad">21%</td><td class="num ok">42%</td></tr>
+          <tr><td>Verdict stable across passes</td><td class="num bad">73%</td><td class="num ok">86%</td></tr>
+          <tr><td>ICC(1)</td><td class="num bad">0.74</td><td class="num ok">0.89</td></tr>
+          <tr><td>Items scored, not blank</td><td class="num bad">78%</td><td class="num ok">99%</td></tr>
+          <tr><td>Agreement with humans after recovery</td><td class="num bad">0.62</td><td class="num ok">0.86</td></tr>
+          <tr><td>Fluent-but-wrong responses caught</td><td class="num bad">11%</td><td class="num ok">96%</td></tr>
+          <tr><td>Pairwise verdicts surviving a swap</td><td class="num bad">60%</td><td class="num ok">70%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small">A rubric, a reference answer, a retry-on-blank loop, three passes instead of
+      one, and a second binary judge. No new model, no fine-tuning, no new annotation budget.</p>
+  </div>
+  <div class="notes">
+    <span class="time">28:30 &ndash; 29:00</span>
+    Note the honest ceiling: position bias improves least, because swap bias is a
+    <b>harness</b> fix (judge both orders and aggregate), not a prompt fix. Saying that out loud
+    is what keeps this slide from looking like a sales pitch.
+  </div>
+</section>
+
+<!-- 19 ----------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Close</p>
+    <h2>Judges are not useless.<br>Unaudited judges are.</h2>
+    <p class="lead">None of this makes the judge honest. It makes the judge's dishonesty
+      <strong>measurable</strong> &mdash; which is the most you can ask of any instrument, and
+      exactly what we ask of every other one we publish with.</p>
+    <div class="cols-3 cols">
+      <div class="panel"><h3>Code</h3><p class="small">github.com/ImSuMyatNoe/judge-audit<br>
+        <code>python -m judge_audit.demo</code></p></div>
+      <div class="panel"><h3>Checklist</h3><p class="small">One printable page:<br>
+        <code>docs/checklist.md</code></p></div>
+      <div class="panel"><h3>Dual judge</h3><p class="small">github.com/ImSuMyatNoe/dual-judge-traffic-signs</p></div>
+    </div>
+    <p class="cite">Su Myat Noe &middot; NII / LLMC, Tokyo &middot; references and arXiv IDs for every claim in this talk: <code>docs/references.md</code></p>
+  </div>
+  <div class="notes">
+    <span class="time">29:00 &ndash; 30:00</span>
+    Land on the one-liner, then stop talking. Leave this slide up for questions.<br>
+    <b>Likely questions:</b> (1) "Doesn't a bigger judge fix this?" &mdash; capability is
+    uncorrelated with low self-preference bias, and Dorner &amp; Hardt cap what any judge weaker
+    than the system under test can do. (2) "Is this synthetic data?" &mdash; yes, said three times,
+    calibration table in the repo, metrics run on real traces. (3) "What about reasoning judges?"
+    &mdash; JudgeBench puts o3-mini around 80% where a vanilla GPT-4o judge is at 50.86%: better,
+    still audited.
+  </div>
+</section>
+
+</div>
+
+<div class="rail">
+  <button id="prev" type="button" aria-label="Previous slide">&larr;</button>
+  <button id="next" type="button" aria-label="Next slide">&rarr;</button>
+  <span class="count"><span id="cur">1</span> / <span id="total">19</span></span>
+  <span class="track"><span class="fill" id="fill"></span></span>
+  <span id="clock" style="font-variant-numeric:tabular-nums">00:00</span>
+  <button id="timer" type="button">start</button>
+  <button id="notesBtn" type="button">notes <span style="opacity:.6">N</span></button>
+</div>
+
+<div class="notes" id="notesPanel" hidden></div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------------------------------------------------------- charts --- */
+
+  const SVGNS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) {
+    const n = document.createElementNS(SVGNS, tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+
+  // Act 1: eighteen real item triples from the demo trace.
+  (function stability() {
+    const g = document.getElementById("stab-marks");
+    if (!g) return;
+    const runs = [[3,3,3],[5,4,5],[5,5,6],[5,6,6],[6,5,7],[6,6,6],[6,8,5],[7,7,6],[7,6,7],
+                  [7,7,7],[7,7,7],[7,7,8],[7,8,8],[8,8,8],[8,8,8],[7,9,9],[9,8,9],[9,9,8]];
+    const x0 = 44, x1 = 540, y0 = 176, y1 = 26;
+    const y = v => y0 - (v / 10) * (y0 - y1);
+    const step = (x1 - x0) / (runs.length - 1);
+    const hues = ["var(--accent)", "var(--warn)", "var(--alarm)"];
+    runs.forEach((triple, i) => {
+      const x = x0 + i * step;
+      const lo = Math.min.apply(null, triple), hi = Math.max.apply(null, triple);
+      g.appendChild(el("line", { x1: x, x2: x, y1: y(lo), y2: y(hi),
+        stroke: "var(--rule)", "stroke-width": 9, "stroke-linecap": "round" }));
+      triple.forEach((v, j) => {
+        g.appendChild(el("circle", { cx: x, cy: y(v), r: 4.2, fill: hues[j],
+          stroke: "var(--panel)", "stroke-width": 1.4 }));
+      });
+      if (hi - lo >= 2) g.appendChild(el("text",
+        { x: x, y: 18, "text-anchor": "middle", class: "svg-v", fill: "var(--alarm)" }, "▼"));
+    });
+    [["pass 1", 0], ["pass 2", 1], ["pass 3", 2]].forEach(([label, j]) => {
+      const x = 360 + j * 66;
+      g.appendChild(el("circle", { cx: x, cy: 200, r: 4.2, fill: hues[j] }));
+      g.appendChild(el("text", { x: x + 8, y: 204, class: "svg-t" }, label));
+    });
+  })();
+
+  function barChart(id, opts) {
+    const g = document.getElementById(id);
+    if (!g) return;
+    const { data, max, fmt, color, w = 480, h, base, top } = opts;
+    const x0 = 8, barW = (w - x0 - 16) / data.length;
+    data.forEach((d, i) => {
+      const x = x0 + i * barW + barW * 0.24;
+      const bw = barW * 0.52;
+      const bh = (d.v / max) * (base - top);
+      g.appendChild(el("rect", { x: x, y: base - bh, width: bw, height: Math.max(bh, 1.5),
+        fill: typeof color === "function" ? color(d, i) : color, rx: 2 }));
+      g.appendChild(el("text", { x: x + bw / 2, y: base - bh - 9, "text-anchor": "middle",
+        class: "svg-v" }, fmt(d.v)));
+      String(d.k).split("\n").forEach((line, j) => {
+        g.appendChild(el("text", { x: x + bw / 2, y: base + 18 + j * 13,
+          "text-anchor": "middle", class: "svg-t" }, line));
+      });
+    });
+    g.appendChild(el("line", { x1: x0, x2: w - 8, y1: base, y2: base,
+      stroke: "var(--rule-strong)", "stroke-width": 1 }));
+  }
+
+  barChart("blank-bars", {
+    data: [{ k: "Q1\nclearest", v: 0.013 }, { k: "Q2", v: 0.069 },
+           { k: "Q3", v: 0.238 }, { k: "Q4\nmost ambiguous", v: 0.569 }],
+    max: 0.62, base: 176, top: 26, fmt: v => Math.round(v * 100) + "%",
+    color: (d, i) => i === 3 ? "var(--alarm)" : "var(--warn)"
+  });
+
+  barChart("corr-bars", {
+    data: [{ k: "Q1\nclearest", v: 0.74 }, { k: "Q2", v: 0.69 },
+           { k: "Q3", v: 0.59 }, { k: "Q4\nmost ambiguous", v: 0.41 }],
+    max: 0.85, base: 186, top: 30, fmt: v => v.toFixed(2),
+    color: (d, i) => i === 3 ? "var(--alarm)" : "var(--accent)"
+  });
+
+  barChart("kappa-bars", {
+    data: [{ k: "raw\nagreement", v: 0.747 }, { k: "always-guess\nbaseline", v: 0.574 },
+           { k: "Cohen's\nkappa", v: 0.497 }],
+    max: 0.85, base: 132, top: 22, w: 470,
+    fmt: v => v < 0.5 ? v.toFixed(2) : Math.round(v * 100) + "%",
+    color: (d, i) => i === 2 ? "var(--alarm)" : (i === 1 ? "var(--muted)" : "var(--accent)")
+  });
+
+  barChart("dual-bars", {
+    data: [{ k: "graded judge\nalone", v: 0.889 }, { k: "graded + binary\nequivalence", v: 0.10 }],
+    max: 1.0, base: 196, top: 26, w: 400, fmt: v => Math.round(v * 100) + "%",
+    color: (d, i) => i === 0 ? "var(--alarm)" : "var(--good)"
+  });
+
+  (function risk() {
+    const g = document.getElementById("risk-chart");
+    if (!g) return;
+    const pts = [[25, 0.61], [50, 0.65], [100, 0.74], [200, 0.86], [400, 0.92], [800, 0.98]];
+    const x0 = 46, x1 = 486, yTop = 26, yBase = 196;
+    const lx = v => x0 + (Math.log(v / 25) / Math.log(800 / 25)) * (x1 - x0);
+    const ly = v => yBase - ((v - 0.5) / 0.52) * (yBase - yTop);
+    [0.6, 0.8, 1.0].forEach(v => {
+      g.appendChild(el("line", { x1: x0, x2: x1, y1: ly(v), y2: ly(v),
+        stroke: "var(--rule)", "stroke-width": 1 }));
+      g.appendChild(el("text", { x: x0 - 8, y: ly(v) + 4, "text-anchor": "end",
+        class: "svg-t" }, Math.round(v * 100) + "%"));
+    });
+    g.appendChild(el("line", { x1: x0, x2: x1, y1: ly(0.9), y2: ly(0.9),
+      stroke: "var(--alarm)", "stroke-width": 1, "stroke-dasharray": "5 4" }));
+    g.appendChild(el("text", { x: x0 + 4, y: ly(0.9) - 7, class: "svg-t",
+      fill: "var(--alarm)" }, "90% of calls correct"));
+    g.appendChild(el("polyline", {
+      points: pts.map(p => lx(p[0]) + "," + ly(p[1])).join(" "),
+      fill: "none", stroke: "var(--accent)", "stroke-width": 2.4,
+      "stroke-linejoin": "round"
+    }));
+    pts.forEach(([n, v]) => {
+      g.appendChild(el("circle", { cx: lx(n), cy: ly(v), r: 4.6, fill: "var(--accent)",
+        stroke: "var(--panel)", "stroke-width": 1.6 }));
+      g.appendChild(el("text", { x: lx(n), y: yBase + 18, "text-anchor": "middle",
+        class: "svg-t" }, String(n)));
+      if (n === 25 || n === 100 || n === 800) {
+        g.appendChild(el("text", { x: lx(n), y: ly(v) - 12, "text-anchor": "middle",
+          class: "svg-v" }, Math.round(v * 100) + "%"));
+      }
+    });
+    g.appendChild(el("text", { x: (x0 + x1) / 2, y: yBase + 38, "text-anchor": "middle",
+      class: "svg-t" }, "items per system (log scale)"));
+  })();
+
+  /* ------------------------------------------------------------- deck --- */
+
+  const slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  const notes = slides.map(s => s.querySelector(".notes"));
+  const panel = document.getElementById("notesPanel");
+  const fill = document.getElementById("fill");
+  const cur = document.getElementById("cur");
+  document.getElementById("total").textContent = String(slides.length);
+
+  let i = 0;
+
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle("is-active", k === i));
+    cur.textContent = String(i + 1);
+    fill.style.width = ((i + 1) / slides.length * 100) + "%";
+    panel.innerHTML = notes[i] ? notes[i].innerHTML : "";
+    panel.classList.add("is-active");
+    if (location.hash !== "#" + (i + 1)) history.replaceState(null, "", "#" + (i + 1));
+    window.scrollTo(0, 0);
+  }
+
+  document.getElementById("next").addEventListener("click", () => show(i + 1));
+  document.getElementById("prev").addEventListener("click", () => show(i - 1));
+
+  const notesBtn = document.getElementById("notesBtn");
+  function toggleNotes() {
+    const on = document.body.classList.toggle("notes-on");
+    panel.hidden = !on;
+    notesBtn.setAttribute("aria-pressed", String(on));
+  }
+  notesBtn.addEventListener("click", toggleNotes);
+
+  let t0 = null, tick = null;
+  const clock = document.getElementById("clock");
+  const timerBtn = document.getElementById("timer");
+  timerBtn.addEventListener("click", function () {
+    if (tick) {
+      clearInterval(tick); tick = null; timerBtn.textContent = "start";
+    } else {
+      t0 = Date.now();
+      timerBtn.textContent = "stop";
+      tick = setInterval(function () {
+        const s = Math.floor((Date.now() - t0) / 1000);
+        clock.textContent = String(Math.floor(s / 60)).padStart(2, "0") + ":" +
+                            String(s % 60).padStart(2, "0");
+        clock.style.color = s > 1800 ? "var(--alarm)" : "";
+      }, 250);
+    }
+  });
+
+  let buffer = "";
+  document.addEventListener("keydown", function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key;
+    if (k === "ArrowRight" || k === "PageDown" || k === " ") { e.preventDefault(); show(i + 1); }
+    else if (k === "ArrowLeft" || k === "PageUp") { e.preventDefault(); show(i - 1); }
+    else if (k === "Home") { e.preventDefault(); show(0); }
+    else if (k === "End") { e.preventDefault(); show(slides.length - 1); }
+    else if (k === "n" || k === "N") { e.preventDefault(); toggleNotes(); }
+    else if (/^[0-9]$/.test(k)) { /* type a number then Enter */ buffer += k; }
+  });
+
+  document.addEventListener("keyup", function (e) {
+    if (e.key === "Enter" && buffer) { show(parseInt(buffer, 10) - 1); buffer = ""; }
+  });
+
+  const fromHash = parseInt((location.hash || "").slice(1), 10);
+  show(isFinite(fromHash) && fromHash > 0 ? fromHash - 1 : 0);
+})();
+</script>

@@ -1,0 +1,1801 @@
+item_id,run,judge,judge_score,judge_score_recovered,was_blank,equivalent,system,latent_quality,ambiguity,difficulty_stratum,fluent_but_wrong,response_tokens,human_score,human_correct
+it0000,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7948,0.3557,Q2,False,199,7.0,True
+it0001,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.632,0.4993,Q3,False,257,6.0,True
+it0002,1,hosted-judge-v1,9.0,9.0,False,False,model-A,0.6405,0.1981,Q1 clearest,True,323,7.0,False
+it0003,1,hosted-judge-v1,10.0,10.0,False,False,model-A,0.9257,0.5197,Q3,True,351,10.0,False
+it0004,1,hosted-judge-v1,,7.0,True,True,model-A,0.6969,0.5186,Q3,False,307,7.0,True
+it0005,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.6025,0.2726,Q1 clearest,False,324,6.0,False
+it0006,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5885,0.5816,Q4 most ambiguous,False,287,6.0,False
+it0007,1,hosted-judge-v1,,5.0,True,True,model-A,0.6406,0.6415,Q4 most ambiguous,False,234,6.0,True
+it0008,1,hosted-judge-v1,,6.0,True,False,model-A,0.5957,0.5987,Q4 most ambiguous,False,294,5.0,False
+it0009,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.7057,0.6954,Q4 most ambiguous,True,448,8.0,False
+it0010,1,hosted-judge-v1,,8.0,True,False,model-A,0.7323,0.381,Q2,True,382,9.0,False
+it0011,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5247,0.4392,Q3,False,193,4.0,False
+it0012,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9169,0.2468,Q1 clearest,False,267,9.0,True
+it0013,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9018,0.3883,Q2,False,299,9.0,True
+it0014,1,hosted-judge-v1,,,True,False,model-A,0.5443,0.9169,Q4 most ambiguous,False,298,6.0,False
+it0015,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5702,0.4372,Q3,False,318,6.0,False
+it0016,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8353,0.3284,Q2,False,329,8.0,True
+it0017,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.6606,0.7989,Q4 most ambiguous,False,172,7.0,True
+it0018,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8324,0.4078,Q2,False,379,9.0,True
+it0019,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.9208,0.3738,Q2,False,104,8.0,True
+it0020,1,hosted-judge-v1,,7.0,True,False,model-A,0.5007,0.7069,Q4 most ambiguous,False,181,4.0,False
+it0021,1,hosted-judge-v1,,6.0,True,True,model-A,0.8195,0.6823,Q4 most ambiguous,False,237,8.0,True
+it0022,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.3436,0.5589,Q4 most ambiguous,True,327,4.0,False
+it0023,1,hosted-judge-v1,4.0,4.0,False,True,model-A,0.4794,0.5435,Q3,False,275,4.0,False
+it0024,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8095,0.529,Q3,False,307,9.0,True
+it0025,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7993,0.2064,Q1 clearest,False,300,9.0,True
+it0026,1,hosted-judge-v1,5.0,5.0,False,True,model-A,0.691,0.5049,Q3,False,263,8.0,True
+it0027,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5927,0.5171,Q3,False,247,6.0,False
+it0028,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.4895,0.434,Q3,False,326,4.0,False
+it0029,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7063,0.4121,Q3,False,248,6.0,True
+it0030,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7778,0.1953,Q1 clearest,False,234,8.0,True
+it0031,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7014,0.3431,Q2,False,178,8.0,True
+it0032,1,hosted-judge-v1,,,True,True,model-A,0.6463,0.7637,Q4 most ambiguous,False,338,7.0,True
+it0033,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5451,0.6162,Q4 most ambiguous,False,220,7.0,False
+it0034,1,hosted-judge-v1,4.0,4.0,False,False,model-A,0.4283,0.1516,Q1 clearest,False,298,5.0,False
+it0035,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5204,0.4941,Q3,False,244,7.0,False
+it0036,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5255,0.3944,Q2,False,243,4.0,False
+it0037,1,hosted-judge-v1,5.0,5.0,False,True,model-A,0.4307,0.3233,Q2,True,382,6.0,False
+it0038,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7118,0.3058,Q2,False,237,7.0,True
+it0039,1,hosted-judge-v1,5.0,5.0,False,True,model-A,0.6342,0.4514,Q3,False,249,6.0,True
+it0040,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6527,0.3832,Q2,False,287,6.0,True
+it0041,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7262,0.7115,Q4 most ambiguous,True,363,8.0,False
+it0042,1,hosted-judge-v1,,6.0,True,False,model-A,0.966,0.774,Q4 most ambiguous,True,421,10.0,False
+it0043,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6944,0.5909,Q4 most ambiguous,False,256,7.0,True
+it0044,1,hosted-judge-v1,10.0,10.0,False,False,model-A,0.8329,0.4364,Q3,True,300,10.0,False
+it0045,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.6258,0.3959,Q2,True,350,8.0,False
+it0046,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5061,0.2637,Q1 clearest,False,211,5.0,False
+it0047,1,hosted-judge-v1,,6.0,True,True,model-A,0.7037,0.5256,Q3,False,272,7.0,True
+it0048,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.8245,0.2605,Q1 clearest,True,365,9.0,False
+it0049,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8038,0.1121,Q1 clearest,False,322,9.0,True
+it0050,1,hosted-judge-v1,4.0,4.0,False,False,model-A,0.5521,0.5231,Q3,False,198,5.0,False
+it0051,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.8727,0.4868,Q3,False,288,8.0,True
+it0052,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5836,0.508,Q3,False,261,5.0,False
+it0053,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7097,0.2212,Q1 clearest,False,313,6.0,True
+it0054,1,hosted-judge-v1,,5.0,True,False,model-A,0.4686,0.59,Q4 most ambiguous,False,254,4.0,False
+it0055,1,hosted-judge-v1,5.0,5.0,False,True,model-A,0.6329,0.3627,Q2,False,342,7.0,True
+it0056,1,hosted-judge-v1,,,True,False,model-A,0.4681,0.8925,Q4 most ambiguous,False,358,5.0,False
+it0057,1,hosted-judge-v1,10.0,10.0,False,True,model-A,0.6535,0.5679,Q4 most ambiguous,False,218,7.0,True
+it0058,1,hosted-judge-v1,5.0,5.0,False,True,model-A,0.6249,0.3171,Q2,False,222,7.0,True
+it0059,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5135,0.3526,Q2,False,309,5.0,False
+it0060,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5381,0.4798,Q3,False,192,5.0,False
+it0061,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.6095,0.3661,Q2,False,365,7.0,False
+it0062,1,hosted-judge-v1,9.0,9.0,False,False,model-A,0.9565,0.5911,Q4 most ambiguous,True,470,9.0,False
+it0063,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.9179,0.37,Q2,False,245,10.0,True
+it0064,1,hosted-judge-v1,9.0,9.0,False,False,model-A,0.7251,0.3038,Q2,True,369,8.0,False
+it0065,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6423,0.2483,Q1 clearest,False,260,7.0,True
+it0066,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.6318,0.3495,Q2,True,439,7.0,False
+it0067,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6346,0.3468,Q2,False,345,6.0,True
+it0068,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8054,0.2309,Q1 clearest,False,228,9.0,True
+it0069,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9065,0.0673,Q1 clearest,False,198,9.0,True
+it0070,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9149,0.0887,Q1 clearest,False,275,10.0,True
+it0071,1,hosted-judge-v1,,10.0,True,False,model-A,0.7796,0.7725,Q4 most ambiguous,True,411,9.0,False
+it0072,1,hosted-judge-v1,,,True,False,model-A,0.5291,0.8481,Q4 most ambiguous,True,431,6.0,False
+it0073,1,hosted-judge-v1,,5.0,True,False,model-A,0.4449,0.4367,Q3,False,220,3.0,False
+it0074,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6389,0.2507,Q1 clearest,False,266,6.0,True
+it0075,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8912,0.0395,Q1 clearest,False,286,10.0,True
+it0076,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6971,0.3496,Q2,False,262,8.0,True
+it0077,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9161,0.0256,Q1 clearest,False,249,9.0,True
+it0078,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8517,0.4086,Q2,False,232,10.0,True
+it0079,1,hosted-judge-v1,,6.0,True,False,model-A,0.3155,0.6036,Q4 most ambiguous,False,220,3.0,False
+it0080,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.695,0.4022,Q2,False,297,6.0,True
+it0081,1,hosted-judge-v1,,6.0,True,True,model-A,0.5432,0.3897,Q2,False,232,4.0,False
+it0082,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6215,0.5022,Q3,False,274,7.0,True
+it0083,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.641,0.5281,Q3,False,257,6.0,True
+it0084,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.7573,0.1287,Q1 clearest,True,313,8.0,False
+it0085,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8078,0.059,Q1 clearest,False,225,8.0,True
+it0086,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5478,0.2477,Q1 clearest,False,327,6.0,False
+it0087,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6771,0.124,Q1 clearest,False,236,7.0,True
+it0088,1,hosted-judge-v1,,3.0,True,False,model-A,0.5048,0.6773,Q4 most ambiguous,False,289,5.0,False
+it0089,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9009,0.1639,Q1 clearest,False,287,9.0,True
+it0090,1,hosted-judge-v1,,8.0,True,False,model-A,0.8987,0.3124,Q2,True,390,10.0,False
+it0091,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7464,0.2833,Q2,False,312,7.0,True
+it0092,1,hosted-judge-v1,,8.0,True,False,model-A,0.7512,0.5001,Q3,True,389,9.0,False
+it0093,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.7403,0.5103,Q3,False,288,7.0,True
+it0094,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.747,0.0887,Q1 clearest,False,293,8.0,True
+it0095,1,hosted-judge-v1,,9.0,True,True,model-A,0.6772,0.6116,Q4 most ambiguous,False,343,8.0,True
+it0096,1,hosted-judge-v1,10.0,10.0,False,True,model-A,0.9024,0.3902,Q2,True,446,10.0,False
+it0097,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9044,0.3379,Q2,False,239,9.0,True
+it0098,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5472,0.1411,Q1 clearest,False,218,6.0,False
+it0099,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7723,0.4069,Q2,True,337,9.0,False
+it0100,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6685,0.1986,Q1 clearest,False,252,7.0,True
+it0101,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4323,0.6162,Q4 most ambiguous,False,300,5.0,False
+it0102,1,hosted-judge-v1,9.0,9.0,False,False,model-A,0.6545,0.4408,Q3,True,331,8.0,False
+it0103,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6118,0.2354,Q1 clearest,False,277,7.0,False
+it0104,1,hosted-judge-v1,2.0,2.0,False,False,model-A,0.4082,0.3814,Q2,False,217,3.0,False
+it0105,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.4743,0.27,Q1 clearest,True,474,5.0,False
+it0106,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.933,0.3538,Q2,False,359,10.0,True
+it0107,1,hosted-judge-v1,4.0,4.0,False,False,model-A,0.4338,0.3497,Q2,False,273,4.0,False
+it0108,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4425,0.251,Q1 clearest,False,298,6.0,False
+it0109,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5653,0.206,Q1 clearest,False,259,6.0,False
+it0110,1,hosted-judge-v1,,7.0,True,False,model-A,0.6065,0.37,Q2,False,331,6.0,False
+it0111,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7719,0.2212,Q1 clearest,False,206,7.0,True
+it0112,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.884,0.0,Q1 clearest,False,176,9.0,True
+it0113,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.572,0.482,Q3,False,168,6.0,False
+it0114,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6429,0.222,Q1 clearest,False,254,7.0,True
+it0115,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7929,0.473,Q3,False,245,8.0,True
+it0116,1,hosted-judge-v1,,6.0,True,False,model-A,0.5583,0.5869,Q4 most ambiguous,False,160,5.0,False
+it0117,1,hosted-judge-v1,4.0,4.0,False,False,model-A,0.5026,0.4672,Q3,False,122,5.0,False
+it0118,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.715,0.3569,Q2,False,188,8.0,True
+it0119,1,hosted-judge-v1,,7.0,True,True,model-A,0.7032,0.7308,Q4 most ambiguous,False,275,6.0,True
+it0120,1,hosted-judge-v1,,10.0,True,False,model-A,0.6394,0.408,Q2,True,348,7.0,False
+it0121,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.4892,0.47,Q3,False,230,4.0,False
+it0122,1,hosted-judge-v1,,,True,True,model-A,0.7434,0.8457,Q4 most ambiguous,False,170,7.0,True
+it0123,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5718,0.5618,Q4 most ambiguous,False,174,6.0,False
+it0124,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.7822,0.2183,Q1 clearest,False,233,9.0,True
+it0125,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.585,0.3029,Q2,False,235,6.0,False
+it0126,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8487,0.3057,Q2,False,239,9.0,True
+it0127,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.9671,0.4327,Q3,False,257,9.0,True
+it0128,1,hosted-judge-v1,,,True,False,model-A,0.3121,0.8813,Q4 most ambiguous,False,310,2.0,False
+it0129,1,hosted-judge-v1,,6.0,True,False,model-A,0.4885,0.7401,Q4 most ambiguous,False,162,4.0,False
+it0130,1,hosted-judge-v1,,,True,True,model-A,0.8698,0.7503,Q4 most ambiguous,False,284,9.0,True
+it0131,1,hosted-judge-v1,,8.0,True,True,model-A,0.7778,0.495,Q3,False,233,8.0,True
+it0132,1,hosted-judge-v1,,8.0,True,True,model-A,0.8136,0.5427,Q3,False,260,9.0,True
+it0133,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.863,0.349,Q2,False,251,7.0,True
+it0134,1,hosted-judge-v1,,5.0,True,True,model-A,0.6327,0.7812,Q4 most ambiguous,False,292,6.0,True
+it0135,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5763,0.3842,Q2,False,266,7.0,False
+it0136,1,hosted-judge-v1,,8.0,True,False,model-A,0.6197,0.5874,Q4 most ambiguous,False,293,6.0,False
+it0137,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8594,0.1106,Q1 clearest,False,241,8.0,True
+it0138,1,hosted-judge-v1,,5.0,True,True,model-A,0.4813,0.4606,Q3,False,139,4.0,False
+it0139,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.754,0.2603,Q1 clearest,False,301,8.0,True
+it0140,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.766,0.0981,Q1 clearest,False,227,7.0,True
+it0141,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.538,0.3246,Q2,True,410,6.0,False
+it0142,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5534,0.4201,Q3,False,183,5.0,False
+it0143,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.945,0.1624,Q1 clearest,False,267,10.0,True
+it0144,1,hosted-judge-v1,,6.0,True,True,model-A,0.8453,0.4671,Q3,False,270,9.0,True
+it0145,1,hosted-judge-v1,,5.0,True,False,model-A,0.6501,0.71,Q4 most ambiguous,False,391,6.0,True
+it0146,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.6994,0.6274,Q4 most ambiguous,False,278,5.0,True
+it0147,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6886,0.2402,Q1 clearest,False,236,7.0,True
+it0148,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5883,0.2132,Q1 clearest,True,345,8.0,False
+it0149,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7844,0.0784,Q1 clearest,False,168,9.0,True
+it0150,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.8397,0.455,Q3,False,330,10.0,True
+it0151,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9015,0.1801,Q1 clearest,False,354,10.0,True
+it0152,1,hosted-judge-v1,,6.0,True,False,model-A,0.5647,0.3634,Q2,False,281,6.0,False
+it0153,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9062,0.448,Q3,False,306,10.0,True
+it0154,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.7005,0.7087,Q4 most ambiguous,False,250,9.0,True
+it0155,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5223,0.464,Q3,True,410,5.0,False
+it0156,1,hosted-judge-v1,10.0,10.0,False,False,model-A,0.9139,0.356,Q2,True,341,10.0,False
+it0157,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7511,0.0517,Q1 clearest,False,233,8.0,True
+it0158,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4848,0.2705,Q1 clearest,False,248,4.0,False
+it0159,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8677,0.4123,Q3,False,287,9.0,True
+it0160,1,hosted-judge-v1,,6.0,True,True,model-A,0.6768,0.5126,Q3,False,294,8.0,True
+it0161,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.4612,0.4854,Q3,True,419,4.0,False
+it0162,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7561,0.377,Q2,False,331,7.0,True
+it0163,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.5112,0.4157,Q3,True,395,6.0,False
+it0164,1,hosted-judge-v1,5.0,5.0,False,True,model-A,0.7548,0.3533,Q2,False,327,7.0,True
+it0165,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9058,0.1866,Q1 clearest,False,323,10.0,True
+it0166,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.737,0.2693,Q1 clearest,False,151,7.0,True
+it0167,1,hosted-judge-v1,9.0,9.0,False,False,model-A,0.9558,0.108,Q1 clearest,False,331,9.0,True
+it0168,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9551,0.5061,Q3,False,253,10.0,True
+it0169,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.6847,0.3888,Q2,False,272,7.0,True
+it0170,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.9019,0.6054,Q4 most ambiguous,False,200,9.0,True
+it0171,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6571,0.4296,Q3,False,263,7.0,True
+it0172,1,hosted-judge-v1,,,True,True,model-A,0.7206,0.8318,Q4 most ambiguous,False,320,8.0,True
+it0173,1,hosted-judge-v1,,6.0,True,True,model-A,0.8807,0.6335,Q4 most ambiguous,False,257,8.0,True
+it0174,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5551,0.8433,Q4 most ambiguous,True,350,6.0,False
+it0175,1,hosted-judge-v1,10.0,10.0,False,False,model-A,0.862,0.3477,Q2,True,367,9.0,False
+it0176,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.799,0.67,Q4 most ambiguous,False,309,7.0,True
+it0177,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7819,0.2745,Q1 clearest,False,277,7.0,True
+it0178,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5678,0.3845,Q2,False,298,6.0,False
+it0179,1,hosted-judge-v1,4.0,4.0,False,False,model-A,0.4797,0.3507,Q2,False,177,4.0,False
+it0180,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.847,0.1748,Q1 clearest,False,291,8.0,True
+it0181,1,hosted-judge-v1,,8.0,True,False,model-A,0.9056,0.5161,Q3,True,351,9.0,False
+it0182,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7363,0.114,Q1 clearest,False,277,8.0,True
+it0183,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.9082,0.3213,Q2,False,196,10.0,True
+it0184,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.501,0.3179,Q2,False,185,5.0,False
+it0185,1,hosted-judge-v1,,7.0,True,True,model-A,0.6139,0.538,Q3,False,342,6.0,False
+it0186,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.7531,0.1431,Q1 clearest,False,182,9.0,True
+it0187,1,hosted-judge-v1,,7.0,True,True,model-A,0.7174,0.4765,Q3,False,148,9.0,True
+it0188,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.7805,0.3486,Q2,False,265,9.0,True
+it0189,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5171,0.1372,Q1 clearest,False,232,4.0,False
+it0190,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.6113,0.1932,Q1 clearest,False,222,6.0,False
+it0191,1,hosted-judge-v1,5.0,5.0,False,True,model-A,0.5067,0.3478,Q2,False,330,5.0,False
+it0192,1,hosted-judge-v1,,6.0,True,False,model-A,0.4709,0.6172,Q4 most ambiguous,False,268,4.0,False
+it0193,1,hosted-judge-v1,,10.0,True,False,model-A,0.7245,0.5338,Q3,True,456,9.0,False
+it0194,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.6968,0.3715,Q2,False,310,7.0,True
+it0195,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8131,0.4006,Q2,False,104,8.0,True
+it0196,1,hosted-judge-v1,,7.0,True,True,model-A,0.722,0.3671,Q2,False,291,8.0,True
+it0197,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8771,0.4444,Q3,False,259,9.0,True
+it0198,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7013,0.1343,Q1 clearest,False,244,7.0,True
+it0199,1,hosted-judge-v1,,7.0,True,True,model-A,0.7382,0.706,Q4 most ambiguous,False,267,9.0,True
+it0200,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5706,0.1184,Q1 clearest,False,216,6.0,False
+it0201,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6648,0.3065,Q2,False,306,8.0,True
+it0202,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5071,0.7351,Q4 most ambiguous,False,415,5.0,False
+it0203,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9462,0.4726,Q3,False,313,10.0,True
+it0204,1,hosted-judge-v1,9.0,9.0,False,False,model-A,0.98,0.1609,Q1 clearest,False,281,10.0,True
+it0205,1,hosted-judge-v1,5.0,5.0,False,True,model-A,0.7902,0.4029,Q2,False,225,8.0,True
+it0206,1,hosted-judge-v1,,7.0,True,True,model-A,0.7112,0.6379,Q4 most ambiguous,False,286,7.0,True
+it0207,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7462,0.1605,Q1 clearest,False,259,8.0,True
+it0208,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5629,0.1246,Q1 clearest,False,272,6.0,False
+it0209,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7829,0.3118,Q2,False,250,8.0,True
+it0210,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.6942,0.5919,Q4 most ambiguous,False,238,7.0,True
+it0211,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7739,0.4938,Q3,False,151,7.0,True
+it0212,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5201,0.3361,Q2,True,294,5.0,False
+it0213,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.6016,0.4067,Q2,False,219,7.0,False
+it0214,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7462,0.3101,Q2,False,132,9.0,True
+it0215,1,hosted-judge-v1,,8.0,True,True,model-A,0.8983,0.4991,Q3,False,357,9.0,True
+it0216,1,hosted-judge-v1,,10.0,True,False,model-A,0.8548,0.6937,Q4 most ambiguous,True,398,9.0,False
+it0217,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7459,0.226,Q1 clearest,False,307,5.0,True
+it0218,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8241,0.5204,Q3,False,313,7.0,True
+it0219,1,hosted-judge-v1,5.0,5.0,False,True,model-A,0.579,0.5762,Q4 most ambiguous,False,322,6.0,False
+it0220,1,hosted-judge-v1,,6.0,True,True,model-A,0.7347,0.4536,Q3,False,273,7.0,True
+it0221,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6238,0.4508,Q3,False,304,6.0,True
+it0222,1,hosted-judge-v1,5.0,5.0,False,True,model-A,0.7269,0.6758,Q4 most ambiguous,False,271,6.0,True
+it0223,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9051,0.2904,Q2,False,270,8.0,True
+it0224,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.7812,0.5121,Q3,False,386,7.0,True
+it0225,1,hosted-judge-v1,,8.0,True,True,model-A,0.6979,0.5016,Q3,False,263,6.0,True
+it0226,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.8072,0.3232,Q2,False,248,8.0,True
+it0227,1,hosted-judge-v1,4.0,4.0,False,False,model-A,0.4219,0.4321,Q3,False,214,5.0,False
+it0228,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6875,0.2737,Q1 clearest,False,260,8.0,True
+it0229,1,hosted-judge-v1,,6.0,True,False,model-A,0.4456,0.5476,Q3,True,372,4.0,False
+it0230,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7093,0.2465,Q1 clearest,False,236,7.0,True
+it0231,1,hosted-judge-v1,,7.0,True,True,model-A,0.8259,0.6034,Q4 most ambiguous,False,307,8.0,True
+it0232,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.6117,0.5778,Q4 most ambiguous,False,258,7.0,False
+it0233,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.7865,0.1745,Q1 clearest,False,357,8.0,True
+it0234,1,hosted-judge-v1,,5.0,True,False,model-A,0.4944,0.6048,Q4 most ambiguous,False,295,5.0,False
+it0235,1,hosted-judge-v1,,6.0,True,True,model-A,0.7783,0.5977,Q4 most ambiguous,False,306,8.0,True
+it0236,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8117,0.5557,Q3,False,297,7.0,True
+it0237,1,hosted-judge-v1,,7.0,True,True,model-A,0.6798,0.7748,Q4 most ambiguous,False,313,6.0,True
+it0238,1,hosted-judge-v1,,7.0,True,True,model-A,0.6585,0.8855,Q4 most ambiguous,False,247,6.0,True
+it0239,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7424,0.2942,Q2,False,328,9.0,True
+it0240,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5761,0.7158,Q4 most ambiguous,False,258,6.0,False
+it0241,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.8353,0.266,Q1 clearest,False,355,9.0,True
+it0242,1,hosted-judge-v1,,6.0,True,True,model-A,0.9751,0.6511,Q4 most ambiguous,False,256,9.0,True
+it0243,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5385,0.2138,Q1 clearest,True,323,5.0,False
+it0244,1,hosted-judge-v1,4.0,4.0,False,False,model-A,0.3716,0.52,Q3,False,223,4.0,False
+it0245,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9614,0.0344,Q1 clearest,False,355,10.0,True
+it0246,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6888,0.2766,Q1 clearest,False,314,7.0,True
+it0247,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8178,0.3324,Q2,False,170,8.0,True
+it0248,1,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9737,0.4263,Q3,False,187,10.0,True
+it0249,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7565,0.5689,Q4 most ambiguous,False,266,7.0,True
+it0250,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7495,0.4051,Q2,False,297,7.0,True
+it0251,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8343,0.0832,Q1 clearest,False,178,9.0,True
+it0252,1,hosted-judge-v1,5.0,5.0,False,True,model-A,0.8037,0.6258,Q4 most ambiguous,False,204,9.0,True
+it0253,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.6737,0.5971,Q4 most ambiguous,True,354,6.0,False
+it0254,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.9356,0.2317,Q1 clearest,True,348,10.0,False
+it0255,1,hosted-judge-v1,4.0,4.0,False,False,model-A,0.4857,0.5673,Q4 most ambiguous,False,300,4.0,False
+it0256,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7943,0.4658,Q3,False,332,7.0,True
+it0257,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.484,0.4557,Q3,False,266,6.0,False
+it0258,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7255,0.2666,Q1 clearest,False,298,7.0,True
+it0259,1,hosted-judge-v1,5.0,5.0,False,True,model-A,0.5705,0.2783,Q1 clearest,False,285,5.0,False
+it0260,1,hosted-judge-v1,,7.0,True,False,model-A,0.4668,0.5006,Q3,False,253,4.0,False
+it0261,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7893,0.463,Q3,False,237,8.0,True
+it0262,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8616,0.2266,Q1 clearest,False,270,9.0,True
+it0263,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6823,0.3762,Q2,False,307,7.0,True
+it0264,1,hosted-judge-v1,,6.0,True,False,model-A,0.3805,0.5525,Q3,False,254,4.0,False
+it0265,1,hosted-judge-v1,4.0,4.0,False,False,model-A,0.3442,0.3471,Q2,False,231,4.0,False
+it0266,1,hosted-judge-v1,,6.0,True,True,model-A,0.6295,0.5248,Q3,False,274,6.0,True
+it0267,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.5783,0.714,Q4 most ambiguous,False,171,6.0,False
+it0268,1,hosted-judge-v1,,7.0,True,False,model-A,0.5483,0.8768,Q4 most ambiguous,False,195,5.0,False
+it0269,1,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5153,0.6708,Q4 most ambiguous,False,200,5.0,False
+it0270,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7998,0.3621,Q2,False,311,7.0,True
+it0271,1,hosted-judge-v1,9.0,9.0,False,False,model-A,0.8228,0.2525,Q1 clearest,True,407,9.0,False
+it0272,1,hosted-judge-v1,,7.0,True,False,model-A,0.5108,0.6849,Q4 most ambiguous,False,270,5.0,False
+it0273,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5275,0.2823,Q2,True,281,5.0,False
+it0274,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7385,0.1841,Q1 clearest,False,250,6.0,True
+it0275,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6752,0.2891,Q2,False,256,7.0,True
+it0276,1,hosted-judge-v1,,,True,True,model-A,0.4455,1.0,Q4 most ambiguous,False,278,4.0,False
+it0277,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7317,0.5777,Q4 most ambiguous,False,248,8.0,True
+it0278,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7649,0.158,Q1 clearest,False,185,8.0,True
+it0279,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6608,0.3211,Q2,False,293,7.0,True
+it0280,1,hosted-judge-v1,5.0,5.0,False,False,model-A,0.6073,0.3959,Q2,False,129,6.0,False
+it0281,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8474,0.2654,Q1 clearest,False,303,8.0,True
+it0282,1,hosted-judge-v1,,7.0,True,True,model-A,0.7732,0.6854,Q4 most ambiguous,False,326,8.0,True
+it0283,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6606,0.6588,Q4 most ambiguous,False,257,6.0,True
+it0284,1,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5914,0.4089,Q3,False,266,6.0,False
+it0285,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7747,0.7034,Q4 most ambiguous,False,238,7.0,True
+it0286,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8315,0.2868,Q2,False,285,8.0,True
+it0287,1,hosted-judge-v1,,7.0,True,True,model-A,0.7799,0.7158,Q4 most ambiguous,False,230,8.0,True
+it0288,1,hosted-judge-v1,8.0,8.0,False,True,model-A,0.5498,0.2634,Q1 clearest,True,305,6.0,False
+it0289,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6922,0.3597,Q2,False,330,7.0,True
+it0290,1,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6256,0.2565,Q1 clearest,False,300,7.0,True
+it0291,1,hosted-judge-v1,,5.0,True,False,model-A,0.4242,0.5806,Q4 most ambiguous,False,268,5.0,False
+it0292,1,hosted-judge-v1,10.0,10.0,False,False,model-A,0.7498,0.244,Q1 clearest,True,269,9.0,False
+it0293,1,hosted-judge-v1,8.0,8.0,False,False,model-A,0.8346,0.265,Q1 clearest,False,291,7.0,True
+it0294,1,hosted-judge-v1,,,True,True,model-A,0.6578,0.6912,Q4 most ambiguous,False,298,7.0,True
+it0295,1,hosted-judge-v1,6.0,6.0,False,True,model-A,0.8165,0.4118,Q3,False,318,8.0,True
+it0296,1,hosted-judge-v1,,3.0,True,False,model-A,0.4527,0.6987,Q4 most ambiguous,False,218,5.0,False
+it0297,1,hosted-judge-v1,,6.0,True,True,model-A,0.7237,0.4993,Q3,False,246,8.0,True
+it0298,1,hosted-judge-v1,9.0,9.0,False,False,model-A,0.7837,0.8907,Q4 most ambiguous,True,421,9.0,False
+it0299,1,hosted-judge-v1,,7.0,True,True,model-A,0.8706,0.8147,Q4 most ambiguous,False,191,9.0,True
+it0300,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.658,0.3356,Q2,False,186,7.0,True
+it0301,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.6055,0.6565,Q4 most ambiguous,False,264,5.0,False
+it0302,1,hosted-judge-v1,,7.0,True,True,model-B,0.728,0.6944,Q4 most ambiguous,False,279,7.0,True
+it0303,1,hosted-judge-v1,10.0,10.0,False,False,model-B,0.8445,0.4121,Q3,True,409,10.0,False
+it0304,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.6104,0.6523,Q4 most ambiguous,False,280,6.0,False
+it0305,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8713,0.0324,Q1 clearest,False,286,9.0,True
+it0306,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7658,0.0979,Q1 clearest,False,234,6.0,True
+it0307,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5061,0.1533,Q1 clearest,False,219,5.0,False
+it0308,1,hosted-judge-v1,5.0,5.0,False,True,model-B,0.5184,0.4933,Q3,False,223,4.0,False
+it0309,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3245,0.5704,Q4 most ambiguous,False,322,2.0,False
+it0310,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7551,0.2874,Q2,False,246,8.0,True
+it0311,1,hosted-judge-v1,4.0,4.0,False,True,model-B,0.3547,0.2536,Q1 clearest,False,307,2.0,False
+it0312,1,hosted-judge-v1,,5.0,True,True,model-B,0.4986,0.4678,Q3,False,270,7.0,False
+it0313,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.9351,0.4745,Q3,False,307,10.0,True
+it0314,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.6619,0.4706,Q3,False,308,7.0,True
+it0315,1,hosted-judge-v1,,6.0,True,False,model-B,0.4278,0.4493,Q3,True,388,6.0,False
+it0316,1,hosted-judge-v1,,7.0,True,True,model-B,0.8701,0.448,Q3,False,192,10.0,True
+it0317,1,hosted-judge-v1,,8.0,True,False,model-B,0.6461,0.5097,Q3,False,271,7.0,True
+it0318,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7825,0.2945,Q2,False,261,9.0,True
+it0319,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5152,0.3334,Q2,True,368,6.0,False
+it0320,1,hosted-judge-v1,,,True,False,model-B,0.5361,0.8656,Q4 most ambiguous,False,121,6.0,False
+it0321,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.6703,0.3717,Q2,False,254,7.0,True
+it0322,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.4273,0.4443,Q3,False,188,4.0,False
+it0323,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5566,0.338,Q2,True,314,6.0,False
+it0324,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.5929,0.4537,Q3,False,256,7.0,False
+it0325,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5758,0.3989,Q2,False,139,6.0,False
+it0326,1,hosted-judge-v1,10.0,10.0,False,True,model-B,0.7654,0.3786,Q2,True,490,9.0,False
+it0327,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4154,0.4687,Q3,False,199,5.0,False
+it0328,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6694,0.4867,Q3,False,246,8.0,True
+it0329,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8334,0.0957,Q1 clearest,False,291,9.0,True
+it0330,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.695,0.7026,Q4 most ambiguous,False,334,7.0,True
+it0331,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.6097,0.1738,Q1 clearest,False,318,6.0,False
+it0332,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5281,0.3638,Q2,False,93,6.0,False
+it0333,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8705,0.3284,Q2,False,298,8.0,True
+it0334,1,hosted-judge-v1,4.0,4.0,False,False,model-B,0.3795,0.0853,Q1 clearest,False,301,4.0,False
+it0335,1,hosted-judge-v1,10.0,10.0,False,True,model-B,0.7409,0.1793,Q1 clearest,True,436,9.0,False
+it0336,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7256,0.4618,Q3,False,344,7.0,True
+it0337,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.8243,0.027,Q1 clearest,False,299,8.0,True
+it0338,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6739,0.1408,Q1 clearest,False,253,6.0,True
+it0339,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7578,0.3124,Q2,False,171,7.0,True
+it0340,1,hosted-judge-v1,,7.0,True,True,model-B,0.8519,0.7284,Q4 most ambiguous,False,242,9.0,True
+it0341,1,hosted-judge-v1,5.0,5.0,False,True,model-B,0.5329,0.2584,Q1 clearest,False,200,6.0,False
+it0342,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6602,0.5435,Q3,True,341,8.0,False
+it0343,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.7411,0.2406,Q1 clearest,False,301,8.0,True
+it0344,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.3413,0.1277,Q1 clearest,True,458,4.0,False
+it0345,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6505,0.2063,Q1 clearest,False,243,6.0,True
+it0346,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8829,0.5368,Q3,False,165,9.0,True
+it0347,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7889,0.4671,Q3,False,346,7.0,True
+it0348,1,hosted-judge-v1,5.0,5.0,False,True,model-B,0.5424,0.3542,Q2,False,277,4.0,False
+it0349,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.8375,0.2477,Q1 clearest,True,350,9.0,False
+it0350,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8605,0.438,Q3,False,380,10.0,True
+it0351,1,hosted-judge-v1,,4.0,True,True,model-B,0.442,0.5364,Q3,False,264,4.0,False
+it0352,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4731,0.2032,Q1 clearest,False,247,4.0,False
+it0353,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4402,0.42,Q3,False,240,5.0,False
+it0354,1,hosted-judge-v1,,,True,True,model-B,0.699,0.6929,Q4 most ambiguous,False,270,8.0,True
+it0355,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.6432,0.4452,Q3,True,269,7.0,False
+it0356,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6946,0.31,Q2,False,335,6.0,True
+it0357,1,hosted-judge-v1,4.0,4.0,False,True,model-B,0.4354,0.6401,Q4 most ambiguous,False,247,5.0,False
+it0358,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.3786,0.4483,Q3,False,153,4.0,False
+it0359,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8909,0.2756,Q1 clearest,False,197,8.0,True
+it0360,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7213,0.2735,Q1 clearest,False,297,8.0,True
+it0361,1,hosted-judge-v1,10.0,10.0,False,True,model-B,0.7212,0.301,Q2,True,430,9.0,False
+it0362,1,hosted-judge-v1,,6.0,True,False,model-B,0.4214,0.7928,Q4 most ambiguous,False,211,4.0,False
+it0363,1,hosted-judge-v1,,6.0,True,False,model-B,0.3695,0.7521,Q4 most ambiguous,False,244,3.0,False
+it0364,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.323,0.3135,Q2,False,247,3.0,False
+it0365,1,hosted-judge-v1,,7.0,True,True,model-B,0.7837,0.6225,Q4 most ambiguous,False,235,10.0,True
+it0366,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.9286,0.3556,Q2,False,395,9.0,True
+it0367,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8217,0.2332,Q1 clearest,False,241,8.0,True
+it0368,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.811,0.3933,Q2,False,459,8.0,True
+it0369,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.4454,0.2694,Q1 clearest,False,227,4.0,False
+it0370,1,hosted-judge-v1,4.0,4.0,False,False,model-B,0.3454,0.4745,Q3,False,176,3.0,False
+it0371,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6347,0.3293,Q2,False,180,7.0,True
+it0372,1,hosted-judge-v1,5.0,5.0,False,True,model-B,0.5851,0.2131,Q1 clearest,False,220,6.0,False
+it0373,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.5712,0.6921,Q4 most ambiguous,False,299,6.0,False
+it0374,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.621,0.426,Q3,False,249,7.0,True
+it0375,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7339,0.1347,Q1 clearest,False,271,6.0,True
+it0376,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6623,0.3937,Q2,False,292,7.0,True
+it0377,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.4063,0.5307,Q3,False,227,3.0,False
+it0378,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6502,0.239,Q1 clearest,False,314,6.0,True
+it0379,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.7323,0.7445,Q4 most ambiguous,False,256,8.0,True
+it0380,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.5935,0.5628,Q4 most ambiguous,True,366,5.0,False
+it0381,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5589,0.529,Q3,True,319,6.0,False
+it0382,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8552,0.3841,Q2,False,295,9.0,True
+it0383,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.619,0.0961,Q1 clearest,False,337,6.0,False
+it0384,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.673,0.1643,Q1 clearest,False,246,7.0,True
+it0385,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5887,0.3823,Q2,False,291,5.0,False
+it0386,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.686,0.2786,Q1 clearest,False,147,6.0,True
+it0387,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8598,0.6046,Q4 most ambiguous,False,250,8.0,True
+it0388,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8966,0.4035,Q2,False,263,9.0,True
+it0389,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.494,0.48,Q3,False,244,5.0,False
+it0390,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4329,0.2295,Q1 clearest,False,274,4.0,False
+it0391,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.776,0.5778,Q4 most ambiguous,False,227,8.0,True
+it0392,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.7622,0.8256,Q4 most ambiguous,True,438,8.0,False
+it0393,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6722,0.6252,Q4 most ambiguous,False,323,7.0,True
+it0394,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5171,0.6909,Q4 most ambiguous,False,217,6.0,False
+it0395,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6907,0.5097,Q3,False,262,8.0,True
+it0396,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8938,0.3588,Q2,False,233,9.0,True
+it0397,1,hosted-judge-v1,,8.0,True,False,model-B,0.7926,0.752,Q4 most ambiguous,False,286,9.0,True
+it0398,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.71,0.2985,Q2,False,233,7.0,True
+it0399,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.864,0.4211,Q3,False,302,8.0,True
+it0400,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5807,0.7525,Q4 most ambiguous,False,259,6.0,False
+it0401,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6701,0.4534,Q3,False,208,7.0,True
+it0402,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7251,0.5898,Q4 most ambiguous,False,192,7.0,True
+it0403,1,hosted-judge-v1,9.0,9.0,False,False,model-B,0.6026,0.2445,Q1 clearest,True,391,7.0,False
+it0404,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.613,0.418,Q3,False,248,6.0,False
+it0405,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5376,0.153,Q1 clearest,False,296,7.0,False
+it0406,1,hosted-judge-v1,,,True,False,model-B,0.5092,0.8328,Q4 most ambiguous,False,292,5.0,False
+it0407,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5152,0.4182,Q3,False,226,4.0,False
+it0408,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.9433,0.3602,Q2,False,376,8.0,True
+it0409,1,hosted-judge-v1,,9.0,True,False,model-B,0.8714,0.554,Q3,False,167,10.0,True
+it0410,1,hosted-judge-v1,,7.0,True,False,model-B,0.5833,0.6496,Q4 most ambiguous,False,251,7.0,False
+it0411,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.2672,0.5897,Q4 most ambiguous,True,388,4.0,False
+it0412,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7563,0.4458,Q3,False,216,7.0,True
+it0413,1,hosted-judge-v1,,6.0,True,True,model-B,0.7713,0.6774,Q4 most ambiguous,False,286,8.0,True
+it0414,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7003,0.4119,Q3,False,368,7.0,True
+it0415,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3121,0.314,Q2,False,262,2.0,False
+it0416,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6452,0.4296,Q3,False,152,8.0,True
+it0417,1,hosted-judge-v1,,5.0,True,False,model-B,0.2869,0.6269,Q4 most ambiguous,False,225,3.0,False
+it0418,1,hosted-judge-v1,10.0,10.0,False,False,model-B,0.895,0.0541,Q1 clearest,True,376,10.0,False
+it0419,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.6945,0.0915,Q1 clearest,False,281,6.0,True
+it0420,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7827,0.3183,Q2,True,381,9.0,False
+it0421,1,hosted-judge-v1,5.0,5.0,False,True,model-B,0.7745,0.5088,Q3,False,247,8.0,True
+it0422,1,hosted-judge-v1,,6.0,True,False,model-B,0.5689,0.5159,Q3,False,253,4.0,False
+it0423,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6613,0.1418,Q1 clearest,False,205,6.0,True
+it0424,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.4962,0.3853,Q2,False,283,6.0,False
+it0425,1,hosted-judge-v1,9.0,9.0,False,False,model-B,0.629,0.5367,Q3,True,279,7.0,False
+it0426,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4148,0.5138,Q3,False,283,4.0,False
+it0427,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6692,0.039,Q1 clearest,False,246,8.0,True
+it0428,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7744,0.1542,Q1 clearest,False,337,6.0,True
+it0429,1,hosted-judge-v1,,9.0,True,False,model-B,0.5953,0.5087,Q3,True,415,6.0,False
+it0430,1,hosted-judge-v1,,,True,True,model-B,0.5982,0.6822,Q4 most ambiguous,False,314,6.0,False
+it0431,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.756,0.2929,Q2,False,178,9.0,True
+it0432,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7756,0.375,Q2,False,358,8.0,True
+it0433,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8492,0.2098,Q1 clearest,False,197,10.0,True
+it0434,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8059,0.4201,Q3,False,318,8.0,True
+it0435,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7713,0.3183,Q2,False,242,6.0,True
+it0436,1,hosted-judge-v1,,7.0,True,True,model-B,0.6935,0.7945,Q4 most ambiguous,False,205,7.0,True
+it0437,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5327,0.0802,Q1 clearest,False,254,6.0,False
+it0438,1,hosted-judge-v1,,5.0,True,False,model-B,0.5866,0.6455,Q4 most ambiguous,False,348,6.0,False
+it0439,1,hosted-judge-v1,,5.0,True,True,model-B,0.6494,0.7341,Q4 most ambiguous,False,375,8.0,True
+it0440,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7255,0.3569,Q2,False,289,6.0,True
+it0441,1,hosted-judge-v1,,5.0,True,False,model-B,0.4882,0.6519,Q4 most ambiguous,False,301,5.0,False
+it0442,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5601,0.5126,Q3,False,247,7.0,False
+it0443,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.4928,0.5157,Q3,False,214,5.0,False
+it0444,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8341,0.2706,Q1 clearest,False,309,8.0,True
+it0445,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4207,0.1778,Q1 clearest,False,276,3.0,False
+it0446,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8427,0.1694,Q1 clearest,False,252,8.0,True
+it0447,1,hosted-judge-v1,4.0,4.0,False,False,model-B,0.3565,0.2897,Q2,False,269,5.0,False
+it0448,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5232,0.193,Q1 clearest,True,373,5.0,False
+it0449,1,hosted-judge-v1,,8.0,True,True,model-B,0.7696,0.4045,Q2,False,279,7.0,True
+it0450,1,hosted-judge-v1,,4.0,True,True,model-B,0.3913,0.5178,Q3,False,223,4.0,False
+it0451,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.4685,0.332,Q2,True,405,6.0,False
+it0452,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5978,0.4592,Q3,False,240,7.0,False
+it0453,1,hosted-judge-v1,,7.0,True,False,model-B,0.5273,0.6141,Q4 most ambiguous,True,483,6.0,False
+it0454,1,hosted-judge-v1,5.0,5.0,False,True,model-B,0.8646,0.6928,Q4 most ambiguous,False,278,8.0,True
+it0455,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.8668,0.5651,Q4 most ambiguous,False,222,8.0,True
+it0456,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7301,0.3292,Q2,False,334,7.0,True
+it0457,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7885,0.3108,Q2,False,269,7.0,True
+it0458,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.6442,0.6069,Q4 most ambiguous,False,131,7.0,True
+it0459,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5337,0.2933,Q2,False,178,7.0,False
+it0460,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3748,0.6041,Q4 most ambiguous,False,195,4.0,False
+it0461,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.6238,0.3206,Q2,False,347,6.0,True
+it0462,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3348,0.2945,Q2,False,162,3.0,False
+it0463,1,hosted-judge-v1,,10.0,True,False,model-B,0.6244,0.418,Q3,True,342,7.0,False
+it0464,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8518,0.2081,Q1 clearest,False,243,9.0,True
+it0465,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6994,0.2865,Q2,False,275,7.0,True
+it0466,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6284,0.483,Q3,False,285,6.0,True
+it0467,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8391,0.0829,Q1 clearest,False,223,8.0,True
+it0468,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6357,0.1852,Q1 clearest,False,257,7.0,True
+it0469,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.6449,0.6741,Q4 most ambiguous,True,327,7.0,False
+it0470,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7833,0.5208,Q3,False,268,9.0,True
+it0471,1,hosted-judge-v1,9.0,9.0,False,False,model-B,0.7217,0.3127,Q2,True,300,7.0,False
+it0472,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.3264,0.575,Q4 most ambiguous,False,319,3.0,False
+it0473,1,hosted-judge-v1,,8.0,True,True,model-B,0.3502,0.7616,Q4 most ambiguous,False,281,2.0,False
+it0474,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8273,0.3753,Q2,False,191,8.0,True
+it0475,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3469,0.6047,Q4 most ambiguous,False,283,3.0,False
+it0476,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.3955,0.4155,Q3,True,456,3.0,False
+it0477,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5703,0.4547,Q3,False,219,6.0,False
+it0478,1,hosted-judge-v1,,5.0,True,False,model-B,0.4413,0.6446,Q4 most ambiguous,False,196,4.0,False
+it0479,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7468,0.5953,Q4 most ambiguous,False,292,7.0,True
+it0480,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8404,0.1107,Q1 clearest,False,194,7.0,True
+it0481,1,hosted-judge-v1,5.0,5.0,False,True,model-B,0.3858,0.5622,Q4 most ambiguous,False,305,5.0,False
+it0482,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7517,0.4426,Q3,False,174,8.0,True
+it0483,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7453,0.7715,Q4 most ambiguous,False,187,8.0,True
+it0484,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.2919,0.4207,Q3,False,277,4.0,False
+it0485,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6614,0.4642,Q3,False,157,7.0,True
+it0486,1,hosted-judge-v1,,5.0,True,False,model-B,0.5417,0.5866,Q4 most ambiguous,False,224,5.0,False
+it0487,1,hosted-judge-v1,9.0,9.0,False,False,model-B,0.7017,0.143,Q1 clearest,True,366,8.0,False
+it0488,1,hosted-judge-v1,,7.0,True,True,model-B,0.7796,0.6212,Q4 most ambiguous,False,263,9.0,True
+it0489,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6999,0.6094,Q4 most ambiguous,False,283,7.0,True
+it0490,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5118,0.302,Q2,True,458,7.0,False
+it0491,1,hosted-judge-v1,,,True,False,model-B,0.5235,0.723,Q4 most ambiguous,False,396,5.0,False
+it0492,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7898,0.409,Q3,False,257,8.0,True
+it0493,1,hosted-judge-v1,10.0,10.0,False,True,model-B,0.7702,0.4081,Q2,True,312,9.0,False
+it0494,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6671,0.122,Q1 clearest,False,243,6.0,True
+it0495,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3819,0.8201,Q4 most ambiguous,False,243,4.0,False
+it0496,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5682,0.2142,Q1 clearest,False,263,6.0,False
+it0497,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.4039,0.3752,Q2,True,464,5.0,False
+it0498,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.2895,0.1085,Q1 clearest,True,192,5.0,False
+it0499,1,hosted-judge-v1,4.0,4.0,False,True,model-B,0.2038,0.3778,Q2,False,173,1.0,False
+it0500,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.9012,0.4184,Q3,False,258,8.0,True
+it0501,1,hosted-judge-v1,,5.0,True,True,model-B,0.71,0.808,Q4 most ambiguous,False,178,7.0,True
+it0502,1,hosted-judge-v1,,8.0,True,True,model-B,0.7892,0.5575,Q4 most ambiguous,False,259,9.0,True
+it0503,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7223,0.2872,Q2,False,298,7.0,True
+it0504,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6298,0.1401,Q1 clearest,False,285,7.0,True
+it0505,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6921,0.4162,Q3,False,321,7.0,True
+it0506,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5221,0.2122,Q1 clearest,False,84,5.0,False
+it0507,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.8639,0.5064,Q3,False,333,7.0,True
+it0508,1,hosted-judge-v1,,,True,True,model-B,0.8628,0.653,Q4 most ambiguous,False,190,8.0,True
+it0509,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.3924,0.3652,Q2,False,294,4.0,False
+it0510,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5751,0.3243,Q2,True,353,7.0,False
+it0511,1,hosted-judge-v1,5.0,5.0,False,True,model-B,0.365,0.332,Q2,False,202,4.0,False
+it0512,1,hosted-judge-v1,9.0,9.0,False,False,model-B,0.7054,0.2223,Q1 clearest,True,310,9.0,False
+it0513,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4102,0.3685,Q2,False,178,3.0,False
+it0514,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6692,0.305,Q2,False,239,8.0,True
+it0515,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.6544,0.2916,Q2,False,197,7.0,True
+it0516,1,hosted-judge-v1,,7.0,True,False,model-B,0.1175,0.6965,Q4 most ambiguous,False,128,1.0,False
+it0517,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4208,0.0886,Q1 clearest,False,237,5.0,False
+it0518,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.4186,0.1833,Q1 clearest,True,344,5.0,False
+it0519,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8769,0.2266,Q1 clearest,False,175,8.0,True
+it0520,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.821,0.6215,Q4 most ambiguous,False,314,8.0,True
+it0521,1,hosted-judge-v1,,7.0,True,False,model-B,0.4969,0.5351,Q3,False,241,4.0,False
+it0522,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.6354,0.4614,Q3,True,421,7.0,False
+it0523,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.6992,0.6618,Q4 most ambiguous,False,269,6.0,True
+it0524,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5202,0.329,Q2,False,293,5.0,False
+it0525,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6266,0.3289,Q2,False,192,5.0,True
+it0526,1,hosted-judge-v1,,8.0,True,True,model-B,0.6276,0.5215,Q3,False,303,6.0,True
+it0527,1,hosted-judge-v1,,4.0,True,True,model-B,0.6565,0.8367,Q4 most ambiguous,False,193,6.0,True
+it0528,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8718,0.0317,Q1 clearest,False,332,10.0,True
+it0529,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7944,0.2034,Q1 clearest,False,259,7.0,True
+it0530,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.625,0.2622,Q1 clearest,False,231,6.0,True
+it0531,1,hosted-judge-v1,5.0,5.0,False,True,model-B,0.4737,0.3016,Q2,False,98,5.0,False
+it0532,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6105,0.3567,Q2,False,247,5.0,False
+it0533,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.392,0.6915,Q4 most ambiguous,False,201,4.0,False
+it0534,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7177,0.5455,Q3,False,387,8.0,True
+it0535,1,hosted-judge-v1,9.0,9.0,False,False,model-B,0.8033,0.4151,Q3,True,420,9.0,False
+it0536,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5144,0.6507,Q4 most ambiguous,False,237,6.0,False
+it0537,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7168,0.4244,Q3,False,347,6.0,True
+it0538,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7572,0.1997,Q1 clearest,False,290,8.0,True
+it0539,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5712,0.4028,Q2,False,289,5.0,False
+it0540,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.5585,0.3157,Q2,False,163,6.0,False
+it0541,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6216,0.5652,Q4 most ambiguous,False,258,5.0,True
+it0542,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6222,0.1909,Q1 clearest,False,211,6.0,True
+it0543,1,hosted-judge-v1,,6.0,True,False,model-B,0.5222,0.7173,Q4 most ambiguous,False,175,4.0,False
+it0544,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8249,0.3004,Q2,False,274,9.0,True
+it0545,1,hosted-judge-v1,,4.0,True,False,model-B,0.3707,0.4243,Q3,False,257,3.0,False
+it0546,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5732,0.1901,Q1 clearest,False,245,7.0,False
+it0547,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.9065,0.4574,Q3,False,245,10.0,True
+it0548,1,hosted-judge-v1,10.0,10.0,False,False,model-B,0.9108,0.3801,Q2,True,454,10.0,False
+it0549,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.9278,0.471,Q3,False,236,10.0,True
+it0550,1,hosted-judge-v1,,4.0,True,False,model-B,0.4808,0.9602,Q4 most ambiguous,False,201,5.0,False
+it0551,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6212,0.4212,Q3,False,215,7.0,True
+it0552,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6227,0.0932,Q1 clearest,False,192,6.0,True
+it0553,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.4807,0.214,Q1 clearest,True,361,6.0,False
+it0554,1,hosted-judge-v1,,8.0,True,True,model-B,0.6179,0.3563,Q2,True,371,6.0,False
+it0555,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5683,0.1883,Q1 clearest,False,208,6.0,False
+it0556,1,hosted-judge-v1,,6.0,True,False,model-B,0.2134,0.6381,Q4 most ambiguous,False,191,3.0,False
+it0557,1,hosted-judge-v1,,7.0,True,True,model-B,0.6691,0.4916,Q3,False,226,5.0,True
+it0558,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5503,0.2555,Q1 clearest,False,236,6.0,False
+it0559,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7734,0.2928,Q2,False,307,8.0,True
+it0560,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8969,0.5577,Q4 most ambiguous,False,268,10.0,True
+it0561,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.8065,0.2157,Q1 clearest,False,179,9.0,True
+it0562,1,hosted-judge-v1,3.0,3.0,False,True,model-B,0.3121,0.0446,Q1 clearest,False,261,3.0,False
+it0563,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5445,0.3332,Q2,False,326,7.0,False
+it0564,1,hosted-judge-v1,,6.0,True,False,model-B,0.4838,0.6252,Q4 most ambiguous,False,254,4.0,False
+it0565,1,hosted-judge-v1,,6.0,True,True,model-B,0.6768,0.6503,Q4 most ambiguous,False,340,6.0,True
+it0566,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.8063,0.3616,Q2,False,240,9.0,True
+it0567,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.5069,0.4563,Q3,False,222,5.0,False
+it0568,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.757,0.4974,Q3,False,322,7.0,True
+it0569,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7157,0.4011,Q2,False,409,9.0,True
+it0570,1,hosted-judge-v1,9.0,9.0,False,False,model-B,0.7566,0.7291,Q4 most ambiguous,True,367,8.0,False
+it0571,1,hosted-judge-v1,,5.0,True,False,model-B,0.2785,0.6133,Q4 most ambiguous,False,248,3.0,False
+it0572,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.6175,0.3075,Q2,False,243,6.0,False
+it0573,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.4238,0.2814,Q2,False,263,3.0,False
+it0574,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5727,0.1098,Q1 clearest,False,294,4.0,False
+it0575,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.6178,0.2572,Q1 clearest,False,213,6.0,False
+it0576,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.762,0.4411,Q3,False,218,8.0,True
+it0577,1,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5407,0.1085,Q1 clearest,False,267,5.0,False
+it0578,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8452,0.3726,Q2,False,277,8.0,True
+it0579,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.908,0.3699,Q2,False,319,8.0,True
+it0580,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5488,0.4249,Q3,True,366,5.0,False
+it0581,1,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7155,0.3007,Q2,False,244,7.0,True
+it0582,1,hosted-judge-v1,,9.0,True,True,model-B,0.8548,0.6849,Q4 most ambiguous,False,308,8.0,True
+it0583,1,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8407,0.328,Q2,False,354,8.0,True
+it0584,1,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6886,0.4494,Q3,False,213,7.0,True
+it0585,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.8091,0.5182,Q3,False,304,8.0,True
+it0586,1,hosted-judge-v1,4.0,4.0,False,False,model-B,0.5628,0.2863,Q2,False,212,5.0,False
+it0587,1,hosted-judge-v1,,9.0,True,False,model-B,0.8084,0.6177,Q4 most ambiguous,True,372,8.0,False
+it0588,1,hosted-judge-v1,,6.0,True,False,model-B,0.6112,0.5153,Q3,False,270,6.0,False
+it0589,1,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5155,0.1963,Q1 clearest,True,290,5.0,False
+it0590,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5805,0.2761,Q1 clearest,False,224,6.0,False
+it0591,1,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4841,0.718,Q4 most ambiguous,False,124,5.0,False
+it0592,1,hosted-judge-v1,,,True,False,model-B,0.5119,0.9393,Q4 most ambiguous,False,252,5.0,False
+it0593,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7525,0.4532,Q3,False,282,7.0,True
+it0594,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8157,0.5366,Q3,False,304,8.0,True
+it0595,1,hosted-judge-v1,,8.0,True,True,model-B,0.8031,0.4931,Q3,False,336,9.0,True
+it0596,1,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7445,0.2986,Q2,False,208,8.0,True
+it0597,1,hosted-judge-v1,,,True,True,model-B,0.5146,0.9729,Q4 most ambiguous,False,262,5.0,False
+it0598,1,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8225,0.4259,Q3,False,286,8.0,True
+it0599,1,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5772,0.2117,Q1 clearest,True,388,7.0,False
+it0000,2,hosted-judge-v1,8.0,8.0,False,False,model-A,0.7948,0.3557,Q2,False,199,7.0,True
+it0001,2,hosted-judge-v1,5.0,5.0,False,True,model-A,0.632,0.4993,Q3,False,257,6.0,True
+it0002,2,hosted-judge-v1,10.0,10.0,False,False,model-A,0.6405,0.1981,Q1 clearest,True,323,7.0,False
+it0003,2,hosted-judge-v1,10.0,10.0,False,True,model-A,0.9257,0.5197,Q3,True,351,10.0,False
+it0004,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6969,0.5186,Q3,False,307,7.0,True
+it0005,2,hosted-judge-v1,7.0,7.0,False,False,model-A,0.6025,0.2726,Q1 clearest,False,324,6.0,False
+it0006,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5885,0.5816,Q4 most ambiguous,False,287,6.0,False
+it0007,2,hosted-judge-v1,5.0,5.0,False,True,model-A,0.6406,0.6415,Q4 most ambiguous,False,234,6.0,True
+it0008,2,hosted-judge-v1,,6.0,True,False,model-A,0.5957,0.5987,Q4 most ambiguous,False,294,5.0,False
+it0009,2,hosted-judge-v1,,7.0,True,False,model-A,0.7057,0.6954,Q4 most ambiguous,True,448,8.0,False
+it0010,2,hosted-judge-v1,10.0,10.0,False,False,model-A,0.7323,0.381,Q2,True,382,9.0,False
+it0011,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.5247,0.4392,Q3,False,193,4.0,False
+it0012,2,hosted-judge-v1,10.0,10.0,False,True,model-A,0.9169,0.2468,Q1 clearest,False,267,9.0,True
+it0013,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9018,0.3883,Q2,False,299,9.0,True
+it0014,2,hosted-judge-v1,4.0,4.0,False,False,model-A,0.5443,0.9169,Q4 most ambiguous,False,298,6.0,False
+it0015,2,hosted-judge-v1,,6.0,True,False,model-A,0.5702,0.4372,Q3,False,318,6.0,False
+it0016,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8353,0.3284,Q2,False,329,8.0,True
+it0017,2,hosted-judge-v1,,,True,True,model-A,0.6606,0.7989,Q4 most ambiguous,False,172,7.0,True
+it0018,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8324,0.4078,Q2,False,379,9.0,True
+it0019,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.9208,0.3738,Q2,False,104,8.0,True
+it0020,2,hosted-judge-v1,,6.0,True,False,model-A,0.5007,0.7069,Q4 most ambiguous,False,181,4.0,False
+it0021,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.8195,0.6823,Q4 most ambiguous,False,237,8.0,True
+it0022,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.3436,0.5589,Q4 most ambiguous,True,327,4.0,False
+it0023,2,hosted-judge-v1,7.0,7.0,False,False,model-A,0.4794,0.5435,Q3,False,275,4.0,False
+it0024,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8095,0.529,Q3,False,307,9.0,True
+it0025,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7993,0.2064,Q1 clearest,False,300,9.0,True
+it0026,2,hosted-judge-v1,,7.0,True,True,model-A,0.691,0.5049,Q3,False,263,8.0,True
+it0027,2,hosted-judge-v1,,8.0,True,False,model-A,0.5927,0.5171,Q3,False,247,6.0,False
+it0028,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4895,0.434,Q3,False,326,4.0,False
+it0029,2,hosted-judge-v1,5.0,5.0,False,True,model-A,0.7063,0.4121,Q3,False,248,6.0,True
+it0030,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7778,0.1953,Q1 clearest,False,234,8.0,True
+it0031,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7014,0.3431,Q2,False,178,8.0,True
+it0032,2,hosted-judge-v1,,,True,True,model-A,0.6463,0.7637,Q4 most ambiguous,False,338,7.0,True
+it0033,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5451,0.6162,Q4 most ambiguous,False,220,7.0,False
+it0034,2,hosted-judge-v1,4.0,4.0,False,True,model-A,0.4283,0.1516,Q1 clearest,False,298,5.0,False
+it0035,2,hosted-judge-v1,,5.0,True,False,model-A,0.5204,0.4941,Q3,False,244,7.0,False
+it0036,2,hosted-judge-v1,5.0,5.0,False,True,model-A,0.5255,0.3944,Q2,False,243,4.0,False
+it0037,2,hosted-judge-v1,7.0,7.0,False,False,model-A,0.4307,0.3233,Q2,True,382,6.0,False
+it0038,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7118,0.3058,Q2,False,237,7.0,True
+it0039,2,hosted-judge-v1,8.0,8.0,False,False,model-A,0.6342,0.4514,Q3,False,249,6.0,True
+it0040,2,hosted-judge-v1,,6.0,True,True,model-A,0.6527,0.3832,Q2,False,287,6.0,True
+it0041,2,hosted-judge-v1,,,True,False,model-A,0.7262,0.7115,Q4 most ambiguous,True,363,8.0,False
+it0042,2,hosted-judge-v1,8.0,8.0,False,False,model-A,0.966,0.774,Q4 most ambiguous,True,421,10.0,False
+it0043,2,hosted-judge-v1,,7.0,True,False,model-A,0.6944,0.5909,Q4 most ambiguous,False,256,7.0,True
+it0044,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8329,0.4364,Q3,True,300,10.0,False
+it0045,2,hosted-judge-v1,8.0,8.0,False,False,model-A,0.6258,0.3959,Q2,True,350,8.0,False
+it0046,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5061,0.2637,Q1 clearest,False,211,5.0,False
+it0047,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7037,0.5256,Q3,False,272,7.0,True
+it0048,2,hosted-judge-v1,10.0,10.0,False,False,model-A,0.8245,0.2605,Q1 clearest,True,365,9.0,False
+it0049,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8038,0.1121,Q1 clearest,False,322,9.0,True
+it0050,2,hosted-judge-v1,,6.0,True,False,model-A,0.5521,0.5231,Q3,False,198,5.0,False
+it0051,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8727,0.4868,Q3,False,288,8.0,True
+it0052,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5836,0.508,Q3,False,261,5.0,False
+it0053,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7097,0.2212,Q1 clearest,False,313,6.0,True
+it0054,2,hosted-judge-v1,,5.0,True,False,model-A,0.4686,0.59,Q4 most ambiguous,False,254,4.0,False
+it0055,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6329,0.3627,Q2,False,342,7.0,True
+it0056,2,hosted-judge-v1,,,True,False,model-A,0.4681,0.8925,Q4 most ambiguous,False,358,5.0,False
+it0057,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6535,0.5679,Q4 most ambiguous,False,218,7.0,True
+it0058,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6249,0.3171,Q2,False,222,7.0,True
+it0059,2,hosted-judge-v1,3.0,3.0,False,False,model-A,0.5135,0.3526,Q2,False,309,5.0,False
+it0060,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5381,0.4798,Q3,False,192,5.0,False
+it0061,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.6095,0.3661,Q2,False,365,7.0,False
+it0062,2,hosted-judge-v1,9.0,9.0,False,False,model-A,0.9565,0.5911,Q4 most ambiguous,True,470,9.0,False
+it0063,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9179,0.37,Q2,False,245,10.0,True
+it0064,2,hosted-judge-v1,10.0,10.0,False,False,model-A,0.7251,0.3038,Q2,True,369,8.0,False
+it0065,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6423,0.2483,Q1 clearest,False,260,7.0,True
+it0066,2,hosted-judge-v1,8.0,8.0,False,False,model-A,0.6318,0.3495,Q2,True,439,7.0,False
+it0067,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6346,0.3468,Q2,False,345,6.0,True
+it0068,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8054,0.2309,Q1 clearest,False,228,9.0,True
+it0069,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9065,0.0673,Q1 clearest,False,198,9.0,True
+it0070,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9149,0.0887,Q1 clearest,False,275,10.0,True
+it0071,2,hosted-judge-v1,7.0,7.0,False,False,model-A,0.7796,0.7725,Q4 most ambiguous,True,411,9.0,False
+it0072,2,hosted-judge-v1,,9.0,True,True,model-A,0.5291,0.8481,Q4 most ambiguous,True,431,6.0,False
+it0073,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4449,0.4367,Q3,False,220,3.0,False
+it0074,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6389,0.2507,Q1 clearest,False,266,6.0,True
+it0075,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8912,0.0395,Q1 clearest,False,286,10.0,True
+it0076,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6971,0.3496,Q2,False,262,8.0,True
+it0077,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9161,0.0256,Q1 clearest,False,249,9.0,True
+it0078,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8517,0.4086,Q2,False,232,10.0,True
+it0079,2,hosted-judge-v1,,4.0,True,False,model-A,0.3155,0.6036,Q4 most ambiguous,False,220,3.0,False
+it0080,2,hosted-judge-v1,5.0,5.0,False,True,model-A,0.695,0.4022,Q2,False,297,6.0,True
+it0081,2,hosted-judge-v1,4.0,4.0,False,False,model-A,0.5432,0.3897,Q2,False,232,4.0,False
+it0082,2,hosted-judge-v1,5.0,5.0,False,True,model-A,0.6215,0.5022,Q3,False,274,7.0,True
+it0083,2,hosted-judge-v1,,8.0,True,True,model-A,0.641,0.5281,Q3,False,257,6.0,True
+it0084,2,hosted-judge-v1,10.0,10.0,False,False,model-A,0.7573,0.1287,Q1 clearest,True,313,8.0,False
+it0085,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8078,0.059,Q1 clearest,False,225,8.0,True
+it0086,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5478,0.2477,Q1 clearest,False,327,6.0,False
+it0087,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6771,0.124,Q1 clearest,False,236,7.0,True
+it0088,2,hosted-judge-v1,,7.0,True,False,model-A,0.5048,0.6773,Q4 most ambiguous,False,289,5.0,False
+it0089,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9009,0.1639,Q1 clearest,False,287,9.0,True
+it0090,2,hosted-judge-v1,8.0,8.0,False,False,model-A,0.8987,0.3124,Q2,True,390,10.0,False
+it0091,2,hosted-judge-v1,,7.0,True,True,model-A,0.7464,0.2833,Q2,False,312,7.0,True
+it0092,2,hosted-judge-v1,9.0,9.0,False,False,model-A,0.7512,0.5001,Q3,True,389,9.0,False
+it0093,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7403,0.5103,Q3,False,288,7.0,True
+it0094,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.747,0.0887,Q1 clearest,False,293,8.0,True
+it0095,2,hosted-judge-v1,,7.0,True,True,model-A,0.6772,0.6116,Q4 most ambiguous,False,343,8.0,True
+it0096,2,hosted-judge-v1,10.0,10.0,False,False,model-A,0.9024,0.3902,Q2,True,446,10.0,False
+it0097,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9044,0.3379,Q2,False,239,9.0,True
+it0098,2,hosted-judge-v1,5.0,5.0,False,True,model-A,0.5472,0.1411,Q1 clearest,False,218,6.0,False
+it0099,2,hosted-judge-v1,9.0,9.0,False,False,model-A,0.7723,0.4069,Q2,True,337,9.0,False
+it0100,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6685,0.1986,Q1 clearest,False,252,7.0,True
+it0101,2,hosted-judge-v1,,6.0,True,False,model-A,0.4323,0.6162,Q4 most ambiguous,False,300,5.0,False
+it0102,2,hosted-judge-v1,8.0,8.0,False,False,model-A,0.6545,0.4408,Q3,True,331,8.0,False
+it0103,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.6118,0.2354,Q1 clearest,False,277,7.0,False
+it0104,2,hosted-judge-v1,4.0,4.0,False,False,model-A,0.4082,0.3814,Q2,False,217,3.0,False
+it0105,2,hosted-judge-v1,8.0,8.0,False,False,model-A,0.4743,0.27,Q1 clearest,True,474,5.0,False
+it0106,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.933,0.3538,Q2,False,359,10.0,True
+it0107,2,hosted-judge-v1,4.0,4.0,False,False,model-A,0.4338,0.3497,Q2,False,273,4.0,False
+it0108,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.4425,0.251,Q1 clearest,False,298,6.0,False
+it0109,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.5653,0.206,Q1 clearest,False,259,6.0,False
+it0110,2,hosted-judge-v1,7.0,7.0,False,False,model-A,0.6065,0.37,Q2,False,331,6.0,False
+it0111,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7719,0.2212,Q1 clearest,False,206,7.0,True
+it0112,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.884,0.0,Q1 clearest,False,176,9.0,True
+it0113,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.572,0.482,Q3,False,168,6.0,False
+it0114,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6429,0.222,Q1 clearest,False,254,7.0,True
+it0115,2,hosted-judge-v1,,9.0,True,True,model-A,0.7929,0.473,Q3,False,245,8.0,True
+it0116,2,hosted-judge-v1,,5.0,True,False,model-A,0.5583,0.5869,Q4 most ambiguous,False,160,5.0,False
+it0117,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5026,0.4672,Q3,False,122,5.0,False
+it0118,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.715,0.3569,Q2,False,188,8.0,True
+it0119,2,hosted-judge-v1,,4.0,True,True,model-A,0.7032,0.7308,Q4 most ambiguous,False,275,6.0,True
+it0120,2,hosted-judge-v1,7.0,7.0,False,False,model-A,0.6394,0.408,Q2,True,348,7.0,False
+it0121,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4892,0.47,Q3,False,230,4.0,False
+it0122,2,hosted-judge-v1,,,True,True,model-A,0.7434,0.8457,Q4 most ambiguous,False,170,7.0,True
+it0123,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.5718,0.5618,Q4 most ambiguous,False,174,6.0,False
+it0124,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7822,0.2183,Q1 clearest,False,233,9.0,True
+it0125,2,hosted-judge-v1,5.0,5.0,False,True,model-A,0.585,0.3029,Q2,False,235,6.0,False
+it0126,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8487,0.3057,Q2,False,239,9.0,True
+it0127,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9671,0.4327,Q3,False,257,9.0,True
+it0128,2,hosted-judge-v1,,,True,False,model-A,0.3121,0.8813,Q4 most ambiguous,False,310,2.0,False
+it0129,2,hosted-judge-v1,,5.0,True,True,model-A,0.4885,0.7401,Q4 most ambiguous,False,162,4.0,False
+it0130,2,hosted-judge-v1,,7.0,True,True,model-A,0.8698,0.7503,Q4 most ambiguous,False,284,9.0,True
+it0131,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7778,0.495,Q3,False,233,8.0,True
+it0132,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8136,0.5427,Q3,False,260,9.0,True
+it0133,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.863,0.349,Q2,False,251,7.0,True
+it0134,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.6327,0.7812,Q4 most ambiguous,False,292,6.0,True
+it0135,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5763,0.3842,Q2,False,266,7.0,False
+it0136,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.6197,0.5874,Q4 most ambiguous,False,293,6.0,False
+it0137,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8594,0.1106,Q1 clearest,False,241,8.0,True
+it0138,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4813,0.4606,Q3,False,139,4.0,False
+it0139,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.754,0.2603,Q1 clearest,False,301,8.0,True
+it0140,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.766,0.0981,Q1 clearest,False,227,7.0,True
+it0141,2,hosted-judge-v1,8.0,8.0,False,False,model-A,0.538,0.3246,Q2,True,410,6.0,False
+it0142,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.5534,0.4201,Q3,False,183,5.0,False
+it0143,2,hosted-judge-v1,9.0,9.0,False,False,model-A,0.945,0.1624,Q1 clearest,False,267,10.0,True
+it0144,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8453,0.4671,Q3,False,270,9.0,True
+it0145,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6501,0.71,Q4 most ambiguous,False,391,6.0,True
+it0146,2,hosted-judge-v1,,6.0,True,True,model-A,0.6994,0.6274,Q4 most ambiguous,False,278,5.0,True
+it0147,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.6886,0.2402,Q1 clearest,False,236,7.0,True
+it0148,2,hosted-judge-v1,9.0,9.0,False,False,model-A,0.5883,0.2132,Q1 clearest,True,345,8.0,False
+it0149,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7844,0.0784,Q1 clearest,False,168,9.0,True
+it0150,2,hosted-judge-v1,9.0,9.0,False,False,model-A,0.8397,0.455,Q3,False,330,10.0,True
+it0151,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9015,0.1801,Q1 clearest,False,354,10.0,True
+it0152,2,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5647,0.3634,Q2,False,281,6.0,False
+it0153,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9062,0.448,Q3,False,306,10.0,True
+it0154,2,hosted-judge-v1,,,True,True,model-A,0.7005,0.7087,Q4 most ambiguous,False,250,9.0,True
+it0155,2,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5223,0.464,Q3,True,410,5.0,False
+it0156,2,hosted-judge-v1,10.0,10.0,False,False,model-A,0.9139,0.356,Q2,True,341,10.0,False
+it0157,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7511,0.0517,Q1 clearest,False,233,8.0,True
+it0158,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4848,0.2705,Q1 clearest,False,248,4.0,False
+it0159,2,hosted-judge-v1,10.0,10.0,False,True,model-A,0.8677,0.4123,Q3,False,287,9.0,True
+it0160,2,hosted-judge-v1,,4.0,True,True,model-A,0.6768,0.5126,Q3,False,294,8.0,True
+it0161,2,hosted-judge-v1,7.0,7.0,False,False,model-A,0.4612,0.4854,Q3,True,419,4.0,False
+it0162,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7561,0.377,Q2,False,331,7.0,True
+it0163,2,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5112,0.4157,Q3,True,395,6.0,False
+it0164,2,hosted-judge-v1,,8.0,True,True,model-A,0.7548,0.3533,Q2,False,327,7.0,True
+it0165,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9058,0.1866,Q1 clearest,False,323,10.0,True
+it0166,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.737,0.2693,Q1 clearest,False,151,7.0,True
+it0167,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9558,0.108,Q1 clearest,False,331,9.0,True
+it0168,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.9551,0.5061,Q3,False,253,10.0,True
+it0169,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6847,0.3888,Q2,False,272,7.0,True
+it0170,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.9019,0.6054,Q4 most ambiguous,False,200,9.0,True
+it0171,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6571,0.4296,Q3,False,263,7.0,True
+it0172,2,hosted-judge-v1,,,True,True,model-A,0.7206,0.8318,Q4 most ambiguous,False,320,8.0,True
+it0173,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.8807,0.6335,Q4 most ambiguous,False,257,8.0,True
+it0174,2,hosted-judge-v1,,,True,True,model-A,0.5551,0.8433,Q4 most ambiguous,True,350,6.0,False
+it0175,2,hosted-judge-v1,10.0,10.0,False,True,model-A,0.862,0.3477,Q2,True,367,9.0,False
+it0176,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.799,0.67,Q4 most ambiguous,False,309,7.0,True
+it0177,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7819,0.2745,Q1 clearest,False,277,7.0,True
+it0178,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5678,0.3845,Q2,False,298,6.0,False
+it0179,2,hosted-judge-v1,3.0,3.0,False,False,model-A,0.4797,0.3507,Q2,False,177,4.0,False
+it0180,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.847,0.1748,Q1 clearest,False,291,8.0,True
+it0181,2,hosted-judge-v1,,8.0,True,False,model-A,0.9056,0.5161,Q3,True,351,9.0,False
+it0182,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7363,0.114,Q1 clearest,False,277,8.0,True
+it0183,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.9082,0.3213,Q2,False,196,10.0,True
+it0184,2,hosted-judge-v1,4.0,4.0,False,False,model-A,0.501,0.3179,Q2,False,185,5.0,False
+it0185,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.6139,0.538,Q3,False,342,6.0,False
+it0186,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7531,0.1431,Q1 clearest,False,182,9.0,True
+it0187,2,hosted-judge-v1,,7.0,True,True,model-A,0.7174,0.4765,Q3,False,148,9.0,True
+it0188,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7805,0.3486,Q2,False,265,9.0,True
+it0189,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5171,0.1372,Q1 clearest,False,232,4.0,False
+it0190,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.6113,0.1932,Q1 clearest,False,222,6.0,False
+it0191,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5067,0.3478,Q2,False,330,5.0,False
+it0192,2,hosted-judge-v1,,5.0,True,False,model-A,0.4709,0.6172,Q4 most ambiguous,False,268,4.0,False
+it0193,2,hosted-judge-v1,,8.0,True,False,model-A,0.7245,0.5338,Q3,True,456,9.0,False
+it0194,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6968,0.3715,Q2,False,310,7.0,True
+it0195,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8131,0.4006,Q2,False,104,8.0,True
+it0196,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.722,0.3671,Q2,False,291,8.0,True
+it0197,2,hosted-judge-v1,,8.0,True,True,model-A,0.8771,0.4444,Q3,False,259,9.0,True
+it0198,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.7013,0.1343,Q1 clearest,False,244,7.0,True
+it0199,2,hosted-judge-v1,,6.0,True,True,model-A,0.7382,0.706,Q4 most ambiguous,False,267,9.0,True
+it0200,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5706,0.1184,Q1 clearest,False,216,6.0,False
+it0201,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6648,0.3065,Q2,False,306,8.0,True
+it0202,2,hosted-judge-v1,,,True,False,model-A,0.5071,0.7351,Q4 most ambiguous,False,415,5.0,False
+it0203,2,hosted-judge-v1,,8.0,True,True,model-A,0.9462,0.4726,Q3,False,313,10.0,True
+it0204,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.98,0.1609,Q1 clearest,False,281,10.0,True
+it0205,2,hosted-judge-v1,,7.0,True,True,model-A,0.7902,0.4029,Q2,False,225,8.0,True
+it0206,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7112,0.6379,Q4 most ambiguous,False,286,7.0,True
+it0207,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7462,0.1605,Q1 clearest,False,259,8.0,True
+it0208,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5629,0.1246,Q1 clearest,False,272,6.0,False
+it0209,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7829,0.3118,Q2,False,250,8.0,True
+it0210,2,hosted-judge-v1,,7.0,True,True,model-A,0.6942,0.5919,Q4 most ambiguous,False,238,7.0,True
+it0211,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7739,0.4938,Q3,False,151,7.0,True
+it0212,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.5201,0.3361,Q2,True,294,5.0,False
+it0213,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.6016,0.4067,Q2,False,219,7.0,False
+it0214,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7462,0.3101,Q2,False,132,9.0,True
+it0215,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8983,0.4991,Q3,False,357,9.0,True
+it0216,2,hosted-judge-v1,9.0,9.0,False,False,model-A,0.8548,0.6937,Q4 most ambiguous,True,398,9.0,False
+it0217,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7459,0.226,Q1 clearest,False,307,5.0,True
+it0218,2,hosted-judge-v1,,7.0,True,True,model-A,0.8241,0.5204,Q3,False,313,7.0,True
+it0219,2,hosted-judge-v1,,4.0,True,False,model-A,0.579,0.5762,Q4 most ambiguous,False,322,6.0,False
+it0220,2,hosted-judge-v1,,7.0,True,True,model-A,0.7347,0.4536,Q3,False,273,7.0,True
+it0221,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6238,0.4508,Q3,False,304,6.0,True
+it0222,2,hosted-judge-v1,,8.0,True,True,model-A,0.7269,0.6758,Q4 most ambiguous,False,271,6.0,True
+it0223,2,hosted-judge-v1,9.0,9.0,False,False,model-A,0.9051,0.2904,Q2,False,270,8.0,True
+it0224,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7812,0.5121,Q3,False,386,7.0,True
+it0225,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6979,0.5016,Q3,False,263,6.0,True
+it0226,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8072,0.3232,Q2,False,248,8.0,True
+it0227,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4219,0.4321,Q3,False,214,5.0,False
+it0228,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6875,0.2737,Q1 clearest,False,260,8.0,True
+it0229,2,hosted-judge-v1,,9.0,True,False,model-A,0.4456,0.5476,Q3,True,372,4.0,False
+it0230,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7093,0.2465,Q1 clearest,False,236,7.0,True
+it0231,2,hosted-judge-v1,,,True,True,model-A,0.8259,0.6034,Q4 most ambiguous,False,307,8.0,True
+it0232,2,hosted-judge-v1,,8.0,True,True,model-A,0.6117,0.5778,Q4 most ambiguous,False,258,7.0,False
+it0233,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7865,0.1745,Q1 clearest,False,357,8.0,True
+it0234,2,hosted-judge-v1,7.0,7.0,False,False,model-A,0.4944,0.6048,Q4 most ambiguous,False,295,5.0,False
+it0235,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7783,0.5977,Q4 most ambiguous,False,306,8.0,True
+it0236,2,hosted-judge-v1,,8.0,True,True,model-A,0.8117,0.5557,Q3,False,297,7.0,True
+it0237,2,hosted-judge-v1,5.0,5.0,False,True,model-A,0.6798,0.7748,Q4 most ambiguous,False,313,6.0,True
+it0238,2,hosted-judge-v1,,5.0,True,True,model-A,0.6585,0.8855,Q4 most ambiguous,False,247,6.0,True
+it0239,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7424,0.2942,Q2,False,328,9.0,True
+it0240,2,hosted-judge-v1,,,True,False,model-A,0.5761,0.7158,Q4 most ambiguous,False,258,6.0,False
+it0241,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8353,0.266,Q1 clearest,False,355,9.0,True
+it0242,2,hosted-judge-v1,,7.0,True,True,model-A,0.9751,0.6511,Q4 most ambiguous,False,256,9.0,True
+it0243,2,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5385,0.2138,Q1 clearest,True,323,5.0,False
+it0244,2,hosted-judge-v1,,7.0,True,False,model-A,0.3716,0.52,Q3,False,223,4.0,False
+it0245,2,hosted-judge-v1,10.0,10.0,False,True,model-A,0.9614,0.0344,Q1 clearest,False,355,10.0,True
+it0246,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.6888,0.2766,Q1 clearest,False,314,7.0,True
+it0247,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8178,0.3324,Q2,False,170,8.0,True
+it0248,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9737,0.4263,Q3,False,187,10.0,True
+it0249,2,hosted-judge-v1,,,True,True,model-A,0.7565,0.5689,Q4 most ambiguous,False,266,7.0,True
+it0250,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7495,0.4051,Q2,False,297,7.0,True
+it0251,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8343,0.0832,Q1 clearest,False,178,9.0,True
+it0252,2,hosted-judge-v1,,8.0,True,True,model-A,0.8037,0.6258,Q4 most ambiguous,False,204,9.0,True
+it0253,2,hosted-judge-v1,,8.0,True,True,model-A,0.6737,0.5971,Q4 most ambiguous,True,354,6.0,False
+it0254,2,hosted-judge-v1,10.0,10.0,False,False,model-A,0.9356,0.2317,Q1 clearest,True,348,10.0,False
+it0255,2,hosted-judge-v1,,6.0,True,False,model-A,0.4857,0.5673,Q4 most ambiguous,False,300,4.0,False
+it0256,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7943,0.4658,Q3,False,332,7.0,True
+it0257,2,hosted-judge-v1,7.0,7.0,False,False,model-A,0.484,0.4557,Q3,False,266,6.0,False
+it0258,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7255,0.2666,Q1 clearest,False,298,7.0,True
+it0259,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.5705,0.2783,Q1 clearest,False,285,5.0,False
+it0260,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4668,0.5006,Q3,False,253,4.0,False
+it0261,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7893,0.463,Q3,False,237,8.0,True
+it0262,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8616,0.2266,Q1 clearest,False,270,9.0,True
+it0263,2,hosted-judge-v1,,5.0,True,True,model-A,0.6823,0.3762,Q2,False,307,7.0,True
+it0264,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.3805,0.5525,Q3,False,254,4.0,False
+it0265,2,hosted-judge-v1,4.0,4.0,False,False,model-A,0.3442,0.3471,Q2,False,231,4.0,False
+it0266,2,hosted-judge-v1,,7.0,True,True,model-A,0.6295,0.5248,Q3,False,274,6.0,True
+it0267,2,hosted-judge-v1,,4.0,True,False,model-A,0.5783,0.714,Q4 most ambiguous,False,171,6.0,False
+it0268,2,hosted-judge-v1,,6.0,True,False,model-A,0.5483,0.8768,Q4 most ambiguous,False,195,5.0,False
+it0269,2,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5153,0.6708,Q4 most ambiguous,False,200,5.0,False
+it0270,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7998,0.3621,Q2,False,311,7.0,True
+it0271,2,hosted-judge-v1,10.0,10.0,False,True,model-A,0.8228,0.2525,Q1 clearest,True,407,9.0,False
+it0272,2,hosted-judge-v1,,4.0,True,False,model-A,0.5108,0.6849,Q4 most ambiguous,False,270,5.0,False
+it0273,2,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5275,0.2823,Q2,True,281,5.0,False
+it0274,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7385,0.1841,Q1 clearest,False,250,6.0,True
+it0275,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6752,0.2891,Q2,False,256,7.0,True
+it0276,2,hosted-judge-v1,,,True,False,model-A,0.4455,1.0,Q4 most ambiguous,False,278,4.0,False
+it0277,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7317,0.5777,Q4 most ambiguous,False,248,8.0,True
+it0278,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7649,0.158,Q1 clearest,False,185,8.0,True
+it0279,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6608,0.3211,Q2,False,293,7.0,True
+it0280,2,hosted-judge-v1,6.0,6.0,False,False,model-A,0.6073,0.3959,Q2,False,129,6.0,False
+it0281,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8474,0.2654,Q1 clearest,False,303,8.0,True
+it0282,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7732,0.6854,Q4 most ambiguous,False,326,8.0,True
+it0283,2,hosted-judge-v1,,8.0,True,True,model-A,0.6606,0.6588,Q4 most ambiguous,False,257,6.0,True
+it0284,2,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5914,0.4089,Q3,False,266,6.0,False
+it0285,2,hosted-judge-v1,,,True,True,model-A,0.7747,0.7034,Q4 most ambiguous,False,238,7.0,True
+it0286,2,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8315,0.2868,Q2,False,285,8.0,True
+it0287,2,hosted-judge-v1,,7.0,True,True,model-A,0.7799,0.7158,Q4 most ambiguous,False,230,8.0,True
+it0288,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.5498,0.2634,Q1 clearest,True,305,6.0,False
+it0289,2,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6922,0.3597,Q2,False,330,7.0,True
+it0290,2,hosted-judge-v1,5.0,5.0,False,True,model-A,0.6256,0.2565,Q1 clearest,False,300,7.0,True
+it0291,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.4242,0.5806,Q4 most ambiguous,False,268,5.0,False
+it0292,2,hosted-judge-v1,10.0,10.0,False,False,model-A,0.7498,0.244,Q1 clearest,True,269,9.0,False
+it0293,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8346,0.265,Q1 clearest,False,291,7.0,True
+it0294,2,hosted-judge-v1,8.0,8.0,False,True,model-A,0.6578,0.6912,Q4 most ambiguous,False,298,7.0,True
+it0295,2,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8165,0.4118,Q3,False,318,8.0,True
+it0296,2,hosted-judge-v1,,,True,False,model-A,0.4527,0.6987,Q4 most ambiguous,False,218,5.0,False
+it0297,2,hosted-judge-v1,,5.0,True,True,model-A,0.7237,0.4993,Q3,False,246,8.0,True
+it0298,2,hosted-judge-v1,,,True,False,model-A,0.7837,0.8907,Q4 most ambiguous,True,421,9.0,False
+it0299,2,hosted-judge-v1,,7.0,True,True,model-A,0.8706,0.8147,Q4 most ambiguous,False,191,9.0,True
+it0300,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.658,0.3356,Q2,False,186,7.0,True
+it0301,2,hosted-judge-v1,,6.0,True,False,model-B,0.6055,0.6565,Q4 most ambiguous,False,264,5.0,False
+it0302,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.728,0.6944,Q4 most ambiguous,False,279,7.0,True
+it0303,2,hosted-judge-v1,10.0,10.0,False,True,model-B,0.8445,0.4121,Q3,True,409,10.0,False
+it0304,2,hosted-judge-v1,4.0,4.0,False,False,model-B,0.6104,0.6523,Q4 most ambiguous,False,280,6.0,False
+it0305,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8713,0.0324,Q1 clearest,False,286,9.0,True
+it0306,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7658,0.0979,Q1 clearest,False,234,6.0,True
+it0307,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5061,0.1533,Q1 clearest,False,219,5.0,False
+it0308,2,hosted-judge-v1,,4.0,True,False,model-B,0.5184,0.4933,Q3,False,223,4.0,False
+it0309,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.3245,0.5704,Q4 most ambiguous,False,322,2.0,False
+it0310,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7551,0.2874,Q2,False,246,8.0,True
+it0311,2,hosted-judge-v1,4.0,4.0,False,True,model-B,0.3547,0.2536,Q1 clearest,False,307,2.0,False
+it0312,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.4986,0.4678,Q3,False,270,7.0,False
+it0313,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.9351,0.4745,Q3,False,307,10.0,True
+it0314,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6619,0.4706,Q3,False,308,7.0,True
+it0315,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.4278,0.4493,Q3,True,388,6.0,False
+it0316,2,hosted-judge-v1,,8.0,True,False,model-B,0.8701,0.448,Q3,False,192,10.0,True
+it0317,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6461,0.5097,Q3,False,271,7.0,True
+it0318,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7825,0.2945,Q2,False,261,9.0,True
+it0319,2,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5152,0.3334,Q2,True,368,6.0,False
+it0320,2,hosted-judge-v1,,,True,False,model-B,0.5361,0.8656,Q4 most ambiguous,False,121,6.0,False
+it0321,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6703,0.3717,Q2,False,254,7.0,True
+it0322,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.4273,0.4443,Q3,False,188,4.0,False
+it0323,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.5566,0.338,Q2,True,314,6.0,False
+it0324,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5929,0.4537,Q3,False,256,7.0,False
+it0325,2,hosted-judge-v1,,6.0,True,True,model-B,0.5758,0.3989,Q2,False,139,6.0,False
+it0326,2,hosted-judge-v1,9.0,9.0,False,False,model-B,0.7654,0.3786,Q2,True,490,9.0,False
+it0327,2,hosted-judge-v1,,4.0,True,False,model-B,0.4154,0.4687,Q3,False,199,5.0,False
+it0328,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6694,0.4867,Q3,False,246,8.0,True
+it0329,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8334,0.0957,Q1 clearest,False,291,9.0,True
+it0330,2,hosted-judge-v1,,,True,True,model-B,0.695,0.7026,Q4 most ambiguous,False,334,7.0,True
+it0331,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.6097,0.1738,Q1 clearest,False,318,6.0,False
+it0332,2,hosted-judge-v1,,6.0,True,False,model-B,0.5281,0.3638,Q2,False,93,6.0,False
+it0333,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8705,0.3284,Q2,False,298,8.0,True
+it0334,2,hosted-judge-v1,4.0,4.0,False,False,model-B,0.3795,0.0853,Q1 clearest,False,301,4.0,False
+it0335,2,hosted-judge-v1,10.0,10.0,False,False,model-B,0.7409,0.1793,Q1 clearest,True,436,9.0,False
+it0336,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7256,0.4618,Q3,False,344,7.0,True
+it0337,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8243,0.027,Q1 clearest,False,299,8.0,True
+it0338,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6739,0.1408,Q1 clearest,False,253,6.0,True
+it0339,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7578,0.3124,Q2,False,171,7.0,True
+it0340,2,hosted-judge-v1,,6.0,True,True,model-B,0.8519,0.7284,Q4 most ambiguous,False,242,9.0,True
+it0341,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5329,0.2584,Q1 clearest,False,200,6.0,False
+it0342,2,hosted-judge-v1,,8.0,True,False,model-B,0.6602,0.5435,Q3,True,341,8.0,False
+it0343,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7411,0.2406,Q1 clearest,False,301,8.0,True
+it0344,2,hosted-judge-v1,7.0,7.0,False,False,model-B,0.3413,0.1277,Q1 clearest,True,458,4.0,False
+it0345,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6505,0.2063,Q1 clearest,False,243,6.0,True
+it0346,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8829,0.5368,Q3,False,165,9.0,True
+it0347,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7889,0.4671,Q3,False,346,7.0,True
+it0348,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.5424,0.3542,Q2,False,277,4.0,False
+it0349,2,hosted-judge-v1,10.0,10.0,False,False,model-B,0.8375,0.2477,Q1 clearest,True,350,9.0,False
+it0350,2,hosted-judge-v1,,8.0,True,True,model-B,0.8605,0.438,Q3,False,380,10.0,True
+it0351,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.442,0.5364,Q3,False,264,4.0,False
+it0352,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4731,0.2032,Q1 clearest,False,247,4.0,False
+it0353,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4402,0.42,Q3,False,240,5.0,False
+it0354,2,hosted-judge-v1,,7.0,True,True,model-B,0.699,0.6929,Q4 most ambiguous,False,270,8.0,True
+it0355,2,hosted-judge-v1,7.0,7.0,False,False,model-B,0.6432,0.4452,Q3,True,269,7.0,False
+it0356,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6946,0.31,Q2,False,335,6.0,True
+it0357,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4354,0.6401,Q4 most ambiguous,False,247,5.0,False
+it0358,2,hosted-judge-v1,3.0,3.0,False,False,model-B,0.3786,0.4483,Q3,False,153,4.0,False
+it0359,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8909,0.2756,Q1 clearest,False,197,8.0,True
+it0360,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7213,0.2735,Q1 clearest,False,297,8.0,True
+it0361,2,hosted-judge-v1,10.0,10.0,False,False,model-B,0.7212,0.301,Q2,True,430,9.0,False
+it0362,2,hosted-judge-v1,,7.0,True,False,model-B,0.4214,0.7928,Q4 most ambiguous,False,211,4.0,False
+it0363,2,hosted-judge-v1,,5.0,True,False,model-B,0.3695,0.7521,Q4 most ambiguous,False,244,3.0,False
+it0364,2,hosted-judge-v1,4.0,4.0,False,False,model-B,0.323,0.3135,Q2,False,247,3.0,False
+it0365,2,hosted-judge-v1,,6.0,True,True,model-B,0.7837,0.6225,Q4 most ambiguous,False,235,10.0,True
+it0366,2,hosted-judge-v1,10.0,10.0,False,True,model-B,0.9286,0.3556,Q2,False,395,9.0,True
+it0367,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8217,0.2332,Q1 clearest,False,241,8.0,True
+it0368,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.811,0.3933,Q2,False,459,8.0,True
+it0369,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.4454,0.2694,Q1 clearest,False,227,4.0,False
+it0370,2,hosted-judge-v1,4.0,4.0,False,False,model-B,0.3454,0.4745,Q3,False,176,3.0,False
+it0371,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6347,0.3293,Q2,False,180,7.0,True
+it0372,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.5851,0.2131,Q1 clearest,False,220,6.0,False
+it0373,2,hosted-judge-v1,,,True,False,model-B,0.5712,0.6921,Q4 most ambiguous,False,299,6.0,False
+it0374,2,hosted-judge-v1,,6.0,True,True,model-B,0.621,0.426,Q3,False,249,7.0,True
+it0375,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7339,0.1347,Q1 clearest,False,271,6.0,True
+it0376,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6623,0.3937,Q2,False,292,7.0,True
+it0377,2,hosted-judge-v1,,6.0,True,False,model-B,0.4063,0.5307,Q3,False,227,3.0,False
+it0378,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6502,0.239,Q1 clearest,False,314,6.0,True
+it0379,2,hosted-judge-v1,,6.0,True,True,model-B,0.7323,0.7445,Q4 most ambiguous,False,256,8.0,True
+it0380,2,hosted-judge-v1,9.0,9.0,False,False,model-B,0.5935,0.5628,Q4 most ambiguous,True,366,5.0,False
+it0381,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5589,0.529,Q3,True,319,6.0,False
+it0382,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8552,0.3841,Q2,False,295,9.0,True
+it0383,2,hosted-judge-v1,7.0,7.0,False,False,model-B,0.619,0.0961,Q1 clearest,False,337,6.0,False
+it0384,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.673,0.1643,Q1 clearest,False,246,7.0,True
+it0385,2,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5887,0.3823,Q2,False,291,5.0,False
+it0386,2,hosted-judge-v1,,7.0,True,True,model-B,0.686,0.2786,Q1 clearest,False,147,6.0,True
+it0387,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8598,0.6046,Q4 most ambiguous,False,250,8.0,True
+it0388,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8966,0.4035,Q2,False,263,9.0,True
+it0389,2,hosted-judge-v1,,4.0,True,False,model-B,0.494,0.48,Q3,False,244,5.0,False
+it0390,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4329,0.2295,Q1 clearest,False,274,4.0,False
+it0391,2,hosted-judge-v1,,7.0,True,True,model-B,0.776,0.5778,Q4 most ambiguous,False,227,8.0,True
+it0392,2,hosted-judge-v1,,9.0,True,False,model-B,0.7622,0.8256,Q4 most ambiguous,True,438,8.0,False
+it0393,2,hosted-judge-v1,,7.0,True,True,model-B,0.6722,0.6252,Q4 most ambiguous,False,323,7.0,True
+it0394,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5171,0.6909,Q4 most ambiguous,False,217,6.0,False
+it0395,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6907,0.5097,Q3,False,262,8.0,True
+it0396,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8938,0.3588,Q2,False,233,9.0,True
+it0397,2,hosted-judge-v1,,,True,True,model-B,0.7926,0.752,Q4 most ambiguous,False,286,9.0,True
+it0398,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.71,0.2985,Q2,False,233,7.0,True
+it0399,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.864,0.4211,Q3,False,302,8.0,True
+it0400,2,hosted-judge-v1,,3.0,True,False,model-B,0.5807,0.7525,Q4 most ambiguous,False,259,6.0,False
+it0401,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6701,0.4534,Q3,False,208,7.0,True
+it0402,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.7251,0.5898,Q4 most ambiguous,False,192,7.0,True
+it0403,2,hosted-judge-v1,8.0,8.0,False,False,model-B,0.6026,0.2445,Q1 clearest,True,391,7.0,False
+it0404,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.613,0.418,Q3,False,248,6.0,False
+it0405,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5376,0.153,Q1 clearest,False,296,7.0,False
+it0406,2,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5092,0.8328,Q4 most ambiguous,False,292,5.0,False
+it0407,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5152,0.4182,Q3,False,226,4.0,False
+it0408,2,hosted-judge-v1,10.0,10.0,False,False,model-B,0.9433,0.3602,Q2,False,376,8.0,True
+it0409,2,hosted-judge-v1,,8.0,True,True,model-B,0.8714,0.554,Q3,False,167,10.0,True
+it0410,2,hosted-judge-v1,4.0,4.0,False,False,model-B,0.5833,0.6496,Q4 most ambiguous,False,251,7.0,False
+it0411,2,hosted-judge-v1,7.0,7.0,False,False,model-B,0.2672,0.5897,Q4 most ambiguous,True,388,4.0,False
+it0412,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7563,0.4458,Q3,False,216,7.0,True
+it0413,2,hosted-judge-v1,,6.0,True,True,model-B,0.7713,0.6774,Q4 most ambiguous,False,286,8.0,True
+it0414,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7003,0.4119,Q3,False,368,7.0,True
+it0415,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3121,0.314,Q2,False,262,2.0,False
+it0416,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6452,0.4296,Q3,False,152,8.0,True
+it0417,2,hosted-judge-v1,,4.0,True,True,model-B,0.2869,0.6269,Q4 most ambiguous,False,225,3.0,False
+it0418,2,hosted-judge-v1,10.0,10.0,False,False,model-B,0.895,0.0541,Q1 clearest,True,376,10.0,False
+it0419,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6945,0.0915,Q1 clearest,False,281,6.0,True
+it0420,2,hosted-judge-v1,9.0,9.0,False,False,model-B,0.7827,0.3183,Q2,True,381,9.0,False
+it0421,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7745,0.5088,Q3,False,247,8.0,True
+it0422,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5689,0.5159,Q3,False,253,4.0,False
+it0423,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6613,0.1418,Q1 clearest,False,205,6.0,True
+it0424,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4962,0.3853,Q2,False,283,6.0,False
+it0425,2,hosted-judge-v1,,8.0,True,True,model-B,0.629,0.5367,Q3,True,279,7.0,False
+it0426,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4148,0.5138,Q3,False,283,4.0,False
+it0427,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6692,0.039,Q1 clearest,False,246,8.0,True
+it0428,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7744,0.1542,Q1 clearest,False,337,6.0,True
+it0429,2,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5953,0.5087,Q3,True,415,6.0,False
+it0430,2,hosted-judge-v1,,10.0,True,False,model-B,0.5982,0.6822,Q4 most ambiguous,False,314,6.0,False
+it0431,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.756,0.2929,Q2,False,178,9.0,True
+it0432,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7756,0.375,Q2,False,358,8.0,True
+it0433,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8492,0.2098,Q1 clearest,False,197,10.0,True
+it0434,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8059,0.4201,Q3,False,318,8.0,True
+it0435,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7713,0.3183,Q2,False,242,6.0,True
+it0436,2,hosted-judge-v1,,,True,True,model-B,0.6935,0.7945,Q4 most ambiguous,False,205,7.0,True
+it0437,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5327,0.0802,Q1 clearest,False,254,6.0,False
+it0438,2,hosted-judge-v1,,7.0,True,False,model-B,0.5866,0.6455,Q4 most ambiguous,False,348,6.0,False
+it0439,2,hosted-judge-v1,,7.0,True,True,model-B,0.6494,0.7341,Q4 most ambiguous,False,375,8.0,True
+it0440,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7255,0.3569,Q2,False,289,6.0,True
+it0441,2,hosted-judge-v1,,9.0,True,True,model-B,0.4882,0.6519,Q4 most ambiguous,False,301,5.0,False
+it0442,2,hosted-judge-v1,,7.0,True,False,model-B,0.5601,0.5126,Q3,False,247,7.0,False
+it0443,2,hosted-judge-v1,,5.0,True,False,model-B,0.4928,0.5157,Q3,False,214,5.0,False
+it0444,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8341,0.2706,Q1 clearest,False,309,8.0,True
+it0445,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4207,0.1778,Q1 clearest,False,276,3.0,False
+it0446,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8427,0.1694,Q1 clearest,False,252,8.0,True
+it0447,2,hosted-judge-v1,4.0,4.0,False,False,model-B,0.3565,0.2897,Q2,False,269,5.0,False
+it0448,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.5232,0.193,Q1 clearest,True,373,5.0,False
+it0449,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7696,0.4045,Q2,False,279,7.0,True
+it0450,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3913,0.5178,Q3,False,223,4.0,False
+it0451,2,hosted-judge-v1,8.0,8.0,False,False,model-B,0.4685,0.332,Q2,True,405,6.0,False
+it0452,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.5978,0.4592,Q3,False,240,7.0,False
+it0453,2,hosted-judge-v1,,8.0,True,False,model-B,0.5273,0.6141,Q4 most ambiguous,True,483,6.0,False
+it0454,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8646,0.6928,Q4 most ambiguous,False,278,8.0,True
+it0455,2,hosted-judge-v1,,7.0,True,True,model-B,0.8668,0.5651,Q4 most ambiguous,False,222,8.0,True
+it0456,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.7301,0.3292,Q2,False,334,7.0,True
+it0457,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.7885,0.3108,Q2,False,269,7.0,True
+it0458,2,hosted-judge-v1,,5.0,True,True,model-B,0.6442,0.6069,Q4 most ambiguous,False,131,7.0,True
+it0459,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5337,0.2933,Q2,False,178,7.0,False
+it0460,2,hosted-judge-v1,,5.0,True,False,model-B,0.3748,0.6041,Q4 most ambiguous,False,195,4.0,False
+it0461,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6238,0.3206,Q2,False,347,6.0,True
+it0462,2,hosted-judge-v1,4.0,4.0,False,False,model-B,0.3348,0.2945,Q2,False,162,3.0,False
+it0463,2,hosted-judge-v1,9.0,9.0,False,False,model-B,0.6244,0.418,Q3,True,342,7.0,False
+it0464,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8518,0.2081,Q1 clearest,False,243,9.0,True
+it0465,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6994,0.2865,Q2,False,275,7.0,True
+it0466,2,hosted-judge-v1,,5.0,True,True,model-B,0.6284,0.483,Q3,False,285,6.0,True
+it0467,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8391,0.0829,Q1 clearest,False,223,8.0,True
+it0468,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6357,0.1852,Q1 clearest,False,257,7.0,True
+it0469,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.6449,0.6741,Q4 most ambiguous,True,327,7.0,False
+it0470,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7833,0.5208,Q3,False,268,9.0,True
+it0471,2,hosted-judge-v1,9.0,9.0,False,False,model-B,0.7217,0.3127,Q2,True,300,7.0,False
+it0472,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3264,0.575,Q4 most ambiguous,False,319,3.0,False
+it0473,2,hosted-judge-v1,,3.0,True,False,model-B,0.3502,0.7616,Q4 most ambiguous,False,281,2.0,False
+it0474,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.8273,0.3753,Q2,False,191,8.0,True
+it0475,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.3469,0.6047,Q4 most ambiguous,False,283,3.0,False
+it0476,2,hosted-judge-v1,,7.0,True,False,model-B,0.3955,0.4155,Q3,True,456,3.0,False
+it0477,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5703,0.4547,Q3,False,219,6.0,False
+it0478,2,hosted-judge-v1,7.0,7.0,False,False,model-B,0.4413,0.6446,Q4 most ambiguous,False,196,4.0,False
+it0479,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7468,0.5953,Q4 most ambiguous,False,292,7.0,True
+it0480,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8404,0.1107,Q1 clearest,False,194,7.0,True
+it0481,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3858,0.5622,Q4 most ambiguous,False,305,5.0,False
+it0482,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7517,0.4426,Q3,False,174,8.0,True
+it0483,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.7453,0.7715,Q4 most ambiguous,False,187,8.0,True
+it0484,2,hosted-judge-v1,,5.0,True,False,model-B,0.2919,0.4207,Q3,False,277,4.0,False
+it0485,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6614,0.4642,Q3,False,157,7.0,True
+it0486,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5417,0.5866,Q4 most ambiguous,False,224,5.0,False
+it0487,2,hosted-judge-v1,10.0,10.0,False,True,model-B,0.7017,0.143,Q1 clearest,True,366,8.0,False
+it0488,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7796,0.6212,Q4 most ambiguous,False,263,9.0,True
+it0489,2,hosted-judge-v1,,5.0,True,True,model-B,0.6999,0.6094,Q4 most ambiguous,False,283,7.0,True
+it0490,2,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5118,0.302,Q2,True,458,7.0,False
+it0491,2,hosted-judge-v1,,9.0,True,False,model-B,0.5235,0.723,Q4 most ambiguous,False,396,5.0,False
+it0492,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7898,0.409,Q3,False,257,8.0,True
+it0493,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.7702,0.4081,Q2,True,312,9.0,False
+it0494,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6671,0.122,Q1 clearest,False,243,6.0,True
+it0495,2,hosted-judge-v1,,5.0,True,False,model-B,0.3819,0.8201,Q4 most ambiguous,False,243,4.0,False
+it0496,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5682,0.2142,Q1 clearest,False,263,6.0,False
+it0497,2,hosted-judge-v1,8.0,8.0,False,False,model-B,0.4039,0.3752,Q2,True,464,5.0,False
+it0498,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.2895,0.1085,Q1 clearest,True,192,5.0,False
+it0499,2,hosted-judge-v1,3.0,3.0,False,False,model-B,0.2038,0.3778,Q2,False,173,1.0,False
+it0500,2,hosted-judge-v1,,8.0,True,True,model-B,0.9012,0.4184,Q3,False,258,8.0,True
+it0501,2,hosted-judge-v1,,,True,True,model-B,0.71,0.808,Q4 most ambiguous,False,178,7.0,True
+it0502,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7892,0.5575,Q4 most ambiguous,False,259,9.0,True
+it0503,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7223,0.2872,Q2,False,298,7.0,True
+it0504,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6298,0.1401,Q1 clearest,False,285,7.0,True
+it0505,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6921,0.4162,Q3,False,321,7.0,True
+it0506,2,hosted-judge-v1,4.0,4.0,False,False,model-B,0.5221,0.2122,Q1 clearest,False,84,5.0,False
+it0507,2,hosted-judge-v1,,9.0,True,True,model-B,0.8639,0.5064,Q3,False,333,7.0,True
+it0508,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.8628,0.653,Q4 most ambiguous,False,190,8.0,True
+it0509,2,hosted-judge-v1,4.0,4.0,False,False,model-B,0.3924,0.3652,Q2,False,294,4.0,False
+it0510,2,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5751,0.3243,Q2,True,353,7.0,False
+it0511,2,hosted-judge-v1,4.0,4.0,False,False,model-B,0.365,0.332,Q2,False,202,4.0,False
+it0512,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.7054,0.2223,Q1 clearest,True,310,9.0,False
+it0513,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.4102,0.3685,Q2,False,178,3.0,False
+it0514,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6692,0.305,Q2,False,239,8.0,True
+it0515,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6544,0.2916,Q2,False,197,7.0,True
+it0516,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.1175,0.6965,Q4 most ambiguous,False,128,1.0,False
+it0517,2,hosted-judge-v1,4.0,4.0,False,True,model-B,0.4208,0.0886,Q1 clearest,False,237,5.0,False
+it0518,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.4186,0.1833,Q1 clearest,True,344,5.0,False
+it0519,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8769,0.2266,Q1 clearest,False,175,8.0,True
+it0520,2,hosted-judge-v1,,8.0,True,True,model-B,0.821,0.6215,Q4 most ambiguous,False,314,8.0,True
+it0521,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4969,0.5351,Q3,False,241,4.0,False
+it0522,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.6354,0.4614,Q3,True,421,7.0,False
+it0523,2,hosted-judge-v1,,7.0,True,True,model-B,0.6992,0.6618,Q4 most ambiguous,False,269,6.0,True
+it0524,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5202,0.329,Q2,False,293,5.0,False
+it0525,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6266,0.3289,Q2,False,192,5.0,True
+it0526,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6276,0.5215,Q3,False,303,6.0,True
+it0527,2,hosted-judge-v1,,6.0,True,True,model-B,0.6565,0.8367,Q4 most ambiguous,False,193,6.0,True
+it0528,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8718,0.0317,Q1 clearest,False,332,10.0,True
+it0529,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7944,0.2034,Q1 clearest,False,259,7.0,True
+it0530,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.625,0.2622,Q1 clearest,False,231,6.0,True
+it0531,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.4737,0.3016,Q2,False,98,5.0,False
+it0532,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.6105,0.3567,Q2,False,247,5.0,False
+it0533,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.392,0.6915,Q4 most ambiguous,False,201,4.0,False
+it0534,2,hosted-judge-v1,,8.0,True,True,model-B,0.7177,0.5455,Q3,False,387,8.0,True
+it0535,2,hosted-judge-v1,9.0,9.0,False,False,model-B,0.8033,0.4151,Q3,True,420,9.0,False
+it0536,2,hosted-judge-v1,,,True,False,model-B,0.5144,0.6507,Q4 most ambiguous,False,237,6.0,False
+it0537,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7168,0.4244,Q3,False,347,6.0,True
+it0538,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7572,0.1997,Q1 clearest,False,290,8.0,True
+it0539,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5712,0.4028,Q2,False,289,5.0,False
+it0540,2,hosted-judge-v1,,5.0,True,False,model-B,0.5585,0.3157,Q2,False,163,6.0,False
+it0541,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6216,0.5652,Q4 most ambiguous,False,258,5.0,True
+it0542,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6222,0.1909,Q1 clearest,False,211,6.0,True
+it0543,2,hosted-judge-v1,4.0,4.0,False,False,model-B,0.5222,0.7173,Q4 most ambiguous,False,175,4.0,False
+it0544,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8249,0.3004,Q2,False,274,9.0,True
+it0545,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.3707,0.4243,Q3,False,257,3.0,False
+it0546,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5732,0.1901,Q1 clearest,False,245,7.0,False
+it0547,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.9065,0.4574,Q3,False,245,10.0,True
+it0548,2,hosted-judge-v1,8.0,8.0,False,False,model-B,0.9108,0.3801,Q2,True,454,10.0,False
+it0549,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.9278,0.471,Q3,False,236,10.0,True
+it0550,2,hosted-judge-v1,,,True,False,model-B,0.4808,0.9602,Q4 most ambiguous,False,201,5.0,False
+it0551,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6212,0.4212,Q3,False,215,7.0,True
+it0552,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6227,0.0932,Q1 clearest,False,192,6.0,True
+it0553,2,hosted-judge-v1,8.0,8.0,False,False,model-B,0.4807,0.214,Q1 clearest,True,361,6.0,False
+it0554,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.6179,0.3563,Q2,True,371,6.0,False
+it0555,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5683,0.1883,Q1 clearest,False,208,6.0,False
+it0556,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.2134,0.6381,Q4 most ambiguous,False,191,3.0,False
+it0557,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6691,0.4916,Q3,False,226,5.0,True
+it0558,2,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5503,0.2555,Q1 clearest,False,236,6.0,False
+it0559,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7734,0.2928,Q2,False,307,8.0,True
+it0560,2,hosted-judge-v1,10.0,10.0,False,True,model-B,0.8969,0.5577,Q4 most ambiguous,False,268,10.0,True
+it0561,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8065,0.2157,Q1 clearest,False,179,9.0,True
+it0562,2,hosted-judge-v1,3.0,3.0,False,False,model-B,0.3121,0.0446,Q1 clearest,False,261,3.0,False
+it0563,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5445,0.3332,Q2,False,326,7.0,False
+it0564,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.4838,0.6252,Q4 most ambiguous,False,254,4.0,False
+it0565,2,hosted-judge-v1,,5.0,True,True,model-B,0.6768,0.6503,Q4 most ambiguous,False,340,6.0,True
+it0566,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8063,0.3616,Q2,False,240,9.0,True
+it0567,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5069,0.4563,Q3,False,222,5.0,False
+it0568,2,hosted-judge-v1,,8.0,True,True,model-B,0.757,0.4974,Q3,False,322,7.0,True
+it0569,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7157,0.4011,Q2,False,409,9.0,True
+it0570,2,hosted-judge-v1,,,True,True,model-B,0.7566,0.7291,Q4 most ambiguous,True,367,8.0,False
+it0571,2,hosted-judge-v1,,6.0,True,False,model-B,0.2785,0.6133,Q4 most ambiguous,False,248,3.0,False
+it0572,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6175,0.3075,Q2,False,243,6.0,False
+it0573,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4238,0.2814,Q2,False,263,3.0,False
+it0574,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5727,0.1098,Q1 clearest,False,294,4.0,False
+it0575,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.6178,0.2572,Q1 clearest,False,213,6.0,False
+it0576,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.762,0.4411,Q3,False,218,8.0,True
+it0577,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5407,0.1085,Q1 clearest,False,267,5.0,False
+it0578,2,hosted-judge-v1,8.0,8.0,False,False,model-B,0.8452,0.3726,Q2,False,277,8.0,True
+it0579,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.908,0.3699,Q2,False,319,8.0,True
+it0580,2,hosted-judge-v1,9.0,9.0,False,False,model-B,0.5488,0.4249,Q3,True,366,5.0,False
+it0581,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7155,0.3007,Q2,False,244,7.0,True
+it0582,2,hosted-judge-v1,,8.0,True,True,model-B,0.8548,0.6849,Q4 most ambiguous,False,308,8.0,True
+it0583,2,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8407,0.328,Q2,False,354,8.0,True
+it0584,2,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6886,0.4494,Q3,False,213,7.0,True
+it0585,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8091,0.5182,Q3,False,304,8.0,True
+it0586,2,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5628,0.2863,Q2,False,212,5.0,False
+it0587,2,hosted-judge-v1,,,True,False,model-B,0.8084,0.6177,Q4 most ambiguous,True,372,8.0,False
+it0588,2,hosted-judge-v1,,5.0,True,False,model-B,0.6112,0.5153,Q3,False,270,6.0,False
+it0589,2,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5155,0.1963,Q1 clearest,True,290,5.0,False
+it0590,2,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5805,0.2761,Q1 clearest,False,224,6.0,False
+it0591,2,hosted-judge-v1,,,True,False,model-B,0.4841,0.718,Q4 most ambiguous,False,124,5.0,False
+it0592,2,hosted-judge-v1,,,True,False,model-B,0.5119,0.9393,Q4 most ambiguous,False,252,5.0,False
+it0593,2,hosted-judge-v1,,8.0,True,True,model-B,0.7525,0.4532,Q3,False,282,7.0,True
+it0594,2,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8157,0.5366,Q3,False,304,8.0,True
+it0595,2,hosted-judge-v1,,8.0,True,True,model-B,0.8031,0.4931,Q3,False,336,9.0,True
+it0596,2,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7445,0.2986,Q2,False,208,8.0,True
+it0597,2,hosted-judge-v1,,,True,True,model-B,0.5146,0.9729,Q4 most ambiguous,False,262,5.0,False
+it0598,2,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8225,0.4259,Q3,False,286,8.0,True
+it0599,2,hosted-judge-v1,9.0,9.0,False,False,model-B,0.5772,0.2117,Q1 clearest,True,388,7.0,False
+it0000,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7948,0.3557,Q2,False,199,7.0,True
+it0001,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.632,0.4993,Q3,False,257,6.0,True
+it0002,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.6405,0.1981,Q1 clearest,True,323,7.0,False
+it0003,3,hosted-judge-v1,10.0,10.0,False,False,model-A,0.9257,0.5197,Q3,True,351,10.0,False
+it0004,3,hosted-judge-v1,,7.0,True,True,model-A,0.6969,0.5186,Q3,False,307,7.0,True
+it0005,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.6025,0.2726,Q1 clearest,False,324,6.0,False
+it0006,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5885,0.5816,Q4 most ambiguous,False,287,6.0,False
+it0007,3,hosted-judge-v1,,4.0,True,True,model-A,0.6406,0.6415,Q4 most ambiguous,False,234,6.0,True
+it0008,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5957,0.5987,Q4 most ambiguous,False,294,5.0,False
+it0009,3,hosted-judge-v1,9.0,9.0,False,False,model-A,0.7057,0.6954,Q4 most ambiguous,True,448,8.0,False
+it0010,3,hosted-judge-v1,10.0,10.0,False,False,model-A,0.7323,0.381,Q2,True,382,9.0,False
+it0011,3,hosted-judge-v1,,7.0,True,True,model-A,0.5247,0.4392,Q3,False,193,4.0,False
+it0012,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9169,0.2468,Q1 clearest,False,267,9.0,True
+it0013,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9018,0.3883,Q2,False,299,9.0,True
+it0014,3,hosted-judge-v1,,4.0,True,True,model-A,0.5443,0.9169,Q4 most ambiguous,False,298,6.0,False
+it0015,3,hosted-judge-v1,4.0,4.0,False,True,model-A,0.5702,0.4372,Q3,False,318,6.0,False
+it0016,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8353,0.3284,Q2,False,329,8.0,True
+it0017,3,hosted-judge-v1,,,True,True,model-A,0.6606,0.7989,Q4 most ambiguous,False,172,7.0,True
+it0018,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8324,0.4078,Q2,False,379,9.0,True
+it0019,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9208,0.3738,Q2,False,104,8.0,True
+it0020,3,hosted-judge-v1,,,True,False,model-A,0.5007,0.7069,Q4 most ambiguous,False,181,4.0,False
+it0021,3,hosted-judge-v1,5.0,5.0,False,True,model-A,0.8195,0.6823,Q4 most ambiguous,False,237,8.0,True
+it0022,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.3436,0.5589,Q4 most ambiguous,True,327,4.0,False
+it0023,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.4794,0.5435,Q3,False,275,4.0,False
+it0024,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8095,0.529,Q3,False,307,9.0,True
+it0025,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7993,0.2064,Q1 clearest,False,300,9.0,True
+it0026,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.691,0.5049,Q3,False,263,8.0,True
+it0027,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5927,0.5171,Q3,False,247,6.0,False
+it0028,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4895,0.434,Q3,False,326,4.0,False
+it0029,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7063,0.4121,Q3,False,248,6.0,True
+it0030,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7778,0.1953,Q1 clearest,False,234,8.0,True
+it0031,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7014,0.3431,Q2,False,178,8.0,True
+it0032,3,hosted-judge-v1,,,True,True,model-A,0.6463,0.7637,Q4 most ambiguous,False,338,7.0,True
+it0033,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5451,0.6162,Q4 most ambiguous,False,220,7.0,False
+it0034,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4283,0.1516,Q1 clearest,False,298,5.0,False
+it0035,3,hosted-judge-v1,,5.0,True,False,model-A,0.5204,0.4941,Q3,False,244,7.0,False
+it0036,3,hosted-judge-v1,5.0,5.0,False,True,model-A,0.5255,0.3944,Q2,False,243,4.0,False
+it0037,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.4307,0.3233,Q2,True,382,6.0,False
+it0038,3,hosted-judge-v1,,8.0,True,True,model-A,0.7118,0.3058,Q2,False,237,7.0,True
+it0039,3,hosted-judge-v1,5.0,5.0,False,True,model-A,0.6342,0.4514,Q3,False,249,6.0,True
+it0040,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6527,0.3832,Q2,False,287,6.0,True
+it0041,3,hosted-judge-v1,10.0,10.0,False,False,model-A,0.7262,0.7115,Q4 most ambiguous,True,363,8.0,False
+it0042,3,hosted-judge-v1,,6.0,True,False,model-A,0.966,0.774,Q4 most ambiguous,True,421,10.0,False
+it0043,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.6944,0.5909,Q4 most ambiguous,False,256,7.0,True
+it0044,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.8329,0.4364,Q3,True,300,10.0,False
+it0045,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.6258,0.3959,Q2,True,350,8.0,False
+it0046,3,hosted-judge-v1,,5.0,True,False,model-A,0.5061,0.2637,Q1 clearest,False,211,5.0,False
+it0047,3,hosted-judge-v1,,6.0,True,True,model-A,0.7037,0.5256,Q3,False,272,7.0,True
+it0048,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.8245,0.2605,Q1 clearest,True,365,9.0,False
+it0049,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8038,0.1121,Q1 clearest,False,322,9.0,True
+it0050,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5521,0.5231,Q3,False,198,5.0,False
+it0051,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8727,0.4868,Q3,False,288,8.0,True
+it0052,3,hosted-judge-v1,5.0,5.0,False,True,model-A,0.5836,0.508,Q3,False,261,5.0,False
+it0053,3,hosted-judge-v1,,8.0,True,True,model-A,0.7097,0.2212,Q1 clearest,False,313,6.0,True
+it0054,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4686,0.59,Q4 most ambiguous,False,254,4.0,False
+it0055,3,hosted-judge-v1,,7.0,True,True,model-A,0.6329,0.3627,Q2,False,342,7.0,True
+it0056,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4681,0.8925,Q4 most ambiguous,False,358,5.0,False
+it0057,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6535,0.5679,Q4 most ambiguous,False,218,7.0,True
+it0058,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6249,0.3171,Q2,False,222,7.0,True
+it0059,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5135,0.3526,Q2,False,309,5.0,False
+it0060,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5381,0.4798,Q3,False,192,5.0,False
+it0061,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6095,0.3661,Q2,False,365,7.0,False
+it0062,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.9565,0.5911,Q4 most ambiguous,True,470,9.0,False
+it0063,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9179,0.37,Q2,False,245,10.0,True
+it0064,3,hosted-judge-v1,9.0,9.0,False,False,model-A,0.7251,0.3038,Q2,True,369,8.0,False
+it0065,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6423,0.2483,Q1 clearest,False,260,7.0,True
+it0066,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.6318,0.3495,Q2,True,439,7.0,False
+it0067,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6346,0.3468,Q2,False,345,6.0,True
+it0068,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8054,0.2309,Q1 clearest,False,228,9.0,True
+it0069,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9065,0.0673,Q1 clearest,False,198,9.0,True
+it0070,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9149,0.0887,Q1 clearest,False,275,10.0,True
+it0071,3,hosted-judge-v1,,,True,True,model-A,0.7796,0.7725,Q4 most ambiguous,True,411,9.0,False
+it0072,3,hosted-judge-v1,,7.0,True,True,model-A,0.5291,0.8481,Q4 most ambiguous,True,431,6.0,False
+it0073,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4449,0.4367,Q3,False,220,3.0,False
+it0074,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.6389,0.2507,Q1 clearest,False,266,6.0,True
+it0075,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8912,0.0395,Q1 clearest,False,286,10.0,True
+it0076,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6971,0.3496,Q2,False,262,8.0,True
+it0077,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9161,0.0256,Q1 clearest,False,249,9.0,True
+it0078,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8517,0.4086,Q2,False,232,10.0,True
+it0079,3,hosted-judge-v1,,5.0,True,False,model-A,0.3155,0.6036,Q4 most ambiguous,False,220,3.0,False
+it0080,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.695,0.4022,Q2,False,297,6.0,True
+it0081,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5432,0.3897,Q2,False,232,4.0,False
+it0082,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6215,0.5022,Q3,False,274,7.0,True
+it0083,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.641,0.5281,Q3,False,257,6.0,True
+it0084,3,hosted-judge-v1,10.0,10.0,False,False,model-A,0.7573,0.1287,Q1 clearest,True,313,8.0,False
+it0085,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8078,0.059,Q1 clearest,False,225,8.0,True
+it0086,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5478,0.2477,Q1 clearest,False,327,6.0,False
+it0087,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6771,0.124,Q1 clearest,False,236,7.0,True
+it0088,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5048,0.6773,Q4 most ambiguous,False,289,5.0,False
+it0089,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9009,0.1639,Q1 clearest,False,287,9.0,True
+it0090,3,hosted-judge-v1,10.0,10.0,False,False,model-A,0.8987,0.3124,Q2,True,390,10.0,False
+it0091,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7464,0.2833,Q2,False,312,7.0,True
+it0092,3,hosted-judge-v1,9.0,9.0,False,False,model-A,0.7512,0.5001,Q3,True,389,9.0,False
+it0093,3,hosted-judge-v1,,8.0,True,True,model-A,0.7403,0.5103,Q3,False,288,7.0,True
+it0094,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.747,0.0887,Q1 clearest,False,293,8.0,True
+it0095,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.6772,0.6116,Q4 most ambiguous,False,343,8.0,True
+it0096,3,hosted-judge-v1,10.0,10.0,False,False,model-A,0.9024,0.3902,Q2,True,446,10.0,False
+it0097,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9044,0.3379,Q2,False,239,9.0,True
+it0098,3,hosted-judge-v1,5.0,5.0,False,True,model-A,0.5472,0.1411,Q1 clearest,False,218,6.0,False
+it0099,3,hosted-judge-v1,,9.0,True,False,model-A,0.7723,0.4069,Q2,True,337,9.0,False
+it0100,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6685,0.1986,Q1 clearest,False,252,7.0,True
+it0101,3,hosted-judge-v1,,4.0,True,False,model-A,0.4323,0.6162,Q4 most ambiguous,False,300,5.0,False
+it0102,3,hosted-judge-v1,,9.0,True,False,model-A,0.6545,0.4408,Q3,True,331,8.0,False
+it0103,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6118,0.2354,Q1 clearest,False,277,7.0,False
+it0104,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4082,0.3814,Q2,False,217,3.0,False
+it0105,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.4743,0.27,Q1 clearest,True,474,5.0,False
+it0106,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.933,0.3538,Q2,False,359,10.0,True
+it0107,3,hosted-judge-v1,4.0,4.0,False,False,model-A,0.4338,0.3497,Q2,False,273,4.0,False
+it0108,3,hosted-judge-v1,4.0,4.0,False,False,model-A,0.4425,0.251,Q1 clearest,False,298,6.0,False
+it0109,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5653,0.206,Q1 clearest,False,259,6.0,False
+it0110,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.6065,0.37,Q2,False,331,6.0,False
+it0111,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7719,0.2212,Q1 clearest,False,206,7.0,True
+it0112,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.884,0.0,Q1 clearest,False,176,9.0,True
+it0113,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.572,0.482,Q3,False,168,6.0,False
+it0114,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6429,0.222,Q1 clearest,False,254,7.0,True
+it0115,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7929,0.473,Q3,False,245,8.0,True
+it0116,3,hosted-judge-v1,,6.0,True,False,model-A,0.5583,0.5869,Q4 most ambiguous,False,160,5.0,False
+it0117,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5026,0.4672,Q3,False,122,5.0,False
+it0118,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.715,0.3569,Q2,False,188,8.0,True
+it0119,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7032,0.7308,Q4 most ambiguous,False,275,6.0,True
+it0120,3,hosted-judge-v1,,8.0,True,False,model-A,0.6394,0.408,Q2,True,348,7.0,False
+it0121,3,hosted-judge-v1,,5.0,True,False,model-A,0.4892,0.47,Q3,False,230,4.0,False
+it0122,3,hosted-judge-v1,,,True,True,model-A,0.7434,0.8457,Q4 most ambiguous,False,170,7.0,True
+it0123,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5718,0.5618,Q4 most ambiguous,False,174,6.0,False
+it0124,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7822,0.2183,Q1 clearest,False,233,9.0,True
+it0125,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.585,0.3029,Q2,False,235,6.0,False
+it0126,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8487,0.3057,Q2,False,239,9.0,True
+it0127,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9671,0.4327,Q3,False,257,9.0,True
+it0128,3,hosted-judge-v1,,7.0,True,False,model-A,0.3121,0.8813,Q4 most ambiguous,False,310,2.0,False
+it0129,3,hosted-judge-v1,,,True,False,model-A,0.4885,0.7401,Q4 most ambiguous,False,162,4.0,False
+it0130,3,hosted-judge-v1,,,True,True,model-A,0.8698,0.7503,Q4 most ambiguous,False,284,9.0,True
+it0131,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7778,0.495,Q3,False,233,8.0,True
+it0132,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8136,0.5427,Q3,False,260,9.0,True
+it0133,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.863,0.349,Q2,False,251,7.0,True
+it0134,3,hosted-judge-v1,,,True,True,model-A,0.6327,0.7812,Q4 most ambiguous,False,292,6.0,True
+it0135,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5763,0.3842,Q2,False,266,7.0,False
+it0136,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.6197,0.5874,Q4 most ambiguous,False,293,6.0,False
+it0137,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8594,0.1106,Q1 clearest,False,241,8.0,True
+it0138,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4813,0.4606,Q3,False,139,4.0,False
+it0139,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.754,0.2603,Q1 clearest,False,301,8.0,True
+it0140,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.766,0.0981,Q1 clearest,False,227,7.0,True
+it0141,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.538,0.3246,Q2,True,410,6.0,False
+it0142,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5534,0.4201,Q3,False,183,5.0,False
+it0143,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.945,0.1624,Q1 clearest,False,267,10.0,True
+it0144,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8453,0.4671,Q3,False,270,9.0,True
+it0145,3,hosted-judge-v1,,7.0,True,True,model-A,0.6501,0.71,Q4 most ambiguous,False,391,6.0,True
+it0146,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6994,0.6274,Q4 most ambiguous,False,278,5.0,True
+it0147,3,hosted-judge-v1,5.0,5.0,False,True,model-A,0.6886,0.2402,Q1 clearest,False,236,7.0,True
+it0148,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5883,0.2132,Q1 clearest,True,345,8.0,False
+it0149,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7844,0.0784,Q1 clearest,False,168,9.0,True
+it0150,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8397,0.455,Q3,False,330,10.0,True
+it0151,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9015,0.1801,Q1 clearest,False,354,10.0,True
+it0152,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5647,0.3634,Q2,False,281,6.0,False
+it0153,3,hosted-judge-v1,,8.0,True,True,model-A,0.9062,0.448,Q3,False,306,10.0,True
+it0154,3,hosted-judge-v1,,5.0,True,True,model-A,0.7005,0.7087,Q4 most ambiguous,False,250,9.0,True
+it0155,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5223,0.464,Q3,True,410,5.0,False
+it0156,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.9139,0.356,Q2,True,341,10.0,False
+it0157,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7511,0.0517,Q1 clearest,False,233,8.0,True
+it0158,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4848,0.2705,Q1 clearest,False,248,4.0,False
+it0159,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8677,0.4123,Q3,False,287,9.0,True
+it0160,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.6768,0.5126,Q3,False,294,8.0,True
+it0161,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.4612,0.4854,Q3,True,419,4.0,False
+it0162,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7561,0.377,Q2,False,331,7.0,True
+it0163,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5112,0.4157,Q3,True,395,6.0,False
+it0164,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.7548,0.3533,Q2,False,327,7.0,True
+it0165,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.9058,0.1866,Q1 clearest,False,323,10.0,True
+it0166,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.737,0.2693,Q1 clearest,False,151,7.0,True
+it0167,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9558,0.108,Q1 clearest,False,331,9.0,True
+it0168,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9551,0.5061,Q3,False,253,10.0,True
+it0169,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.6847,0.3888,Q2,False,272,7.0,True
+it0170,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.9019,0.6054,Q4 most ambiguous,False,200,9.0,True
+it0171,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6571,0.4296,Q3,False,263,7.0,True
+it0172,3,hosted-judge-v1,,4.0,True,True,model-A,0.7206,0.8318,Q4 most ambiguous,False,320,8.0,True
+it0173,3,hosted-judge-v1,,7.0,True,False,model-A,0.8807,0.6335,Q4 most ambiguous,False,257,8.0,True
+it0174,3,hosted-judge-v1,,6.0,True,False,model-A,0.5551,0.8433,Q4 most ambiguous,True,350,6.0,False
+it0175,3,hosted-judge-v1,10.0,10.0,False,False,model-A,0.862,0.3477,Q2,True,367,9.0,False
+it0176,3,hosted-judge-v1,,7.0,True,True,model-A,0.799,0.67,Q4 most ambiguous,False,309,7.0,True
+it0177,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7819,0.2745,Q1 clearest,False,277,7.0,True
+it0178,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.5678,0.3845,Q2,False,298,6.0,False
+it0179,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4797,0.3507,Q2,False,177,4.0,False
+it0180,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.847,0.1748,Q1 clearest,False,291,8.0,True
+it0181,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.9056,0.5161,Q3,True,351,9.0,False
+it0182,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7363,0.114,Q1 clearest,False,277,8.0,True
+it0183,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.9082,0.3213,Q2,False,196,10.0,True
+it0184,3,hosted-judge-v1,,6.0,True,True,model-A,0.501,0.3179,Q2,False,185,5.0,False
+it0185,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.6139,0.538,Q3,False,342,6.0,False
+it0186,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7531,0.1431,Q1 clearest,False,182,9.0,True
+it0187,3,hosted-judge-v1,5.0,5.0,False,True,model-A,0.7174,0.4765,Q3,False,148,9.0,True
+it0188,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7805,0.3486,Q2,False,265,9.0,True
+it0189,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5171,0.1372,Q1 clearest,False,232,4.0,False
+it0190,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.6113,0.1932,Q1 clearest,False,222,6.0,False
+it0191,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5067,0.3478,Q2,False,330,5.0,False
+it0192,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.4709,0.6172,Q4 most ambiguous,False,268,4.0,False
+it0193,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7245,0.5338,Q3,True,456,9.0,False
+it0194,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.6968,0.3715,Q2,False,310,7.0,True
+it0195,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8131,0.4006,Q2,False,104,8.0,True
+it0196,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.722,0.3671,Q2,False,291,8.0,True
+it0197,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8771,0.4444,Q3,False,259,9.0,True
+it0198,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.7013,0.1343,Q1 clearest,False,244,7.0,True
+it0199,3,hosted-judge-v1,,,True,True,model-A,0.7382,0.706,Q4 most ambiguous,False,267,9.0,True
+it0200,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5706,0.1184,Q1 clearest,False,216,6.0,False
+it0201,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6648,0.3065,Q2,False,306,8.0,True
+it0202,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.5071,0.7351,Q4 most ambiguous,False,415,5.0,False
+it0203,3,hosted-judge-v1,,9.0,True,True,model-A,0.9462,0.4726,Q3,False,313,10.0,True
+it0204,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.98,0.1609,Q1 clearest,False,281,10.0,True
+it0205,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7902,0.4029,Q2,False,225,8.0,True
+it0206,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7112,0.6379,Q4 most ambiguous,False,286,7.0,True
+it0207,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7462,0.1605,Q1 clearest,False,259,8.0,True
+it0208,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.5629,0.1246,Q1 clearest,False,272,6.0,False
+it0209,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7829,0.3118,Q2,False,250,8.0,True
+it0210,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6942,0.5919,Q4 most ambiguous,False,238,7.0,True
+it0211,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7739,0.4938,Q3,False,151,7.0,True
+it0212,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.5201,0.3361,Q2,True,294,5.0,False
+it0213,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.6016,0.4067,Q2,False,219,7.0,False
+it0214,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7462,0.3101,Q2,False,132,9.0,True
+it0215,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8983,0.4991,Q3,False,357,9.0,True
+it0216,3,hosted-judge-v1,,8.0,True,False,model-A,0.8548,0.6937,Q4 most ambiguous,True,398,9.0,False
+it0217,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7459,0.226,Q1 clearest,False,307,5.0,True
+it0218,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8241,0.5204,Q3,False,313,7.0,True
+it0219,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.579,0.5762,Q4 most ambiguous,False,322,6.0,False
+it0220,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7347,0.4536,Q3,False,273,7.0,True
+it0221,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6238,0.4508,Q3,False,304,6.0,True
+it0222,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7269,0.6758,Q4 most ambiguous,False,271,6.0,True
+it0223,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.9051,0.2904,Q2,False,270,8.0,True
+it0224,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7812,0.5121,Q3,False,386,7.0,True
+it0225,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6979,0.5016,Q3,False,263,6.0,True
+it0226,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.8072,0.3232,Q2,False,248,8.0,True
+it0227,3,hosted-judge-v1,4.0,4.0,False,False,model-A,0.4219,0.4321,Q3,False,214,5.0,False
+it0228,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6875,0.2737,Q1 clearest,False,260,8.0,True
+it0229,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.4456,0.5476,Q3,True,372,4.0,False
+it0230,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7093,0.2465,Q1 clearest,False,236,7.0,True
+it0231,3,hosted-judge-v1,10.0,10.0,False,True,model-A,0.8259,0.6034,Q4 most ambiguous,False,307,8.0,True
+it0232,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.6117,0.5778,Q4 most ambiguous,False,258,7.0,False
+it0233,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7865,0.1745,Q1 clearest,False,357,8.0,True
+it0234,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.4944,0.6048,Q4 most ambiguous,False,295,5.0,False
+it0235,3,hosted-judge-v1,,7.0,True,True,model-A,0.7783,0.5977,Q4 most ambiguous,False,306,8.0,True
+it0236,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8117,0.5557,Q3,False,297,7.0,True
+it0237,3,hosted-judge-v1,5.0,5.0,False,True,model-A,0.6798,0.7748,Q4 most ambiguous,False,313,6.0,True
+it0238,3,hosted-judge-v1,,,True,True,model-A,0.6585,0.8855,Q4 most ambiguous,False,247,6.0,True
+it0239,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7424,0.2942,Q2,False,328,9.0,True
+it0240,3,hosted-judge-v1,,9.0,True,False,model-A,0.5761,0.7158,Q4 most ambiguous,False,258,6.0,False
+it0241,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8353,0.266,Q1 clearest,False,355,9.0,True
+it0242,3,hosted-judge-v1,,7.0,True,True,model-A,0.9751,0.6511,Q4 most ambiguous,False,256,9.0,True
+it0243,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5385,0.2138,Q1 clearest,True,323,5.0,False
+it0244,3,hosted-judge-v1,4.0,4.0,False,False,model-A,0.3716,0.52,Q3,False,223,4.0,False
+it0245,3,hosted-judge-v1,10.0,10.0,False,True,model-A,0.9614,0.0344,Q1 clearest,False,355,10.0,True
+it0246,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6888,0.2766,Q1 clearest,False,314,7.0,True
+it0247,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8178,0.3324,Q2,False,170,8.0,True
+it0248,3,hosted-judge-v1,,8.0,True,True,model-A,0.9737,0.4263,Q3,False,187,10.0,True
+it0249,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7565,0.5689,Q4 most ambiguous,False,266,7.0,True
+it0250,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7495,0.4051,Q2,False,297,7.0,True
+it0251,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8343,0.0832,Q1 clearest,False,178,9.0,True
+it0252,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.8037,0.6258,Q4 most ambiguous,False,204,9.0,True
+it0253,3,hosted-judge-v1,10.0,10.0,False,True,model-A,0.6737,0.5971,Q4 most ambiguous,True,354,6.0,False
+it0254,3,hosted-judge-v1,10.0,10.0,False,False,model-A,0.9356,0.2317,Q1 clearest,True,348,10.0,False
+it0255,3,hosted-judge-v1,,7.0,True,True,model-A,0.4857,0.5673,Q4 most ambiguous,False,300,4.0,False
+it0256,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7943,0.4658,Q3,False,332,7.0,True
+it0257,3,hosted-judge-v1,,5.0,True,False,model-A,0.484,0.4557,Q3,False,266,6.0,False
+it0258,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.7255,0.2666,Q1 clearest,False,298,7.0,True
+it0259,3,hosted-judge-v1,5.0,5.0,False,True,model-A,0.5705,0.2783,Q1 clearest,False,285,5.0,False
+it0260,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.4668,0.5006,Q3,False,253,4.0,False
+it0261,3,hosted-judge-v1,,5.0,True,True,model-A,0.7893,0.463,Q3,False,237,8.0,True
+it0262,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8616,0.2266,Q1 clearest,False,270,9.0,True
+it0263,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.6823,0.3762,Q2,False,307,7.0,True
+it0264,3,hosted-judge-v1,,5.0,True,False,model-A,0.3805,0.5525,Q3,False,254,4.0,False
+it0265,3,hosted-judge-v1,3.0,3.0,False,False,model-A,0.3442,0.3471,Q2,False,231,4.0,False
+it0266,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6295,0.5248,Q3,False,274,6.0,True
+it0267,3,hosted-judge-v1,,5.0,True,False,model-A,0.5783,0.714,Q4 most ambiguous,False,171,6.0,False
+it0268,3,hosted-judge-v1,,,True,False,model-A,0.5483,0.8768,Q4 most ambiguous,False,195,5.0,False
+it0269,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.5153,0.6708,Q4 most ambiguous,False,200,5.0,False
+it0270,3,hosted-judge-v1,7.0,7.0,False,False,model-A,0.7998,0.3621,Q2,False,311,7.0,True
+it0271,3,hosted-judge-v1,10.0,10.0,False,False,model-A,0.8228,0.2525,Q1 clearest,True,407,9.0,False
+it0272,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5108,0.6849,Q4 most ambiguous,False,270,5.0,False
+it0273,3,hosted-judge-v1,9.0,9.0,False,True,model-A,0.5275,0.2823,Q2,True,281,5.0,False
+it0274,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7385,0.1841,Q1 clearest,False,250,6.0,True
+it0275,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.6752,0.2891,Q2,False,256,7.0,True
+it0276,3,hosted-judge-v1,,,True,False,model-A,0.4455,1.0,Q4 most ambiguous,False,278,4.0,False
+it0277,3,hosted-judge-v1,6.0,6.0,False,True,model-A,0.7317,0.5777,Q4 most ambiguous,False,248,8.0,True
+it0278,3,hosted-judge-v1,7.0,7.0,False,True,model-A,0.7649,0.158,Q1 clearest,False,185,8.0,True
+it0279,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.6608,0.3211,Q2,False,293,7.0,True
+it0280,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.6073,0.3959,Q2,False,129,6.0,False
+it0281,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8474,0.2654,Q1 clearest,False,303,8.0,True
+it0282,3,hosted-judge-v1,,8.0,True,True,model-A,0.7732,0.6854,Q4 most ambiguous,False,326,8.0,True
+it0283,3,hosted-judge-v1,,6.0,True,True,model-A,0.6606,0.6588,Q4 most ambiguous,False,257,6.0,True
+it0284,3,hosted-judge-v1,5.0,5.0,False,False,model-A,0.5914,0.4089,Q3,False,266,6.0,False
+it0285,3,hosted-judge-v1,6.0,6.0,False,False,model-A,0.7747,0.7034,Q4 most ambiguous,False,238,7.0,True
+it0286,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8315,0.2868,Q2,False,285,8.0,True
+it0287,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7799,0.7158,Q4 most ambiguous,False,230,8.0,True
+it0288,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.5498,0.2634,Q1 clearest,True,305,6.0,False
+it0289,3,hosted-judge-v1,,7.0,True,True,model-A,0.6922,0.3597,Q2,False,330,7.0,True
+it0290,3,hosted-judge-v1,5.0,5.0,False,True,model-A,0.6256,0.2565,Q1 clearest,False,300,7.0,True
+it0291,3,hosted-judge-v1,,6.0,True,True,model-A,0.4242,0.5806,Q4 most ambiguous,False,268,5.0,False
+it0292,3,hosted-judge-v1,8.0,8.0,False,False,model-A,0.7498,0.244,Q1 clearest,True,269,9.0,False
+it0293,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8346,0.265,Q1 clearest,False,291,7.0,True
+it0294,3,hosted-judge-v1,,8.0,True,True,model-A,0.6578,0.6912,Q4 most ambiguous,False,298,7.0,True
+it0295,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.8165,0.4118,Q3,False,318,8.0,True
+it0296,3,hosted-judge-v1,,5.0,True,False,model-A,0.4527,0.6987,Q4 most ambiguous,False,218,5.0,False
+it0297,3,hosted-judge-v1,8.0,8.0,False,True,model-A,0.7237,0.4993,Q3,False,246,8.0,True
+it0298,3,hosted-judge-v1,,,True,False,model-A,0.7837,0.8907,Q4 most ambiguous,True,421,9.0,False
+it0299,3,hosted-judge-v1,,,True,True,model-A,0.8706,0.8147,Q4 most ambiguous,False,191,9.0,True
+it0300,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.658,0.3356,Q2,False,186,7.0,True
+it0301,3,hosted-judge-v1,7.0,7.0,False,False,model-B,0.6055,0.6565,Q4 most ambiguous,False,264,5.0,False
+it0302,3,hosted-judge-v1,,,True,True,model-B,0.728,0.6944,Q4 most ambiguous,False,279,7.0,True
+it0303,3,hosted-judge-v1,,10.0,True,True,model-B,0.8445,0.4121,Q3,True,409,10.0,False
+it0304,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.6104,0.6523,Q4 most ambiguous,False,280,6.0,False
+it0305,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8713,0.0324,Q1 clearest,False,286,9.0,True
+it0306,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7658,0.0979,Q1 clearest,False,234,6.0,True
+it0307,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5061,0.1533,Q1 clearest,False,219,5.0,False
+it0308,3,hosted-judge-v1,4.0,4.0,False,True,model-B,0.5184,0.4933,Q3,False,223,4.0,False
+it0309,3,hosted-judge-v1,,6.0,True,False,model-B,0.3245,0.5704,Q4 most ambiguous,False,322,2.0,False
+it0310,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7551,0.2874,Q2,False,246,8.0,True
+it0311,3,hosted-judge-v1,4.0,4.0,False,False,model-B,0.3547,0.2536,Q1 clearest,False,307,2.0,False
+it0312,3,hosted-judge-v1,,4.0,True,False,model-B,0.4986,0.4678,Q3,False,270,7.0,False
+it0313,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.9351,0.4745,Q3,False,307,10.0,True
+it0314,3,hosted-judge-v1,7.0,7.0,False,False,model-B,0.6619,0.4706,Q3,False,308,7.0,True
+it0315,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.4278,0.4493,Q3,True,388,6.0,False
+it0316,3,hosted-judge-v1,,8.0,True,True,model-B,0.8701,0.448,Q3,False,192,10.0,True
+it0317,3,hosted-judge-v1,4.0,4.0,False,True,model-B,0.6461,0.5097,Q3,False,271,7.0,True
+it0318,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7825,0.2945,Q2,False,261,9.0,True
+it0319,3,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5152,0.3334,Q2,True,368,6.0,False
+it0320,3,hosted-judge-v1,,,True,True,model-B,0.5361,0.8656,Q4 most ambiguous,False,121,6.0,False
+it0321,3,hosted-judge-v1,,7.0,True,True,model-B,0.6703,0.3717,Q2,False,254,7.0,True
+it0322,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4273,0.4443,Q3,False,188,4.0,False
+it0323,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5566,0.338,Q2,True,314,6.0,False
+it0324,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.5929,0.4537,Q3,False,256,7.0,False
+it0325,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5758,0.3989,Q2,False,139,6.0,False
+it0326,3,hosted-judge-v1,10.0,10.0,False,False,model-B,0.7654,0.3786,Q2,True,490,9.0,False
+it0327,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4154,0.4687,Q3,False,199,5.0,False
+it0328,3,hosted-judge-v1,9.0,9.0,False,True,model-B,0.6694,0.4867,Q3,False,246,8.0,True
+it0329,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8334,0.0957,Q1 clearest,False,291,9.0,True
+it0330,3,hosted-judge-v1,,,True,True,model-B,0.695,0.7026,Q4 most ambiguous,False,334,7.0,True
+it0331,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6097,0.1738,Q1 clearest,False,318,6.0,False
+it0332,3,hosted-judge-v1,4.0,4.0,False,False,model-B,0.5281,0.3638,Q2,False,93,6.0,False
+it0333,3,hosted-judge-v1,,9.0,True,True,model-B,0.8705,0.3284,Q2,False,298,8.0,True
+it0334,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3795,0.0853,Q1 clearest,False,301,4.0,False
+it0335,3,hosted-judge-v1,10.0,10.0,False,False,model-B,0.7409,0.1793,Q1 clearest,True,436,9.0,False
+it0336,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7256,0.4618,Q3,False,344,7.0,True
+it0337,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8243,0.027,Q1 clearest,False,299,8.0,True
+it0338,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6739,0.1408,Q1 clearest,False,253,6.0,True
+it0339,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7578,0.3124,Q2,False,171,7.0,True
+it0340,3,hosted-judge-v1,,,True,True,model-B,0.8519,0.7284,Q4 most ambiguous,False,242,9.0,True
+it0341,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5329,0.2584,Q1 clearest,False,200,6.0,False
+it0342,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.6602,0.5435,Q3,True,341,8.0,False
+it0343,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7411,0.2406,Q1 clearest,False,301,8.0,True
+it0344,3,hosted-judge-v1,5.0,5.0,False,True,model-B,0.3413,0.1277,Q1 clearest,True,458,4.0,False
+it0345,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6505,0.2063,Q1 clearest,False,243,6.0,True
+it0346,3,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8829,0.5368,Q3,False,165,9.0,True
+it0347,3,hosted-judge-v1,,9.0,True,True,model-B,0.7889,0.4671,Q3,False,346,7.0,True
+it0348,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.5424,0.3542,Q2,False,277,4.0,False
+it0349,3,hosted-judge-v1,10.0,10.0,False,False,model-B,0.8375,0.2477,Q1 clearest,True,350,9.0,False
+it0350,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8605,0.438,Q3,False,380,10.0,True
+it0351,3,hosted-judge-v1,,6.0,True,False,model-B,0.442,0.5364,Q3,False,264,4.0,False
+it0352,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4731,0.2032,Q1 clearest,False,247,4.0,False
+it0353,3,hosted-judge-v1,3.0,3.0,False,False,model-B,0.4402,0.42,Q3,False,240,5.0,False
+it0354,3,hosted-judge-v1,4.0,4.0,False,True,model-B,0.699,0.6929,Q4 most ambiguous,False,270,8.0,True
+it0355,3,hosted-judge-v1,7.0,7.0,False,False,model-B,0.6432,0.4452,Q3,True,269,7.0,False
+it0356,3,hosted-judge-v1,7.0,7.0,False,False,model-B,0.6946,0.31,Q2,False,335,6.0,True
+it0357,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4354,0.6401,Q4 most ambiguous,False,247,5.0,False
+it0358,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3786,0.4483,Q3,False,153,4.0,False
+it0359,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.8909,0.2756,Q1 clearest,False,197,8.0,True
+it0360,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7213,0.2735,Q1 clearest,False,297,8.0,True
+it0361,3,hosted-judge-v1,10.0,10.0,False,False,model-B,0.7212,0.301,Q2,True,430,9.0,False
+it0362,3,hosted-judge-v1,,,True,False,model-B,0.4214,0.7928,Q4 most ambiguous,False,211,4.0,False
+it0363,3,hosted-judge-v1,,,True,False,model-B,0.3695,0.7521,Q4 most ambiguous,False,244,3.0,False
+it0364,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.323,0.3135,Q2,False,247,3.0,False
+it0365,3,hosted-judge-v1,,4.0,True,True,model-B,0.7837,0.6225,Q4 most ambiguous,False,235,10.0,True
+it0366,3,hosted-judge-v1,9.0,9.0,False,True,model-B,0.9286,0.3556,Q2,False,395,9.0,True
+it0367,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8217,0.2332,Q1 clearest,False,241,8.0,True
+it0368,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.811,0.3933,Q2,False,459,8.0,True
+it0369,3,hosted-judge-v1,4.0,4.0,False,False,model-B,0.4454,0.2694,Q1 clearest,False,227,4.0,False
+it0370,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3454,0.4745,Q3,False,176,3.0,False
+it0371,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6347,0.3293,Q2,False,180,7.0,True
+it0372,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5851,0.2131,Q1 clearest,False,220,6.0,False
+it0373,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5712,0.6921,Q4 most ambiguous,False,299,6.0,False
+it0374,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.621,0.426,Q3,False,249,7.0,True
+it0375,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7339,0.1347,Q1 clearest,False,271,6.0,True
+it0376,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6623,0.3937,Q2,False,292,7.0,True
+it0377,3,hosted-judge-v1,,6.0,True,True,model-B,0.4063,0.5307,Q3,False,227,3.0,False
+it0378,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6502,0.239,Q1 clearest,False,314,6.0,True
+it0379,3,hosted-judge-v1,5.0,5.0,False,True,model-B,0.7323,0.7445,Q4 most ambiguous,False,256,8.0,True
+it0380,3,hosted-judge-v1,9.0,9.0,False,True,model-B,0.5935,0.5628,Q4 most ambiguous,True,366,5.0,False
+it0381,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5589,0.529,Q3,True,319,6.0,False
+it0382,3,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8552,0.3841,Q2,False,295,9.0,True
+it0383,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.619,0.0961,Q1 clearest,False,337,6.0,False
+it0384,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.673,0.1643,Q1 clearest,False,246,7.0,True
+it0385,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.5887,0.3823,Q2,False,291,5.0,False
+it0386,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.686,0.2786,Q1 clearest,False,147,6.0,True
+it0387,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8598,0.6046,Q4 most ambiguous,False,250,8.0,True
+it0388,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8966,0.4035,Q2,False,263,9.0,True
+it0389,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.494,0.48,Q3,False,244,5.0,False
+it0390,3,hosted-judge-v1,4.0,4.0,False,False,model-B,0.4329,0.2295,Q1 clearest,False,274,4.0,False
+it0391,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.776,0.5778,Q4 most ambiguous,False,227,8.0,True
+it0392,3,hosted-judge-v1,,8.0,True,False,model-B,0.7622,0.8256,Q4 most ambiguous,True,438,8.0,False
+it0393,3,hosted-judge-v1,,,True,True,model-B,0.6722,0.6252,Q4 most ambiguous,False,323,7.0,True
+it0394,3,hosted-judge-v1,,5.0,True,True,model-B,0.5171,0.6909,Q4 most ambiguous,False,217,6.0,False
+it0395,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6907,0.5097,Q3,False,262,8.0,True
+it0396,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8938,0.3588,Q2,False,233,9.0,True
+it0397,3,hosted-judge-v1,,6.0,True,True,model-B,0.7926,0.752,Q4 most ambiguous,False,286,9.0,True
+it0398,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.71,0.2985,Q2,False,233,7.0,True
+it0399,3,hosted-judge-v1,9.0,9.0,False,True,model-B,0.864,0.4211,Q3,False,302,8.0,True
+it0400,3,hosted-judge-v1,,8.0,True,False,model-B,0.5807,0.7525,Q4 most ambiguous,False,259,6.0,False
+it0401,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6701,0.4534,Q3,False,208,7.0,True
+it0402,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7251,0.5898,Q4 most ambiguous,False,192,7.0,True
+it0403,3,hosted-judge-v1,9.0,9.0,False,False,model-B,0.6026,0.2445,Q1 clearest,True,391,7.0,False
+it0404,3,hosted-judge-v1,,7.0,True,False,model-B,0.613,0.418,Q3,False,248,6.0,False
+it0405,3,hosted-judge-v1,,6.0,True,False,model-B,0.5376,0.153,Q1 clearest,False,296,7.0,False
+it0406,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5092,0.8328,Q4 most ambiguous,False,292,5.0,False
+it0407,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5152,0.4182,Q3,False,226,4.0,False
+it0408,3,hosted-judge-v1,9.0,9.0,False,True,model-B,0.9433,0.3602,Q2,False,376,8.0,True
+it0409,3,hosted-judge-v1,,,True,True,model-B,0.8714,0.554,Q3,False,167,10.0,True
+it0410,3,hosted-judge-v1,,7.0,True,False,model-B,0.5833,0.6496,Q4 most ambiguous,False,251,7.0,False
+it0411,3,hosted-judge-v1,,5.0,True,False,model-B,0.2672,0.5897,Q4 most ambiguous,True,388,4.0,False
+it0412,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7563,0.4458,Q3,False,216,7.0,True
+it0413,3,hosted-judge-v1,,4.0,True,True,model-B,0.7713,0.6774,Q4 most ambiguous,False,286,8.0,True
+it0414,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7003,0.4119,Q3,False,368,7.0,True
+it0415,3,hosted-judge-v1,,4.0,True,True,model-B,0.3121,0.314,Q2,False,262,2.0,False
+it0416,3,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6452,0.4296,Q3,False,152,8.0,True
+it0417,3,hosted-judge-v1,4.0,4.0,False,False,model-B,0.2869,0.6269,Q4 most ambiguous,False,225,3.0,False
+it0418,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.895,0.0541,Q1 clearest,True,376,10.0,False
+it0419,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6945,0.0915,Q1 clearest,False,281,6.0,True
+it0420,3,hosted-judge-v1,10.0,10.0,False,False,model-B,0.7827,0.3183,Q2,True,381,9.0,False
+it0421,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7745,0.5088,Q3,False,247,8.0,True
+it0422,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5689,0.5159,Q3,False,253,4.0,False
+it0423,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6613,0.1418,Q1 clearest,False,205,6.0,True
+it0424,3,hosted-judge-v1,4.0,4.0,False,False,model-B,0.4962,0.3853,Q2,False,283,6.0,False
+it0425,3,hosted-judge-v1,,7.0,True,True,model-B,0.629,0.5367,Q3,True,279,7.0,False
+it0426,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.4148,0.5138,Q3,False,283,4.0,False
+it0427,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6692,0.039,Q1 clearest,False,246,8.0,True
+it0428,3,hosted-judge-v1,9.0,9.0,False,True,model-B,0.7744,0.1542,Q1 clearest,False,337,6.0,True
+it0429,3,hosted-judge-v1,,7.0,True,True,model-B,0.5953,0.5087,Q3,True,415,6.0,False
+it0430,3,hosted-judge-v1,,5.0,True,False,model-B,0.5982,0.6822,Q4 most ambiguous,False,314,6.0,False
+it0431,3,hosted-judge-v1,,8.0,True,True,model-B,0.756,0.2929,Q2,False,178,9.0,True
+it0432,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7756,0.375,Q2,False,358,8.0,True
+it0433,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8492,0.2098,Q1 clearest,False,197,10.0,True
+it0434,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8059,0.4201,Q3,False,318,8.0,True
+it0435,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7713,0.3183,Q2,False,242,6.0,True
+it0436,3,hosted-judge-v1,,5.0,True,True,model-B,0.6935,0.7945,Q4 most ambiguous,False,205,7.0,True
+it0437,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5327,0.0802,Q1 clearest,False,254,6.0,False
+it0438,3,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5866,0.6455,Q4 most ambiguous,False,348,6.0,False
+it0439,3,hosted-judge-v1,,8.0,True,True,model-B,0.6494,0.7341,Q4 most ambiguous,False,375,8.0,True
+it0440,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7255,0.3569,Q2,False,289,6.0,True
+it0441,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.4882,0.6519,Q4 most ambiguous,False,301,5.0,False
+it0442,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5601,0.5126,Q3,False,247,7.0,False
+it0443,3,hosted-judge-v1,7.0,7.0,False,False,model-B,0.4928,0.5157,Q3,False,214,5.0,False
+it0444,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8341,0.2706,Q1 clearest,False,309,8.0,True
+it0445,3,hosted-judge-v1,4.0,4.0,False,False,model-B,0.4207,0.1778,Q1 clearest,False,276,3.0,False
+it0446,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8427,0.1694,Q1 clearest,False,252,8.0,True
+it0447,3,hosted-judge-v1,4.0,4.0,False,True,model-B,0.3565,0.2897,Q2,False,269,5.0,False
+it0448,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5232,0.193,Q1 clearest,True,373,5.0,False
+it0449,3,hosted-judge-v1,9.0,9.0,False,True,model-B,0.7696,0.4045,Q2,False,279,7.0,True
+it0450,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3913,0.5178,Q3,False,223,4.0,False
+it0451,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.4685,0.332,Q2,True,405,6.0,False
+it0452,3,hosted-judge-v1,,7.0,True,False,model-B,0.5978,0.4592,Q3,False,240,7.0,False
+it0453,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5273,0.6141,Q4 most ambiguous,True,483,6.0,False
+it0454,3,hosted-judge-v1,,8.0,True,True,model-B,0.8646,0.6928,Q4 most ambiguous,False,278,8.0,True
+it0455,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8668,0.5651,Q4 most ambiguous,False,222,8.0,True
+it0456,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7301,0.3292,Q2,False,334,7.0,True
+it0457,3,hosted-judge-v1,,7.0,True,True,model-B,0.7885,0.3108,Q2,False,269,7.0,True
+it0458,3,hosted-judge-v1,,7.0,True,True,model-B,0.6442,0.6069,Q4 most ambiguous,False,131,7.0,True
+it0459,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5337,0.2933,Q2,False,178,7.0,False
+it0460,3,hosted-judge-v1,3.0,3.0,False,False,model-B,0.3748,0.6041,Q4 most ambiguous,False,195,4.0,False
+it0461,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6238,0.3206,Q2,False,347,6.0,True
+it0462,3,hosted-judge-v1,3.0,3.0,False,False,model-B,0.3348,0.2945,Q2,False,162,3.0,False
+it0463,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.6244,0.418,Q3,True,342,7.0,False
+it0464,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8518,0.2081,Q1 clearest,False,243,9.0,True
+it0465,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6994,0.2865,Q2,False,275,7.0,True
+it0466,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6284,0.483,Q3,False,285,6.0,True
+it0467,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8391,0.0829,Q1 clearest,False,223,8.0,True
+it0468,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6357,0.1852,Q1 clearest,False,257,7.0,True
+it0469,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.6449,0.6741,Q4 most ambiguous,True,327,7.0,False
+it0470,3,hosted-judge-v1,,7.0,True,True,model-B,0.7833,0.5208,Q3,False,268,9.0,True
+it0471,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.7217,0.3127,Q2,True,300,7.0,False
+it0472,3,hosted-judge-v1,,4.0,True,False,model-B,0.3264,0.575,Q4 most ambiguous,False,319,3.0,False
+it0473,3,hosted-judge-v1,,6.0,True,False,model-B,0.3502,0.7616,Q4 most ambiguous,False,281,2.0,False
+it0474,3,hosted-judge-v1,7.0,7.0,False,False,model-B,0.8273,0.3753,Q2,False,191,8.0,True
+it0475,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.3469,0.6047,Q4 most ambiguous,False,283,3.0,False
+it0476,3,hosted-judge-v1,7.0,7.0,False,False,model-B,0.3955,0.4155,Q3,True,456,3.0,False
+it0477,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5703,0.4547,Q3,False,219,6.0,False
+it0478,3,hosted-judge-v1,4.0,4.0,False,True,model-B,0.4413,0.6446,Q4 most ambiguous,False,196,4.0,False
+it0479,3,hosted-judge-v1,,8.0,True,True,model-B,0.7468,0.5953,Q4 most ambiguous,False,292,7.0,True
+it0480,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8404,0.1107,Q1 clearest,False,194,7.0,True
+it0481,3,hosted-judge-v1,,10.0,True,False,model-B,0.3858,0.5622,Q4 most ambiguous,False,305,5.0,False
+it0482,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7517,0.4426,Q3,False,174,8.0,True
+it0483,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7453,0.7715,Q4 most ambiguous,False,187,8.0,True
+it0484,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.2919,0.4207,Q3,False,277,4.0,False
+it0485,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6614,0.4642,Q3,False,157,7.0,True
+it0486,3,hosted-judge-v1,,7.0,True,False,model-B,0.5417,0.5866,Q4 most ambiguous,False,224,5.0,False
+it0487,3,hosted-judge-v1,9.0,9.0,False,False,model-B,0.7017,0.143,Q1 clearest,True,366,8.0,False
+it0488,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7796,0.6212,Q4 most ambiguous,False,263,9.0,True
+it0489,3,hosted-judge-v1,,7.0,True,True,model-B,0.6999,0.6094,Q4 most ambiguous,False,283,7.0,True
+it0490,3,hosted-judge-v1,9.0,9.0,False,False,model-B,0.5118,0.302,Q2,True,458,7.0,False
+it0491,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5235,0.723,Q4 most ambiguous,False,396,5.0,False
+it0492,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7898,0.409,Q3,False,257,8.0,True
+it0493,3,hosted-judge-v1,9.0,9.0,False,False,model-B,0.7702,0.4081,Q2,True,312,9.0,False
+it0494,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6671,0.122,Q1 clearest,False,243,6.0,True
+it0495,3,hosted-judge-v1,,,True,True,model-B,0.3819,0.8201,Q4 most ambiguous,False,243,4.0,False
+it0496,3,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5682,0.2142,Q1 clearest,False,263,6.0,False
+it0497,3,hosted-judge-v1,,7.0,True,False,model-B,0.4039,0.3752,Q2,True,464,5.0,False
+it0498,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.2895,0.1085,Q1 clearest,True,192,5.0,False
+it0499,3,hosted-judge-v1,,5.0,True,False,model-B,0.2038,0.3778,Q2,False,173,1.0,False
+it0500,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.9012,0.4184,Q3,False,258,8.0,True
+it0501,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.71,0.808,Q4 most ambiguous,False,178,7.0,True
+it0502,3,hosted-judge-v1,5.0,5.0,False,True,model-B,0.7892,0.5575,Q4 most ambiguous,False,259,9.0,True
+it0503,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7223,0.2872,Q2,False,298,7.0,True
+it0504,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6298,0.1401,Q1 clearest,False,285,7.0,True
+it0505,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6921,0.4162,Q3,False,321,7.0,True
+it0506,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5221,0.2122,Q1 clearest,False,84,5.0,False
+it0507,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8639,0.5064,Q3,False,333,7.0,True
+it0508,3,hosted-judge-v1,,5.0,True,True,model-B,0.8628,0.653,Q4 most ambiguous,False,190,8.0,True
+it0509,3,hosted-judge-v1,4.0,4.0,False,False,model-B,0.3924,0.3652,Q2,False,294,4.0,False
+it0510,3,hosted-judge-v1,9.0,9.0,False,False,model-B,0.5751,0.3243,Q2,True,353,7.0,False
+it0511,3,hosted-judge-v1,5.0,5.0,False,True,model-B,0.365,0.332,Q2,False,202,4.0,False
+it0512,3,hosted-judge-v1,,10.0,True,False,model-B,0.7054,0.2223,Q1 clearest,True,310,9.0,False
+it0513,3,hosted-judge-v1,,5.0,True,False,model-B,0.4102,0.3685,Q2,False,178,3.0,False
+it0514,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6692,0.305,Q2,False,239,8.0,True
+it0515,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.6544,0.2916,Q2,False,197,7.0,True
+it0516,3,hosted-judge-v1,,4.0,True,False,model-B,0.1175,0.6965,Q4 most ambiguous,False,128,1.0,False
+it0517,3,hosted-judge-v1,4.0,4.0,False,False,model-B,0.4208,0.0886,Q1 clearest,False,237,5.0,False
+it0518,3,hosted-judge-v1,,5.0,True,False,model-B,0.4186,0.1833,Q1 clearest,True,344,5.0,False
+it0519,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8769,0.2266,Q1 clearest,False,175,8.0,True
+it0520,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.821,0.6215,Q4 most ambiguous,False,314,8.0,True
+it0521,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.4969,0.5351,Q3,False,241,4.0,False
+it0522,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.6354,0.4614,Q3,True,421,7.0,False
+it0523,3,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6992,0.6618,Q4 most ambiguous,False,269,6.0,True
+it0524,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5202,0.329,Q2,False,293,5.0,False
+it0525,3,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6266,0.3289,Q2,False,192,5.0,True
+it0526,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.6276,0.5215,Q3,False,303,6.0,True
+it0527,3,hosted-judge-v1,,,True,True,model-B,0.6565,0.8367,Q4 most ambiguous,False,193,6.0,True
+it0528,3,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8718,0.0317,Q1 clearest,False,332,10.0,True
+it0529,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7944,0.2034,Q1 clearest,False,259,7.0,True
+it0530,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.625,0.2622,Q1 clearest,False,231,6.0,True
+it0531,3,hosted-judge-v1,5.0,5.0,False,True,model-B,0.4737,0.3016,Q2,False,98,5.0,False
+it0532,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.6105,0.3567,Q2,False,247,5.0,False
+it0533,3,hosted-judge-v1,,4.0,True,True,model-B,0.392,0.6915,Q4 most ambiguous,False,201,4.0,False
+it0534,3,hosted-judge-v1,,7.0,True,True,model-B,0.7177,0.5455,Q3,False,387,8.0,True
+it0535,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.8033,0.4151,Q3,True,420,9.0,False
+it0536,3,hosted-judge-v1,,5.0,True,True,model-B,0.5144,0.6507,Q4 most ambiguous,False,237,6.0,False
+it0537,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.7168,0.4244,Q3,False,347,6.0,True
+it0538,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7572,0.1997,Q1 clearest,False,290,8.0,True
+it0539,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.5712,0.4028,Q2,False,289,5.0,False
+it0540,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5585,0.3157,Q2,False,163,6.0,False
+it0541,3,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6216,0.5652,Q4 most ambiguous,False,258,5.0,True
+it0542,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6222,0.1909,Q1 clearest,False,211,6.0,True
+it0543,3,hosted-judge-v1,,4.0,True,True,model-B,0.5222,0.7173,Q4 most ambiguous,False,175,4.0,False
+it0544,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8249,0.3004,Q2,False,274,9.0,True
+it0545,3,hosted-judge-v1,4.0,4.0,False,False,model-B,0.3707,0.4243,Q3,False,257,3.0,False
+it0546,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5732,0.1901,Q1 clearest,False,245,7.0,False
+it0547,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.9065,0.4574,Q3,False,245,10.0,True
+it0548,3,hosted-judge-v1,10.0,10.0,False,False,model-B,0.9108,0.3801,Q2,True,454,10.0,False
+it0549,3,hosted-judge-v1,9.0,9.0,False,True,model-B,0.9278,0.471,Q3,False,236,10.0,True
+it0550,3,hosted-judge-v1,,,True,False,model-B,0.4808,0.9602,Q4 most ambiguous,False,201,5.0,False
+it0551,3,hosted-judge-v1,5.0,5.0,False,True,model-B,0.6212,0.4212,Q3,False,215,7.0,True
+it0552,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.6227,0.0932,Q1 clearest,False,192,6.0,True
+it0553,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.4807,0.214,Q1 clearest,True,361,6.0,False
+it0554,3,hosted-judge-v1,9.0,9.0,False,False,model-B,0.6179,0.3563,Q2,True,371,6.0,False
+it0555,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5683,0.1883,Q1 clearest,False,208,6.0,False
+it0556,3,hosted-judge-v1,3.0,3.0,False,False,model-B,0.2134,0.6381,Q4 most ambiguous,False,191,3.0,False
+it0557,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.6691,0.4916,Q3,False,226,5.0,True
+it0558,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5503,0.2555,Q1 clearest,False,236,6.0,False
+it0559,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7734,0.2928,Q2,False,307,8.0,True
+it0560,3,hosted-judge-v1,,8.0,True,True,model-B,0.8969,0.5577,Q4 most ambiguous,False,268,10.0,True
+it0561,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8065,0.2157,Q1 clearest,False,179,9.0,True
+it0562,3,hosted-judge-v1,3.0,3.0,False,False,model-B,0.3121,0.0446,Q1 clearest,False,261,3.0,False
+it0563,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5445,0.3332,Q2,False,326,7.0,False
+it0564,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4838,0.6252,Q4 most ambiguous,False,254,4.0,False
+it0565,3,hosted-judge-v1,,5.0,True,True,model-B,0.6768,0.6503,Q4 most ambiguous,False,340,6.0,True
+it0566,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8063,0.3616,Q2,False,240,9.0,True
+it0567,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5069,0.4563,Q3,False,222,5.0,False
+it0568,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.757,0.4974,Q3,False,322,7.0,True
+it0569,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7157,0.4011,Q2,False,409,9.0,True
+it0570,3,hosted-judge-v1,,6.0,True,False,model-B,0.7566,0.7291,Q4 most ambiguous,True,367,8.0,False
+it0571,3,hosted-judge-v1,4.0,4.0,False,False,model-B,0.2785,0.6133,Q4 most ambiguous,False,248,3.0,False
+it0572,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.6175,0.3075,Q2,False,243,6.0,False
+it0573,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.4238,0.2814,Q2,False,263,3.0,False
+it0574,3,hosted-judge-v1,6.0,6.0,False,False,model-B,0.5727,0.1098,Q1 clearest,False,294,4.0,False
+it0575,3,hosted-judge-v1,7.0,7.0,False,False,model-B,0.6178,0.2572,Q1 clearest,False,213,6.0,False
+it0576,3,hosted-judge-v1,,7.0,True,True,model-B,0.762,0.4411,Q3,False,218,8.0,True
+it0577,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5407,0.1085,Q1 clearest,False,267,5.0,False
+it0578,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8452,0.3726,Q2,False,277,8.0,True
+it0579,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.908,0.3699,Q2,False,319,8.0,True
+it0580,3,hosted-judge-v1,8.0,8.0,False,False,model-B,0.5488,0.4249,Q3,True,366,5.0,False
+it0581,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7155,0.3007,Q2,False,244,7.0,True
+it0582,3,hosted-judge-v1,9.0,9.0,False,True,model-B,0.8548,0.6849,Q4 most ambiguous,False,308,8.0,True
+it0583,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8407,0.328,Q2,False,354,8.0,True
+it0584,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.6886,0.4494,Q3,False,213,7.0,True
+it0585,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.8091,0.5182,Q3,False,304,8.0,True
+it0586,3,hosted-judge-v1,5.0,5.0,False,False,model-B,0.5628,0.2863,Q2,False,212,5.0,False
+it0587,3,hosted-judge-v1,,9.0,True,False,model-B,0.8084,0.6177,Q4 most ambiguous,True,372,8.0,False
+it0588,3,hosted-judge-v1,7.0,7.0,False,False,model-B,0.6112,0.5153,Q3,False,270,6.0,False
+it0589,3,hosted-judge-v1,7.0,7.0,False,False,model-B,0.5155,0.1963,Q1 clearest,True,290,5.0,False
+it0590,3,hosted-judge-v1,6.0,6.0,False,True,model-B,0.5805,0.2761,Q1 clearest,False,224,6.0,False
+it0591,3,hosted-judge-v1,,5.0,True,True,model-B,0.4841,0.718,Q4 most ambiguous,False,124,5.0,False
+it0592,3,hosted-judge-v1,,,True,False,model-B,0.5119,0.9393,Q4 most ambiguous,False,252,5.0,False
+it0593,3,hosted-judge-v1,8.0,8.0,False,True,model-B,0.7525,0.4532,Q3,False,282,7.0,True
+it0594,3,hosted-judge-v1,5.0,5.0,False,True,model-B,0.8157,0.5366,Q3,False,304,8.0,True
+it0595,3,hosted-judge-v1,,7.0,True,False,model-B,0.8031,0.4931,Q3,False,336,9.0,True
+it0596,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.7445,0.2986,Q2,False,208,8.0,True
+it0597,3,hosted-judge-v1,,,True,False,model-B,0.5146,0.9729,Q4 most ambiguous,False,262,5.0,False
+it0598,3,hosted-judge-v1,7.0,7.0,False,True,model-B,0.8225,0.4259,Q3,False,286,8.0,True
+it0599,3,hosted-judge-v1,9.0,9.0,False,False,model-B,0.5772,0.2117,Q1 clearest,True,388,7.0,False
