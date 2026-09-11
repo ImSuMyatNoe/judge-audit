@@ -949,7 +949,7 @@ python -m judge_audit.audit --input my_trace.csv   <span class="c"># your data</
   (function risk() {
     const g = document.getElementById("risk-chart");
     if (!g) return;
-    const pts = [[25, 0.61], [50, 0.65], [100, 0.74], [200, 0.86], [400, 0.92], [800, 0.98]];
+    const pts = [[25, 0.616], [50, 0.680], [100, 0.739], [200, 0.843], [400, 0.920], [800, 0.976]];
     const x0 = 46, x1 = 486, yTop = 26, yBase = 196;
     const lx = v => x0 + (Math.log(v / 25) / Math.log(800 / 25)) * (x1 - x0);
     const ly = v => yBase - ((v - 0.5) / 0.52) * (yBase - yTop);
