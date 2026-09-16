@@ -1,34 +1,39 @@
 <title>Is Your Judge Lying?</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
 
 <style>
-  /* Warm paper, one bold grotesque, a mono for everything small, one
-     periwinkle accent. Red and green appear only as buggy/fixed states, and
-     because those two hues sit below the safe colour-vision separation they
-     always carry a word and a glyph too. Charts use periwinkle and red only --
-     a pair that passes every check on this ground. */
+  /* Warm cream ground. Fraunces for the big warm headlines, DM Sans for
+     reading, DM Mono for the small chrome. Two working colours carry every
+     broken / fixed state: rose and teal, which separate at deltaE 8.3 under
+     simulated colour blindness on this ground, and which always come with a
+     word and a glyph as well. Everything else in the palette is decoration:
+     apricot, butter, plum, sky. Soft, never loud. */
   :root {
-    --paper:    #f4f2ee;
-    --paper-2:  #eceae4;
-    --card:     #faf9f6;
-    --line:     #dedbd3;
-    --line-2:   #c4c0b6;
-    --ink:      #14130f;
-    --ink-2:    #3d3b35;
-    --muted:    #7a756c;
+    --paper:    #faf6f2;
+    --paper-2:  #f2ebe4;
+    --card:     #fffcf9;
+    --line:     #e6ddd4;
+    --line-2:   #cfc2b6;
+    --ink:      #201a19;
+    --ink-2:    #4b4240;
+    --muted:    #877a75;
 
-    --accent:     #4f6fc7;
-    --accent-dim: #e4e9f7;
-    --red:        #d93025;
-    --red-dim:    #fae9e7;
-    --green:      #1e7a3c;
-    --green-dim:  #e6f2e9;
+    --rose:     #c9455b;
+    --rose-dim: #fbe9ec;
+    --teal:     #0e9a93;
+    --teal-dim: #e2f4f2;
+    --plum:     #7b4b94;
+    --plum-dim: #f2eaf7;
+    --apricot:  #ef8f5a;
+    --butter:   #f0be3f;
+    --sky:      #5b8fd6;
 
-    --display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
-    --mono: "Space Mono", ui-monospace, Menlo, monospace;
-    --pad: clamp(24px, 5vw, 92px);
+    --display: "Fraunces", Georgia, serif;
+    --body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+    --mono: "DM Mono", ui-monospace, Menlo, monospace;
+    --pad: clamp(22px, 4.6vw, 86px);
   }
 
   * { box-sizing: border-box; }
@@ -36,801 +41,999 @@
   body {
     margin: 0; min-height: 100svh; display: flex; flex-direction: column;
     background: var(--paper); color: var(--ink);
-    font-family: var(--display); font-size: 16px; line-height: 1.5;
+    font-family: var(--body); font-size: 17px; line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
 
   .deck { flex: 1; min-height: 0; display: flex; flex-direction: column; }
   .slide {
     display: none; flex: 1; min-height: 0; overflow-y: auto;
-    padding: clamp(16px, 2.6vh, 30px) var(--pad) 0;
-    animation: in .2s ease-out both;
+    padding: clamp(14px, 2.4vh, 28px) var(--pad) 0;
   }
   .slide.on { display: flex; flex-direction: column; }
-  @keyframes in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) { .slide { animation: none; } }
 
-  .slide-head { display: flex; align-items: center; gap: 11px; flex: none; }
-  .slide-head .glyph { width: 24px; height: 24px; flex: none;
-    display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 2px; }
-  .slide-head .glyph i { background: var(--ink); border-radius: 50%; display: block; }
-  .slide-head .glyph i.off { background: transparent; }
-  .slide-head .wordmark { font-weight: 700; font-size: 12.5px; line-height: 1.15; letter-spacing: -.01em; }
-  .slide-head .wordmark span { display: block; font-weight: 400; color: var(--muted); font-size: 11.5px; }
+  .slide-head { display: flex; align-items: baseline; gap: 12px; flex: none;
+    font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--muted); }
+  .slide-head .who { margin-left: auto; }
 
   .slide-foot {
     flex: none; border-top: 1px solid var(--line);
-    padding: 10px 0 clamp(10px, 1.8vh, 18px);
+    padding: 9px 0 clamp(9px, 1.6vh, 16px);
     display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
-    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
   }
   .slide-foot a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
   .slide-foot .pg { font-variant-numeric: tabular-nums; }
 
   .inner {
-    width: 100%; max-width: 1240px; margin: 0 auto; flex: 1;
+    width: 100%; max-width: 1260px; margin: 0 auto; flex: 1;
     display: flex; flex-direction: column; justify-content: center;
-    gap: clamp(16px, 2.6vh, 34px); padding: clamp(10px, 2.4vh, 32px) 0;
+    gap: clamp(13px, 2.2vh, 28px); padding: clamp(6px, 1.6vh, 20px) 0;
   }
 
-  /* --- type: bigger than before, one idea per slide --------------------- */
-  h1, h2 {
-    font-family: var(--display); font-weight: 700; margin: 0;
-    letter-spacing: -.035em; line-height: 1.0; text-wrap: balance; color: var(--ink);
+  /* ---------- entrance motion: every top level block rises in turn ------- */
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  @keyframes pop  { from { opacity: 0; transform: scale(.9); } to { opacity: 1; transform: none; } }
+  @keyframes sweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes drift { 0% { opacity: 0; transform: translateY(0) scaleX(1); }
+                     35% { opacity: .75; }
+                     100% { opacity: 0; transform: translateY(-34px) scaleX(1.5); } }
+  @keyframes sway { 0%,100% { transform: rotate(-2.2deg); } 50% { transform: rotate(2.2deg); } }
+  @keyframes twinkle { 0%,100% { opacity: .25; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.15); } }
+  @keyframes dash { to { stroke-dashoffset: 0; } }
+
+  .slide .inner > * { opacity: 0; }
+  .slide.live .inner > * { animation: rise .52s cubic-bezier(.2,.75,.3,1) both; }
+  .slide.live .inner > *:nth-child(1) { animation-delay: .04s; }
+  .slide.live .inner > *:nth-child(2) { animation-delay: .16s; }
+  .slide.live .inner > *:nth-child(3) { animation-delay: .28s; }
+  .slide.live .inner > *:nth-child(4) { animation-delay: .40s; }
+  .slide.live .inner > *:nth-child(5) { animation-delay: .52s; }
+  .slide.live .inner > *:nth-child(6) { animation-delay: .62s; }
+  .slide.live .inner > *:nth-child(7) { animation-delay: .72s; }
+
+  .pop { opacity: 0; }
+  .slide.live .pop { animation: pop .5s cubic-bezier(.2,.9,.3,1.1) both; }
+  .slide.live .pop:nth-of-type(1) { animation-delay: .5s; }
+  .slide.live .pop:nth-of-type(2) { animation-delay: .66s; }
+  .slide.live .pop:nth-of-type(3) { animation-delay: .82s; }
+  .slide.live .pop:nth-of-type(4) { animation-delay: .98s; }
+  .slide.live .pop:nth-of-type(5) { animation-delay: 1.14s; }
+  .slide.live .pop:nth-of-type(6) { animation-delay: 1.30s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide .inner > *, .pop { opacity: 1 !important; animation: none !important; }
+    .scene * { animation: none !important; }
   }
-  h1 { font-size: clamp(40px, 6.6vw, 92px); }
-  h2 { font-size: clamp(30px, 4.9vw, 66px); }
-  h3 { font-weight: 700; margin: 0; font-size: clamp(18px, 2.1vw, 26px); letter-spacing: -.018em; }
+
+  /* ------------------------------ type -------------------------------- */
+  h1, h2 {
+    font-family: var(--display); font-weight: 600; margin: 0;
+    letter-spacing: -.022em; line-height: 1.02; text-wrap: balance; color: var(--ink);
+    font-variation-settings: "SOFT" 40, "WONK" 1;
+  }
+  h1 { font-size: clamp(46px, 7.4vw, 108px); }
+  h2 { font-size: clamp(34px, 5.5vw, 78px); }
+  h3 { font-family: var(--display); font-weight: 600; margin: 0;
+       font-size: clamp(21px, 2.5vw, 32px); letter-spacing: -.015em; }
 
   .eyebrow {
-    font-family: var(--mono); font-size: clamp(11px, 1.05vw, 13.5px);
-    letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+    font-family: var(--mono); font-size: clamp(12px, 1.1vw, 14.5px);
+    letter-spacing: .13em; text-transform: uppercase; color: var(--muted);
     display: block; margin: 0;
   }
-  .eyebrow b { color: var(--accent); font-weight: 700; }
+  .eyebrow b { color: var(--plum); font-weight: 500; }
 
-  p { margin: 0; max-width: 46ch; }
-  .lead { font-size: clamp(19px, 2.4vw, 34px); color: var(--ink-2); line-height: 1.4; letter-spacing: -.015em; }
-  .lead .accent { color: var(--accent); }
-  .lead strong { color: var(--ink); }
-  .say { font-size: clamp(17px, 2vw, 27px); color: var(--ink-2); line-height: 1.45; letter-spacing: -.01em; }
-  .small { font-family: var(--mono); font-size: clamp(12px, 1.2vw, 15px); color: var(--ink-2); line-height: 1.7; }
-  .plain { font-family: var(--mono); font-size: clamp(11px, 1.08vw, 13.5px); color: var(--muted); line-height: 1.7; }
+  p { margin: 0; max-width: 47ch; }
+  .lead { font-size: clamp(21px, 2.7vw, 38px); color: var(--ink-2); line-height: 1.38; letter-spacing: -.012em; }
+  .lead strong { color: var(--ink); font-weight: 700; }
+  .say { font-size: clamp(19px, 2.2vw, 30px); color: var(--ink-2); line-height: 1.45; }
+  .small { font-size: clamp(14px, 1.35vw, 18px); color: var(--ink-2); line-height: 1.6; }
+  .plain { font-family: var(--mono); font-size: clamp(12px, 1.12vw, 14.5px); color: var(--muted); line-height: 1.7; }
   strong { font-weight: 700; color: var(--ink); }
-  .accent { color: var(--accent); }
-  .cite { font-family: var(--mono); font-size: clamp(10px, .95vw, 11.5px);
+  .rose { color: var(--rose); } .teal { color: var(--teal); } .plum { color: var(--plum); }
+  .cite { font-family: var(--mono); font-size: clamp(11px, 1vw, 12.5px);
           color: var(--muted); max-width: none; line-height: 1.7; }
 
-  .cols { display: grid; gap: clamp(20px, 3.4vw, 54px); grid-template-columns: 1fr 1fr; align-items: start; }
+  .cols { display: grid; gap: clamp(20px, 3.2vw, 52px); grid-template-columns: 1fr 1fr; align-items: start; }
   .c3 { grid-template-columns: repeat(3, 1fr); }
   .wide { grid-template-columns: 1.35fr 1fr; }
   .narrow { grid-template-columns: 1fr 1.35fr; }
   @media (max-width: 900px) { .cols, .c3, .wide, .narrow { grid-template-columns: 1fr; } }
 
   .card { display: flex; flex-direction: column; gap: 10px; }
-  .card .tag { font-family: var(--mono); font-size: 12px; letter-spacing: .05em; color: var(--muted); }
-  .card.red .tag { color: var(--red); }
-  .card.green .tag { color: var(--green); }
-  .card.fill { background: var(--card); border: 1px solid var(--line); border-radius: 12px;
-               padding: clamp(16px, 2vw, 28px); }
+  .card .tag { font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em;
+               text-transform: uppercase; color: var(--muted); }
+  .card.bad .tag { color: var(--rose); }
+  .card.ok .tag { color: var(--teal); }
+  .card.fill { background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+               padding: clamp(18px, 2.2vw, 30px); }
 
-  .stats { display: flex; flex-wrap: wrap; gap: clamp(24px, 5vw, 76px); }
-  .stat { display: flex; flex-direction: column; gap: 6px; }
-  .stat b { font-weight: 700; line-height: .95; font-size: clamp(50px, 8vw, 112px);
-            letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
-  .stat b.blue { color: var(--accent); }
-  .stat b.red { color: var(--red); }
-  .stat b.green { color: var(--green); }
-  .stat span { font-family: var(--mono); font-size: clamp(12px, 1.2vw, 15px);
-               color: var(--muted); max-width: 24ch; line-height: 1.6; }
+  .stats { display: flex; flex-wrap: wrap; gap: clamp(24px, 5vw, 78px); }
+  .stat { display: flex; flex-direction: column; gap: 8px; }
+  .stat b { font-family: var(--display); font-weight: 600; line-height: .92;
+            font-size: clamp(50px, 7.6vw, 106px);
+            letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+  .stat b.rose { color: var(--rose); }
+  .stat b.teal { color: var(--teal); }
+  .stat b.plum { color: var(--plum); }
+  .stat span { font-family: var(--mono); font-size: clamp(12.5px, 1.2vw, 15px);
+               color: var(--muted); max-width: 25ch; line-height: 1.6; }
 
-  .note { border-left: 4px solid var(--accent); padding: 6px 0 6px 22px;
-          font-size: clamp(17px, 2vw, 26px); color: var(--ink); line-height: 1.4;
-          letter-spacing: -.012em; max-width: 44ch; }
-  .note.red { border-left-color: var(--red); }
-  .note.green { border-left-color: var(--green); }
+  .note { border-left: 5px solid var(--plum); padding: 8px 0 8px 22px;
+          font-size: clamp(19px, 2.2vw, 30px); color: var(--ink); line-height: 1.38;
+          letter-spacing: -.01em; max-width: 46ch; }
+  .note.bad { border-left-color: var(--rose); }
+  .note.ok { border-left-color: var(--teal); }
   .note.warn { border-left-color: var(--line-2); color: var(--ink-2); }
 
-  ul.list { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(12px, 1.7vh, 20px); }
-  ul.list li { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start;
-               font-family: var(--mono); font-size: clamp(12px, 1.18vw, 14.5px);
-               color: var(--muted); line-height: 1.65; }
-  ul.list li::before { content: attr(data-n); font-family: var(--mono); font-size: 14px;
-                       color: var(--line-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
-  ul.list li b { display: block; font-family: var(--display); font-weight: 700;
-                 font-size: clamp(17px, 1.95vw, 24px); color: var(--ink);
-                 letter-spacing: -.018em; margin-bottom: 3px; }
+  ul.list { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(11px, 1.6vh, 20px); }
+  ul.list li { display: grid; grid-template-columns: 46px 1fr; gap: 16px; align-items: start;
+               font-size: clamp(14px, 1.35vw, 17.5px); color: var(--ink-2); line-height: 1.5; }
+  ul.list li > div { min-width: 0; max-width: 72ch; }
+  ul.list li::before { content: attr(data-n); font-family: var(--mono); font-size: 15px;
+                       color: var(--plum); margin-top: 4px; font-variant-numeric: tabular-nums; }
+  ul.list li b { display: block; font-family: var(--display); font-weight: 600;
+                 font-size: clamp(19px, 2.2vw, 28px); color: var(--ink);
+                 letter-spacing: -.015em; margin-bottom: 4px; }
 
-  table { border-collapse: collapse; width: 100%; font-size: clamp(13px, 1.35vw, 17px); }
+  table { border-collapse: collapse; width: 100%; font-size: clamp(14px, 1.4vw, 18px); }
   thead tr { background: var(--ink); }
-  th { color: var(--paper); font-weight: 500; font-size: clamp(13px, 1.3vw, 16px);
+  th { color: var(--paper); font-weight: 500; font-size: clamp(13.5px, 1.3vw, 16.5px);
        padding: 13px 18px; text-align: left; border: none; }
   td { padding: 13px 18px; border-bottom: 1px solid var(--line); color: var(--ink-2); }
   tbody tr:nth-child(even) { background: var(--card); }
-  td.n, th.n { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; width: 108px; }
-  .tw { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+  td.n, th.n { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; width: 112px; }
+  .tw { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; }
 
-  code { font-family: var(--mono); font-size: .92em; color: var(--accent); }
+  code { font-family: var(--mono); font-size: .92em; color: var(--plum); }
 
   figure { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-  figcaption { font-family: var(--mono); font-size: clamp(11px, 1.1vw, 13.5px); color: var(--muted); line-height: 1.6; }
+  figcaption { font-family: var(--mono); font-size: clamp(11.5px, 1.1vw, 14px); color: var(--muted); line-height: 1.6; }
   svg { max-width: 100%; height: auto; display: block; }
-  .st { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
-  .sv { font-family: var(--mono); font-size: 13px; font-weight: 700; fill: var(--ink); }
+  .st { font-family: var(--mono); font-size: 11.5px; fill: var(--muted); }
+  .sv { font-family: var(--mono); font-size: 13.5px; font-weight: 500; fill: var(--ink); }
 
-  .state { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono);
-           font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
-           padding: 6px 12px; border-radius: 5px; }
-  .state.bug { color: var(--red); background: var(--red-dim); border: 1px solid var(--red); }
+  /* ------------------------------ scenes ------------------------------- */
+  .scene { width: 100%; }
+  .scene .steam { animation: drift 3.4s ease-out infinite; transform-origin: center bottom; }
+  .scene .steam.b { animation-delay: 1.1s; }
+  .scene .steam.c { animation-delay: 2.2s; }
+  .scene .lamp { animation: sway 4.6s ease-in-out infinite; transform-origin: 50% 0%; }
+  .scene .spark { animation: twinkle 2.4s ease-in-out infinite; transform-origin: center; }
+  .scene .spark.b { animation-delay: .8s; }
+  .scene .spark.c { animation-delay: 1.6s; }
+  .slide.live .scene .grow { animation: pop .6s cubic-bezier(.2,.9,.3,1.15) both; transform-origin: center; }
+  .slide.live .scene .grow.d1 { animation-delay: .35s; }
+  .slide.live .scene .grow.d2 { animation-delay: .5s; }
+  .slide.live .scene .grow.d3 { animation-delay: .65s; }
+  .slide.live .scene .grow.d4 { animation-delay: .8s; }
+  .slide.live .scene .grow.d5 { animation-delay: .95s; }
+  .slide.live .scene .grow.d6 { animation-delay: 1.1s; }
+  .scene .grow { opacity: 0; }
+
+  .bubble { opacity: 0; }
+  .slide.live .bubble { animation: rise .45s ease-out both; }
+  .slide.live .bubble.b1 { animation-delay: .7s; }
+  .slide.live .bubble.b2 { animation-delay: 1.15s; }
+  .slide.live .bubble.b3 { animation-delay: 1.6s; }
+
+  /* ------------------------------ states ------------------------------- */
+  .state { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono);
+           font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase;
+           padding: 7px 13px; border-radius: 999px; }
+  .state.bug { color: var(--rose); background: var(--rose-dim); border: 1px solid var(--rose); }
   .state.bug::before { content: "\2715"; }
-  .state.fix { color: var(--green); background: var(--green-dim); border: 1px solid var(--green); }
+  .state.fix { color: var(--teal); background: var(--teal-dim); border: 1px solid var(--teal); }
   .state.fix::before { content: "\2713"; }
 
-  .switch { display: inline-flex; border: 1px solid var(--line-2); border-radius: 7px; overflow: hidden; }
-  .switch button { font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em;
-                   text-transform: uppercase; padding: 10px 19px; border: none;
+  .switch { display: inline-flex; border: 1px solid var(--line-2); border-radius: 999px; overflow: hidden; }
+  .switch button { font-family: var(--mono); font-size: 12.5px; letter-spacing: .07em;
+                   text-transform: uppercase; padding: 11px 21px; border: none;
                    background: var(--card); color: var(--muted); cursor: pointer;
-                   display: inline-flex; align-items: center; gap: 8px; }
+                   display: inline-flex; align-items: center; gap: 8px; transition: background .2s, color .2s; }
   .switch button + button { border-left: 1px solid var(--line-2); }
-  .switch button[aria-pressed="true"][data-mode="bug"] { background: var(--red); color: #fff; }
-  .switch button[aria-pressed="true"][data-mode="fix"] { background: var(--green); color: #fff; }
+  .switch button[aria-pressed="true"][data-mode="bug"] { background: var(--rose); color: #fff; }
+  .switch button[aria-pressed="true"][data-mode="fix"] { background: var(--teal); color: #fff; }
   .switch button[data-mode="bug"]::before { content: "\2715"; }
   .switch button[data-mode="fix"]::before { content: "\2713"; }
+
+  .go { font-family: var(--mono); font-size: 13px; letter-spacing: .07em; text-transform: uppercase;
+        padding: 12px 24px; border-radius: 999px; border: none; background: var(--plum);
+        color: #fff; cursor: pointer; transition: transform .15s, filter .2s; }
+  .go:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
   .demo { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(20px, 3vw, 40px); align-items: start; }
   @media (max-width: 960px) { .demo { grid-template-columns: 1fr; } }
   .demo-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 
-  .rows { display: grid; gap: 6px; }
+  .rows { display: grid; gap: 7px; }
   .row-i { display: grid; grid-template-columns: 1fr auto auto; gap: 16px; align-items: center;
-           background: var(--card); border: 1px solid var(--line); border-radius: 9px;
+           background: var(--card); border: 1px solid var(--line); border-radius: 14px;
            padding: 10px 16px; font-family: var(--mono); font-size: 13px; }
   .row-i .rid { color: var(--ink-2); display: flex; align-items: center; gap: 10px; min-width: 0; }
-  .row-i .rid em { font-style: normal; color: var(--muted); font-size: 11.5px;
+  .row-i .rid em { font-style: normal; color: var(--muted); font-size: 12px;
                    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .thumb { width: 26px; height: 22px; border-radius: 4px; flex: none;
+  .thumb { width: 28px; height: 23px; border-radius: 6px; flex: none;
            background: var(--paper-2); border: 1px solid var(--line-2); position: relative; }
-  .thumb::after { content: ""; position: absolute; left: 4px; right: 4px; bottom: 4px; height: 7px;
-                  border-radius: 3px 3px 5px 5px; background: var(--line-2); }
+  .thumb::after { content: ""; position: absolute; left: 5px; right: 5px; bottom: 4px; height: 8px;
+                  border-radius: 3px 3px 7px 7px; background: var(--apricot); opacity: .6; }
   .cells { display: flex; gap: 6px; }
-  .cell { width: 36px; height: 32px; display: grid; place-items: center; border-radius: 6px;
+  .cell { width: 38px; height: 34px; display: grid; place-items: center; border-radius: 9px;
           background: var(--paper); border: 1px solid var(--line); color: var(--ink);
-          font-variant-numeric: tabular-nums; }
-  .cell.moved { border-color: var(--red); color: var(--red); font-weight: 700; }
+          font-variant-numeric: tabular-nums; transition: border-color .25s, color .25s; }
+  .cell.moved { border-color: var(--rose); color: var(--rose); font-weight: 500; background: var(--rose-dim); }
   .cell.blank { border-style: dashed; color: var(--line-2); }
-  .cell.recovered { border-color: var(--accent); color: var(--accent); }
-  .flag { font-family: var(--mono); font-size: 11.5px; color: var(--muted); min-width: 108px; text-align: right; }
-  .flag.bad { color: var(--red); }
-  .flag.good { color: var(--green); }
+  .cell.recovered { border-color: var(--teal); color: var(--teal); background: var(--teal-dim); }
+  .flag { font-family: var(--mono); font-size: 12px; color: var(--muted); min-width: 112px; text-align: right; }
+  .flag.bad { color: var(--rose); }
+  .flag.good { color: var(--teal); }
 
-  .readout { display: flex; flex-direction: column; gap: 12px; }
-  .readout .big { font-weight: 700; font-size: clamp(42px, 5.6vw, 76px); line-height: 1;
-                  letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
-  .readout .lbl { font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+  .readout { display: flex; flex-direction: column; gap: 13px; }
+  .readout .big { font-family: var(--display); font-weight: 600;
+                  font-size: clamp(44px, 5.8vw, 82px); line-height: 1;
+                  letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+  .readout .lbl { font-family: var(--mono); font-size: 13px; color: var(--muted); line-height: 1.6; }
   .kv { display: flex; justify-content: space-between; gap: 10px; font-family: var(--mono);
-        font-size: 12.5px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
-  .kv b { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 700; }
+        font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 9px; }
+  .kv b { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 500; }
 
-  .banner { font-family: var(--mono); font-size: 11.5px; line-height: 1.7;
+  .banner { font-family: var(--mono); font-size: 12px; line-height: 1.7;
             border-left: 3px solid var(--line-2); padding: 3px 0 3px 15px; color: var(--muted); }
 
-  .me { display: grid; grid-template-columns: 300px 1fr; gap: clamp(26px, 4.4vw, 62px); align-items: center; }
+  .me { display: grid; grid-template-columns: 290px 1fr; gap: clamp(26px, 4.2vw, 60px); align-items: center; }
   @media (max-width: 900px) { .me { grid-template-columns: 1fr; } }
-  .me img { width: 100%; border-radius: 12px; display: block; }
-  .threads { display: grid; gap: 16px; }
+  .me img { width: 100%; border-radius: 22px; display: block; box-shadow: 0 18px 44px rgba(123,75,148,.16); }
+  .threads { display: grid; gap: 17px; }
   .thread { display: grid; grid-template-columns: auto 1fr; gap: 15px; align-items: start; }
-  .thread .dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 11px; }
-  .thread b { display: block; font-weight: 700; font-size: clamp(18px, 2.1vw, 25px); letter-spacing: -.02em; }
-  .thread span { font-family: var(--mono); font-size: clamp(11.5px, 1.15vw, 14px); color: var(--muted); line-height: 1.6; }
+  .thread .dot { width: 11px; height: 11px; border-radius: 50%; margin-top: 12px; }
+  .thread b { display: block; font-family: var(--display); font-weight: 600;
+              font-size: clamp(20px, 2.3vw, 28px); letter-spacing: -.015em; }
+  .thread span { font-size: clamp(13.5px, 1.3vw, 16.5px); color: var(--muted); line-height: 1.55; }
   .qr { display: flex; align-items: center; gap: 18px; }
-  .qr svg { width: clamp(92px, 11vw, 138px); height: auto; border-radius: 7px; }
-  .qr .qt { font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.7; }
-  .qr .qt b { display: block; color: var(--ink); font-size: 13.5px; font-weight: 700; }
+  .qr svg { width: clamp(96px, 11vw, 142px); height: auto; border-radius: 12px; }
+  .qr .qt { font-family: var(--mono); font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .qr .qt b { display: block; color: var(--ink); font-size: 14.5px; font-weight: 500; }
 
   .ask { display: grid; gap: clamp(20px, 3vh, 38px); }
-  .ask p { max-width: 34ch; }
-  .ask h2 { max-width: 18ch; }
-  .hand { font-size: clamp(56px, 9vw, 120px); line-height: 1; }
+  .ask p { max-width: 36ch; }
+  .ask h2 { max-width: 19ch; }
+  .hand { font-size: clamp(60px, 9.4vw, 128px); line-height: 1; }
 
-  .flow { display: flex; align-items: center; gap: clamp(8px, 1.4vw, 20px); flex-wrap: wrap; }
-  .step { background: var(--card); border: 1px solid var(--line-2); border-radius: 10px;
-          padding: clamp(12px, 1.6vw, 20px) clamp(14px, 1.8vw, 24px); min-width: 0; }
-  .step .n { font-family: var(--mono); font-size: 11.5px; color: var(--muted); display: block; margin-bottom: 4px; }
-  .step .t { font-weight: 700; font-size: clamp(14px, 1.6vw, 19px); letter-spacing: -.015em; }
-  .step.out { border-color: var(--accent); }
+  .flow { display: flex; align-items: center; gap: clamp(6px, 1.1vw, 16px); flex-wrap: wrap; }
+  .step { background: var(--card); border: 1px solid var(--line-2); border-radius: 16px;
+          padding: clamp(12px, 1.6vw, 20px) clamp(13px, 1.7vw, 22px); min-width: 0; }
+  .step .n { font-family: var(--mono); font-size: 11.5px; color: var(--plum); display: block; margin-bottom: 5px; }
+  .step .t { font-family: var(--display); font-weight: 600;
+             font-size: clamp(15px, 1.7vw, 21px); letter-spacing: -.012em; }
+  .step.out { border-color: var(--rose); background: var(--rose-dim); }
   .arrow { color: var(--line-2); font-size: 20px; flex: none; }
 
+  .chips { display: flex; flex-wrap: wrap; gap: 12px; }
+  .chip { font-family: var(--mono); font-size: 13.5px; padding: 10px 18px; border-radius: 999px;
+          background: var(--card); border: 1px solid var(--line-2); color: var(--ink-2); }
+  .chip.a { border-color: var(--apricot); color: #a4552a; background: #fdf0e7; }
+  .chip.p { border-color: var(--plum); color: var(--plum); background: var(--plum-dim); }
+  .chip.t { border-color: var(--teal); color: var(--teal); background: var(--teal-dim); }
+
   .rail { display: flex; align-items: center; gap: 14px; padding: 9px var(--pad);
-          border-top: 1px solid var(--line); font-family: var(--mono); font-size: 11.5px;
+          border-top: 1px solid var(--line); font-family: var(--mono); font-size: 12px;
           color: var(--muted); background: var(--paper-2); }
-  .rail .track { flex: 1; height: 2px; background: var(--line); position: relative; }
-  .rail .fill { position: absolute; inset: 0 auto 0 0; background: var(--accent); width: 0; }
+  .rail .track { flex: 1; height: 3px; background: var(--line); position: relative; border-radius: 3px; }
+  .rail .fill { position: absolute; inset: 0 auto 0 0; border-radius: 3px;
+                background: linear-gradient(90deg, var(--plum), var(--rose), var(--apricot)); width: 0;
+                transition: width .35s ease; }
   .rail button { font: inherit; color: var(--muted); background: var(--card);
-                 border: 1px solid var(--line-2); border-radius: 4px; padding: 3px 9px; cursor: pointer; }
-  .rail button:hover { color: var(--accent); border-color: var(--accent); }
+                 border: 1px solid var(--line-2); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+  .rail button:hover { color: var(--plum); border-color: var(--plum); }
   .rail .count { color: var(--ink-2); font-variant-numeric: tabular-nums; }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  :focus-visible { outline: 2px solid var(--plum); outline-offset: 2px; }
 
   .notes { display: none; border-top: 1px solid var(--line); background: var(--paper-2);
-           padding: 14px var(--pad) 18px; font-size: 13.5px; color: var(--ink-2); line-height: 1.65;
+           padding: 14px var(--pad) 18px; font-size: 14px; color: var(--ink-2); line-height: 1.65;
            max-height: 34vh; overflow-y: auto; }
   body.notes-on .notes { display: block; }
   .notes b { color: var(--ink); }
-  .notes .t { font-family: var(--mono); color: var(--accent); font-size: 11px;
-              letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 6px; }
+  .notes .t { font-family: var(--mono); color: var(--plum); font-size: 11.5px;
+              letter-spacing: .09em; text-transform: uppercase; display: block; margin-bottom: 6px; }
 
-  @media print { .slide { display: flex !important; page-break-after: always; min-height: 100vh; } .rail { display: none; } }
+  @media print { .slide { display: flex !important; page-break-after: always; min-height: 100vh; }
+                 .slide .inner > *, .pop, .scene .grow { opacity: 1 !important; animation: none !important; }
+                 .rail { display: none; } }
 </style>
 
 <div class="deck" id="deck">
 
-<!-- 01 ---------------------------------------------------------------- -->
+<!-- 01 title ---------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">Beyond the Vibes &nbsp;//&nbsp; Session 03</p>
-    <h1>Your LLM judge is<br>probably lying<br>to you</h1>
-    <p class="lead">Four clues, three demos, one checklist you can use on Monday.</p>
+    <p class="eyebrow">Beyond the Vibes &nbsp;//&nbsp; Session 03 &nbsp;//&nbsp; <b>Do You Trust Your AI?</b></p>
+    <h1>LLM as a Judge<br>Is Probably<br>Lying to You</h1>
+    <p class="plain">Su Myat Noe &nbsp;&middot;&nbsp; AI Research Scientist, NII Tokyo &nbsp;&middot;&nbsp; SGInnovate, 28 September 2026</p>
   </div>
   <div class="notes">
-    <span class="t">0:00 &ndash; 0:45</span>
-    Say the title out loud and then undercut it a little: "I don't mean the model is evil.
-    I mean the thing we use to grade our models has never been checked, and when I finally
-    checked mine, it did not survive."<br>
-    Don't explain the structure yet. Just start.
+    <span class="t">opening</span>
+    Say the title out loud, then soften it: "I do not mean the model is evil. I mean the thing
+    we use to grade our models has never itself been checked, and when I finally checked mine,
+    it did not survive." Do not explain the structure yet. Just start.
   </div>
 </section>
 
-<!-- 02 ---------------------------------------------------------------- -->
+<!-- 02 hello ---------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
     <p class="eyebrow">Hello</p>
     <div class="me">
       <img src="{{PHOTO}}" alt="Su Myat Noe">
-      <div style="display:grid;gap:clamp(16px,2.4vh,30px)">
-        <div>
-          <h2 style="font-size:clamp(30px,4vw,56px)">Su Myat Noe</h2>
-          <p class="say" style="margin-top:8px">I'm a researcher at NII in Tokyo.</p>
-        </div>
-        <div class="threads">
-          <div class="thread"><span class="dot" style="background:var(--accent)"></span>
-            <div><b>Multimodal AI safety</b>
-              <span>what models do when there's a picture in the prompt</span></div></div>
-          <div class="thread"><span class="dot" style="background:var(--red)"></span>
-            <div><b>How we evaluate them</b>
-              <span>which is how I ended up here</span></div></div>
-        </div>
-        <div class="qr">
-          {{QR1}}
-          <div class="qt"><b>imsumyatnoe.github.io</b>
-            everything I work on</div>
-        </div>
+      <div class="threads">
+        <h2 style="margin-bottom:6px">Su Myat Noe</h2>
+        <div class="thread"><span class="dot pop" style="background:var(--plum)"></span>
+          <div><b>AI Research Scientist, NII Tokyo</b>
+          <span>I work on whether a model's safety behaviour is real, or only looks real.</span></div></div>
+        <div class="thread"><span class="dot pop" style="background:var(--apricot)"></span>
+          <div><b>Multimodal safety</b>
+          <span>Models that read pictures as well as words, and refuse for reasons we can check.</span></div></div>
+        <div class="thread"><span class="dot pop" style="background:var(--teal)"></span>
+          <div><b>Measurement, mostly</b>
+          <span>Most of my week is spent asking whether a number deserves to exist.</span></div></div>
       </div>
+    </div>
+    <div class="qr">
+      {{QR1}}
+      <div class="qt"><b>imsumyatnoe.github.io</b>papers, code, and the slides for tonight</div>
     </div>
   </div>
   <div class="notes">
-    <span class="t">0:45 &ndash; 2:00</span>
-    Keep it short and human. Two threads, not a CV.<br>
-    The line that sets up the whole talk: <b>"the second one is how I ended up here."</b>
-    Then move.
+    <span class="t">who is talking</span>
+    Twenty seconds only. The audience cares what you can do for them, not your CV.
+    The QR is for later; tell them it will come back at the end.
   </div>
 </section>
 
-<!-- 03 ---------------------------------------------------------------- -->
+<!-- 03 hungry --------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">First, a show of hands</p>
     <div class="ask">
-      <div class="hand">&#9995;</div>
-      <h2>Who's used an LLM to grade something?</h2>
-      <p class="say">A rubric. A code review. An answer. Anything where you asked a model
-        to score something.</p>
+      <h2>Before anything technical:<br>is anyone here hungry?</h2>
+      <p class="say">Keep your hand up if you have ordered food on your phone this week.</p>
     </div>
-  </div>
-  <div class="notes">
-    <span class="t">2:00 &ndash; 2:45</span>
-    Ask it, then <b>actually wait</b>. Look around. Say what you see: "okay, most of the room."<br>
-    Don't move on until hands are up. The next slide only works if they're already holding
-    their arms in the air.
-  </div>
-</section>
+    <figure style="max-width:820px">
+      <svg class="scene" viewBox="0 0 900 250" role="img" aria-label="A restaurant table with two bowls, chopsticks and a warm hanging lamp">
+        <g class="lamp">
+          <line x1="140" y1="0" x2="140" y2="34" stroke="#cfc2b6" stroke-width="2"/>
+          <path d="M108 34 L172 34 L186 66 L94 66 Z" fill="#f0be3f" opacity=".85"/>
+          <ellipse cx="140" cy="66" rx="46" ry="7" fill="#f0be3f" opacity=".45"/>
+        </g>
+        <g class="lamp" style="animation-delay:-2.2s">
+          <line x1="760" y1="0" x2="760" y2="22" stroke="#cfc2b6" stroke-width="2"/>
+          <path d="M732 22 L788 22 L800 50 L720 50 Z" fill="#ef8f5a" opacity=".8"/>
+          <ellipse cx="760" cy="50" rx="40" ry="6" fill="#ef8f5a" opacity=".4"/>
+        </g>
+        <rect x="40" y="150" width="820" height="70" rx="18" fill="#f2ebe4"/>
+        <rect x="40" y="150" width="820" height="12" rx="6" fill="#e6ddd4"/>
 
-<!-- 04 ---------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">Keep them up</p>
-    <div class="ask">
-      <h2>Keep it up if you ran it <span class="accent">twice</span>.</h2>
-      <p class="say">Same inputs. Same prompt. Same model. Just a second time.</p>
-      <div class="note">Whatever just happened to the hands in this room &mdash; that's the talk.</div>
-    </div>
-  </div>
-  <div class="notes">
-    <span class="t">2:45 &ndash; 3:30</span>
-    Almost every hand drops. Let the silence sit for a beat before you say the line.<br>
-    If a few hands stay up: "good &mdash; you already know where this is going."<br>
-    If nobody put a hand up at all on the first question: "then you're about to be very glad
-    you came."
-  </div>
-</section>
+        <g class="grow d1">
+          <ellipse cx="300" cy="176" rx="74" ry="26" fill="#fffcf9" stroke="#e6ddd4" stroke-width="2"/>
+          <ellipse cx="300" cy="172" rx="56" ry="19" fill="#ef8f5a" opacity=".55"/>
+          <ellipse cx="288" cy="168" rx="14" ry="6" fill="#c9455b" opacity=".6"/>
+          <ellipse cx="318" cy="175" rx="12" ry="5" fill="#0e9a93" opacity=".5"/>
+        </g>
+        <g class="grow d2">
+          <ellipse cx="560" cy="182" rx="66" ry="23" fill="#fffcf9" stroke="#e6ddd4" stroke-width="2"/>
+          <ellipse cx="560" cy="178" rx="49" ry="17" fill="#f0be3f" opacity=".6"/>
+          <ellipse cx="572" cy="175" rx="12" ry="5" fill="#7b4b94" opacity=".45"/>
+        </g>
+        <g class="grow d3">
+          <rect x="392" y="158" width="6" height="58" rx="3" fill="#cfc2b6" transform="rotate(9 395 187)"/>
+          <rect x="406" y="158" width="6" height="58" rx="3" fill="#cfc2b6" transform="rotate(14 409 187)"/>
+        </g>
+        <g class="grow d4">
+          <path d="M660 160 h40 a10 10 0 0 1 10 10 v34 a10 10 0 0 1 -10 10 h-40 a10 10 0 0 1 -10 -10 v-34 a10 10 0 0 1 10 -10 z" fill="#fffcf9" stroke="#e6ddd4" stroke-width="2"/>
+          <rect x="662" y="170" width="36" height="5" rx="2.5" fill="#cfc2b6"/>
+          <rect x="662" y="182" width="26" height="5" rx="2.5" fill="#cfc2b6"/>
+          <rect x="662" y="194" width="32" height="5" rx="2.5" fill="#cfc2b6"/>
+        </g>
 
-<!-- 05 ---------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">Why I care about this</p>
-    <h2>A model told me<br>what was in a photo.<br>It wasn't there.</h2>
-    <div class="cols wide">
-      <p class="say">I work on what models do when you give them an image. So I spend a lot
-        of time watching them describe things confidently &mdash; and sometimes describe things
-        that are not in the picture at all.</p>
-      <div class="note">The part that kept me up: <strong>the evaluation gave that answer a
-        good score.</strong> The model was wrong and the grader was happy.</div>
-    </div>
-    <p class="say" style="max-width:56ch">That's when I stopped worrying about the model and
-      started worrying about the grader.</p>
-  </div>
-  <div class="notes">
-    <span class="t">3:30 &ndash; 5:15</span>
-    <b>This is the slide that makes the talk yours.</b> Tell it as a memory, not a finding.
-    Where you were, what the image was, what the model said.<br>
-    Land the last line slowly. It is the hinge between "here's me" and "here's the problem",
-    and everything after it is evidence for it.
-  </div>
-</section>
+        <g fill="#cfc2b6" opacity=".9">
+          <path class="steam" d="M282 146 c0 -14 14 -14 14 -28 c0 -10 -8 -12 -8 -20" stroke="#cfc2b6" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path class="steam b" d="M304 146 c0 -16 14 -16 14 -32 c0 -10 -8 -12 -8 -18" stroke="#cfc2b6" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path class="steam c" d="M556 152 c0 -14 13 -14 13 -28 c0 -9 -7 -11 -7 -18" stroke="#cfc2b6" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </g>
 
-<!-- 06 ---------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">So here's our example for tonight</p>
-    <h2>A refund, from a photo</h2>
-    <div class="flow">
-      <div class="step"><span class="n">the customer</span>
-        <span class="t">sends a photo<br>&ldquo;this isn't what I ordered&rdquo;</span></div>
-      <span class="arrow">&rarr;</span>
-      <div class="step"><span class="n">the agent</span>
-        <span class="t">looks at the photo,<br>checks the order</span></div>
-      <span class="arrow">&rarr;</span>
-      <div class="step out"><span class="n">the decision</span>
-        <span class="t">refund &middot; reject<br>&middot; escalate</span></div>
-    </div>
-    <p class="say" style="max-width:54ch">Nobody can read every one of these by hand. So we
-      ask another model: <strong>was that the right call?</strong></p>
-  </div>
-  <div class="notes">
-    <span class="t">5:15 &ndash; 6:15</span>
-    Everyone in this room has photographed a sad-looking delivery. Use that.<br>
-    Make the last line the point: the judge is not grading the food, and not even really the
-    photo &mdash; it's grading <b>a decision someone will act on</b>, with money attached.
-  </div>
-</section>
-
-<!-- 07 ---------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">And this is what came back</p>
-    <div class="cols wide">
-      <div class="tw">
-        <table>
-          <thead><tr><th>Refund agent v2.3</th><th class="n">result</th></tr></thead>
-          <tbody>
-            <tr><td>Decision quality, judged</td><td class="n">8.4 / 10</td></tr>
-            <tr><td>Judge agrees with our reviewers</td><td class="n">85%</td></tr>
-            <tr><td>Orders evaluated</td><td class="n">600</td></tr>
-            <tr><td>Better than v2.2 by</td><td class="n">+0.4</td></tr>
-            <tr><td>Cost to run</td><td class="n">$11</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div style="display:grid;gap:18px">
-        <h2 style="font-size:clamp(28px,3.6vw,50px)">Looks fine to me</h2>
-        <p class="say">Sample size. Agreement with humans. A clear improvement over the last
-          version. Cheap.</p>
-      </div>
-    </div>
-  </div>
-  <div class="notes">
-    <span class="t">6:15 &ndash; 7:45</span>
-    Read the table slowly, like you're pleased with it. You want them to trust it before you
-    take it apart.<br>
-    Every number here is the kind of number a real report has. Nothing is obviously wrong.
-  </div>
-</section>
-
-<!-- 08 ---------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <h2>Would you ship it?</h2>
-    <p class="lead">Hands up again.</p>
-  </div>
-  <div class="notes">
-    <span class="t">7:45 &ndash; 8:30</span>
-    Most hands go up. That's the point &mdash; you want them invested before the first clue.<br>
-    Then: "I shipped on a report like this. Then I ran the evaluation a second time."
-  </div>
-</section>
-
-<!-- 09 ---------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">Quick, for everyone</p>
-    <h2>What is a judge, exactly?</h2>
-    <div class="c3 cols">
-      <div class="card"><div class="tag">the idea</div>
-        <p class="say" style="font-size:clamp(15px,1.7vw,21px)">You can't pay people to read
-          a million answers. So you ask a model to score them.</p></div>
-      <div class="card"><div class="tag">why we all did it</div>
-        <p class="say" style="font-size:clamp(15px,1.7vw,21px)">It's cheap, it's instant, and
-          it agrees with humans often enough to feel safe.</p></div>
-      <div class="card"><div class="tag">what it quietly became</div>
-        <p class="say" style="font-size:clamp(15px,1.7vw,21px)">A measuring instrument. One
-          nobody ever asked for a spec sheet.</p></div>
-    </div>
-    <div class="note">You wouldn't buy a kitchen scale that gives a different weight each
-      time. We accept it from a judge because the answer comes back in good English.</div>
-  </div>
-  <div class="notes">
-    <span class="t">8:30 &ndash; 9:45</span>
-    <b>Don't skip this even if the room looks technical.</b> The kitchen scale line is the one
-    people repeat afterwards, and it's what keeps the non-researchers with you.<br>
-    "Instrument" is the word the rest of the talk runs on. Plant it here.
-  </div>
-</section>
-
-<!-- 10 ---------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">And it's worse for agents</p>
-    <h2>One order isn't<br>one judgement</h2>
-    <div class="cols wide">
-      <figure>
-        <svg viewBox="0 0 560 150" role="img" aria-label="Six agent steps, each judged separately, rolling up into one score.">
-          <g id="traj"></g>
-        </svg>
-      </figure>
-      <p class="say">Read the photo. Check the order. Check the refund policy. Decide. Write
-        the reply. <strong>Every step gets judged, and the errors don't cancel out.</strong></p>
-    </div>
-  </div>
-  <div class="notes">
-    <span class="t">9:45 &ndash; 10:45</span>
-    Promise the number, don't give it yet: "in about four minutes I'll show you how fast
-    that compounds, and it's worse than anyone guesses."<br>
-    This is why the talk is about agents and not just chatbots.
-  </div>
-</section>
-
-<!-- 11 ---------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow"><b>Clue 01</b></p>
-    <h2>So I ran it again.</h2>
-    <p class="lead">Same orders. Same prompt. Same model. Same everything.</p>
-  </div>
-  <div class="notes">
-    <span class="t">10:45 &ndash; 11:15</span>
-    One sentence, then move to the demo. Resist explaining.
-  </div>
-</section>
-
-<!-- 12 ---------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <div class="demo-head">
-      <p class="eyebrow"><b>Clue 01</b> &nbsp;//&nbsp; live</p>
-      <div class="switch" role="group" aria-label="demo mode">
-        <button type="button" data-demo="1" data-mode="bug" aria-pressed="true">Buggy</button>
-        <button type="button" data-demo="1" data-mode="fix" aria-pressed="false">Fixed</button>
-      </div>
-    </div>
-    <div class="demo">
-      <div style="display:grid;gap:12px">
-        <div class="rows" id="d1-rows"></div>
-        <button id="d1-run" type="button"
-          style="font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:11px 20px;border:none;border-radius:7px;background:var(--accent);color:#fff;cursor:pointer;justify-self:start">Score them</button>
-      </div>
-      <div class="readout">
-        <div>
-          <div class="big" id="d1-big">&mdash;</div>
-          <div class="lbl" id="d1-lbl">press the button to score these orders</div>
-        </div>
-        <div class="kv"><span>passes</span><b id="d1-passes">0 / 3</b></div>
-        <div class="kv"><span>same score every time</span><b id="d1-same">&mdash;</b></div>
-        <div class="kv"><span>pass/fail changed</span><b id="d1-flip">&mdash;</b></div>
-        <div class="kv"><span>average spread</span><b id="d1-spread">&mdash;</b></div>
-        <div id="d1-state"></div>
-      </div>
-    </div>
-    <p class="banner">Synthetic orders, calibrated to published effect sizes. Your own
-      numbers come from three real passes of your harness.</p>
-  </div>
-  <div class="notes">
-    <span class="t">11:15 &ndash; 13:45 &middot; demo</span>
-    Press once: "that's the number I'd have shipped." Press twice: let them watch the scores
-    move. Press a third time.<br>
-    Then flip to <b>Fixed</b>: same data, but now it reports the middle score and the spread,
-    and it flags the orders that moved. <b>The fix isn't a better judge &mdash; it's an honest
-    report.</b>
-  </div>
-</section>
-
-<!-- 13 ---------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow"><b>Clue 01</b> &nbsp;//&nbsp; what that means</p>
-    <div class="cols wide">
-      <div style="display:grid;gap:22px">
-        <h2 style="font-size:clamp(30px,4.2vw,58px)">27% of verdicts moved.<br>Now multiply that.</h2>
-        <p class="say">Six steps in one order, each judged. Judge the whole thing twice and
-          ask how often you get the same answer.</p>
-      </div>
-      <div class="stats">
-        <div class="stat"><b class="red">15%</b><span>of six-step orders judged the same way twice</span></div>
-      </div>
-    </div>
-    <figure>
-      <svg viewBox="0 0 560 170" role="img" aria-label="The chance a whole order is judged the same way twice falls from 73 percent at one step to 8 percent at eight steps.">
-        <g id="compound"></g>
+        <circle class="spark" cx="836" cy="96" r="5" fill="#f0be3f"/>
+        <circle class="spark b" cx="86" cy="118" r="4" fill="#ef8f5a"/>
+        <circle class="spark c" cx="470" cy="76" r="4.5" fill="#7b4b94"/>
       </svg>
-      <figcaption>Assuming each step is judged independently &mdash; which is the usual setup.</figcaption>
+      <figcaption>We are going to a restaurant, and we are going to stay there for the next half hour.</figcaption>
     </figure>
   </div>
   <div class="notes">
-    <span class="t">13:45 &ndash; 15:00</span>
-    <b>The number that makes the room go quiet.</b> Say the arithmetic out loud: 73% for one
-    step, and six of those in a row is 15% — about one in seven.<br>
-    Say the independence assumption in the same breath. It costs you nothing and it's the
-    first thing a careful person checks.
+    <span class="t">scene setting</span>
+    Genuinely ask it and genuinely wait. Two or three seconds of silence is fine.
+    The whole talk lives inside this one story, so it is worth buying their attention here.
   </div>
 </section>
 
-<!-- 14 ---------------------------------------------------------------- -->
+<!-- 04 it arrives ----------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Clue 02</b></p>
-    <h2>Then I counted<br>the rows.</h2>
-    <p class="lead">600 orders went in. Fewer came back.</p>
+    <p class="eyebrow">Twenty minutes later</p>
+    <h2>It arrives, and it is wrong.</h2>
+    <div class="cols narrow">
+      <figure style="max-width:272px">
+        <svg class="scene" viewBox="0 0 300 380" role="img" aria-label="A phone showing a photo of a spilled bowl and a refund request">
+          <rect x="24" y="10" width="252" height="360" rx="30" fill="#fffcf9" stroke="#cfc2b6" stroke-width="2.5"/>
+          <rect x="118" y="24" width="64" height="8" rx="4" fill="#e6ddd4"/>
+          <g class="grow d1">
+            <rect x="44" y="52" width="212" height="132" rx="16" fill="#f2ebe4"/>
+            <ellipse cx="128" cy="140" rx="54" ry="20" fill="#fffcf9" stroke="#e6ddd4" stroke-width="2" transform="rotate(-18 128 140)"/>
+            <path d="M150 132 c30 12 52 8 76 22 c-22 12 -58 14 -84 4 z" fill="#ef8f5a" opacity=".65"/>
+            <ellipse cx="196" cy="156" rx="13" ry="6" fill="#c9455b" opacity=".55"/>
+            <ellipse cx="222" cy="150" rx="9" ry="4" fill="#0e9a93" opacity=".5"/>
+            <ellipse cx="170" cy="163" rx="7" ry="3.5" fill="#f0be3f" opacity=".7"/>
+          </g>
+          <g class="bubble b1">
+            <rect x="44" y="200" width="206" height="42" rx="15" fill="#f2ebe4"/>
+            <text x="57" y="220" class="st" style="font-size:11px">this is not what I ordered</text>
+            <text x="57" y="235" class="st" style="font-size:11px">and half of it is on the bag</text>
+          </g>
+          <g class="bubble b2">
+            <rect x="72" y="252" width="184" height="28" rx="14" fill="#f2eaf7"/>
+            <text x="85" y="270" class="st" style="font-size:11px" fill="#7b4b94">I would like a refund</text>
+          </g>
+          <g class="bubble b3">
+            <rect x="44" y="292" width="212" height="52" rx="15" fill="#fbe9ec" stroke="#c9455b" stroke-width="1.5"/>
+            <text x="57" y="313" class="st" style="font-size:11px" fill="#c9455b">an agent will answer this,</text>
+            <text x="57" y="330" class="st" style="font-size:11px" fill="#c9455b">in about four seconds</text>
+          </g>
+        </svg>
+      </figure>
+      <div style="display:grid;gap:clamp(14px,2.2vh,26px)">
+        <p class="say">A customer photographs the bag, says the meal is wrong, and asks for their money back.</p>
+        <p class="say">Nobody at the company is going to look at that photo. Roughly nine times out of ten, the first thing that reads it is a model.</p>
+        <p class="plain">Real platforms in this region already answer most refund messages automatically. The only open question is who checks the answers.</p>
+      </div>
+    </div>
   </div>
   <div class="notes">
-    <span class="t">15:00 &ndash; 15:30</span>
-    A beat of suspense. "I assumed my parser was broken. It wasn't."
+    <span class="t">the case</span>
+    Everything later in the talk is this one order. Say the amount out loud once so it feels
+    like money: twenty two dollars.
   </div>
 </section>
 
-<!-- 15 ---------------------------------------------------------------- -->
+<!-- 05 who decides ---------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Three ways this can go</p>
+    <h2>Somebody has to decide.</h2>
+    <div class="chips">
+      <span class="chip t pop">refund the customer</span>
+      <span class="chip a pop">reject the claim</span>
+      <span class="chip p pop">send it to a person</span>
+    </div>
+    <p class="say">Refund a claim that was never true and the company bleeds money. Reject a real one and
+      the customer is gone forever. Send everything to a person and there is no point automating anything.</p>
+    <p class="note">The decision is cheap. Knowing whether the decision was any good is the expensive part, and that is the whole talk.</p>
+  </div>
+  <div class="notes">
+    <span class="t">stakes</span>
+    Keep it light. The point is only that all three answers are defensible for some orders,
+    which is exactly why grading is hard.
+  </div>
+</section>
+
+<!-- 06 what is an agent ----------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Word number one</p>
+    <h2>What people mean by an agent</h2>
+    <div class="cols">
+      <div class="card fill">
+        <span class="tag">a model</span>
+        <p class="small">You send text in, you get text back. One question, one answer, and then it forgets you.</p>
+      </div>
+      <div class="card fill">
+        <span class="tag">an agent</span>
+        <p class="small">A model that is allowed to take steps. It can look things up, call your systems, decide,
+          and act, all without checking in. Refunding money is an action.</p>
+      </div>
+    </div>
+    <p class="note plum">The difference that matters tonight is simple. A model produces an answer. An agent produces a trail of choices, and every one of them can be wrong on its own.</p>
+  </div>
+  <div class="notes">
+    <span class="t">definition</span>
+    Some of the room builds these for a living and some have never written a prompt.
+    Say it once, plainly, and do not apologise for defining it.
+  </div>
+</section>
+
+<!-- 07 the six steps --------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">What the refund agent actually does</p>
+    <h2>Six steps, four seconds</h2>
+    <div class="flow">
+      <div class="step pop"><span class="n">01</span><span class="t">read the photo</span></div>
+      <span class="arrow">&rarr;</span>
+      <div class="step pop"><span class="n">02</span><span class="t">check the order</span></div>
+      <span class="arrow">&rarr;</span>
+      <div class="step pop"><span class="n">03</span><span class="t">check the policy</span></div>
+      <span class="arrow">&rarr;</span>
+      <div class="step pop"><span class="n">04</span><span class="t">decide</span></div>
+      <span class="arrow">&rarr;</span>
+      <div class="step pop"><span class="n">05</span><span class="t">write the reply</span></div>
+      <span class="arrow">&rarr;</span>
+      <div class="step out pop"><span class="n">06</span><span class="t">send the money</span></div>
+    </div>
+    <p class="say">Six chances to be wrong, and only the last one leaves a trace anybody would notice.</p>
+    <p class="plain">Hold on to this picture. It comes back near the end, and by then it will look much worse.</p>
+  </div>
+  <div class="notes">
+    <span class="t">the trajectory</span>
+    Walk left to right with your hand. Tap step six and say "this is the only one finance sees".
+  </div>
+</section>
+
+<!-- 08 who checks ----------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <div class="ask">
+      <h2>So who checks the agent?</h2>
+      <p class="say">Two thousand refunds a day. Nobody is reading two thousand refund letters.</p>
+    </div>
+    <p class="note bad">So we hand the job to another model. We paste in the trace, we ask it to score the decision out of ten, and we put that number in a slide.</p>
+  </div>
+  <div class="notes">
+    <span class="t">pivot</span>
+    This is the turn. Slow down here.
+  </div>
+</section>
+
+<!-- 09 what is a judge ------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Word number two</p>
+    <h2>LLM as a judge</h2>
+    <p class="lead">A second model reads what the first one did and grades it. Cheap, instant, and it never gets tired or bored on a Friday afternoon.</p>
+    <div class="cols">
+      <div class="card fill"><span class="tag">what you send it</span>
+        <p class="small">the photo, the order, the policy, and the reply the agent wrote</p></div>
+      <div class="card fill"><span class="tag">what it sends back</span>
+        <p class="small">a number out of ten, and a paragraph explaining the number</p></div>
+    </div>
+    <p class="plain">This is now the default way teams evaluate agents. It is in the tooling, it is in the dashboards, and almost nobody validates it before trusting it.</p>
+  </div>
+  <div class="notes">
+    <span class="t">definition</span>
+    Name that the explanation paragraph is very persuasive and completely unverified.
+  </div>
+</section>
+
+<!-- 10 thesis ---------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">The claim</p>
+    <h1>Your judge is<br>probably lying<br>to you.</h1>
+    <p class="lead">Not out of malice. It gives you a confident number, in the right format, on time, and the number does not mean what you think it means.</p>
+  </div>
+  <div class="notes">
+    <span class="t">thesis</span>
+    Let the slide sit for a beat before you speak over it.
+  </div>
+</section>
+
+<!-- 11 instrument ------------------------------------------------------ -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">How to think about it</p>
+    <h2>A judge is an instrument, and instruments get calibrated.</h2>
+    <div class="cols">
+      <div class="card">
+        <span class="tag">nobody would accept this</span>
+        <p class="small">A thermometer that reads differently every time you use it. A scale that quietly
+          skips the heavy items. A ruler that agrees with you mostly because everything you measure is the same length.</p>
+      </div>
+      <div class="card">
+        <span class="tag">but we accept all of it</span>
+        <p class="small">Every one of those is a real failure in a real judge, and I am going to show you
+          each of them tonight, in this room, with no terminal and no API key.</p>
+      </div>
+    </div>
+    <p class="note ok">Everything after this slide is one question asked four different ways: does this instrument deserve the number it is printing?</p>
+  </div>
+  <div class="notes">
+    <span class="t">framing</span>
+    The instrument metaphor is doing a lot of work. Say it once and then stop explaining it.
+  </div>
+</section>
+
+<!-- 12 hands up 1 ------------------------------------------------------ -->
+<section class="slide">
+  <div class="inner">
+    <div class="ask">
+      <span class="hand">&#9995;</span>
+      <h2>Hands up if you have ever used a model to grade another model.</h2>
+      <p class="say">Scoring answers, ranking outputs, picking a winner between two prompts. All of it counts.</p>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">participation</span>
+    Wait. Count out loud if it is a big room. Usually half to two thirds of hands go up.
+  </div>
+</section>
+
+<!-- 13 hands up 2 ------------------------------------------------------ -->
+<section class="slide">
+  <div class="inner">
+    <div class="ask">
+      <span class="hand">&#128064;</span>
+      <h2>Keep it up if you ever measured whether that grader was any good.</h2>
+      <p class="say">Ran it twice on the same input. Compared it against people. Checked what it did on the hard cases.</p>
+    </div>
+    <p class="note bad">In every room I have asked, almost every hand goes down. That gap is the reason I am standing here.</p>
+  </div>
+  <div class="notes">
+    <span class="t">participation</span>
+    Do not make anyone feel caught out. Say "my own hand went down too, for about two years".
+  </div>
+</section>
+
+<!-- 14 her story ------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Why I care about this one</p>
+    <h2>The first time a model saw something that was not there</h2>
+    <div class="cols wide">
+      <div style="display:grid;gap:clamp(12px,2vh,22px)">
+        <p class="say">I work on multimodal safety. My models look at a picture and decide whether to help.
+          One of them refused a request and explained itself beautifully: it named the dangerous object in the image, described where it sat, and declined.</p>
+        <p class="say">There was no such object. I had already removed it. The model was refusing something that existed only in its own sentence, and my evaluation scored that refusal as correct, because it read like a very good refusal.</p>
+      </div>
+      <div class="card fill">
+        <span class="tag">what that taught me</span>
+        <p class="small">My scoring never checked whether the model was right. It checked whether the model
+          sounded right. Every number I had published measured writing quality and I was calling it safety.</p>
+        <p class="small plum" style="margin-top:10px">Since then I build the instrument before I trust the reading. That habit is what I am handing over tonight.</p>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">personal</span>
+    This is the emotional centre of the talk. Slow, first person, no hedging.
+    Tie it straight back to the refund: a judge that grades prose will love a confident wrong refund too.
+  </div>
+</section>
+
+<!-- 15 the report ------------------------------------------------------ -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Back to the refunds</p>
+    <h2>Here is the report you would get.</h2>
+    <div class="stats">
+      <div class="stat"><b class="plum" data-count="6.9" data-dec="1" data-suffix=" / 10">0.0 / 10</b>
+        <span>average judge score across six hundred orders</span></div>
+      <div class="stat"><b class="plum" data-count="0.74" data-dec="2">0.00</b>
+        <span>correlation with our own human reviewers</span></div>
+      <div class="stat"><b class="plum" data-count="75" data-suffix="%">0%</b>
+        <span>of the time it agrees with a person</span></div>
+    </div>
+    <p class="say">Green on the dashboard. Nothing in it is false. Every number was computed correctly.</p>
+  </div>
+  <div class="notes">
+    <span class="t">setup</span>
+    These are the real numbers from the worked example in the repo, and they are the numbers
+    every clue is going to take apart.
+  </div>
+</section>
+
+<!-- 16 would you ship -------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <div class="ask">
+      <h2>Would you ship on that?</h2>
+      <p class="say">Be honest. Most of us have shipped on less.</p>
+    </div>
+    <p class="note bad">Four things are wrong with that report, and none of them is visible from the report.</p>
+  </div>
+  <div class="notes">
+    <span class="t">participation</span>
+    Ask for a show of hands both ways. Then say: "so would I, and that is the problem."
+  </div>
+</section>
+
+<!-- 17 clue 1 ---------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue one</b> &nbsp;//&nbsp; the thermometer</p>
+    <h2>Same photo, different score.</h2>
+    <p class="lead">I sent the same six hundred orders to the same judge, with the same prompt, three times.
+      Temperature at zero. Nothing changed but the clock.</p>
+    <div class="stats">
+      <div class="stat"><b class="rose" data-count="21" data-suffix="%">0%</b>
+        <span>of orders got the same score all three times</span></div>
+      <div class="stat"><b class="rose" data-count="27" data-suffix="%">0%</b>
+        <span>changed side of the pass line between passes</span></div>
+      <div class="stat"><b class="plum" data-count="1.2" data-dec="1" data-suffix=" pts">0.0 pts</b>
+        <span>average spread between the highest and lowest pass</span></div>
+    </div>
+    <p class="plain">If you scored your agent once, roughly a quarter of your pass and fail labels were a coin toss.</p>
+  </div>
+  <div class="notes">
+    <span class="t">clue one</span>
+    Temperature zero is not determinism. Batching, routing and kernel nondeterminism all move
+    the number. People assume this is solved and it is not.
+  </div>
+</section>
+
+<!-- 18 demo 1 ---------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
     <div class="demo-head">
-      <p class="eyebrow"><b>Clue 02</b> &nbsp;//&nbsp; live</p>
-      <div class="switch" role="group" aria-label="demo mode">
-        <button type="button" data-demo="2" data-mode="bug" aria-pressed="true">Buggy</button>
-        <button type="button" data-demo="2" data-mode="fix" aria-pressed="false">Fixed</button>
+      <div><p class="eyebrow">Live, in this page</p><h3>Press the button. Score them again.</h3></div>
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+        <button class="go" id="d1-run">Score them</button>
+        <div class="switch">
+          <button data-demo="1" data-mode="bug" aria-pressed="true">what we do</button>
+          <button data-demo="1" data-mode="fix" aria-pressed="false">what to do</button>
+        </div>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="rows" id="d1-rows"></div>
+      <div class="readout">
+        <div id="d1-state"></div>
+        <div class="big" id="d1-big">&hellip;</div>
+        <div class="lbl" id="d1-lbl">press the button to score these orders</div>
+        <div class="kv"><span>passes run</span><b id="d1-passes">0 / 3</b></div>
+        <div class="kv"><span>same score every time</span><b id="d1-same">&middot;</b></div>
+        <div class="kv"><span>verdict changed</span><b id="d1-flip">&middot;</b></div>
+        <div class="kv"><span>average spread</span><b id="d1-spread">&middot;</b></div>
+      </div>
+    </div>
+    <p class="banner">Eight orders from the worked example in the repo. Nothing here calls out to the network.</p>
+  </div>
+  <div class="notes">
+    <span class="t">demo one</span>
+    Click once, read the number out as if it were real. Click again and let them see cells move.
+    Then flip the switch: same data, reported with its spread.
+  </div>
+</section>
+
+<!-- 19 clue 2 ---------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue two</b> &nbsp;//&nbsp; the scale that skips things</p>
+    <h2>The orders the judge never scored.</h2>
+    <div class="cols wide">
+      <figure>
+        <svg id="strat" viewBox="0 0 620 210" role="img" aria-label="Blank rate and agreement, by how readable the photo was"></svg>
+        <figcaption>Left: how often the judge returned nothing. Right: how well it agreed with us when it did.</figcaption>
+      </figure>
+      <div style="display:grid;gap:clamp(12px,2vh,22px)">
+        <p class="say">Twenty two percent of orders came back blank, refused, or in a shape nothing could parse.
+          Your pipeline drops those rows and reports the rest.</p>
+        <p class="note bad">One percent of the clear photos went blank. Fifty seven percent of the barely readable ones did.</p>
+        <p class="say">It goes quiet on exactly the orders you needed it for, and the number you publish comes from the easy ones.</p>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">clue two</span>
+    This is survivorship bias with a dropna in the middle of it. Ask who has ever written
+    that line. Everyone has.
+  </div>
+</section>
+
+<!-- 20 demo 2 ---------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <div class="demo-head">
+      <div><p class="eyebrow">Live, in this page</p><h3>The rows that quietly left</h3></div>
+      <div class="switch">
+        <button data-demo="2" data-mode="bug" aria-pressed="true">drop the blanks</button>
+        <button data-demo="2" data-mode="fix" aria-pressed="false">ask again, keep them</button>
       </div>
     </div>
     <div class="demo">
       <div class="rows" id="d2-rows"></div>
       <div class="readout">
-        <div>
-          <div class="big" id="d2-big">&mdash;</div>
-          <div class="lbl" id="d2-lbl">how well the judge agrees with our reviewers</div>
-        </div>
-        <div class="kv"><span>orders scored</span><b id="d2-n">&mdash;</b></div>
-        <div class="kv"><span>orders dropped</span><b id="d2-drop">&mdash;</b></div>
-        <div class="kv"><span>on clear photos</span><b id="d2-easy">&mdash;</b></div>
-        <div class="kv"><span>on unreadable ones</span><b id="d2-hard">&mdash;</b></div>
         <div id="d2-state"></div>
+        <div class="big" id="d2-big">0.74</div>
+        <div class="lbl">agreement with human reviewers</div>
+        <div class="kv"><span>orders counted</span><b id="d2-n">5 of 8</b></div>
+        <div class="kv"><span>orders dropped</span><b id="d2-drop">3 blank</b></div>
+        <div class="kv"><span>on clear photos</span><b id="d2-easy">0.74</b></div>
+        <div class="kv"><span>on barely readable</span><b id="d2-hard">never measured</b></div>
       </div>
     </div>
-    <p class="banner">Blank. Unparseable. Refused. Timed out. If your harness has a
-      try/except that skips them, this is already happening to you.</p>
+    <p class="banner">The honest number is lower and far more useful, because it finally includes the hard cases.</p>
   </div>
   <div class="notes">
-    <span class="t">15:30 &ndash; 18:00 &middot; demo</span>
-    In <b>Buggy</b> the empty rows are simply gone and agreement reads 0.74 &mdash; a number
-    anyone would publish.<br>
-    Flip to <b>Fixed</b>: ask again, put them back, and it falls. Say the uncomfortable part
-    plainly &mdash; <b>the honest number is the worse number</b>, and the nice one was made of
-    the orders the judge was willing to answer.
+    <span class="t">demo two</span>
+    Flip it and point at the number going down. Say out loud: "this is the only slide tonight
+    where the fix makes your headline metric worse, and it is still the right thing to do."
   </div>
 </section>
 
-<!-- 16 ---------------------------------------------------------------- -->
+<!-- 21 clue 3 ---------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Clue 02</b> &nbsp;//&nbsp; what that means</p>
-    <h2>It went quiet on<br>exactly the hard ones</h2>
+    <p class="eyebrow"><b>Clue three</b> &nbsp;//&nbsp; the ruler that always agrees</p>
+    <h2>Agreement that counts lucky guesses.</h2>
     <div class="cols wide">
       <figure>
-        <svg viewBox="0 0 560 230" role="img" aria-label="Blank rate rises from 1 percent on clear photos to 57 percent on barely readable ones; agreement falls from 0.74 to 0.41 across the same groups.">
-          <g id="strat"></g>
-        </svg>
+        <svg id="kappa" viewBox="0 0 560 180" role="img" aria-label="Reported agreement against agreement after chance correction"></svg>
+        <figcaption>Most refund calls are easy, and both sides say fine a lot.</figcaption>
       </figure>
-      <p class="say">On the photos anyone could read, it agrees with us. On the blurry ones
-        it's guessing &mdash; and those are the ones it refused to answer more than half the
-        time.</p>
-    </div>
-  </div>
-  <div class="notes">
-    <span class="t">18:00 &ndash; 19:15</span>
-    Say it plainly: <b>the judge agrees with you about the orders you never needed help with.</b><br>
-    Practical ask: split your results by something &mdash; photo quality, order size, how long
-    the trace was. A single average hides this completely.
-  </div>
-</section>
-
-<!-- 17 ---------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow"><b>Clue 03</b></p>
-    <h2>&ldquo;It agrees with us<br>75% of the time&rdquo;</h2>
-    <div class="cols wide">
-      <figure>
-        <svg viewBox="0 0 560 180" role="img" aria-label="Raw agreement 75 percent versus chance-corrected agreement kappa 0.50, with the always-guess baseline at 57 percent.">
-          <g id="kappa"></g>
-        </svg>
-      </figure>
-      <div style="display:grid;gap:18px">
-        <p class="say">Most refunds are easy. Both of us just say &ldquo;fine&rdquo;. And we
-          count all of that as the judge being right.</p>
-        <div class="note red">A judge that approves <strong>everything</strong> scores 80%
-          on a set that's 80% approvals. And knows nothing.</div>
+      <div style="display:grid;gap:clamp(12px,2vh,22px)">
+        <p class="say">Seventy five percent agreement sounds like a working instrument.
+          A judge that approves every single order, reading nothing at all, scores fifty seven.</p>
+        <p class="note bad">Once you subtract the agreement you would get by luck, what is left is 0.50. That is moderate, and moderate is not a gate.</p>
+        <p class="plain">Report the chance corrected number with the always approve baseline printed next to it, or the raw number will flatter you every time.</p>
       </div>
     </div>
   </div>
   <div class="notes">
-    <span class="t">19:15 &ndash; 21:00</span>
-    Shortest clue. The approve-everything judge is the whole argument.<br>
-    One sentence of plain English for kappa: "it's agreement after you take away the credit
-    for lucky guesses."<br>
-    Ask: never put a raw agreement percentage in a report without the baseline next to it.
+    <span class="t">clue three</span>
+    Do not say kappa first. Say the idea, then say the name once, then move on.
   </div>
 </section>
 
-<!-- 18 ---------------------------------------------------------------- -->
+<!-- 22 clue 4 ---------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue four</b> &nbsp;//&nbsp; the expensive one</p>
+    <h2>Confident, beautifully written, and wrong.</h2>
+    <p class="lead">A refund letter that is warm, clear, apologises properly, and gives away twenty two
+      dollars for a photo of the correct meal.</p>
+    <div class="stats">
+      <div class="stat"><b class="rose" data-count="89" data-suffix="%">0%</b>
+        <span>of confident wrong refunds got approved</span></div>
+      <div class="stat"><b class="teal" data-count="10" data-suffix="%">0%</b>
+        <span>after a second judge asks: was this the right call?</span></div>
+    </div>
+    <p class="say">A score out of ten answers one question: was this handled well? It is never asked whether it was correct.</p>
+  </div>
+  <div class="notes">
+    <span class="t">clue four</span>
+    This is the clue that connects back to your own story. Say so explicitly.
+  </div>
+</section>
+
+<!-- 23 demo 3 ---------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
     <div class="demo-head">
-      <div>
-        <p class="eyebrow"><b>Clue 04</b> &nbsp;//&nbsp; live</p>
-        <h2 style="font-size:clamp(26px,3.4vw,46px);margin-top:10px">Confident. Well written.<br>Wrong refund.</h2>
-      </div>
-      <div class="switch" role="group" aria-label="demo mode">
-        <button type="button" data-demo="3" data-mode="bug" aria-pressed="true">Buggy</button>
-        <button type="button" data-demo="3" data-mode="fix" aria-pressed="false">Fixed</button>
+      <div><p class="eyebrow">Live, in this page</p><h3>Six refunds that all read beautifully</h3></div>
+      <div class="switch">
+        <button data-demo="3" data-mode="bug" aria-pressed="true">one judge</button>
+        <button data-demo="3" data-mode="fix" aria-pressed="false">add a second</button>
       </div>
     </div>
     <div class="demo">
       <div class="rows" id="d3-rows"></div>
       <div class="readout">
-        <div>
-          <div class="big" id="d3-big">&mdash;</div>
-          <div class="lbl" id="d3-lbl">of the wrong refunds waved through</div>
-        </div>
-        <div class="kv"><span>checking</span><b id="d3-proto">one judge</b></div>
-        <div class="kv"><span>wrong refunds shown</span><b id="d3-n">6</b></div>
-        <div class="kv"><span>caught</span><b id="d3-caught">&mdash;</b></div>
-        <div class="kv"><span>good refunds blocked</span><b id="d3-fr">&mdash;</b></div>
         <div id="d3-state"></div>
+        <div class="big" id="d3-big">89%</div>
+        <div class="lbl">of the wrong refunds went through</div>
+        <div class="kv"><span>protocol</span><b id="d3-proto">one judge</b></div>
+        <div class="kv"><span>caught before payout</span><b id="d3-caught">0 of 6</b></div>
+        <div class="kv"><span>false refusals</span><b id="d3-fr">36%</b></div>
       </div>
     </div>
-    <p class="banner">One judge answers &ldquo;was this handled well?&rdquo;. The second one
-      answers &ldquo;was it the right call?&rdquo;. Those are different questions.</p>
+    <p class="banner">The second judge answers yes or no, not a score. It is cheaper than the first one and it is the single highest value change on this list.</p>
   </div>
   <div class="notes">
-    <span class="t">21:00 &ndash; 23:30 &middot; demo</span>
-    In <b>Buggy</b>: every one of these is well argued and gives money to someone who
-    photographed the correct meal. The judge scores them 8 and 9.<br>
-    Flip to <b>Fixed</b>: a second judge, asked a different question, catches almost all of
-    them. The detail that makes it free &mdash; <b>it doesn't block any more good refunds</b>.
+    <span class="t">demo three</span>
+    Point at the false refusal row staying still. The second judge costs you nothing in
+    customer experience, which is the objection you will get.
   </div>
 </section>
 
-<!-- 19 ---------------------------------------------------------------- -->
+<!-- 24 compounding ----------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">So who did it</p>
-    <h2>The judge isn't broken.<br>Nobody ever<br>calibrated it.</h2>
-    <p class="lead">Not one of those four clues needed the agent to be bad. It was the
-      measurement the whole time.</p>
-  </div>
-  <div class="notes">
-    <span class="t">23:30 &ndash; 24:45</span>
-    <b>The turn of the story.</b> Slow right down. This is the line they'll repeat to their
-    team tomorrow.
-  </div>
-</section>
-
-<!-- 20 ---------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">What it actually costs you</p>
+    <p class="eyebrow">Now put it back in the agent</p>
+    <h2>Six steps, and the wobble multiplies.</h2>
     <div class="cols wide">
       <figure>
-        <svg viewBox="0 0 560 230" role="img" aria-label="The chance the judge names the better agent version rises from 62 percent at 25 orders to 98 percent at 800.">
-          <g id="risk"></g>
-        </svg>
-        <figcaption>Two agent versions, one genuinely better. How often does the judge find it?</figcaption>
+        <svg id="compound" viewBox="0 0 560 176" role="img" aria-label="Chance the whole order is graded consistently, as steps are added"></svg>
+        <figcaption>Chance that every step in one order gets the same verdict twice in a row.</figcaption>
       </figure>
-      <div style="display:grid;gap:22px">
-        <h2 style="font-size:clamp(28px,3.8vw,52px)">One call in four<br>is the wrong one</h2>
-        <p class="say">At 100 orders per version. You'd need <strong>400</strong> to get it
-          right nine times out of ten.</p>
-        <div class="note">Nobody can act on a correlation. Everybody can act on this.</div>
+      <div style="display:grid;gap:clamp(12px,2vh,22px)">
+        <p class="say">One step held its verdict seventy three times in a hundred. That sounded survivable.</p>
+        <p class="note bad">Across all six steps of a single refund, fifteen orders in a hundred come out the same way twice.</p>
+        <p class="say">Nobody grades one step. We grade agents, and agents are made of steps.</p>
       </div>
     </div>
   </div>
   <div class="notes">
-    <span class="t">24:45 &ndash; 26:15</span>
-    The slide that changes what people do on Monday, because it's phrased as a shipping
-    decision rather than a statistic.<br>
-    Ask them to do the same sum for their own eval size.
+    <span class="t">compounding</span>
+    This is the slide the engineers in the room photograph. Give it room.
   </div>
 </section>
 
-<!-- 21 ---------------------------------------------------------------- -->
+<!-- 25 what it costs --------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">Take this home</p>
-    <h2>Five things,<br>none of them expensive</h2>
-    <ul class="list">
-      <li data-n="01"><b>Run it three times</b>Report the middle score and the spread, not one number.</li>
-      <li data-n="02"><b>Count the blanks, then ask again</b>Put them back in and publish the number you get after.</li>
-      <li data-n="03"><b>Split your results by difficulty</b>One average hides a judge that only works on easy cases.</li>
-      <li data-n="04"><b>Subtract the lucky guesses</b>Print the always-guess baseline next to your agreement number.</li>
-      <li data-n="05"><b>Ask a second judge a different question</b>&ldquo;Was it right?&rdquo; &mdash; not just &ldquo;was it good?&rdquo;</li>
-    </ul>
-    <p class="say" style="max-width:52ch">Each one is one more API call and one more column
-      in a spreadsheet.</p>
+    <p class="eyebrow">The number a team can act on</p>
+    <h2>One version in four, named wrong.</h2>
+    <div class="cols wide">
+      <figure>
+        <svg id="risk" viewBox="0 0 560 230" role="img" aria-label="How often the judge picks the better agent version, by evaluation size"></svg>
+        <figcaption>How often the judge picks the genuinely better agent version, by how many orders you score.</figcaption>
+      </figure>
+      <div style="display:grid;gap:clamp(12px,2vh,22px)">
+        <p class="say">Two versions of the refund agent. One of them really is better. You score a hundred
+          orders on each and you ship the winner.</p>
+        <p class="note bad">At a hundred orders you name the wrong version one time in four.</p>
+        <p class="say">Nobody can act on a correlation. Everybody can act on that sentence, including the person who decides your headcount.</p>
+      </div>
+    </div>
   </div>
   <div class="notes">
-    <span class="t">26:15 &ndash; 28:15</span>
-    One line each, fast, no elaboration. Tell them it's one page in the repo so nobody
-    photographs it in a panic.<br>
-    If you're running late, this is the slide to speed up &mdash; not to cut.
+    <span class="t">decision risk</span>
+    Translate every eval metric into the decision it is used for. This is how you get budget
+    for eval work.
   </div>
 </section>
 
-<!-- 22 ---------------------------------------------------------------- -->
+<!-- 26 checklist ------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Monday morning</p>
+    <h2>Five things, one afternoon.</h2>
+    <ul class="list">
+      <li data-n="01"><div><b>Score everything three times</b>Publish the spread next to the average. If the spread embarrasses you, that is information.</div></li>
+      <li data-n="02"><div><b>Count what came back blank</b>Break the blanks down by how hard the case was. Never quietly drop a row.</div></li>
+      <li data-n="03"><div><b>Subtract luck before you celebrate</b>Print the always approve baseline beside every agreement number you report.</div></li>
+      <li data-n="04"><div><b>Add a second judge that answers yes or no</b>Was this the right call, not was this well written. Require both to pass.</div></li>
+      <li data-n="05"><div><b>Say what your eval size buys you</b>Turn the metric into a sentence about how often you ship the wrong thing.</div></li>
+    </ul>
+  </div>
+  <div class="notes">
+    <span class="t">takeaway</span>
+    Tell them the repo does all five on their own CSV. This is the slide people photograph.
+  </div>
+</section>
+
+<!-- 27 close ------------------------------------------------------------ -->
 <section class="slide">
   <div class="inner">
     <p class="eyebrow">Thank you</p>
-    <h2>Judges aren't useless.<br>Unchecked ones are.</h2>
-    <p class="lead">You can't make the judge honest. You can make it <strong>measurable</strong>
-      &mdash; which is all we ask of anything else we measure with.</p>
-    <div class="cols" style="align-items:center">
+    <h2>Your judge is an instrument.<br>Calibrate it before you trust it.</h2>
+    <div class="cols">
       <div class="qr">
         {{QR2}}
-        <div class="qt"><b>github.com/ImSuMyatNoe/judge-audit</b>
-          the code, the checklist,<br>the refund example, these slides</div>
+        <div class="qt"><b>the code</b>the four audits, the worked refund example, and this deck</div>
       </div>
       <div class="qr">
         {{QR1}}
-        <div class="qt"><b>imsumyatnoe.github.io</b>
-          everything else &middot; sumyatnoe@nii.ac.jp</div>
+        <div class="qt"><b>imsumyatnoe.github.io</b>papers, and the easiest way to reach me</div>
       </div>
     </div>
+    <p class="plain">Su Myat Noe &nbsp;&middot;&nbsp; NII Tokyo &nbsp;&middot;&nbsp; Beyond the Vibes, Session 03, SGInnovate</p>
   </div>
   <div class="notes">
-    <span class="t">28:15 &ndash; 30:00</span>
-    Land the two sentences and stop talking. Leave this up for questions.<br>
-    <b>Expect:</b> "does a bigger judge fix it?" &mdash; no, and a judge no better than the thing
-    it's grading has a hard ceiling. "Is this synthetic?" &mdash; yes, say so before they ask;
-    calibrated to published numbers, and the same audits run on real traces. "What about
-    agent-specific judges?" &mdash; same checks, more steps to compound.
+    <span class="t">close</span>
+    End on the sentence, not on the QR codes. Then stop talking and let them scan.
   </div>
 </section>
 
 </div>
 
-<div class="rail">
-  <button id="prev" type="button" aria-label="Previous slide">&larr;</button>
-  <button id="next" type="button" aria-label="Next slide">&rarr;</button>
-  <span class="count"><span id="cur">1</span> / <span id="total">22</span></span>
-  <span class="track"><span class="fill" id="fill"></span></span>
-  <span id="clock" style="font-variant-numeric:tabular-nums">00:00</span>
-  <button id="timer" type="button">start</button>
-  <button id="notesBtn" type="button">notes <span style="opacity:.55">N</span></button>
-</div>
-
 <div class="notes" id="notesPanel" hidden></div>
+
+<div class="rail">
+  <button id="prev" aria-label="previous slide">prev</button>
+  <button id="next" aria-label="next slide">next</button>
+  <div class="track"><div class="fill" id="fill"></div></div>
+  <span class="count"><span id="cur">1</span> / <span id="total">27</span></span>
+  <button id="notesBtn" aria-pressed="false">notes</button>
+  <span class="count" id="clock">00:00</span>
+  <button id="timer">start</button>
+</div>
 
 <script>
 (function () {
@@ -844,43 +1047,13 @@
     return n;
   }
   const C = {
-    blue: "#4f6fc7", blueDim: "#e4e9f7", red: "#d93025", redDim: "#fae9e7",
-    green: "#1e7a3c", line: "#dedbd3", line2: "#c4c0b6",
-    muted: "#7a756c", ink: "#14130f", card: "#faf9f6", paper: "#f4f2ee"
+    rose: "#c9455b", roseDim: "#fbe9ec", teal: "#0e9a93", tealDim: "#e2f4f2",
+    plum: "#7b4b94", plumDim: "#f2eaf7", apricot: "#ef8f5a", butter: "#f0be3f",
+    line: "#e6ddd4", line2: "#cfc2b6", muted: "#877a75", ink: "#201a19",
+    card: "#fffcf9", paper: "#faf6f2"
   };
 
-  /* ------------------------------------------------ slide 10: trajectory -- */
-  (function traj() {
-    const g = document.getElementById("traj");
-    if (!g) return;
-    const steps = ["read the\nphoto", "check the\norder", "check the\npolicy",
-                   "decide", "write the\nreply", "send"];
-    const x0 = 6, bw = 82, gap = 10, y = 16;
-    steps.forEach((s, i) => {
-      const x = x0 + i * (bw + gap);
-      g.appendChild(el("rect", { x, y, width: bw, height: 52, rx: 8,
-        fill: C.blueDim, stroke: C.blue, "stroke-width": 1.2 }));
-      s.split("\n").forEach((ln, j) =>
-        g.appendChild(el("text", { x: x + bw / 2, y: y + 22 + j * 14,
-          "text-anchor": "middle", class: "st", fill: C.ink }, ln)));
-      g.appendChild(el("text", { x: x + bw / 2, y: y + 70, "text-anchor": "middle",
-        class: "st" }, "judged"));
-      g.appendChild(el("line", { x1: x + bw / 2, y1: y + 76, x2: x + bw / 2, y2: y + 92,
-        stroke: C.line2, "stroke-width": 1.2 }));
-      if (i < steps.length - 1)
-        g.appendChild(el("line", { x1: x + bw, y1: y + 26, x2: x + bw + gap, y2: y + 26,
-          stroke: C.line2, "stroke-width": 1.2 }));
-    });
-    const total = steps.length * (bw + gap) - gap;
-    g.appendChild(el("line", { x1: x0 + bw / 2, y1: y + 92, x2: x0 + total - bw / 2, y2: y + 92,
-      stroke: C.line2, "stroke-width": 1.2 }));
-    g.appendChild(el("rect", { x: x0 + total / 2 - 78, y: y + 100, width: 156, height: 34, rx: 8,
-      fill: C.paper, stroke: C.red, "stroke-width": 1.4 }));
-    g.appendChild(el("text", { x: x0 + total / 2, y: y + 122, "text-anchor": "middle",
-      class: "sv", fill: C.red }, "one score: 8.4"));
-  })();
-
-  /* ------------------------------------------------ slide 13: compounding - */
+  /* ------------------------------------------- compounding across steps -- */
   (function compound() {
     const g = document.getElementById("compound");
     if (!g) return;
@@ -894,20 +1067,26 @@
       g.appendChild(el("text", { x: x0 - 9, y: ly(p) + 4, "text-anchor": "end", class: "st" },
         Math.round(p * 100) + "%"));
     });
-    g.appendChild(el("polyline", { points: pts.map(p => lx(p[0]) + "," + ly(p[1])).join(" "),
-      fill: "none", stroke: C.red, "stroke-width": 2.6, "stroke-linejoin": "round" }));
+    const poly = el("polyline", { points: pts.map(p => lx(p[0]) + "," + ly(p[1])).join(" "),
+      fill: "none", stroke: C.rose, "stroke-width": 3, "stroke-linejoin": "round",
+      "stroke-linecap": "round" });
+    g.appendChild(poly);
+    const len = 700;
+    poly.setAttribute("stroke-dasharray", len);
+    poly.setAttribute("stroke-dashoffset", len);
+    poly.style.animation = "dash 1.1s .35s ease-out forwards";
     pts.forEach(([k, p]) => {
       const key = k === 1 || k === 6;
-      g.appendChild(el("circle", { cx: lx(k), cy: ly(p), r: key ? 6 : 3.6, fill: C.red,
-        stroke: C.paper, "stroke-width": 1.6 }));
+      g.appendChild(el("circle", { cx: lx(k), cy: ly(p), r: key ? 6.5 : 4, fill: C.rose,
+        stroke: C.paper, "stroke-width": 2 }));
       g.appendChild(el("text", { x: lx(k), y: yb + 18, "text-anchor": "middle", class: "st" },
         k === 1 ? "1 step" : String(k)));
       if (key) g.appendChild(el("text", { x: lx(k) + (k === 1 ? 14 : 0), y: ly(p) - 13,
-        "text-anchor": k === 1 ? "start" : "middle", class: "sv", fill: C.red },
+        "text-anchor": k === 1 ? "start" : "middle", class: "sv", fill: C.rose },
         Math.round(p * 100) + "%"));
     });
     g.appendChild(el("text", { x: (x0 + x1) / 2, y: yb + 38, "text-anchor": "middle", class: "st" },
-      "steps in the order"));
+      "steps in one order"));
   })();
 
   /* ------------------------------------------------------- bar helper ----- */
@@ -915,13 +1094,16 @@
     const g = document.getElementById(id);
     if (!g) return;
     const { data, max, base, top, w, fmt, labelSize = 14 } = opts;
-    const x0 = 150, right = w - 150;
+    const x0 = 158, right = w - 150;
     const rowH = (base - top) / data.length;
     data.forEach((d, i) => {
       const y = top + i * rowH + rowH * 0.22;
       const h = rowH * 0.42;
       const len = (d.v / max) * (right - x0);
-      g.appendChild(el("rect", { x: x0, y, width: Math.max(len, 2), height: h, rx: 4, fill: d.c }));
+      const r = el("rect", { x: x0, y, width: Math.max(len, 2), height: h, rx: 7, fill: d.c });
+      r.style.transformOrigin = x0 + "px 0";
+      r.style.animation = "sweep .8s " + (0.3 + i * 0.16) + "s cubic-bezier(.2,.8,.3,1) both";
+      g.appendChild(r);
       g.appendChild(el("text", { x: x0 - 12, y: y + h / 2 + 4, "text-anchor": "end", class: "st" }, d.k));
       g.appendChild(el("text", { x: x0 + Math.max(len, 2) + 14, y: y + h / 2 + 5, class: "sv",
         style: "font-size:" + labelSize + "px" }, fmt(d)));
@@ -932,23 +1114,23 @@
   bars("kappa", {
     w: 560, max: 0.85, top: 22, base: 128,
     data: [
-      { k: "what we reported", v: 0.747, c: C.blue },
-      { k: "after the subtraction", v: 0.497, c: C.red }
+      { k: "what we reported", v: 0.747, c: C.plum },
+      { k: "after subtracting luck", v: 0.497, c: C.rose }
     ],
     fmt: d => d.v === 0.497 ? "0.50" : Math.round(d.v * 100) + "%", labelSize: 16
   });
   (function baseline() {
     const g = document.getElementById("kappa");
     if (!g) return;
-    const x0 = 150, right = 560 - 150;
+    const x0 = 158, right = 560 - 150;
     const x = x0 + (0.574 / 0.85) * (right - x0);
     g.appendChild(el("line", { x1: x, x2: x, y1: 16, y2: 134,
-      stroke: C.muted, "stroke-width": 1.2, "stroke-dasharray": "4 4" }));
+      stroke: C.muted, "stroke-width": 1.4, "stroke-dasharray": "4 4" }));
     g.appendChild(el("text", { x: x0, y: 158, class: "st" },
       "57% = a judge that just approves everything"));
   })();
 
-  /* --------------------------------------------------- slide 16: strata --- */
+  /* ------------------------------------------------------------ strata --- */
   (function strat() {
     const g = document.getElementById("strat");
     if (!g) return;
@@ -956,13 +1138,16 @@
     const blanks = [0.013, 0.069, 0.238, 0.569];
     const corr = [0.74, 0.69, 0.59, 0.41];
     const yb = 168, yt = 40;
-    function panel(ox, values, color, fmt, title, maxV) {
+    function panel(ox, values, color, fmt, title, maxV, delay) {
       g.appendChild(el("text", { x: ox, y: 20, class: "sv", fill: C.ink }, title));
       const bw = 44, gap = 16;
       values.forEach((v, i) => {
         const x = ox + i * (bw + gap);
         const h = (v / maxV) * (yb - yt);
-        g.appendChild(el("rect", { x, y: yb - h, width: bw, height: Math.max(h, 2), rx: 4, fill: color }));
+        const r = el("rect", { x, y: yb - h, width: bw, height: Math.max(h, 2), rx: 7, fill: color });
+        r.style.transformOrigin = "0 " + yb + "px";
+        r.style.animation = "pop .55s " + (delay + i * 0.09) + "s cubic-bezier(.2,.9,.3,1.1) both";
+        g.appendChild(r);
         g.appendChild(el("text", { x: x + bw / 2, y: yb - h - 9, "text-anchor": "middle", class: "sv" }, fmt(v)));
       });
       g.appendChild(el("line", { x1: ox - 7, x2: ox + values.length * (bw + gap) - gap + 7,
@@ -974,11 +1159,11 @@
           g.appendChild(el("text", { x, y: yb + 19 + j * 14, "text-anchor": "middle", class: "st" }, ln)));
       });
     }
-    panel(44, blanks, C.red, v => Math.round(v * 100) + "%", "came back blank", 0.62);
-    panel(324, corr, C.blue, v => v.toFixed(2), "agreement with us", 0.85);
+    panel(44, blanks, C.rose, v => Math.round(v * 100) + "%", "came back blank", 0.62, 0.35);
+    panel(324, corr, C.teal, v => v.toFixed(2), "agreement with us", 0.85, 0.7);
   })();
 
-  /* ---------------------------------------------------- slide 20: risk ---- */
+  /* -------------------------------------------------------- decision risk - */
   (function risk() {
     const g = document.getElementById("risk");
     if (!g) return;
@@ -992,21 +1177,26 @@
         Math.round(v * 100) + "%"));
     });
     g.appendChild(el("line", { x1: x0, x2: x1, y1: ly(0.9), y2: ly(0.9),
-      stroke: C.blue, "stroke-width": 1.3, "stroke-dasharray": "5 4" }));
-    g.appendChild(el("text", { x: x0 + 7, y: ly(0.9) - 9, class: "st", fill: C.blue },
+      stroke: C.teal, "stroke-width": 1.6, "stroke-dasharray": "5 4" }));
+    g.appendChild(el("text", { x: x0 + 7, y: ly(0.9) - 9, class: "st", fill: C.teal },
       "right nine times out of ten"));
-    g.appendChild(el("polyline", { points: pts.map(p => lx(p[0]) + "," + ly(p[1])).join(" "),
-      fill: "none", stroke: C.red, "stroke-width": 2.6, "stroke-linejoin": "round" }));
+    const poly = el("polyline", { points: pts.map(p => lx(p[0]) + "," + ly(p[1])).join(" "),
+      fill: "none", stroke: C.rose, "stroke-width": 3, "stroke-linejoin": "round",
+      "stroke-linecap": "round" });
+    g.appendChild(poly);
+    poly.setAttribute("stroke-dasharray", 700);
+    poly.setAttribute("stroke-dashoffset", 700);
+    poly.style.animation = "dash 1.1s .35s ease-out forwards";
     pts.forEach(([n, v]) => {
-      g.appendChild(el("circle", { cx: lx(n), cy: ly(v), r: n === 100 ? 6 : 4.4, fill: C.red,
-        stroke: C.paper, "stroke-width": 1.6 }));
+      g.appendChild(el("circle", { cx: lx(n), cy: ly(v), r: n === 100 ? 6.5 : 4.6, fill: C.rose,
+        stroke: C.paper, "stroke-width": 2 }));
       g.appendChild(el("text", { x: lx(n), y: yb + 19, "text-anchor": "middle", class: "st" }, String(n)));
       if (n === 25 || n === 100 || n === 800)
         g.appendChild(el("text", { x: lx(n), y: ly(v) - 13, "text-anchor": "middle", class: "sv" },
           Math.round(v * 100) + "%"));
     });
     g.appendChild(el("text", { x: (x0 + x1) / 2, y: yb + 39, "text-anchor": "middle", class: "st" },
-      "orders per version"));
+      "orders scored per version"));
   })();
 
   /* ================== demo 1: score the same orders again ================= */
@@ -1082,16 +1272,16 @@
     if (bigEl) bigEl.style.color = d1Passes ? "" : "var(--line-2)";
     set("d1-passes", d1Passes + " / 3");
     if (d1Passes === 0) {
-      set("d1-big", "—"); set("d1-lbl", "press the button to score these orders");
-      set("d1-same", "—"); set("d1-flip", "—"); set("d1-spread", "—");
+      set("d1-big", "…"); set("d1-lbl", "press the button to score these orders");
+      set("d1-same", "·"); set("d1-flip", "·"); set("d1-spread", "·");
     } else {
       const mean = D1.reduce((a, t) =>
         a + t.runs.slice(0, d1Passes).reduce((x, y) => x + y, 0) / d1Passes, 0) / D1.length;
       if (d1Passes === 1) {
         set("d1-big", mean.toFixed(1) + " / 10");
-        set("d1-lbl", d1Mode === "bug" ? "the score you'd put in the report"
-                                       : "one pass isn't a measurement yet");
-        set("d1-same", "—"); set("d1-flip", "—"); set("d1-spread", "—");
+        set("d1-lbl", d1Mode === "bug" ? "the score you would put in the report"
+                                       : "one pass is not a measurement yet");
+        set("d1-same", "·"); set("d1-flip", "·"); set("d1-spread", "·");
       } else {
         const same = D1.filter(t => new Set(t.runs.slice(0, d1Passes)).size === 1).length;
         const flip = D1.filter(t => new Set(t.runs.slice(0, d1Passes).map(v => v >= THRESH)).size > 1).length;
@@ -1102,7 +1292,7 @@
         set("d1-big", d1Mode === "bug" ? mean.toFixed(1) + " / 10"
                                        : mean.toFixed(1) + " ±" + spread.toFixed(1));
         set("d1-lbl", d1Mode === "bug" ? "still reported as one number"
-                                       : "middle score, with the spread");
+                                       : "middle score, with the spread beside it");
         set("d1-same", Math.round(same / D1.length * 100) + "%");
         set("d1-flip", Math.round(flip / D1.length * 100) + "%");
         set("d1-spread", spread.toFixed(2) + " pts");
@@ -1222,7 +1412,7 @@
         g2.className = "cell";
         g2.style.width = "auto"; g2.style.padding = "0 12px";
         g2.textContent = t.caught ? "not right" : "right";
-        if (t.caught) { g2.style.borderColor = C.green; g2.style.color = C.green; }
+        if (t.caught) { g2.style.borderColor = C.teal; g2.style.color = C.teal; g2.style.background = C.tealDim; }
         cells.appendChild(g2);
       }
       row.appendChild(cells);
@@ -1240,14 +1430,14 @@
       set("d3-caught", "0 of 6"); set("d3-fr", "36%");
     } else {
       set("d3-big", "10%"); set("d3-proto", "two judges");
-      set("d3-caught", caught + " of 6"); set("d3-fr", "36% — unchanged");
+      set("d3-caught", caught + " of 6"); set("d3-fr", "36%, unchanged");
     }
     const st = document.getElementById("d3-state");
     if (st) {
       st.innerHTML = "";
       const chip = document.createElement("span");
       chip.className = d3Mode === "bug" ? "state bug" : "state fix";
-      chip.textContent = d3Mode === "bug" ? "graded on how it reads" : "checked on whether it's right";
+      chip.textContent = d3Mode === "bug" ? "graded on how it reads" : "checked on whether it is right";
       st.appendChild(chip);
     }
   }
@@ -1268,23 +1458,13 @@
 
   /* ------------------------------------------------------------- deck ----- */
 
-  const slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  const slides = Array.prototype.slice.call(document.querySelectorAll(".deck > .slide"));
 
   slides.forEach((slide, k) => {
     const head = document.createElement("div");
     head.className = "slide-head";
-    const glyph = document.createElement("div");
-    glyph.className = "glyph";
-    [1, 1, 0, 1, 0, 1, 0, 1, 1].forEach(on => {
-      const dot = document.createElement("i");
-      if (!on) dot.className = "off";
-      glyph.appendChild(dot);
-    });
-    const word = document.createElement("div");
-    word.className = "wordmark";
-    word.innerHTML = "Judge Audit<span>Su Myat Noe · NII Tokyo</span>";
-    head.appendChild(glyph);
-    head.appendChild(word);
+    head.innerHTML = '<span>LLM as a Judge Is Probably Lying to You</span>' +
+                     '<span class="who">Su Myat Noe &middot; NII Tokyo</span>';
     slide.insertBefore(head, slide.firstChild);
 
     const foot = document.createElement("div");
@@ -1301,9 +1481,36 @@
   document.getElementById("total").textContent = String(slides.length);
   let i = 0;
 
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function countUp(slide) {
+    slide.querySelectorAll("[data-count]").forEach(node => {
+      const target = parseFloat(node.getAttribute("data-count"));
+      const dec = parseInt(node.getAttribute("data-dec") || "0", 10);
+      const suffix = node.getAttribute("data-suffix") || "";
+      if (reduced) { node.textContent = target.toFixed(dec) + suffix; return; }
+      const dur = 900, t0 = performance.now();
+      function frame(now) {
+        const p = Math.min(1, (now - t0) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        node.textContent = (target * eased).toFixed(dec) + suffix;
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      node.textContent = (0).toFixed(dec) + suffix;
+      setTimeout(() => requestAnimationFrame(frame), 380);
+    });
+  }
+
   function show(n) {
     i = Math.max(0, Math.min(slides.length - 1, n));
-    slides.forEach((s, k) => s.classList.toggle("on", k === i));
+    slides.forEach((s, k) => {
+      s.classList.toggle("on", k === i);
+      s.classList.remove("live");
+    });
+    const active = slides[i];
+    void active.offsetWidth;
+    active.classList.add("live");
+    countUp(active);
     cur.textContent = String(i + 1);
     fill.style.width = ((i + 1) / slides.length * 100) + "%";
     panel.innerHTML = notes[i] ? notes[i].innerHTML : "";
@@ -1333,7 +1540,7 @@
       const s = Math.floor((Date.now() - t0) / 1000);
       clock.textContent = String(Math.floor(s / 60)).padStart(2, "0") + ":" +
                           String(s % 60).padStart(2, "0");
-      clock.style.color = s > 1800 ? C.red : "";
+      clock.style.color = s > 1800 ? C.rose : "";
     }, 250);
   });
 
@@ -1353,7 +1560,14 @@
     if (e.key === "Enter" && buffer) { show(parseInt(buffer, 10) - 1); buffer = ""; }
   });
 
-  const fromHash = parseInt((location.hash || "").slice(1), 10);
-  show(isFinite(fromHash) && fromHash > 0 ? fromHash - 1 : 0);
+  function fromHash() {
+    const n = parseInt((location.hash || "").slice(1), 10);
+    return isFinite(n) && n > 0 ? n - 1 : 0;
+  }
+  window.addEventListener("hashchange", function () {
+    const n = fromHash();
+    if (n !== i) show(n);
+  });
+  show(fromHash());
 })();
 </script>
