@@ -63,12 +63,14 @@
     font-family: var(--mono); font-size: 12px; color: var(--muted);
   }
   .slide-foot a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
-  .slide-foot .pg { font-variant-numeric: tabular-nums; }
+  .slide-foot .pg { font-variant-numeric: tabular-nums; margin-left: auto; }
 
   .inner {
     width: 100%; max-width: 1280px; margin: 0 auto; flex: 1;
     display: flex; flex-direction: column; justify-content: center;
     gap: clamp(13px, 2.2vh, 28px); padding: clamp(6px, 1.5vh, 18px) 0;
+  }
+  .title .inner { gap: clamp(10px, 1.6vh, 20px);
   }
 
   /* ---------- entrance motion ------------------------------------------- */
@@ -127,7 +129,7 @@
 
   p { margin: 0; max-width: none; hyphens: none; }
   .lead, .say, .small, .thread span.t, ul.list li > div, .card p {
-    text-align: justify; text-align-last: left; hyphens: none;
+    text-align: left; hyphens: none;
   }
   .lead { font-size: clamp(17px, 1.75vw, 23px); color: var(--ink-2); line-height: 1.42; letter-spacing: -.012em; }
   .lead strong { color: var(--ink); font-weight: 700; }
@@ -298,6 +300,19 @@
   .qr .qt { font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.6; }
   .qr .qt b { display: block; color: var(--ink); font-size: 13.5px; font-weight: 500; }
 
+  .title h1, .thesis h1 { white-space: nowrap; font-size: min(4.5vw, 64px); letter-spacing: -.03em; }
+  .title .plain { white-space: nowrap; font-size: min(1.45vw, 18px); }
+  .title .byline { color: var(--ink-2); }
+  .title .venue { margin-top: 4px; }
+  .title .eyebrow { font-size: min(1.25vw, 15px); }
+
+  .part .inner { align-items: center; justify-content: center; text-align: center; }
+  .part h1 { font-size: clamp(36px, 5.2vw, 72px); color: var(--plum); text-align: center; }
+  .part .sub { font-family: var(--mono); font-size: clamp(13px, 1.3vw, 17px);
+               color: var(--muted); letter-spacing: .04em; margin-top: 18px; text-align: center; }
+  .part .rule { width: 92px; height: 3px; border-radius: 3px; margin: 26px auto 0;
+                background: linear-gradient(90deg, var(--plum), var(--rose), var(--apricot)); }
+
   .ask { display: grid; gap: clamp(16px, 2.2vh, 28px); }
   .ask p { max-width: none; }
   .ask h2 { max-width: 26ch; }
@@ -349,11 +364,12 @@
 <div class="deck" id="deck">
 
 <!-- 01 title ------------------------------------------------------------ -->
-<section class="slide">
+<section class="slide title">
   <div class="inner">
     <p class="eyebrow">Beyond the Vibes &nbsp;//&nbsp; Session 03 &nbsp;//&nbsp; <b>Do You Trust Your AI?</b></p>
-    <h1>LLM as a Judge<br>Is Probably<br>Lying to You</h1>
-    <p class="plain">Su Myat Noe &nbsp;&middot;&nbsp; AI Research Scientist, NII Tokyo &nbsp;&middot;&nbsp; SGInnovate, 28 September 2026</p>
+    <h1>LLM as a Judge Is Probably Lying to You</h1>
+    <p class="plain byline">Su Myat Noe &nbsp;&middot;&nbsp; AI Research Scientist, NII Tokyo</p>
+    <p class="plain venue">SGInnovate, Singapore &nbsp;&middot;&nbsp; 28 September 2026</p>
   </div>
   <div class="notes">
     <span class="t">opening</span>
@@ -740,10 +756,10 @@
 </section>
 
 <!-- 17 thesis -------------------------------------------------------------------- -->
-<section class="slide">
+<section class="slide thesis">
   <div class="inner">
     <p class="eyebrow">The claim</p>
-    <h1>Your judge is<br>probably lying<br>to you.</h1>
+    <h1>Your judge is probably lying to you.</h1>
     <p class="lead">Not on purpose, and not because anyone was careless. It hands you a confident number,
       in the right format, on time, and that number does not mean what you think it means.</p>
   </div>
@@ -895,6 +911,22 @@
   <div class="notes">
     <span class="t">participation</span>
     Ask for hands both ways. Then say "so would I, and that is exactly the problem".
+  </div>
+</section>
+
+<!-- part one divider ------------------------------------------------------ -->
+<section class="slide part">
+  <div class="inner">
+    <div>
+      <h1>Part 1: The Problem</h1>
+      <p class="sub">Four clues that your judge is lying to you</p>
+      <div class="rule"></div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">divider</span>
+    Five seconds. Say "so that is the setup, now here is what is actually wrong with it"
+    and move on. Do not talk over a divider, it is there to give the room a breath.
   </div>
 </section>
 
@@ -1156,6 +1188,22 @@
   </div>
 </section>
 
+<!-- part two divider ------------------------------------------------------ -->
+<section class="slide part">
+  <div class="inner">
+    <div>
+      <h1>Part 2: The Fix</h1>
+      <p class="sub">Five things you can do on Monday</p>
+      <div class="rule"></div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">divider</span>
+    Five seconds again. "Okay, so that is the bad news. Here is the part you can
+    actually do something about."
+  </div>
+</section>
+
 <!-- 35 checklist ------------------------------------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
@@ -1206,7 +1254,7 @@
   <button id="prev" aria-label="previous slide">prev</button>
   <button id="next" aria-label="next slide">next</button>
   <div class="track"><div class="fill" id="fill"></div></div>
-  <span class="count"><span id="cur">1</span> / <span id="total">35</span></span>
+  <span class="count"><span id="cur">1</span> / <span id="total">37</span></span>
   <button id="notesBtn" aria-pressed="false">notes</button>
   <span class="count" id="clock">00:00</span>
   <button id="timer">start</button>
@@ -1640,14 +1688,13 @@
   slides.forEach((slide, k) => {
     const head = document.createElement("div");
     head.className = "slide-head";
-    head.innerHTML = '<span>LLM as a Judge Is Probably Lying to You</span>' +
-                     '<span class="who">Su Myat Noe &middot; NII Tokyo</span>';
+    head.innerHTML = '<span>LLM as a Judge Is Probably Lying to You</span>';
     slide.insertBefore(head, slide.firstChild);
 
     const foot = document.createElement("div");
     foot.className = "slide-foot";
-    foot.innerHTML = '<a href="https://imsumyatnoe.github.io/">imsumyatnoe.github.io</a>' +
-                     '<span class="pg">' + (k === 0 ? "" : String(k + 1).padStart(2, "0")) + '</span>';
+    foot.innerHTML = '<span class="pg">' +
+                     (k === 0 ? "" : String(k + 1).padStart(2, "0")) + '</span>';
     slide.appendChild(foot);
   });
 

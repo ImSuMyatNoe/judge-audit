@@ -32,6 +32,8 @@ three demos built into the page.
 | `talk/_btv_template.html` | The source it is built from. Edit this one |
 | `talk/build.py` | Assembles the template plus the photo and QR codes into the deck and into `docs/index.html` |
 | `talk/slides.html` | An older, longer research version of the same argument, kept for reference |
+| `talk/SCRIPT.md` | The talk word for word, in a conversational speaking style, plus how to take questions mid flow |
+| `talk/SPEAKER-NOTES.md` | What to say, why each number is true, the questions you will get, and what to do when something breaks on stage |
 
 ## The slides
 
