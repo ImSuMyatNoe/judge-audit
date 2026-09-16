@@ -27,8 +27,12 @@ into the page:
 
 | File | Talk |
 |---|---|
-| `talk/btv-slides.html` | *Your LLM Judge Is Probably Lying to You* — 17 slides, white/Google palette, three buggy-vs-fixed demos you drive from the slide |
+| `talk/btv-slides.html` | *Your LLM Judge Is Probably Lying to You* — 22 slides, three buggy-vs-fixed demos you drive from the slide, speaker notes with timings |
 | `talk/slides.html` | The original dark-theme version of the same argument |
+
+The talk's running example lives in `examples/photo_refund/` — a delivery agent
+that decides refunds from a customer's photo, and an LLM judge scoring those
+decisions. `python examples/photo_refund/run_audit.py` walks the four clues.
 
 ---
 
