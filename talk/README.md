@@ -22,7 +22,7 @@ it works from a USB stick on a laptop that has never seen this repo.
 The URL carries the slide number (`btv-slides.html#18`), so you can reopen where
 you left off, and printing gives one slide per page.
 
-## Run of show, 35 slides in 30 minutes
+## Run of show, 37 slides in 30 minutes
 
 | Slides | What is happening |
 |---|---|
@@ -40,12 +40,14 @@ you left off, and printing gives one slide per page.
 | 18 to 19 | Hands up twice. Almost every hand goes down on the second question. |
 | 20 to 21 | Your story, in two beats. The refusal, then what it taught you. |
 | 22 to 23 | The report anyone would ship on, and whether you would. |
-| 24 to 25 | Clue one, then the live demo. Press the button three times, then flip the switch. |
-| 26 to 28 | Clue two, the line that stings, then the demo where the honest number goes down. |
-| 29 | Clue three. Chance correction, said plainly before it is named. |
-| 30 to 31 | Clue four, then the two judge demo. |
-| 32 to 33 | Compounding across six steps, and the decision risk number. |
-| 34 to 35 | The five point checklist, then the close with both QR codes. |
+| 24 | Part 1 divider. Five seconds, do not talk over it. |
+| 25 to 26 | Clue one, then the live demo. Press the button three times, then flip the switch. |
+| 27 to 29 | Clue two, the line that stings, then the demo where the honest number goes down. |
+| 30 | Clue three. Chance correction, said plainly before it is named. |
+| 31 to 32 | Clue four, then the two judge demo. |
+| 33 to 34 | Compounding across six steps, and the decision risk number. |
+| 35 | Part 2 divider. |
+| 36 to 37 | The five point checklist, then the close with both QR codes. |
 
 Rough pacing: slides 1 to 17 in the first twelve minutes, the four clues and their
 demos in the middle thirteen, and the last four slides in five. The clock in the
@@ -63,12 +65,12 @@ rail is there so you can check without looking at your phone.
 
 ## Trimming to 20 minutes
 
-Cut slides 6, 7, 12, 17 and 27. The argument still closes, and you keep two of the
+Cut slides 6, 7, 12, 17 and 28. The argument still closes, and you keep two of the
 three demos.
 
 ## Extending to 45 minutes
 
-Add a walk through `judge_audit/metrics.py` after slide 33, and run
+Add a walk through `judge_audit/metrics.py` after slide 34, and run
 `python examples/photo_refund/run_audit.py` live so the room sees the same
 numbers come out of real code.
 
