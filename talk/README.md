@@ -22,26 +22,28 @@ it works from a USB stick on a laptop that has never seen this repo.
 The URL carries the slide number (`btv-slides.html#18`), so you can reopen where
 you left off, and printing gives one slide per page.
 
-## Run of show, 27 slides in 30 minutes
+## Run of show, 28 slides in 30 minutes
 
 | Slides | What is happening |
 |---|---|
 | 1 to 2 | Title, then twenty seconds of who you are. The portfolio QR goes up once. |
-| 3 to 5 | The restaurant. Ask who is hungry, wait, let the scene animate in. A refund claim arrives. |
-| 6 to 7 | What an agent is, and the six steps this one takes. Everyone in the room now shares a picture. |
-| 8 to 9 | Who checks the agent, and what LLM as a judge means. |
-| 10 to 11 | The thesis, then the instrument framing that carries the rest of the talk. |
-| 12 to 13 | Hands up twice. Almost every hand goes down on the second question. |
-| 14 | Your story. The refusal that named an object you had already removed. |
-| 15 to 16 | The report anyone would ship on, and the question of whether you would. |
-| 17 to 18 | Clue one, then the live demo. Press the button three times, then flip the switch. |
-| 19 to 20 | Clue two, then the demo where the honest number goes down. |
-| 21 | Clue three. Chance correction, said in plain words before it is named. |
-| 22 to 23 | Clue four, then the two judge demo. |
-| 24 to 25 | Compounding across six steps, and the decision risk number. |
-| 26 to 27 | The five point checklist, then the close with both QR codes. |
+| 3 | Ask who is hungry. Wait. Let the table scene animate in. |
+| 4 | The pizza journey, six boxes with emoji. Say each one out loud. |
+| 5 | The wrong pizza arrives, the customer snaps it and asks for a refund. |
+| 6 to 8 | The three possible calls, what an agent is, and the six steps this one takes. |
+| 9 to 10 | Who checks the agent, and what LLM as a judge means. |
+| 11 to 12 | The thesis, then the instrument framing that carries the rest of the talk. |
+| 13 to 14 | Hands up twice. Almost every hand goes down on the second question. |
+| 15 | Your story. The refusal that named an object you had already removed. |
+| 16 to 17 | The report anyone would ship on, and whether you would. |
+| 18 to 19 | Clue one, then the live demo. Press the button three times, then flip the switch. |
+| 20 to 21 | Clue two, then the demo where the honest number goes down. |
+| 22 | Clue three. Chance correction, said in plain words before it is named. |
+| 23 to 24 | Clue four, then the two judge demo. |
+| 25 to 26 | Compounding across six steps, and the decision risk number. |
+| 27 to 28 | The five point checklist, then the close with both QR codes. |
 
-Rough pacing: slides 1 to 11 in the first nine minutes, the four clues and their
+Rough pacing: slides 1 to 12 in the first ten minutes, the four clues and their
 demos in the middle fifteen, and the last four slides in five. The clock in the
 rail is there so you can check without looking at your phone.
 
@@ -57,12 +59,12 @@ rail is there so you can check without looking at your phone.
 
 ## Trimming to 20 minutes
 
-Cut slides 5, 11, 16 and 20. The argument still closes, and you keep two of the
+Cut slides 6, 12, 17 and 21. The argument still closes, and you keep two of the
 three demos.
 
 ## Extending to 45 minutes
 
-Add a walk through `judge_audit/metrics.py` after slide 25, and run
+Add a walk through `judge_audit/metrics.py` after slide 26, and run
 `python examples/photo_refund/run_audit.py` live so the room sees the same
 numbers come out of real code.
 
