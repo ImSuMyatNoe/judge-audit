@@ -2,7 +2,8 @@
 
 **Your LLM judge is probably lying to you. Here is how to catch it.**
 
-Companion code for the 30-minute talk *"LLM-as-a-Judge Is Probably Lying to You"*.
+Companion code for the 30 minute talk *"LLM as a Judge Is Probably Lying to You"*,
+Beyond the Vibes Session 03, SGInnovate, 28 September 2026.
 
 Two things live here:
 
@@ -22,19 +23,24 @@ python -m judge_audit.demo            # the full seven-act walkthrough
 python -m judge_audit.audit --input my_trace.csv   # your own data
 ```
 
-Two talk decks live in `talk/`, both self-contained HTML with the demos built
-into the page:
+The talk itself lives in `talk/`, as one self contained HTML file with the
+three demos built into the page.
 
-| File | Talk |
+| File | What it is |
 |---|---|
-| `talk/btv-slides.html` | *Your LLM Judge Is Probably Lying to You* — 22 slides, three buggy-vs-fixed demos you drive from the slide, speaker notes with timings |
-| `talk/slides.html` | The original dark-theme version of the same argument |
+| `talk/btv-slides.html` | The deck. 35 slides, three live demos you drive from the slide, speaker notes behind `N` |
+| `talk/_btv_template.html` | The source it is built from. Edit this one |
+| `talk/build.py` | Assembles the template plus the photo and QR codes into the deck and into `docs/index.html` |
+| `talk/slides.html` | An older, longer research version of the same argument, kept for reference |
 
-The talk's running example lives in `examples/photo_refund/` — a delivery agent
-that decides refunds from a customer's photo, and an LLM judge scoring those
-decisions. `python examples/photo_refund/run_audit.py` walks the four clues.
+## The slides
 
----
+Live at **https://imsumyatnoe.github.io/judge-audit/** once GitHub Pages is on
+(see `PUBLISHING.md`). Locally, open `talk/btv-slides.html` in any browser.
+
+Both files are built from `talk/_btv_template.html` by `python talk/build.py`,
+so edit the template and rebuild rather than editing the output.
+
 
 ## What the demo shows
 
