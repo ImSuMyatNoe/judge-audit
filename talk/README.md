@@ -1,55 +1,74 @@
 # The talk
 
-**LLM-as-a-Judge Is Probably Lying to You** — 30 minutes, practitioner audience.
+**LLM as a Judge Is Probably Lying to You**
+Beyond the Vibes, Session 03, "Do You Trust Your AI?"
+SGInnovate, 32 Carpenter St, Monday 28 September 2026, 7 to 9pm SGT.
 
-`slides.html` is the deck. Open it in any browser; no build step, no dependencies.
+`btv-slides.html` is the deck. Open it in any browser. No build step, no server,
+no network, no API key. The photo and both QR codes are embedded in the file, so
+it works from a USB stick on a laptop that has never seen this repo.
+
+`slides.html` is the older, longer research version and is kept for reference.
 
 | Key | Does |
 |---|---|
-| → / space / PageDown | next slide |
-| ← / PageUp | previous |
+| right arrow / space / PageDown | next slide |
+| left arrow / PageUp | previous |
 | Home / End | first / last |
-| `N` | speaker notes panel (timings and delivery notes per slide) |
+| `N` | speaker notes panel |
 | a number, then Enter | jump to that slide |
-| the `start` button | presenter clock; turns red past 30:00 |
+| the `start` button | presenter clock, turns rose past 30:00 |
 
-The URL carries the slide number (`…/slides.html#13`), so you can reopen where
-you left off. Printing gives one slide per page.
+The URL carries the slide number (`btv-slides.html#18`), so you can reopen where
+you left off, and printing gives one slide per page.
 
-## Run of show
+## Run of show, 27 slides in 30 minutes
 
-| Minutes | Slides | What is happening |
-|---|---|---|
-| 0:00–1:00 | 1 | Cold open. "Judges are not useless — unaudited judges are." |
-| 1:00–4:00 | 2–3 | The 85% number, what it actually said, and the instrument framing |
-| 4:00–8:00 | 4–5 | **Lie 1**: the judge is not a function. Temperature 0 is not enough |
-| 8:00–13:00 | 6–8 | **Lie 2**: blanks, stratified agreement, and your own MSTS-JP result |
-| 13:00–14:30 | 9 | **Lie 3**: chance correction |
-| 14:30–18:00 | 10–11 | **Lie 4**: style over substance, and the dual-judge fix |
-| 18:00–19:00 | 12 | Why multimodal and legal make it worse |
-| 19:00–25:00 | 13–14 | **Live demo** at the terminal (~5:30) |
-| 25:00–26:30 | 15 | Decision risk — the number the room can act on |
-| 26:30–29:00 | 16–18 | The checklist, what to publish, before/after |
-| 29:00–30:00 | 19 | Close and questions |
+| Slides | What is happening |
+|---|---|
+| 1 to 2 | Title, then twenty seconds of who you are. The portfolio QR goes up once. |
+| 3 to 5 | The restaurant. Ask who is hungry, wait, let the scene animate in. A refund claim arrives. |
+| 6 to 7 | What an agent is, and the six steps this one takes. Everyone in the room now shares a picture. |
+| 8 to 9 | Who checks the agent, and what LLM as a judge means. |
+| 10 to 11 | The thesis, then the instrument framing that carries the rest of the talk. |
+| 12 to 13 | Hands up twice. Almost every hand goes down on the second question. |
+| 14 | Your story. The refusal that named an object you had already removed. |
+| 15 to 16 | The report anyone would ship on, and the question of whether you would. |
+| 17 to 18 | Clue one, then the live demo. Press the button three times, then flip the switch. |
+| 19 to 20 | Clue two, then the demo where the honest number goes down. |
+| 21 | Clue three. Chance correction, said in plain words before it is named. |
+| 22 to 23 | Clue four, then the two judge demo. |
+| 24 to 25 | Compounding across six steps, and the decision risk number. |
+| 26 to 27 | The five point checklist, then the close with both QR codes. |
+
+Rough pacing: slides 1 to 11 in the first nine minutes, the four clues and their
+demos in the middle fifteen, and the last four slides in five. The clock in the
+rail is there so you can check without looking at your phone.
 
 ## Before you walk on
 
-1. `python -m judge_audit.demo --fast` once, to warm imports and confirm the
-   terminal font is big enough from the back row.
-2. Have the repo cloned and the environment active in the terminal you will
-   switch to. Nothing in the demo needs network or API keys.
-3. Open `slides.html`, press `N` once to check the notes panel, press `N` again
-   to hide it, and start the clock as you begin.
-4. If the terminal fails, every demo number is already on the slides and the
-   five figures are in `figures/`. Do not debug on stage.
+1. Open `btv-slides.html`, press `N` once to check the notes render, press `N`
+   again to hide them, and start the clock as you begin.
+2. Click through the three demos once. They are pure JavaScript with fixed data,
+   so they cannot fail on stage, but muscle memory helps.
+3. Scan both QR codes with your own phone in the room you will present in.
+4. If the projector washes out the cream ground, the deck still reads: every
+   broken and fixed state carries a word and a glyph as well as a colour.
 
 ## Trimming to 20 minutes
 
-Cut slides 5, 12 and 18, and run only acts 1, 2 and 4 of the demo (`--act 1
---act 2 --act 4`). The argument still closes.
+Cut slides 5, 11, 16 and 20. The argument still closes, and you keep two of the
+three demos.
 
 ## Extending to 45 minutes
 
-Add a walk through `judge_audit/metrics.py` after slide 15 — the audience for
-this talk usually wants to see how `decision_risk` and `stratified` are actually
-computed — and take questions between acts rather than at the end.
+Add a walk through `judge_audit/metrics.py` after slide 25, and run
+`python examples/photo_refund/run_audit.py` live so the room sees the same
+numbers come out of real code.
+
+## The numbers
+
+Every figure on these slides comes from `examples/photo_refund/`, which is
+synthetic data generated by `judge_audit.simulate` with fixed seeds. Run
+`python examples/photo_refund/run_audit.py` and you get the slide numbers back,
+line for line.
