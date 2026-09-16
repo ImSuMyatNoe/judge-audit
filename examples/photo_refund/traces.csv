@@ -1,0 +1,601 @@
+order_id,dish,complaint,photo,agent_decision,refund_amount_sgd,human_score,human_correct,confusing_photo,fluent_but_wrong
+ORD-40000,chicken rice,wrong size,photos/ord-40000.jpg,refund,23.34,7.0,True,mostly clear,False
+ORD-40007,fish soup,missing side,photos/ord-40007.jpg,refund,11.86,6.0,True,hard to read,False
+ORD-40014,mee goreng,packaging crushed,photos/ord-40014.jpg,refund,21.04,7.0,False,clear photo,True
+ORD-40021,hokkien mee,cold on arrival,photos/ord-40021.jpg,refund,19.58,10.0,False,hard to read,True
+ORD-40028,char kway teow,wrong size,photos/ord-40028.jpg,refund,27.15,7.0,True,hard to read,False
+ORD-40035,carrot cake,spilled in transit,photos/ord-40035.jpg,escalate,21.49,6.0,False,clear photo,False
+ORD-40042,roti prata,missing side,photos/ord-40042.jpg,escalate,24.08,6.0,False,barely readable,False
+ORD-40049,wanton mee,packaging crushed,photos/ord-40049.jpg,refund,8.62,6.0,True,barely readable,False
+ORD-40056,char kway teow,looks nothing like the photo,photos/ord-40056.jpg,escalate,5.5,5.0,False,barely readable,False
+ORD-40063,mee goreng,spilled in transit,photos/ord-40063.jpg,refund,22.47,8.0,False,barely readable,True
+ORD-40070,curry puff,packaging crushed,photos/ord-40070.jpg,refund,21.82,9.0,False,mostly clear,True
+ORD-40077,carrot cake,spilled in transit,photos/ord-40077.jpg,escalate,7.75,4.0,False,hard to read,False
+ORD-40084,satay set,missing side,photos/ord-40084.jpg,refund,16.36,9.0,True,clear photo,False
+ORD-40091,chai tow kway,wrong item,photos/ord-40091.jpg,refund,8.29,9.0,True,mostly clear,False
+ORD-40098,chai tow kway,wrong item,photos/ord-40098.jpg,escalate,26.55,6.0,False,barely readable,False
+ORD-40105,bak chor mee,wrong size,photos/ord-40105.jpg,escalate,22.78,6.0,False,hard to read,False
+ORD-40112,chai tow kway,missing side,photos/ord-40112.jpg,refund,24.06,8.0,True,mostly clear,False
+ORD-40119,bak chor mee,looks nothing like the photo,photos/ord-40119.jpg,refund,11.51,7.0,True,barely readable,False
+ORD-40126,char kway teow,cold on arrival,photos/ord-40126.jpg,refund,18.83,9.0,True,mostly clear,False
+ORD-40133,chicken rice,looks nothing like the photo,photos/ord-40133.jpg,refund,23.05,8.0,True,mostly clear,False
+ORD-40140,roti prata,packaging crushed,photos/ord-40140.jpg,escalate,4.97,4.0,False,barely readable,False
+ORD-40147,wanton mee,wrong item,photos/ord-40147.jpg,refund,15.58,8.0,True,barely readable,False
+ORD-40154,mee goreng,wrong item,photos/ord-40154.jpg,refund,18.62,4.0,False,barely readable,True
+ORD-40161,fish soup,wrong item,photos/ord-40161.jpg,escalate,6.81,4.0,False,hard to read,False
+ORD-40168,nasi lemak,cold on arrival,photos/ord-40168.jpg,refund,9.59,9.0,True,hard to read,False
+ORD-40175,hokkien mee,missing side,photos/ord-40175.jpg,refund,23.21,9.0,True,clear photo,False
+ORD-40182,char kway teow,packaging crushed,photos/ord-40182.jpg,refund,27.95,8.0,True,hard to read,False
+ORD-40189,satay set,cold on arrival,photos/ord-40189.jpg,escalate,14.3,6.0,False,hard to read,False
+ORD-40196,carrot cake,looks nothing like the photo,photos/ord-40196.jpg,escalate,16.39,4.0,False,hard to read,False
+ORD-40203,curry puff,wrong item,photos/ord-40203.jpg,refund,21.73,6.0,True,hard to read,False
+ORD-40210,satay set,cold on arrival,photos/ord-40210.jpg,refund,6.27,8.0,True,clear photo,False
+ORD-40217,roti prata,packaging crushed,photos/ord-40217.jpg,refund,15.12,8.0,True,mostly clear,False
+ORD-40224,nasi lemak,packaging crushed,photos/ord-40224.jpg,refund,6.77,7.0,True,barely readable,False
+ORD-40231,curry puff,packaging crushed,photos/ord-40231.jpg,escalate,9.41,7.0,False,barely readable,False
+ORD-40238,chai tow kway,spilled in transit,photos/ord-40238.jpg,escalate,11.41,5.0,False,clear photo,False
+ORD-40245,mee goreng,wrong size,photos/ord-40245.jpg,escalate,25.97,7.0,False,hard to read,False
+ORD-40252,laksa,cold on arrival,photos/ord-40252.jpg,escalate,27.99,4.0,False,mostly clear,False
+ORD-40259,chicken rice,spilled in transit,photos/ord-40259.jpg,refund,22.45,6.0,False,mostly clear,True
+ORD-40266,laksa,wrong item,photos/ord-40266.jpg,refund,5.28,7.0,True,mostly clear,False
+ORD-40273,bak chor mee,looks nothing like the photo,photos/ord-40273.jpg,refund,26.73,6.0,True,hard to read,False
+ORD-40280,chai tow kway,missing side,photos/ord-40280.jpg,refund,22.27,6.0,True,mostly clear,False
+ORD-40287,curry puff,wrong item,photos/ord-40287.jpg,refund,15.4,8.0,False,barely readable,True
+ORD-40294,mee goreng,cold on arrival,photos/ord-40294.jpg,refund,8.81,10.0,False,barely readable,True
+ORD-40301,chai tow kway,wrong size,photos/ord-40301.jpg,refund,7.42,7.0,True,barely readable,False
+ORD-40308,chicken rice,spilled in transit,photos/ord-40308.jpg,refund,10.88,10.0,False,hard to read,True
+ORD-40315,char kway teow,packaging crushed,photos/ord-40315.jpg,refund,17.4,8.0,False,mostly clear,True
+ORD-40322,fish soup,cold on arrival,photos/ord-40322.jpg,escalate,18.78,5.0,False,clear photo,False
+ORD-40329,bak chor mee,missing side,photos/ord-40329.jpg,refund,8.72,7.0,True,hard to read,False
+ORD-40336,satay set,missing side,photos/ord-40336.jpg,refund,13.93,9.0,False,clear photo,True
+ORD-40343,curry puff,wrong item,photos/ord-40343.jpg,refund,26.13,9.0,True,clear photo,False
+ORD-40350,bak chor mee,cold on arrival,photos/ord-40350.jpg,escalate,7.01,5.0,False,hard to read,False
+ORD-40357,roti prata,wrong item,photos/ord-40357.jpg,refund,20.56,8.0,True,hard to read,False
+ORD-40364,chicken rice,looks nothing like the photo,photos/ord-40364.jpg,escalate,23.31,5.0,False,hard to read,False
+ORD-40371,nasi lemak,cold on arrival,photos/ord-40371.jpg,refund,24.2,6.0,True,clear photo,False
+ORD-40378,mee goreng,wrong size,photos/ord-40378.jpg,escalate,5.57,4.0,False,barely readable,False
+ORD-40385,hokkien mee,packaging crushed,photos/ord-40385.jpg,refund,9.91,7.0,True,mostly clear,False
+ORD-40392,wanton mee,packaging crushed,photos/ord-40392.jpg,escalate,18.09,5.0,False,barely readable,False
+ORD-40399,bak chor mee,looks nothing like the photo,photos/ord-40399.jpg,refund,17.69,7.0,True,barely readable,False
+ORD-40406,curry puff,spilled in transit,photos/ord-40406.jpg,refund,12.14,7.0,True,mostly clear,False
+ORD-40413,curry puff,missing side,photos/ord-40413.jpg,escalate,19.82,5.0,False,mostly clear,False
+ORD-40420,char kway teow,missing side,photos/ord-40420.jpg,escalate,12.28,5.0,False,hard to read,False
+ORD-40427,fish soup,missing side,photos/ord-40427.jpg,escalate,27.58,7.0,False,mostly clear,False
+ORD-40434,curry puff,looks nothing like the photo,photos/ord-40434.jpg,refund,8.4,9.0,False,barely readable,True
+ORD-40441,fish soup,cold on arrival,photos/ord-40441.jpg,refund,14.81,10.0,True,mostly clear,False
+ORD-40448,carrot cake,looks nothing like the photo,photos/ord-40448.jpg,refund,16.6,8.0,False,mostly clear,True
+ORD-40455,satay set,cold on arrival,photos/ord-40455.jpg,refund,27.82,7.0,True,clear photo,False
+ORD-40462,wanton mee,wrong item,photos/ord-40462.jpg,refund,15.84,7.0,False,mostly clear,True
+ORD-40469,curry puff,spilled in transit,photos/ord-40469.jpg,refund,26.97,6.0,True,mostly clear,False
+ORD-40476,laksa,missing side,photos/ord-40476.jpg,refund,25.69,9.0,True,clear photo,False
+ORD-40483,chai tow kway,wrong item,photos/ord-40483.jpg,refund,6.64,9.0,True,clear photo,False
+ORD-40490,mee goreng,packaging crushed,photos/ord-40490.jpg,refund,19.93,10.0,True,clear photo,False
+ORD-40497,fish soup,wrong size,photos/ord-40497.jpg,refund,11.62,9.0,False,barely readable,True
+ORD-40504,satay set,packaging crushed,photos/ord-40504.jpg,refund,22.28,6.0,False,barely readable,True
+ORD-40511,satay set,wrong item,photos/ord-40511.jpg,escalate,19.18,3.0,False,hard to read,False
+ORD-40518,wanton mee,looks nothing like the photo,photos/ord-40518.jpg,refund,26.8,6.0,True,clear photo,False
+ORD-40525,laksa,spilled in transit,photos/ord-40525.jpg,refund,23.78,10.0,True,clear photo,False
+ORD-40532,wanton mee,wrong item,photos/ord-40532.jpg,refund,24.81,8.0,True,mostly clear,False
+ORD-40539,kaya toast,missing side,photos/ord-40539.jpg,refund,26.29,9.0,True,clear photo,False
+ORD-40546,fish soup,looks nothing like the photo,photos/ord-40546.jpg,refund,7.18,10.0,True,mostly clear,False
+ORD-40553,hokkien mee,packaging crushed,photos/ord-40553.jpg,reject,9.49,3.0,False,barely readable,False
+ORD-40560,mee goreng,spilled in transit,photos/ord-40560.jpg,refund,27.93,6.0,True,mostly clear,False
+ORD-40567,chicken rice,missing side,photos/ord-40567.jpg,escalate,10.56,4.0,False,mostly clear,False
+ORD-40574,curry puff,packaging crushed,photos/ord-40574.jpg,refund,23.03,7.0,True,hard to read,False
+ORD-40581,carrot cake,looks nothing like the photo,photos/ord-40581.jpg,refund,5.83,6.0,True,hard to read,False
+ORD-40588,char kway teow,spilled in transit,photos/ord-40588.jpg,refund,4.57,8.0,False,clear photo,True
+ORD-40595,chai tow kway,wrong item,photos/ord-40595.jpg,refund,20.38,8.0,True,clear photo,False
+ORD-40602,char kway teow,wrong item,photos/ord-40602.jpg,escalate,27.91,6.0,False,clear photo,False
+ORD-40609,kaya toast,looks nothing like the photo,photos/ord-40609.jpg,refund,22.4,7.0,True,clear photo,False
+ORD-40616,char kway teow,looks nothing like the photo,photos/ord-40616.jpg,escalate,16.85,5.0,False,barely readable,False
+ORD-40623,char kway teow,looks nothing like the photo,photos/ord-40623.jpg,refund,5.5,9.0,True,clear photo,False
+ORD-40630,char kway teow,cold on arrival,photos/ord-40630.jpg,refund,22.78,10.0,False,mostly clear,True
+ORD-40637,mee goreng,spilled in transit,photos/ord-40637.jpg,refund,11.61,7.0,True,mostly clear,False
+ORD-40644,curry puff,packaging crushed,photos/ord-40644.jpg,refund,20.66,9.0,False,hard to read,True
+ORD-40651,wanton mee,wrong size,photos/ord-40651.jpg,refund,13.24,7.0,True,hard to read,False
+ORD-40658,carrot cake,looks nothing like the photo,photos/ord-40658.jpg,refund,16.76,8.0,True,clear photo,False
+ORD-40665,chai tow kway,spilled in transit,photos/ord-40665.jpg,refund,26.18,8.0,True,barely readable,False
+ORD-40672,satay set,wrong item,photos/ord-40672.jpg,refund,12.92,10.0,False,mostly clear,True
+ORD-40679,roti prata,packaging crushed,photos/ord-40679.jpg,refund,21.42,9.0,True,mostly clear,False
+ORD-40686,laksa,missing side,photos/ord-40686.jpg,escalate,16.0,6.0,False,clear photo,False
+ORD-40693,mee goreng,cold on arrival,photos/ord-40693.jpg,refund,4.89,9.0,False,mostly clear,True
+ORD-40700,mee goreng,looks nothing like the photo,photos/ord-40700.jpg,refund,20.82,7.0,True,clear photo,False
+ORD-40707,mee goreng,cold on arrival,photos/ord-40707.jpg,escalate,26.92,5.0,False,barely readable,False
+ORD-40714,satay set,wrong size,photos/ord-40714.jpg,refund,20.97,8.0,False,hard to read,True
+ORD-40721,char kway teow,looks nothing like the photo,photos/ord-40721.jpg,escalate,12.77,7.0,False,clear photo,False
+ORD-40728,fish soup,missing side,photos/ord-40728.jpg,escalate,26.48,3.0,False,mostly clear,False
+ORD-40735,curry puff,missing side,photos/ord-40735.jpg,refund,5.59,5.0,False,clear photo,True
+ORD-40742,kaya toast,packaging crushed,photos/ord-40742.jpg,refund,7.76,10.0,True,mostly clear,False
+ORD-40749,curry puff,missing side,photos/ord-40749.jpg,escalate,14.35,4.0,False,mostly clear,False
+ORD-40756,wanton mee,cold on arrival,photos/ord-40756.jpg,escalate,11.05,6.0,False,clear photo,False
+ORD-40763,kaya toast,packaging crushed,photos/ord-40763.jpg,escalate,18.3,6.0,False,clear photo,False
+ORD-40770,roti prata,missing side,photos/ord-40770.jpg,escalate,27.53,6.0,False,mostly clear,False
+ORD-40777,laksa,packaging crushed,photos/ord-40777.jpg,refund,5.19,7.0,True,clear photo,False
+ORD-40784,chai tow kway,looks nothing like the photo,photos/ord-40784.jpg,refund,9.21,9.0,True,clear photo,False
+ORD-40791,bak chor mee,wrong size,photos/ord-40791.jpg,escalate,23.27,6.0,False,hard to read,False
+ORD-40798,curry puff,cold on arrival,photos/ord-40798.jpg,refund,8.24,7.0,True,clear photo,False
+ORD-40805,satay set,missing side,photos/ord-40805.jpg,refund,19.46,8.0,True,hard to read,False
+ORD-40812,bak chor mee,spilled in transit,photos/ord-40812.jpg,escalate,4.76,5.0,False,barely readable,False
+ORD-40819,chai tow kway,wrong item,photos/ord-40819.jpg,escalate,27.51,5.0,False,hard to read,False
+ORD-40826,hokkien mee,packaging crushed,photos/ord-40826.jpg,refund,18.76,8.0,True,mostly clear,False
+ORD-40833,carrot cake,wrong size,photos/ord-40833.jpg,refund,21.41,6.0,True,barely readable,False
+ORD-40840,fish soup,spilled in transit,photos/ord-40840.jpg,refund,4.03,7.0,False,mostly clear,True
+ORD-40847,chicken rice,spilled in transit,photos/ord-40847.jpg,escalate,12.48,4.0,False,hard to read,False
+ORD-40854,hokkien mee,spilled in transit,photos/ord-40854.jpg,refund,6.8,7.0,True,barely readable,False
+ORD-40861,fish soup,packaging crushed,photos/ord-40861.jpg,escalate,11.48,6.0,False,barely readable,False
+ORD-40868,fish soup,looks nothing like the photo,photos/ord-40868.jpg,refund,26.57,9.0,True,clear photo,False
+ORD-40875,chai tow kway,spilled in transit,photos/ord-40875.jpg,escalate,9.49,6.0,False,mostly clear,False
+ORD-40882,laksa,missing side,photos/ord-40882.jpg,refund,9.5,9.0,True,mostly clear,False
+ORD-40889,bak chor mee,wrong size,photos/ord-40889.jpg,refund,5.08,9.0,True,hard to read,False
+ORD-40896,roti prata,wrong item,photos/ord-40896.jpg,reject,23.84,2.0,False,barely readable,False
+ORD-40903,carrot cake,cold on arrival,photos/ord-40903.jpg,escalate,6.15,4.0,False,barely readable,False
+ORD-40910,laksa,missing side,photos/ord-40910.jpg,refund,19.48,9.0,True,barely readable,False
+ORD-40917,satay set,missing side,photos/ord-40917.jpg,refund,10.26,8.0,True,hard to read,False
+ORD-40924,kaya toast,wrong item,photos/ord-40924.jpg,refund,17.16,9.0,True,hard to read,False
+ORD-40931,curry puff,looks nothing like the photo,photos/ord-40931.jpg,refund,19.88,7.0,True,mostly clear,False
+ORD-40938,satay set,looks nothing like the photo,photos/ord-40938.jpg,refund,16.24,6.0,True,barely readable,False
+ORD-40945,satay set,cold on arrival,photos/ord-40945.jpg,escalate,6.2,7.0,False,mostly clear,False
+ORD-40952,chai tow kway,cold on arrival,photos/ord-40952.jpg,escalate,22.96,6.0,False,barely readable,False
+ORD-40959,wanton mee,missing side,photos/ord-40959.jpg,refund,7.48,8.0,True,clear photo,False
+ORD-40966,char kway teow,missing side,photos/ord-40966.jpg,escalate,23.92,4.0,False,hard to read,False
+ORD-40973,chicken rice,missing side,photos/ord-40973.jpg,refund,17.33,8.0,True,clear photo,False
+ORD-40980,nasi lemak,wrong item,photos/ord-40980.jpg,refund,11.23,7.0,True,clear photo,False
+ORD-40987,carrot cake,packaging crushed,photos/ord-40987.jpg,refund,12.09,6.0,False,mostly clear,True
+ORD-40994,satay set,missing side,photos/ord-40994.jpg,escalate,13.89,5.0,False,hard to read,False
+ORD-41001,satay set,wrong size,photos/ord-41001.jpg,refund,26.66,10.0,True,clear photo,False
+ORD-41008,char kway teow,spilled in transit,photos/ord-41008.jpg,refund,25.64,9.0,True,hard to read,False
+ORD-41015,kaya toast,cold on arrival,photos/ord-41015.jpg,refund,18.48,6.0,True,barely readable,False
+ORD-41022,hokkien mee,cold on arrival,photos/ord-41022.jpg,refund,12.15,5.0,True,barely readable,False
+ORD-41029,bak chor mee,spilled in transit,photos/ord-41029.jpg,refund,13.78,7.0,True,clear photo,False
+ORD-41036,satay set,looks nothing like the photo,photos/ord-41036.jpg,refund,22.88,8.0,False,clear photo,True
+ORD-41043,laksa,wrong size,photos/ord-41043.jpg,refund,18.5,9.0,True,clear photo,False
+ORD-41050,bak chor mee,wrong item,photos/ord-41050.jpg,refund,12.52,10.0,True,hard to read,False
+ORD-41057,laksa,spilled in transit,photos/ord-41057.jpg,refund,25.92,10.0,True,clear photo,False
+ORD-41064,satay set,looks nothing like the photo,photos/ord-41064.jpg,escalate,22.32,6.0,False,mostly clear,False
+ORD-41071,fish soup,spilled in transit,photos/ord-41071.jpg,refund,19.7,10.0,True,hard to read,False
+ORD-41078,kaya toast,looks nothing like the photo,photos/ord-41078.jpg,refund,21.6,9.0,True,barely readable,False
+ORD-41085,mee goreng,cold on arrival,photos/ord-41085.jpg,refund,10.57,5.0,False,hard to read,True
+ORD-41092,curry puff,spilled in transit,photos/ord-41092.jpg,refund,12.23,10.0,False,mostly clear,True
+ORD-41099,chicken rice,spilled in transit,photos/ord-41099.jpg,refund,11.16,8.0,True,clear photo,False
+ORD-41106,nasi lemak,cold on arrival,photos/ord-41106.jpg,escalate,14.73,4.0,False,clear photo,False
+ORD-41113,chai tow kway,packaging crushed,photos/ord-41113.jpg,refund,24.09,9.0,True,hard to read,False
+ORD-41120,chicken rice,packaging crushed,photos/ord-41120.jpg,refund,19.23,8.0,True,hard to read,False
+ORD-41127,char kway teow,missing side,photos/ord-41127.jpg,refund,7.43,4.0,False,hard to read,True
+ORD-41134,bak chor mee,missing side,photos/ord-41134.jpg,refund,15.54,7.0,True,mostly clear,False
+ORD-41141,chicken rice,cold on arrival,photos/ord-41141.jpg,refund,12.71,6.0,False,hard to read,True
+ORD-41148,carrot cake,looks nothing like the photo,photos/ord-41148.jpg,refund,11.31,7.0,True,mostly clear,False
+ORD-41155,chicken rice,cold on arrival,photos/ord-41155.jpg,refund,24.57,10.0,True,clear photo,False
+ORD-41162,mee goreng,missing side,photos/ord-41162.jpg,refund,7.63,7.0,True,clear photo,False
+ORD-41169,curry puff,missing side,photos/ord-41169.jpg,refund,13.54,9.0,True,clear photo,False
+ORD-41176,hokkien mee,cold on arrival,photos/ord-41176.jpg,refund,5.09,10.0,True,hard to read,False
+ORD-41183,curry puff,cold on arrival,photos/ord-41183.jpg,refund,17.12,7.0,True,mostly clear,False
+ORD-41190,nasi lemak,wrong item,photos/ord-41190.jpg,refund,26.69,9.0,True,barely readable,False
+ORD-41197,mee goreng,cold on arrival,photos/ord-41197.jpg,refund,25.06,7.0,True,hard to read,False
+ORD-41204,hokkien mee,spilled in transit,photos/ord-41204.jpg,refund,10.5,8.0,True,barely readable,False
+ORD-41211,kaya toast,wrong size,photos/ord-41211.jpg,refund,26.67,8.0,True,barely readable,False
+ORD-41218,hokkien mee,wrong size,photos/ord-41218.jpg,refund,7.7,6.0,False,barely readable,True
+ORD-41225,char kway teow,wrong size,photos/ord-41225.jpg,refund,17.85,9.0,False,mostly clear,True
+ORD-41232,chicken rice,looks nothing like the photo,photos/ord-41232.jpg,refund,7.4,7.0,True,barely readable,False
+ORD-41239,laksa,wrong item,photos/ord-41239.jpg,refund,5.02,7.0,True,clear photo,False
+ORD-41246,nasi lemak,wrong size,photos/ord-41246.jpg,escalate,25.78,6.0,False,mostly clear,False
+ORD-41253,chicken rice,packaging crushed,photos/ord-41253.jpg,escalate,7.85,4.0,False,mostly clear,False
+ORD-41260,curry puff,missing side,photos/ord-41260.jpg,refund,27.95,8.0,True,clear photo,False
+ORD-41267,laksa,looks nothing like the photo,photos/ord-41267.jpg,refund,13.55,9.0,False,hard to read,True
+ORD-41274,laksa,packaging crushed,photos/ord-41274.jpg,refund,9.97,8.0,True,clear photo,False
+ORD-41281,bak chor mee,wrong item,photos/ord-41281.jpg,refund,18.11,10.0,True,mostly clear,False
+ORD-41288,chai tow kway,wrong item,photos/ord-41288.jpg,escalate,14.45,5.0,False,mostly clear,False
+ORD-41295,laksa,missing side,photos/ord-41295.jpg,escalate,17.41,6.0,False,hard to read,False
+ORD-41302,char kway teow,wrong item,photos/ord-41302.jpg,refund,10.36,9.0,True,clear photo,False
+ORD-41309,chai tow kway,cold on arrival,photos/ord-41309.jpg,refund,18.06,9.0,True,hard to read,False
+ORD-41316,nasi lemak,packaging crushed,photos/ord-41316.jpg,refund,11.34,9.0,True,mostly clear,False
+ORD-41323,hokkien mee,packaging crushed,photos/ord-41323.jpg,escalate,9.9,4.0,False,clear photo,False
+ORD-41330,carrot cake,wrong size,photos/ord-41330.jpg,escalate,23.17,6.0,False,clear photo,False
+ORD-41337,curry puff,spilled in transit,photos/ord-41337.jpg,escalate,20.04,5.0,False,mostly clear,False
+ORD-41344,satay set,wrong size,photos/ord-41344.jpg,escalate,21.8,4.0,False,barely readable,False
+ORD-41351,roti prata,spilled in transit,photos/ord-41351.jpg,refund,18.84,9.0,False,hard to read,True
+ORD-41358,satay set,wrong size,photos/ord-41358.jpg,refund,4.03,7.0,True,mostly clear,False
+ORD-41365,wanton mee,wrong size,photos/ord-41365.jpg,refund,19.35,8.0,True,mostly clear,False
+ORD-41372,satay set,wrong item,photos/ord-41372.jpg,refund,19.37,8.0,True,mostly clear,False
+ORD-41379,kaya toast,packaging crushed,photos/ord-41379.jpg,refund,18.84,9.0,True,hard to read,False
+ORD-41386,roti prata,packaging crushed,photos/ord-41386.jpg,refund,17.76,7.0,True,clear photo,False
+ORD-41393,satay set,missing side,photos/ord-41393.jpg,refund,21.41,9.0,True,barely readable,False
+ORD-41400,carrot cake,wrong size,photos/ord-41400.jpg,escalate,14.71,6.0,False,clear photo,False
+ORD-41407,satay set,packaging crushed,photos/ord-41407.jpg,refund,21.69,8.0,True,mostly clear,False
+ORD-41414,wanton mee,cold on arrival,photos/ord-41414.jpg,escalate,5.28,5.0,False,barely readable,False
+ORD-41421,satay set,wrong item,photos/ord-41421.jpg,refund,9.98,10.0,True,hard to read,False
+ORD-41428,char kway teow,wrong item,photos/ord-41428.jpg,refund,16.49,10.0,True,clear photo,False
+ORD-41435,chicken rice,missing side,photos/ord-41435.jpg,refund,20.54,8.0,True,mostly clear,False
+ORD-41442,bak chor mee,missing side,photos/ord-41442.jpg,refund,24.1,7.0,True,barely readable,False
+ORD-41449,char kway teow,cold on arrival,photos/ord-41449.jpg,refund,18.59,8.0,True,clear photo,False
+ORD-41456,wanton mee,looks nothing like the photo,photos/ord-41456.jpg,escalate,7.88,6.0,False,clear photo,False
+ORD-41463,roti prata,spilled in transit,photos/ord-41463.jpg,refund,17.76,8.0,True,mostly clear,False
+ORD-41470,chai tow kway,looks nothing like the photo,photos/ord-41470.jpg,refund,17.21,7.0,True,barely readable,False
+ORD-41477,curry puff,missing side,photos/ord-41477.jpg,refund,11.94,7.0,True,hard to read,False
+ORD-41484,wanton mee,spilled in transit,photos/ord-41484.jpg,refund,19.11,5.0,False,mostly clear,True
+ORD-41491,kaya toast,spilled in transit,photos/ord-41491.jpg,escalate,7.71,7.0,False,mostly clear,False
+ORD-41498,nasi lemak,missing side,photos/ord-41498.jpg,refund,6.46,9.0,True,mostly clear,False
+ORD-41505,char kway teow,missing side,photos/ord-41505.jpg,refund,12.34,9.0,True,hard to read,False
+ORD-41512,chai tow kway,wrong size,photos/ord-41512.jpg,refund,9.48,9.0,False,barely readable,True
+ORD-41519,nasi lemak,wrong size,photos/ord-41519.jpg,refund,26.59,5.0,True,clear photo,False
+ORD-41526,bak chor mee,looks nothing like the photo,photos/ord-41526.jpg,refund,17.63,7.0,True,hard to read,False
+ORD-41533,satay set,packaging crushed,photos/ord-41533.jpg,escalate,16.46,6.0,False,barely readable,False
+ORD-41540,curry puff,spilled in transit,photos/ord-41540.jpg,refund,26.11,7.0,True,hard to read,False
+ORD-41547,laksa,wrong item,photos/ord-41547.jpg,refund,16.4,6.0,True,hard to read,False
+ORD-41554,wanton mee,wrong size,photos/ord-41554.jpg,refund,7.51,6.0,True,barely readable,False
+ORD-41561,satay set,spilled in transit,photos/ord-41561.jpg,refund,23.95,8.0,True,mostly clear,False
+ORD-41568,carrot cake,missing side,photos/ord-41568.jpg,refund,16.25,7.0,True,hard to read,False
+ORD-41575,chai tow kway,missing side,photos/ord-41575.jpg,refund,23.74,6.0,True,hard to read,False
+ORD-41582,fish soup,wrong size,photos/ord-41582.jpg,refund,12.59,8.0,True,mostly clear,False
+ORD-41589,mee goreng,cold on arrival,photos/ord-41589.jpg,escalate,21.71,5.0,False,hard to read,False
+ORD-41596,nasi lemak,looks nothing like the photo,photos/ord-41596.jpg,refund,22.27,8.0,True,clear photo,False
+ORD-41603,mee goreng,wrong size,photos/ord-41603.jpg,refund,15.11,4.0,False,hard to read,True
+ORD-41610,hokkien mee,packaging crushed,photos/ord-41610.jpg,refund,25.15,7.0,True,clear photo,False
+ORD-41617,fish soup,wrong item,photos/ord-41617.jpg,refund,14.52,8.0,True,barely readable,False
+ORD-41624,fish soup,cold on arrival,photos/ord-41624.jpg,escalate,12.67,7.0,False,barely readable,False
+ORD-41631,chicken rice,wrong item,photos/ord-41631.jpg,refund,25.5,8.0,True,clear photo,False
+ORD-41638,carrot cake,cold on arrival,photos/ord-41638.jpg,escalate,7.94,5.0,False,barely readable,False
+ORD-41645,fish soup,spilled in transit,photos/ord-41645.jpg,refund,23.3,8.0,True,barely readable,False
+ORD-41652,mee goreng,wrong item,photos/ord-41652.jpg,refund,16.78,7.0,True,hard to read,False
+ORD-41659,bak chor mee,wrong size,photos/ord-41659.jpg,refund,5.14,6.0,True,barely readable,False
+ORD-41666,hokkien mee,cold on arrival,photos/ord-41666.jpg,refund,23.76,6.0,True,barely readable,False
+ORD-41673,curry puff,missing side,photos/ord-41673.jpg,refund,18.97,9.0,True,mostly clear,False
+ORD-41680,fish soup,wrong size,photos/ord-41680.jpg,escalate,24.48,6.0,False,barely readable,False
+ORD-41687,chicken rice,cold on arrival,photos/ord-41687.jpg,refund,9.26,9.0,True,clear photo,False
+ORD-41694,chicken rice,wrong size,photos/ord-41694.jpg,refund,26.49,9.0,True,barely readable,False
+ORD-41701,satay set,spilled in transit,photos/ord-41701.jpg,refund,20.03,5.0,False,clear photo,True
+ORD-41708,nasi lemak,wrong item,photos/ord-41708.jpg,reject,14.65,4.0,False,hard to read,False
+ORD-41715,roti prata,looks nothing like the photo,photos/ord-41715.jpg,refund,17.51,10.0,True,clear photo,False
+ORD-41722,laksa,packaging crushed,photos/ord-41722.jpg,refund,6.78,7.0,True,clear photo,False
+ORD-41729,kaya toast,looks nothing like the photo,photos/ord-41729.jpg,refund,8.52,8.0,True,mostly clear,False
+ORD-41736,chicken rice,wrong item,photos/ord-41736.jpg,refund,11.18,10.0,True,hard to read,False
+ORD-41743,chai tow kway,cold on arrival,photos/ord-41743.jpg,refund,26.47,7.0,True,barely readable,False
+ORD-41750,roti prata,looks nothing like the photo,photos/ord-41750.jpg,refund,25.35,7.0,True,mostly clear,False
+ORD-41757,laksa,wrong size,photos/ord-41757.jpg,refund,27.53,9.0,True,clear photo,False
+ORD-41764,nasi lemak,spilled in transit,photos/ord-41764.jpg,refund,17.12,9.0,True,barely readable,False
+ORD-41771,bak chor mee,spilled in transit,photos/ord-41771.jpg,refund,20.82,6.0,False,barely readable,True
+ORD-41778,char kway teow,packaging crushed,photos/ord-41778.jpg,refund,6.68,10.0,False,clear photo,True
+ORD-41785,roti prata,wrong size,photos/ord-41785.jpg,escalate,12.45,4.0,False,barely readable,False
+ORD-41792,hokkien mee,packaging crushed,photos/ord-41792.jpg,refund,23.35,7.0,True,hard to read,False
+ORD-41799,chicken rice,missing side,photos/ord-41799.jpg,escalate,8.5,6.0,False,hard to read,False
+ORD-41806,fish soup,wrong size,photos/ord-41806.jpg,refund,17.65,7.0,True,clear photo,False
+ORD-41813,chai tow kway,spilled in transit,photos/ord-41813.jpg,escalate,20.58,5.0,False,clear photo,False
+ORD-41820,chai tow kway,looks nothing like the photo,photos/ord-41820.jpg,escalate,19.07,4.0,False,hard to read,False
+ORD-41827,kaya toast,wrong item,photos/ord-41827.jpg,refund,7.13,8.0,True,hard to read,False
+ORD-41834,chai tow kway,spilled in transit,photos/ord-41834.jpg,refund,9.31,9.0,True,clear photo,False
+ORD-41841,curry puff,missing side,photos/ord-41841.jpg,refund,17.21,7.0,True,mostly clear,False
+ORD-41848,chai tow kway,cold on arrival,photos/ord-41848.jpg,reject,11.03,4.0,False,hard to read,False
+ORD-41855,satay set,packaging crushed,photos/ord-41855.jpg,reject,4.19,4.0,False,mostly clear,False
+ORD-41862,fish soup,looks nothing like the photo,photos/ord-41862.jpg,refund,26.76,6.0,True,hard to read,False
+ORD-41869,mee goreng,looks nothing like the photo,photos/ord-41869.jpg,escalate,4.84,6.0,False,barely readable,False
+ORD-41876,chicken rice,cold on arrival,photos/ord-41876.jpg,escalate,18.27,5.0,False,barely readable,False
+ORD-41883,char kway teow,wrong item,photos/ord-41883.jpg,escalate,14.69,5.0,False,barely readable,False
+ORD-41890,chicken rice,wrong size,photos/ord-41890.jpg,refund,24.29,7.0,True,mostly clear,False
+ORD-41897,chicken rice,packaging crushed,photos/ord-41897.jpg,refund,7.73,9.0,False,clear photo,True
+ORD-41904,carrot cake,missing side,photos/ord-41904.jpg,escalate,7.88,5.0,False,barely readable,False
+ORD-41911,curry puff,missing side,photos/ord-41911.jpg,refund,16.52,5.0,False,mostly clear,True
+ORD-41918,char kway teow,missing side,photos/ord-41918.jpg,refund,11.72,6.0,True,clear photo,False
+ORD-41925,hokkien mee,packaging crushed,photos/ord-41925.jpg,refund,15.28,7.0,True,mostly clear,False
+ORD-41932,wanton mee,spilled in transit,photos/ord-41932.jpg,escalate,7.41,4.0,False,barely readable,False
+ORD-41939,chicken rice,looks nothing like the photo,photos/ord-41939.jpg,refund,6.28,8.0,True,barely readable,False
+ORD-41946,fish soup,looks nothing like the photo,photos/ord-41946.jpg,refund,24.07,8.0,True,clear photo,False
+ORD-41953,chai tow kway,spilled in transit,photos/ord-41953.jpg,refund,25.19,7.0,True,mostly clear,False
+ORD-41960,fish soup,wrong item,photos/ord-41960.jpg,escalate,7.76,6.0,False,mostly clear,False
+ORD-41967,roti prata,wrong size,photos/ord-41967.jpg,refund,7.85,8.0,True,clear photo,False
+ORD-41974,curry puff,spilled in transit,photos/ord-41974.jpg,refund,8.15,8.0,True,barely readable,False
+ORD-41981,bak chor mee,spilled in transit,photos/ord-41981.jpg,refund,9.76,6.0,True,barely readable,False
+ORD-41988,fish soup,missing side,photos/ord-41988.jpg,escalate,19.28,6.0,False,hard to read,False
+ORD-41995,curry puff,wrong item,photos/ord-41995.jpg,refund,14.81,7.0,True,barely readable,False
+ORD-42002,curry puff,wrong size,photos/ord-42002.jpg,refund,15.1,8.0,True,mostly clear,False
+ORD-42009,carrot cake,packaging crushed,photos/ord-42009.jpg,refund,6.39,8.0,True,barely readable,False
+ORD-42016,hokkien mee,packaging crushed,photos/ord-42016.jpg,refund,20.69,6.0,False,clear photo,True
+ORD-42023,laksa,wrong size,photos/ord-42023.jpg,refund,23.63,7.0,True,mostly clear,False
+ORD-42030,satay set,looks nothing like the photo,photos/ord-42030.jpg,refund,27.93,7.0,True,clear photo,False
+ORD-42037,mee goreng,spilled in transit,photos/ord-42037.jpg,escalate,24.07,5.0,False,barely readable,False
+ORD-42044,laksa,wrong item,photos/ord-42044.jpg,refund,5.8,9.0,False,clear photo,True
+ORD-42051,nasi lemak,spilled in transit,photos/ord-42051.jpg,refund,22.45,7.0,True,clear photo,False
+ORD-42058,satay set,spilled in transit,photos/ord-42058.jpg,refund,18.15,7.0,True,barely readable,False
+ORD-42065,kaya toast,missing side,photos/ord-42065.jpg,refund,15.34,8.0,True,hard to read,False
+ORD-42072,carrot cake,wrong item,photos/ord-42072.jpg,escalate,6.41,5.0,False,barely readable,False
+ORD-42079,wanton mee,wrong item,photos/ord-42079.jpg,refund,24.92,8.0,True,hard to read,False
+ORD-42086,char kway teow,looks nothing like the photo,photos/ord-42086.jpg,refund,19.23,9.0,False,barely readable,True
+ORD-42093,laksa,missing side,photos/ord-42093.jpg,refund,25.83,9.0,True,barely readable,False
+ORD-42100,chai tow kway,looks nothing like the photo,photos/ord-42100.jpg,refund,7.41,7.0,True,mostly clear,False
+ORD-42107,hokkien mee,missing side,photos/ord-42107.jpg,escalate,27.39,5.0,False,barely readable,False
+ORD-42114,mee goreng,looks nothing like the photo,photos/ord-42114.jpg,refund,14.91,7.0,True,barely readable,False
+ORD-42121,roti prata,cold on arrival,photos/ord-42121.jpg,refund,9.52,10.0,False,hard to read,True
+ORD-42128,satay set,cold on arrival,photos/ord-42128.jpg,escalate,22.39,6.0,False,barely readable,False
+ORD-42135,satay set,packaging crushed,photos/ord-42135.jpg,refund,5.71,9.0,True,clear photo,False
+ORD-42142,mee goreng,wrong size,photos/ord-42142.jpg,refund,23.5,6.0,True,clear photo,False
+ORD-42149,fish soup,wrong size,photos/ord-42149.jpg,escalate,15.39,5.0,False,clear photo,False
+ORD-42156,char kway teow,missing side,photos/ord-42156.jpg,escalate,18.46,4.0,False,hard to read,False
+ORD-42163,fish soup,cold on arrival,photos/ord-42163.jpg,reject,4.6,2.0,False,barely readable,False
+ORD-42170,char kway teow,looks nothing like the photo,photos/ord-42170.jpg,refund,26.62,8.0,True,mostly clear,False
+ORD-42177,roti prata,wrong item,photos/ord-42177.jpg,reject,7.99,2.0,False,clear photo,False
+ORD-42184,carrot cake,cold on arrival,photos/ord-42184.jpg,escalate,20.63,7.0,False,hard to read,False
+ORD-42191,roti prata,cold on arrival,photos/ord-42191.jpg,refund,20.05,10.0,True,hard to read,False
+ORD-42198,hokkien mee,wrong size,photos/ord-42198.jpg,refund,27.8,7.0,True,hard to read,False
+ORD-42205,curry puff,looks nothing like the photo,photos/ord-42205.jpg,refund,20.16,6.0,False,hard to read,True
+ORD-42212,bak chor mee,missing side,photos/ord-42212.jpg,refund,7.69,10.0,True,hard to read,False
+ORD-42219,chai tow kway,packaging crushed,photos/ord-42219.jpg,refund,22.41,7.0,True,hard to read,False
+ORD-42226,chicken rice,wrong item,photos/ord-42226.jpg,refund,19.05,9.0,True,mostly clear,False
+ORD-42233,satay set,spilled in transit,photos/ord-42233.jpg,refund,27.31,6.0,False,mostly clear,True
+ORD-42240,chicken rice,cold on arrival,photos/ord-42240.jpg,escalate,4.48,6.0,False,barely readable,False
+ORD-42247,carrot cake,looks nothing like the photo,photos/ord-42247.jpg,refund,8.45,7.0,True,mostly clear,False
+ORD-42254,wanton mee,packaging crushed,photos/ord-42254.jpg,escalate,27.42,4.0,False,hard to read,False
+ORD-42261,char kway teow,looks nothing like the photo,photos/ord-42261.jpg,refund,20.76,6.0,False,mostly clear,True
+ORD-42268,chicken rice,packaging crushed,photos/ord-42268.jpg,escalate,18.88,7.0,False,hard to read,False
+ORD-42275,nasi lemak,packaging crushed,photos/ord-42275.jpg,escalate,10.88,6.0,False,mostly clear,False
+ORD-42282,char kway teow,packaging crushed,photos/ord-42282.jpg,refund,10.0,9.0,False,mostly clear,True
+ORD-42289,wanton mee,wrong size,photos/ord-42289.jpg,escalate,18.36,5.0,False,hard to read,False
+ORD-42296,hokkien mee,looks nothing like the photo,photos/ord-42296.jpg,refund,26.37,8.0,True,hard to read,False
+ORD-42303,curry puff,cold on arrival,photos/ord-42303.jpg,refund,12.48,9.0,True,clear photo,False
+ORD-42310,roti prata,packaging crushed,photos/ord-42310.jpg,refund,21.85,7.0,True,barely readable,False
+ORD-42317,laksa,wrong item,photos/ord-42317.jpg,escalate,15.36,6.0,False,clear photo,False
+ORD-42324,carrot cake,packaging crushed,photos/ord-42324.jpg,escalate,17.0,6.0,False,mostly clear,False
+ORD-42331,laksa,missing side,photos/ord-42331.jpg,refund,6.54,8.0,True,mostly clear,False
+ORD-42338,satay set,wrong size,photos/ord-42338.jpg,reject,16.66,4.0,False,clear photo,False
+ORD-42345,satay set,spilled in transit,photos/ord-42345.jpg,refund,7.12,9.0,False,clear photo,True
+ORD-42352,hokkien mee,wrong size,photos/ord-42352.jpg,refund,7.66,7.0,True,hard to read,False
+ORD-42359,wanton mee,packaging crushed,photos/ord-42359.jpg,refund,26.04,8.0,True,clear photo,False
+ORD-42366,char kway teow,looks nothing like the photo,photos/ord-42366.jpg,refund,7.09,6.0,True,clear photo,False
+ORD-42373,chai tow kway,wrong item,photos/ord-42373.jpg,refund,25.02,7.0,True,mostly clear,False
+ORD-42380,bak chor mee,wrong size,photos/ord-42380.jpg,refund,24.79,9.0,True,barely readable,False
+ORD-42387,hokkien mee,cold on arrival,photos/ord-42387.jpg,escalate,27.63,6.0,False,clear photo,False
+ORD-42394,satay set,cold on arrival,photos/ord-42394.jpg,refund,9.76,8.0,False,hard to read,True
+ORD-42401,bak chor mee,wrong item,photos/ord-42401.jpg,refund,13.82,8.0,True,clear photo,False
+ORD-42408,mee goreng,wrong size,photos/ord-42408.jpg,refund,27.59,4.0,False,clear photo,True
+ORD-42415,carrot cake,missing side,photos/ord-42415.jpg,refund,7.48,6.0,True,clear photo,False
+ORD-42422,kaya toast,missing side,photos/ord-42422.jpg,refund,10.74,9.0,True,hard to read,False
+ORD-42429,kaya toast,wrong size,photos/ord-42429.jpg,refund,18.76,7.0,True,hard to read,False
+ORD-42436,nasi lemak,wrong size,photos/ord-42436.jpg,escalate,9.68,4.0,False,mostly clear,False
+ORD-42443,fish soup,missing side,photos/ord-42443.jpg,refund,5.24,9.0,False,clear photo,True
+ORD-42450,satay set,cold on arrival,photos/ord-42450.jpg,refund,19.84,10.0,True,hard to read,False
+ORD-42457,nasi lemak,wrong item,photos/ord-42457.jpg,escalate,4.04,4.0,False,hard to read,False
+ORD-42464,satay set,packaging crushed,photos/ord-42464.jpg,escalate,13.86,4.0,False,clear photo,False
+ORD-42471,chai tow kway,packaging crushed,photos/ord-42471.jpg,escalate,13.34,5.0,False,hard to read,False
+ORD-42478,nasi lemak,cold on arrival,photos/ord-42478.jpg,refund,24.96,8.0,True,barely readable,False
+ORD-42485,laksa,missing side,photos/ord-42485.jpg,refund,18.4,7.0,False,hard to read,True
+ORD-42492,satay set,missing side,photos/ord-42492.jpg,refund,7.49,6.0,True,mostly clear,False
+ORD-42499,char kway teow,wrong item,photos/ord-42499.jpg,escalate,16.07,5.0,False,barely readable,False
+ORD-42506,satay set,wrong item,photos/ord-42506.jpg,reject,11.8,4.0,False,hard to read,False
+ORD-42513,nasi lemak,spilled in transit,photos/ord-42513.jpg,refund,26.14,8.0,True,clear photo,False
+ORD-42520,carrot cake,wrong size,photos/ord-42520.jpg,refund,7.81,8.0,True,clear photo,False
+ORD-42527,bak chor mee,wrong item,photos/ord-42527.jpg,refund,18.24,9.0,False,mostly clear,True
+ORD-42534,laksa,missing side,photos/ord-42534.jpg,escalate,15.27,4.0,False,barely readable,False
+ORD-42541,chicken rice,packaging crushed,photos/ord-42541.jpg,reject,20.54,3.0,False,barely readable,False
+ORD-42548,mee goreng,cold on arrival,photos/ord-42548.jpg,reject,6.3,3.0,False,mostly clear,False
+ORD-42555,nasi lemak,wrong item,photos/ord-42555.jpg,refund,26.68,10.0,True,barely readable,False
+ORD-42562,hokkien mee,missing side,photos/ord-42562.jpg,refund,15.27,9.0,True,mostly clear,False
+ORD-42569,laksa,missing side,photos/ord-42569.jpg,refund,19.06,8.0,True,clear photo,False
+ORD-42576,char kway teow,wrong item,photos/ord-42576.jpg,refund,15.74,8.0,True,mostly clear,False
+ORD-42583,chicken rice,packaging crushed,photos/ord-42583.jpg,escalate,19.47,4.0,False,clear photo,False
+ORD-42590,char kway teow,spilled in transit,photos/ord-42590.jpg,reject,13.71,3.0,False,hard to read,False
+ORD-42597,carrot cake,missing side,photos/ord-42597.jpg,refund,8.77,7.0,True,mostly clear,False
+ORD-42604,roti prata,missing side,photos/ord-42604.jpg,escalate,15.13,6.0,False,clear photo,False
+ORD-42611,carrot cake,spilled in transit,photos/ord-42611.jpg,escalate,27.47,6.0,False,barely readable,False
+ORD-42618,hokkien mee,missing side,photos/ord-42618.jpg,refund,22.46,7.0,True,hard to read,False
+ORD-42625,fish soup,looks nothing like the photo,photos/ord-42625.jpg,refund,11.08,6.0,True,clear photo,False
+ORD-42632,chai tow kway,looks nothing like the photo,photos/ord-42632.jpg,refund,17.6,7.0,True,mostly clear,False
+ORD-42639,laksa,missing side,photos/ord-42639.jpg,escalate,12.13,3.0,False,hard to read,False
+ORD-42646,wanton mee,packaging crushed,photos/ord-42646.jpg,refund,16.88,6.0,True,clear photo,False
+ORD-42653,mee goreng,wrong size,photos/ord-42653.jpg,refund,5.91,8.0,True,barely readable,False
+ORD-42660,curry puff,missing side,photos/ord-42660.jpg,refund,9.89,5.0,False,barely readable,True
+ORD-42667,chai tow kway,missing side,photos/ord-42667.jpg,refund,27.69,6.0,False,hard to read,True
+ORD-42674,bak chor mee,spilled in transit,photos/ord-42674.jpg,refund,23.88,9.0,True,mostly clear,False
+ORD-42681,wanton mee,wrong item,photos/ord-42681.jpg,escalate,15.64,6.0,False,clear photo,False
+ORD-42688,hokkien mee,wrong size,photos/ord-42688.jpg,refund,14.64,7.0,True,clear photo,False
+ORD-42695,mee goreng,spilled in transit,photos/ord-42695.jpg,escalate,6.65,5.0,False,mostly clear,False
+ORD-42702,laksa,packaging crushed,photos/ord-42702.jpg,refund,9.26,6.0,True,clear photo,False
+ORD-42709,chicken rice,wrong item,photos/ord-42709.jpg,refund,9.8,8.0,True,barely readable,False
+ORD-42716,laksa,packaging crushed,photos/ord-42716.jpg,refund,9.61,9.0,True,mostly clear,False
+ORD-42723,laksa,wrong item,photos/ord-42723.jpg,escalate,15.09,5.0,False,hard to read,False
+ORD-42730,wanton mee,spilled in transit,photos/ord-42730.jpg,escalate,24.12,4.0,False,clear photo,False
+ORD-42737,kaya toast,missing side,photos/ord-42737.jpg,refund,21.64,8.0,True,barely readable,False
+ORD-42744,satay set,packaging crushed,photos/ord-42744.jpg,refund,7.0,8.0,False,barely readable,True
+ORD-42751,kaya toast,packaging crushed,photos/ord-42751.jpg,refund,6.02,7.0,True,barely readable,False
+ORD-42758,mee goreng,cold on arrival,photos/ord-42758.jpg,escalate,17.29,6.0,False,barely readable,False
+ORD-42765,curry puff,packaging crushed,photos/ord-42765.jpg,refund,23.93,8.0,True,hard to read,False
+ORD-42772,satay set,wrong size,photos/ord-42772.jpg,refund,19.25,9.0,True,mostly clear,False
+ORD-42779,bak chor mee,missing side,photos/ord-42779.jpg,refund,13.46,9.0,True,barely readable,False
+ORD-42786,bak chor mee,looks nothing like the photo,photos/ord-42786.jpg,refund,13.96,7.0,True,mostly clear,False
+ORD-42793,nasi lemak,cold on arrival,photos/ord-42793.jpg,refund,27.11,8.0,True,hard to read,False
+ORD-42800,fish soup,wrong item,photos/ord-42800.jpg,escalate,10.99,6.0,False,barely readable,False
+ORD-42807,chicken rice,wrong item,photos/ord-42807.jpg,refund,6.49,7.0,True,hard to read,False
+ORD-42814,curry puff,spilled in transit,photos/ord-42814.jpg,refund,9.48,7.0,True,barely readable,False
+ORD-42821,char kway teow,missing side,photos/ord-42821.jpg,refund,13.12,7.0,False,clear photo,True
+ORD-42828,fish soup,spilled in transit,photos/ord-42828.jpg,escalate,12.23,6.0,False,hard to read,False
+ORD-42835,bak chor mee,cold on arrival,photos/ord-42835.jpg,escalate,9.92,7.0,False,clear photo,False
+ORD-42842,curry puff,looks nothing like the photo,photos/ord-42842.jpg,escalate,18.23,5.0,False,barely readable,False
+ORD-42849,nasi lemak,packaging crushed,photos/ord-42849.jpg,escalate,24.47,4.0,False,hard to read,False
+ORD-42856,curry puff,packaging crushed,photos/ord-42856.jpg,refund,18.83,8.0,True,mostly clear,False
+ORD-42863,nasi lemak,looks nothing like the photo,photos/ord-42863.jpg,refund,12.53,10.0,True,hard to read,False
+ORD-42870,hokkien mee,spilled in transit,photos/ord-42870.jpg,escalate,7.71,7.0,False,barely readable,False
+ORD-42877,fish soup,wrong size,photos/ord-42877.jpg,refund,12.34,4.0,False,barely readable,True
+ORD-42884,chicken rice,wrong size,photos/ord-42884.jpg,refund,11.18,7.0,True,hard to read,False
+ORD-42891,bak chor mee,spilled in transit,photos/ord-42891.jpg,refund,11.43,8.0,True,barely readable,False
+ORD-42898,fish soup,wrong item,photos/ord-42898.jpg,refund,16.46,7.0,True,hard to read,False
+ORD-42905,laksa,wrong item,photos/ord-42905.jpg,reject,27.21,2.0,False,mostly clear,False
+ORD-42912,wanton mee,cold on arrival,photos/ord-42912.jpg,refund,9.65,8.0,True,hard to read,False
+ORD-42919,satay set,packaging crushed,photos/ord-42919.jpg,reject,17.44,3.0,False,barely readable,False
+ORD-42926,chicken rice,cold on arrival,photos/ord-42926.jpg,refund,22.17,10.0,False,clear photo,True
+ORD-42933,wanton mee,wrong item,photos/ord-42933.jpg,refund,6.54,6.0,True,clear photo,False
+ORD-42940,hokkien mee,missing side,photos/ord-42940.jpg,refund,12.24,9.0,False,mostly clear,True
+ORD-42947,hokkien mee,cold on arrival,photos/ord-42947.jpg,refund,19.02,8.0,True,hard to read,False
+ORD-42954,fish soup,cold on arrival,photos/ord-42954.jpg,escalate,16.34,4.0,False,hard to read,False
+ORD-42961,kaya toast,missing side,photos/ord-42961.jpg,refund,25.14,6.0,True,clear photo,False
+ORD-42968,satay set,wrong size,photos/ord-42968.jpg,escalate,23.06,6.0,False,mostly clear,False
+ORD-42975,carrot cake,missing side,photos/ord-42975.jpg,refund,25.2,7.0,False,hard to read,True
+ORD-42982,curry puff,wrong size,photos/ord-42982.jpg,escalate,23.42,4.0,False,hard to read,False
+ORD-42989,roti prata,spilled in transit,photos/ord-42989.jpg,refund,27.71,8.0,True,clear photo,False
+ORD-42996,fish soup,cold on arrival,photos/ord-42996.jpg,refund,23.51,6.0,True,clear photo,False
+ORD-43003,satay set,spilled in transit,photos/ord-43003.jpg,refund,14.81,6.0,False,hard to read,True
+ORD-43010,chicken rice,missing side,photos/ord-43010.jpg,escalate,23.92,6.0,False,barely readable,False
+ORD-43017,nasi lemak,spilled in transit,photos/ord-43017.jpg,refund,6.86,9.0,True,mostly clear,False
+ORD-43024,roti prata,looks nothing like the photo,photos/ord-43024.jpg,refund,11.53,8.0,True,mostly clear,False
+ORD-43031,char kway teow,spilled in transit,photos/ord-43031.jpg,refund,23.84,10.0,True,clear photo,False
+ORD-43038,kaya toast,looks nothing like the photo,photos/ord-43038.jpg,refund,16.48,8.0,True,hard to read,False
+ORD-43045,carrot cake,looks nothing like the photo,photos/ord-43045.jpg,refund,24.98,6.0,True,mostly clear,False
+ORD-43052,chai tow kway,missing side,photos/ord-43052.jpg,refund,21.16,7.0,True,barely readable,False
+ORD-43059,wanton mee,missing side,photos/ord-43059.jpg,escalate,25.36,6.0,False,clear photo,False
+ORD-43066,wanton mee,missing side,photos/ord-43066.jpg,escalate,22.32,6.0,False,barely readable,False
+ORD-43073,fish soup,spilled in transit,photos/ord-43073.jpg,refund,25.33,8.0,True,barely readable,False
+ORD-43080,fish soup,wrong item,photos/ord-43080.jpg,refund,10.42,6.0,True,mostly clear,False
+ORD-43087,fish soup,wrong size,photos/ord-43087.jpg,escalate,18.66,5.0,False,barely readable,False
+ORD-43094,curry puff,cold on arrival,photos/ord-43094.jpg,escalate,11.27,7.0,False,hard to read,False
+ORD-43101,bak chor mee,packaging crushed,photos/ord-43101.jpg,escalate,5.1,5.0,False,hard to read,False
+ORD-43108,chai tow kway,spilled in transit,photos/ord-43108.jpg,refund,19.84,8.0,True,clear photo,False
+ORD-43115,chicken rice,cold on arrival,photos/ord-43115.jpg,escalate,5.91,3.0,False,clear photo,False
+ORD-43122,kaya toast,cold on arrival,photos/ord-43122.jpg,refund,5.08,8.0,True,clear photo,False
+ORD-43129,chai tow kway,looks nothing like the photo,photos/ord-43129.jpg,reject,19.56,5.0,False,mostly clear,False
+ORD-43136,nasi lemak,looks nothing like the photo,photos/ord-43136.jpg,refund,24.02,5.0,False,clear photo,True
+ORD-43143,kaya toast,packaging crushed,photos/ord-43143.jpg,refund,20.89,7.0,True,mostly clear,False
+ORD-43150,carrot cake,cold on arrival,photos/ord-43150.jpg,reject,19.49,4.0,False,hard to read,False
+ORD-43157,chai tow kway,looks nothing like the photo,photos/ord-43157.jpg,refund,7.44,6.0,False,mostly clear,True
+ORD-43164,bak chor mee,cold on arrival,photos/ord-43164.jpg,escalate,18.52,7.0,False,hard to read,False
+ORD-43171,curry puff,cold on arrival,photos/ord-43171.jpg,refund,5.5,6.0,False,barely readable,True
+ORD-43178,curry puff,missing side,photos/ord-43178.jpg,refund,17.47,8.0,True,barely readable,False
+ORD-43185,nasi lemak,cold on arrival,photos/ord-43185.jpg,refund,25.56,8.0,True,barely readable,False
+ORD-43192,roti prata,spilled in transit,photos/ord-43192.jpg,refund,24.83,7.0,True,mostly clear,False
+ORD-43199,chai tow kway,cold on arrival,photos/ord-43199.jpg,refund,26.51,7.0,True,mostly clear,False
+ORD-43206,char kway teow,packaging crushed,photos/ord-43206.jpg,refund,24.87,7.0,True,barely readable,False
+ORD-43213,mee goreng,missing side,photos/ord-43213.jpg,escalate,13.36,7.0,False,mostly clear,False
+ORD-43220,chai tow kway,packaging crushed,photos/ord-43220.jpg,reject,12.64,4.0,False,barely readable,False
+ORD-43227,roti prata,looks nothing like the photo,photos/ord-43227.jpg,refund,17.58,6.0,True,mostly clear,False
+ORD-43234,laksa,cold on arrival,photos/ord-43234.jpg,reject,25.75,3.0,False,mostly clear,False
+ORD-43241,laksa,spilled in transit,photos/ord-43241.jpg,refund,20.92,7.0,False,hard to read,True
+ORD-43248,bak chor mee,packaging crushed,photos/ord-43248.jpg,refund,23.25,9.0,True,clear photo,False
+ORD-43255,curry puff,spilled in transit,photos/ord-43255.jpg,refund,23.88,7.0,True,mostly clear,False
+ORD-43262,chicken rice,spilled in transit,photos/ord-43262.jpg,refund,7.24,6.0,True,hard to read,False
+ORD-43269,fish soup,cold on arrival,photos/ord-43269.jpg,refund,23.96,8.0,True,clear photo,False
+ORD-43276,nasi lemak,spilled in transit,photos/ord-43276.jpg,refund,7.57,7.0,True,clear photo,False
+ORD-43283,laksa,cold on arrival,photos/ord-43283.jpg,refund,8.28,7.0,False,barely readable,True
+ORD-43290,hokkien mee,wrong size,photos/ord-43290.jpg,refund,6.22,9.0,True,hard to read,False
+ORD-43297,laksa,wrong size,photos/ord-43297.jpg,refund,23.12,7.0,False,mostly clear,True
+ORD-43304,roti prata,wrong size,photos/ord-43304.jpg,reject,15.37,3.0,False,barely readable,False
+ORD-43311,satay set,wrong item,photos/ord-43311.jpg,reject,21.94,2.0,False,barely readable,False
+ORD-43318,chai tow kway,wrong size,photos/ord-43318.jpg,refund,23.57,8.0,True,mostly clear,False
+ORD-43325,bak chor mee,packaging crushed,photos/ord-43325.jpg,reject,15.11,3.0,False,barely readable,False
+ORD-43332,kaya toast,spilled in transit,photos/ord-43332.jpg,refund,12.18,3.0,False,hard to read,True
+ORD-43339,kaya toast,missing side,photos/ord-43339.jpg,escalate,22.74,6.0,False,hard to read,False
+ORD-43346,chicken rice,missing side,photos/ord-43346.jpg,escalate,21.57,4.0,False,barely readable,False
+ORD-43353,hokkien mee,missing side,photos/ord-43353.jpg,refund,23.04,7.0,True,barely readable,False
+ORD-43360,kaya toast,spilled in transit,photos/ord-43360.jpg,refund,9.58,7.0,True,clear photo,False
+ORD-43367,bak chor mee,packaging crushed,photos/ord-43367.jpg,reject,4.21,5.0,False,barely readable,False
+ORD-43374,roti prata,spilled in transit,photos/ord-43374.jpg,refund,7.19,8.0,True,hard to read,False
+ORD-43381,bak chor mee,wrong size,photos/ord-43381.jpg,refund,27.48,8.0,True,barely readable,False
+ORD-43388,satay set,wrong size,photos/ord-43388.jpg,reject,15.61,4.0,False,hard to read,False
+ORD-43395,bak chor mee,wrong item,photos/ord-43395.jpg,refund,20.62,7.0,True,hard to read,False
+ORD-43402,fish soup,missing side,photos/ord-43402.jpg,escalate,11.12,5.0,False,barely readable,False
+ORD-43409,fish soup,missing side,photos/ord-43409.jpg,refund,26.37,8.0,False,clear photo,True
+ORD-43416,mee goreng,packaging crushed,photos/ord-43416.jpg,refund,6.01,9.0,True,barely readable,False
+ORD-43423,char kway teow,missing side,photos/ord-43423.jpg,refund,9.19,7.0,True,barely readable,False
+ORD-43430,roti prata,wrong item,photos/ord-43430.jpg,refund,17.22,7.0,False,mostly clear,True
+ORD-43437,chicken rice,wrong size,photos/ord-43437.jpg,escalate,7.51,5.0,False,barely readable,False
+ORD-43444,bak chor mee,cold on arrival,photos/ord-43444.jpg,refund,7.42,8.0,True,hard to read,False
+ORD-43451,kaya toast,wrong item,photos/ord-43451.jpg,refund,16.14,9.0,False,mostly clear,True
+ORD-43458,nasi lemak,spilled in transit,photos/ord-43458.jpg,refund,6.38,6.0,True,clear photo,False
+ORD-43465,kaya toast,cold on arrival,photos/ord-43465.jpg,reject,7.17,4.0,False,barely readable,False
+ORD-43472,mee goreng,packaging crushed,photos/ord-43472.jpg,escalate,15.87,6.0,False,clear photo,False
+ORD-43479,hokkien mee,packaging crushed,photos/ord-43479.jpg,refund,17.28,5.0,False,mostly clear,True
+ORD-43486,laksa,wrong size,photos/ord-43486.jpg,refund,18.76,5.0,False,clear photo,True
+ORD-43493,hokkien mee,packaging crushed,photos/ord-43493.jpg,reject,15.44,1.0,False,mostly clear,False
+ORD-43500,satay set,wrong item,photos/ord-43500.jpg,refund,27.12,8.0,True,hard to read,False
+ORD-43507,bak chor mee,packaging crushed,photos/ord-43507.jpg,refund,21.47,7.0,True,barely readable,False
+ORD-43514,chai tow kway,packaging crushed,photos/ord-43514.jpg,refund,20.92,9.0,True,barely readable,False
+ORD-43521,wanton mee,spilled in transit,photos/ord-43521.jpg,refund,16.86,7.0,True,mostly clear,False
+ORD-43528,hokkien mee,cold on arrival,photos/ord-43528.jpg,refund,13.3,7.0,True,clear photo,False
+ORD-43535,mee goreng,spilled in transit,photos/ord-43535.jpg,refund,13.38,7.0,True,hard to read,False
+ORD-43542,bak chor mee,spilled in transit,photos/ord-43542.jpg,escalate,17.72,5.0,False,clear photo,False
+ORD-43549,roti prata,spilled in transit,photos/ord-43549.jpg,refund,11.2,7.0,True,hard to read,False
+ORD-43556,chai tow kway,looks nothing like the photo,photos/ord-43556.jpg,refund,20.47,8.0,True,barely readable,False
+ORD-43563,chai tow kway,wrong item,photos/ord-43563.jpg,reject,25.45,4.0,False,mostly clear,False
+ORD-43570,laksa,wrong item,photos/ord-43570.jpg,refund,4.5,7.0,False,mostly clear,True
+ORD-43577,mee goreng,wrong item,photos/ord-43577.jpg,reject,24.8,4.0,False,mostly clear,False
+ORD-43584,satay set,packaging crushed,photos/ord-43584.jpg,refund,22.03,9.0,False,clear photo,True
+ORD-43591,satay set,missing side,photos/ord-43591.jpg,escalate,7.28,3.0,False,mostly clear,False
+ORD-43598,satay set,wrong item,photos/ord-43598.jpg,refund,9.69,8.0,True,mostly clear,False
+ORD-43605,laksa,wrong size,photos/ord-43605.jpg,refund,23.72,7.0,True,mostly clear,False
+ORD-43612,roti prata,wrong item,photos/ord-43612.jpg,reject,12.5,1.0,False,barely readable,False
+ORD-43619,carrot cake,cold on arrival,photos/ord-43619.jpg,escalate,5.67,5.0,False,clear photo,False
+ORD-43626,mee goreng,looks nothing like the photo,photos/ord-43626.jpg,refund,25.61,5.0,False,clear photo,True
+ORD-43633,nasi lemak,packaging crushed,photos/ord-43633.jpg,refund,20.3,8.0,True,clear photo,False
+ORD-43640,mee goreng,wrong size,photos/ord-43640.jpg,refund,14.28,8.0,True,barely readable,False
+ORD-43647,satay set,cold on arrival,photos/ord-43647.jpg,escalate,21.73,4.0,False,hard to read,False
+ORD-43654,laksa,looks nothing like the photo,photos/ord-43654.jpg,refund,26.06,7.0,False,hard to read,True
+ORD-43661,wanton mee,wrong item,photos/ord-43661.jpg,refund,4.05,6.0,True,barely readable,False
+ORD-43668,wanton mee,cold on arrival,photos/ord-43668.jpg,escalate,27.96,5.0,False,mostly clear,False
+ORD-43675,nasi lemak,cold on arrival,photos/ord-43675.jpg,refund,27.25,5.0,True,mostly clear,False
+ORD-43682,bak chor mee,missing side,photos/ord-43682.jpg,refund,21.0,6.0,True,hard to read,False
+ORD-43689,kaya toast,spilled in transit,photos/ord-43689.jpg,refund,15.13,6.0,True,barely readable,False
+ORD-43696,hokkien mee,looks nothing like the photo,photos/ord-43696.jpg,refund,25.3,10.0,True,clear photo,False
+ORD-43703,chai tow kway,packaging crushed,photos/ord-43703.jpg,refund,8.89,7.0,True,clear photo,False
+ORD-43710,wanton mee,cold on arrival,photos/ord-43710.jpg,refund,7.61,6.0,True,clear photo,False
+ORD-43717,mee goreng,packaging crushed,photos/ord-43717.jpg,escalate,16.66,5.0,False,mostly clear,False
+ORD-43724,fish soup,wrong item,photos/ord-43724.jpg,escalate,27.74,5.0,False,mostly clear,False
+ORD-43731,roti prata,looks nothing like the photo,photos/ord-43731.jpg,reject,12.94,4.0,False,barely readable,False
+ORD-43738,bak chor mee,looks nothing like the photo,photos/ord-43738.jpg,refund,7.68,8.0,True,hard to read,False
+ORD-43745,laksa,looks nothing like the photo,photos/ord-43745.jpg,refund,19.69,9.0,False,hard to read,True
+ORD-43752,roti prata,wrong item,photos/ord-43752.jpg,escalate,13.04,6.0,False,barely readable,False
+ORD-43759,chai tow kway,packaging crushed,photos/ord-43759.jpg,refund,26.79,6.0,True,hard to read,False
+ORD-43766,roti prata,wrong item,photos/ord-43766.jpg,refund,8.83,8.0,True,clear photo,False
+ORD-43773,satay set,missing side,photos/ord-43773.jpg,escalate,23.63,5.0,False,mostly clear,False
+ORD-43780,curry puff,wrong item,photos/ord-43780.jpg,escalate,13.48,6.0,False,mostly clear,False
+ORD-43787,hokkien mee,looks nothing like the photo,photos/ord-43787.jpg,refund,22.95,5.0,True,barely readable,False
+ORD-43794,kaya toast,missing side,photos/ord-43794.jpg,refund,20.83,6.0,True,clear photo,False
+ORD-43801,carrot cake,wrong size,photos/ord-43801.jpg,escalate,14.67,4.0,False,barely readable,False
+ORD-43808,chicken rice,cold on arrival,photos/ord-43808.jpg,refund,20.29,9.0,True,mostly clear,False
+ORD-43815,satay set,packaging crushed,photos/ord-43815.jpg,reject,7.26,3.0,False,hard to read,False
+ORD-43822,hokkien mee,cold on arrival,photos/ord-43822.jpg,escalate,19.8,7.0,False,clear photo,False
+ORD-43829,laksa,packaging crushed,photos/ord-43829.jpg,refund,9.88,10.0,True,hard to read,False
+ORD-43836,fish soup,spilled in transit,photos/ord-43836.jpg,refund,8.4,10.0,False,mostly clear,True
+ORD-43843,fish soup,wrong item,photos/ord-43843.jpg,refund,23.19,10.0,True,hard to read,False
+ORD-43850,fish soup,missing side,photos/ord-43850.jpg,escalate,19.23,5.0,False,barely readable,False
+ORD-43857,laksa,missing side,photos/ord-43857.jpg,refund,4.41,7.0,True,hard to read,False
+ORD-43864,nasi lemak,wrong size,photos/ord-43864.jpg,refund,20.75,6.0,True,clear photo,False
+ORD-43871,chai tow kway,missing side,photos/ord-43871.jpg,refund,17.05,6.0,False,clear photo,True
+ORD-43878,hokkien mee,wrong item,photos/ord-43878.jpg,refund,19.12,6.0,False,mostly clear,True
+ORD-43885,curry puff,spilled in transit,photos/ord-43885.jpg,escalate,7.1,6.0,False,clear photo,False
+ORD-43892,mee goreng,packaging crushed,photos/ord-43892.jpg,reject,5.75,3.0,False,barely readable,False
+ORD-43899,chicken rice,spilled in transit,photos/ord-43899.jpg,refund,23.17,5.0,True,hard to read,False
+ORD-43906,curry puff,spilled in transit,photos/ord-43906.jpg,escalate,15.12,6.0,False,clear photo,False
+ORD-43913,kaya toast,missing side,photos/ord-43913.jpg,refund,13.71,8.0,True,mostly clear,False
+ORD-43920,kaya toast,wrong item,photos/ord-43920.jpg,refund,20.09,10.0,True,barely readable,False
+ORD-43927,laksa,wrong size,photos/ord-43927.jpg,refund,27.74,9.0,True,clear photo,False
+ORD-43934,chai tow kway,wrong item,photos/ord-43934.jpg,reject,9.81,3.0,False,clear photo,False
+ORD-43941,nasi lemak,wrong size,photos/ord-43941.jpg,escalate,16.89,7.0,False,mostly clear,False
+ORD-43948,roti prata,missing side,photos/ord-43948.jpg,escalate,26.6,4.0,False,barely readable,False
+ORD-43955,nasi lemak,wrong size,photos/ord-43955.jpg,refund,4.76,6.0,True,barely readable,False
+ORD-43962,hokkien mee,packaging crushed,photos/ord-43962.jpg,refund,9.66,9.0,True,mostly clear,False
+ORD-43969,fish soup,looks nothing like the photo,photos/ord-43969.jpg,escalate,18.02,5.0,False,hard to read,False
+ORD-43976,satay set,wrong size,photos/ord-43976.jpg,refund,6.78,7.0,True,hard to read,False
+ORD-43983,wanton mee,wrong size,photos/ord-43983.jpg,refund,6.23,9.0,True,mostly clear,False
+ORD-43990,carrot cake,looks nothing like the photo,photos/ord-43990.jpg,refund,24.52,8.0,False,barely readable,True
+ORD-43997,carrot cake,packaging crushed,photos/ord-43997.jpg,reject,25.14,3.0,False,barely readable,False
+ORD-44004,wanton mee,spilled in transit,photos/ord-44004.jpg,escalate,8.19,6.0,False,mostly clear,False
+ORD-44011,carrot cake,looks nothing like the photo,photos/ord-44011.jpg,escalate,7.94,3.0,False,mostly clear,False
+ORD-44018,chai tow kway,cold on arrival,photos/ord-44018.jpg,escalate,8.21,4.0,False,clear photo,False
+ORD-44025,laksa,spilled in transit,photos/ord-44025.jpg,escalate,4.82,6.0,False,clear photo,False
+ORD-44032,fish soup,packaging crushed,photos/ord-44032.jpg,refund,16.3,8.0,True,hard to read,False
+ORD-44039,bak chor mee,wrong item,photos/ord-44039.jpg,escalate,11.9,5.0,False,clear photo,False
+ORD-44046,roti prata,cold on arrival,photos/ord-44046.jpg,refund,25.71,8.0,True,mostly clear,False
+ORD-44053,curry puff,spilled in transit,photos/ord-44053.jpg,refund,24.29,8.0,True,mostly clear,False
+ORD-44060,chai tow kway,wrong item,photos/ord-44060.jpg,refund,27.79,5.0,False,hard to read,True
+ORD-44067,nasi lemak,missing side,photos/ord-44067.jpg,refund,10.24,7.0,True,mostly clear,False
+ORD-44074,chicken rice,cold on arrival,photos/ord-44074.jpg,refund,4.66,8.0,True,barely readable,False
+ORD-44081,nasi lemak,looks nothing like the photo,photos/ord-44081.jpg,refund,11.86,8.0,True,mostly clear,False
+ORD-44088,mee goreng,cold on arrival,photos/ord-44088.jpg,refund,25.8,7.0,True,hard to read,False
+ORD-44095,kaya toast,spilled in transit,photos/ord-44095.jpg,refund,18.59,8.0,True,hard to read,False
+ORD-44102,laksa,packaging crushed,photos/ord-44102.jpg,escalate,7.57,5.0,False,mostly clear,False
+ORD-44109,kaya toast,missing side,photos/ord-44109.jpg,refund,19.23,8.0,False,barely readable,True
+ORD-44116,fish soup,cold on arrival,photos/ord-44116.jpg,escalate,23.46,6.0,False,hard to read,False
+ORD-44123,curry puff,packaging crushed,photos/ord-44123.jpg,refund,15.5,5.0,False,clear photo,True
+ORD-44130,hokkien mee,cold on arrival,photos/ord-44130.jpg,escalate,15.92,6.0,False,clear photo,False
+ORD-44137,nasi lemak,wrong item,photos/ord-44137.jpg,escalate,12.28,5.0,False,barely readable,False
+ORD-44144,nasi lemak,wrong item,photos/ord-44144.jpg,escalate,16.24,5.0,False,barely readable,False
+ORD-44151,chai tow kway,spilled in transit,photos/ord-44151.jpg,refund,22.43,7.0,True,hard to read,False
+ORD-44158,laksa,packaging crushed,photos/ord-44158.jpg,refund,16.75,8.0,True,hard to read,False
+ORD-44165,kaya toast,missing side,photos/ord-44165.jpg,refund,6.25,9.0,True,hard to read,False
+ORD-44172,curry puff,missing side,photos/ord-44172.jpg,refund,17.67,8.0,True,mostly clear,False
+ORD-44179,mee goreng,wrong item,photos/ord-44179.jpg,escalate,23.11,5.0,False,barely readable,False
+ORD-44186,hokkien mee,packaging crushed,photos/ord-44186.jpg,refund,26.89,8.0,True,hard to read,False
+ORD-44193,laksa,wrong size,photos/ord-44193.jpg,refund,8.86,7.0,False,clear photo,True

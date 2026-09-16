@@ -1,0 +1,1359 @@
+<title>Is Your Judge Lying?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+
+<style>
+  /* Warm paper, one bold grotesque, a mono for everything small, one
+     periwinkle accent. Red and green appear only as buggy/fixed states, and
+     because those two hues sit below the safe colour-vision separation they
+     always carry a word and a glyph too. Charts use periwinkle and red only --
+     a pair that passes every check on this ground. */
+  :root {
+    --paper:    #f4f2ee;
+    --paper-2:  #eceae4;
+    --card:     #faf9f6;
+    --line:     #dedbd3;
+    --line-2:   #c4c0b6;
+    --ink:      #14130f;
+    --ink-2:    #3d3b35;
+    --muted:    #7a756c;
+
+    --accent:     #4f6fc7;
+    --accent-dim: #e4e9f7;
+    --red:        #d93025;
+    --red-dim:    #fae9e7;
+    --green:      #1e7a3c;
+    --green-dim:  #e6f2e9;
+
+    --display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Space Mono", ui-monospace, Menlo, monospace;
+    --pad: clamp(24px, 5vw, 92px);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0; min-height: 100svh; display: flex; flex-direction: column;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--display); font-size: 16px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .deck { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .slide {
+    display: none; flex: 1; min-height: 0; overflow-y: auto;
+    padding: clamp(16px, 2.6vh, 30px) var(--pad) 0;
+    animation: in .2s ease-out both;
+  }
+  .slide.on { display: flex; flex-direction: column; }
+  @keyframes in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .slide { animation: none; } }
+
+  .slide-head { display: flex; align-items: center; gap: 11px; flex: none; }
+  .slide-head .glyph { width: 24px; height: 24px; flex: none;
+    display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 2px; }
+  .slide-head .glyph i { background: var(--ink); border-radius: 50%; display: block; }
+  .slide-head .glyph i.off { background: transparent; }
+  .slide-head .wordmark { font-weight: 700; font-size: 12.5px; line-height: 1.15; letter-spacing: -.01em; }
+  .slide-head .wordmark span { display: block; font-weight: 400; color: var(--muted); font-size: 11.5px; }
+
+  .slide-foot {
+    flex: none; border-top: 1px solid var(--line);
+    padding: 10px 0 clamp(10px, 1.8vh, 18px);
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+  }
+  .slide-foot a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+  .slide-foot .pg { font-variant-numeric: tabular-nums; }
+
+  .inner {
+    width: 100%; max-width: 1240px; margin: 0 auto; flex: 1;
+    display: flex; flex-direction: column; justify-content: center;
+    gap: clamp(16px, 2.6vh, 34px); padding: clamp(10px, 2.4vh, 32px) 0;
+  }
+
+  /* --- type: bigger than before, one idea per slide --------------------- */
+  h1, h2 {
+    font-family: var(--display); font-weight: 700; margin: 0;
+    letter-spacing: -.035em; line-height: 1.0; text-wrap: balance; color: var(--ink);
+  }
+  h1 { font-size: clamp(40px, 6.6vw, 92px); }
+  h2 { font-size: clamp(30px, 4.9vw, 66px); }
+  h3 { font-weight: 700; margin: 0; font-size: clamp(18px, 2.1vw, 26px); letter-spacing: -.018em; }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: clamp(11px, 1.05vw, 13.5px);
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+    display: block; margin: 0;
+  }
+  .eyebrow b { color: var(--accent); font-weight: 700; }
+
+  p { margin: 0; max-width: 46ch; }
+  .lead { font-size: clamp(19px, 2.4vw, 34px); color: var(--ink-2); line-height: 1.4; letter-spacing: -.015em; }
+  .lead .accent { color: var(--accent); }
+  .lead strong { color: var(--ink); }
+  .say { font-size: clamp(17px, 2vw, 27px); color: var(--ink-2); line-height: 1.45; letter-spacing: -.01em; }
+  .small { font-family: var(--mono); font-size: clamp(12px, 1.2vw, 15px); color: var(--ink-2); line-height: 1.7; }
+  .plain { font-family: var(--mono); font-size: clamp(11px, 1.08vw, 13.5px); color: var(--muted); line-height: 1.7; }
+  strong { font-weight: 700; color: var(--ink); }
+  .accent { color: var(--accent); }
+  .cite { font-family: var(--mono); font-size: clamp(10px, .95vw, 11.5px);
+          color: var(--muted); max-width: none; line-height: 1.7; }
+
+  .cols { display: grid; gap: clamp(20px, 3.4vw, 54px); grid-template-columns: 1fr 1fr; align-items: start; }
+  .c3 { grid-template-columns: repeat(3, 1fr); }
+  .wide { grid-template-columns: 1.35fr 1fr; }
+  .narrow { grid-template-columns: 1fr 1.35fr; }
+  @media (max-width: 900px) { .cols, .c3, .wide, .narrow { grid-template-columns: 1fr; } }
+
+  .card { display: flex; flex-direction: column; gap: 10px; }
+  .card .tag { font-family: var(--mono); font-size: 12px; letter-spacing: .05em; color: var(--muted); }
+  .card.red .tag { color: var(--red); }
+  .card.green .tag { color: var(--green); }
+  .card.fill { background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+               padding: clamp(16px, 2vw, 28px); }
+
+  .stats { display: flex; flex-wrap: wrap; gap: clamp(24px, 5vw, 76px); }
+  .stat { display: flex; flex-direction: column; gap: 6px; }
+  .stat b { font-weight: 700; line-height: .95; font-size: clamp(50px, 8vw, 112px);
+            letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
+  .stat b.blue { color: var(--accent); }
+  .stat b.red { color: var(--red); }
+  .stat b.green { color: var(--green); }
+  .stat span { font-family: var(--mono); font-size: clamp(12px, 1.2vw, 15px);
+               color: var(--muted); max-width: 24ch; line-height: 1.6; }
+
+  .note { border-left: 4px solid var(--accent); padding: 6px 0 6px 22px;
+          font-size: clamp(17px, 2vw, 26px); color: var(--ink); line-height: 1.4;
+          letter-spacing: -.012em; max-width: 44ch; }
+  .note.red { border-left-color: var(--red); }
+  .note.green { border-left-color: var(--green); }
+  .note.warn { border-left-color: var(--line-2); color: var(--ink-2); }
+
+  ul.list { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(12px, 1.7vh, 20px); }
+  ul.list li { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start;
+               font-family: var(--mono); font-size: clamp(12px, 1.18vw, 14.5px);
+               color: var(--muted); line-height: 1.65; }
+  ul.list li::before { content: attr(data-n); font-family: var(--mono); font-size: 14px;
+                       color: var(--line-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+  ul.list li b { display: block; font-family: var(--display); font-weight: 700;
+                 font-size: clamp(17px, 1.95vw, 24px); color: var(--ink);
+                 letter-spacing: -.018em; margin-bottom: 3px; }
+
+  table { border-collapse: collapse; width: 100%; font-size: clamp(13px, 1.35vw, 17px); }
+  thead tr { background: var(--ink); }
+  th { color: var(--paper); font-weight: 500; font-size: clamp(13px, 1.3vw, 16px);
+       padding: 13px 18px; text-align: left; border: none; }
+  td { padding: 13px 18px; border-bottom: 1px solid var(--line); color: var(--ink-2); }
+  tbody tr:nth-child(even) { background: var(--card); }
+  td.n, th.n { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; width: 108px; }
+  .tw { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+
+  code { font-family: var(--mono); font-size: .92em; color: var(--accent); }
+
+  figure { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  figcaption { font-family: var(--mono); font-size: clamp(11px, 1.1vw, 13.5px); color: var(--muted); line-height: 1.6; }
+  svg { max-width: 100%; height: auto; display: block; }
+  .st { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+  .sv { font-family: var(--mono); font-size: 13px; font-weight: 700; fill: var(--ink); }
+
+  .state { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono);
+           font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
+           padding: 6px 12px; border-radius: 5px; }
+  .state.bug { color: var(--red); background: var(--red-dim); border: 1px solid var(--red); }
+  .state.bug::before { content: "\2715"; }
+  .state.fix { color: var(--green); background: var(--green-dim); border: 1px solid var(--green); }
+  .state.fix::before { content: "\2713"; }
+
+  .switch { display: inline-flex; border: 1px solid var(--line-2); border-radius: 7px; overflow: hidden; }
+  .switch button { font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em;
+                   text-transform: uppercase; padding: 10px 19px; border: none;
+                   background: var(--card); color: var(--muted); cursor: pointer;
+                   display: inline-flex; align-items: center; gap: 8px; }
+  .switch button + button { border-left: 1px solid var(--line-2); }
+  .switch button[aria-pressed="true"][data-mode="bug"] { background: var(--red); color: #fff; }
+  .switch button[aria-pressed="true"][data-mode="fix"] { background: var(--green); color: #fff; }
+  .switch button[data-mode="bug"]::before { content: "\2715"; }
+  .switch button[data-mode="fix"]::before { content: "\2713"; }
+
+  .demo { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(20px, 3vw, 40px); align-items: start; }
+  @media (max-width: 960px) { .demo { grid-template-columns: 1fr; } }
+  .demo-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+  .rows { display: grid; gap: 6px; }
+  .row-i { display: grid; grid-template-columns: 1fr auto auto; gap: 16px; align-items: center;
+           background: var(--card); border: 1px solid var(--line); border-radius: 9px;
+           padding: 10px 16px; font-family: var(--mono); font-size: 13px; }
+  .row-i .rid { color: var(--ink-2); display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .row-i .rid em { font-style: normal; color: var(--muted); font-size: 11.5px;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .thumb { width: 26px; height: 22px; border-radius: 4px; flex: none;
+           background: var(--paper-2); border: 1px solid var(--line-2); position: relative; }
+  .thumb::after { content: ""; position: absolute; left: 4px; right: 4px; bottom: 4px; height: 7px;
+                  border-radius: 3px 3px 5px 5px; background: var(--line-2); }
+  .cells { display: flex; gap: 6px; }
+  .cell { width: 36px; height: 32px; display: grid; place-items: center; border-radius: 6px;
+          background: var(--paper); border: 1px solid var(--line); color: var(--ink);
+          font-variant-numeric: tabular-nums; }
+  .cell.moved { border-color: var(--red); color: var(--red); font-weight: 700; }
+  .cell.blank { border-style: dashed; color: var(--line-2); }
+  .cell.recovered { border-color: var(--accent); color: var(--accent); }
+  .flag { font-family: var(--mono); font-size: 11.5px; color: var(--muted); min-width: 108px; text-align: right; }
+  .flag.bad { color: var(--red); }
+  .flag.good { color: var(--green); }
+
+  .readout { display: flex; flex-direction: column; gap: 12px; }
+  .readout .big { font-weight: 700; font-size: clamp(42px, 5.6vw, 76px); line-height: 1;
+                  letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
+  .readout .lbl { font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+  .kv { display: flex; justify-content: space-between; gap: 10px; font-family: var(--mono);
+        font-size: 12.5px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+  .kv b { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 700; }
+
+  .banner { font-family: var(--mono); font-size: 11.5px; line-height: 1.7;
+            border-left: 3px solid var(--line-2); padding: 3px 0 3px 15px; color: var(--muted); }
+
+  .me { display: grid; grid-template-columns: 300px 1fr; gap: clamp(26px, 4.4vw, 62px); align-items: center; }
+  @media (max-width: 900px) { .me { grid-template-columns: 1fr; } }
+  .me img { width: 100%; border-radius: 12px; display: block; }
+  .threads { display: grid; gap: 16px; }
+  .thread { display: grid; grid-template-columns: auto 1fr; gap: 15px; align-items: start; }
+  .thread .dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 11px; }
+  .thread b { display: block; font-weight: 700; font-size: clamp(18px, 2.1vw, 25px); letter-spacing: -.02em; }
+  .thread span { font-family: var(--mono); font-size: clamp(11.5px, 1.15vw, 14px); color: var(--muted); line-height: 1.6; }
+  .qr { display: flex; align-items: center; gap: 18px; }
+  .qr svg { width: clamp(92px, 11vw, 138px); height: auto; border-radius: 7px; }
+  .qr .qt { font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+  .qr .qt b { display: block; color: var(--ink); font-size: 13.5px; font-weight: 700; }
+
+  .ask { display: grid; gap: clamp(20px, 3vh, 38px); }
+  .ask p { max-width: 34ch; }
+  .ask h2 { max-width: 18ch; }
+  .hand { font-size: clamp(56px, 9vw, 120px); line-height: 1; }
+
+  .flow { display: flex; align-items: center; gap: clamp(8px, 1.4vw, 20px); flex-wrap: wrap; }
+  .step { background: var(--card); border: 1px solid var(--line-2); border-radius: 10px;
+          padding: clamp(12px, 1.6vw, 20px) clamp(14px, 1.8vw, 24px); min-width: 0; }
+  .step .n { font-family: var(--mono); font-size: 11.5px; color: var(--muted); display: block; margin-bottom: 4px; }
+  .step .t { font-weight: 700; font-size: clamp(14px, 1.6vw, 19px); letter-spacing: -.015em; }
+  .step.out { border-color: var(--accent); }
+  .arrow { color: var(--line-2); font-size: 20px; flex: none; }
+
+  .rail { display: flex; align-items: center; gap: 14px; padding: 9px var(--pad);
+          border-top: 1px solid var(--line); font-family: var(--mono); font-size: 11.5px;
+          color: var(--muted); background: var(--paper-2); }
+  .rail .track { flex: 1; height: 2px; background: var(--line); position: relative; }
+  .rail .fill { position: absolute; inset: 0 auto 0 0; background: var(--accent); width: 0; }
+  .rail button { font: inherit; color: var(--muted); background: var(--card);
+                 border: 1px solid var(--line-2); border-radius: 4px; padding: 3px 9px; cursor: pointer; }
+  .rail button:hover { color: var(--accent); border-color: var(--accent); }
+  .rail .count { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .notes { display: none; border-top: 1px solid var(--line); background: var(--paper-2);
+           padding: 14px var(--pad) 18px; font-size: 13.5px; color: var(--ink-2); line-height: 1.65;
+           max-height: 34vh; overflow-y: auto; }
+  body.notes-on .notes { display: block; }
+  .notes b { color: var(--ink); }
+  .notes .t { font-family: var(--mono); color: var(--accent); font-size: 11px;
+              letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 6px; }
+
+  @media print { .slide { display: flex !important; page-break-after: always; min-height: 100vh; } .rail { display: none; } }
+</style>
+
+<div class="deck" id="deck">
+
+<!-- 01 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Beyond the Vibes &nbsp;//&nbsp; Session 03</p>
+    <h1>Your LLM judge is<br>probably lying<br>to you</h1>
+    <p class="lead">Four clues, three demos, one checklist you can use on Monday.</p>
+  </div>
+  <div class="notes">
+    <span class="t">0:00 &ndash; 0:45</span>
+    Say the title out loud and then undercut it a little: "I don't mean the model is evil.
+    I mean the thing we use to grade our models has never been checked, and when I finally
+    checked mine, it did not survive."<br>
+    Don't explain the structure yet. Just start.
+  </div>
+</section>
+
+<!-- 02 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Hello</p>
+    <div class="me">
+      <img src="{{PHOTO}}" alt="Su Myat Noe">
+      <div style="display:grid;gap:clamp(16px,2.4vh,30px)">
+        <div>
+          <h2 style="font-size:clamp(30px,4vw,56px)">Su Myat Noe</h2>
+          <p class="say" style="margin-top:8px">I'm a researcher at NII in Tokyo.</p>
+        </div>
+        <div class="threads">
+          <div class="thread"><span class="dot" style="background:var(--accent)"></span>
+            <div><b>Multimodal AI safety</b>
+              <span>what models do when there's a picture in the prompt</span></div></div>
+          <div class="thread"><span class="dot" style="background:var(--red)"></span>
+            <div><b>How we evaluate them</b>
+              <span>which is how I ended up here</span></div></div>
+        </div>
+        <div class="qr">
+          {{QR1}}
+          <div class="qt"><b>imsumyatnoe.github.io</b>
+            everything I work on</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">0:45 &ndash; 2:00</span>
+    Keep it short and human. Two threads, not a CV.<br>
+    The line that sets up the whole talk: <b>"the second one is how I ended up here."</b>
+    Then move.
+  </div>
+</section>
+
+<!-- 03 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">First, a show of hands</p>
+    <div class="ask">
+      <div class="hand">&#9995;</div>
+      <h2>Who's used an LLM to grade something?</h2>
+      <p class="say">A rubric. A code review. An answer. Anything where you asked a model
+        to score something.</p>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">2:00 &ndash; 2:45</span>
+    Ask it, then <b>actually wait</b>. Look around. Say what you see: "okay, most of the room."<br>
+    Don't move on until hands are up. The next slide only works if they're already holding
+    their arms in the air.
+  </div>
+</section>
+
+<!-- 04 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Keep them up</p>
+    <div class="ask">
+      <h2>Keep it up if you ran it <span class="accent">twice</span>.</h2>
+      <p class="say">Same inputs. Same prompt. Same model. Just a second time.</p>
+      <div class="note">Whatever just happened to the hands in this room &mdash; that's the talk.</div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">2:45 &ndash; 3:30</span>
+    Almost every hand drops. Let the silence sit for a beat before you say the line.<br>
+    If a few hands stay up: "good &mdash; you already know where this is going."<br>
+    If nobody put a hand up at all on the first question: "then you're about to be very glad
+    you came."
+  </div>
+</section>
+
+<!-- 05 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Why I care about this</p>
+    <h2>A model told me<br>what was in a photo.<br>It wasn't there.</h2>
+    <div class="cols wide">
+      <p class="say">I work on what models do when you give them an image. So I spend a lot
+        of time watching them describe things confidently &mdash; and sometimes describe things
+        that are not in the picture at all.</p>
+      <div class="note">The part that kept me up: <strong>the evaluation gave that answer a
+        good score.</strong> The model was wrong and the grader was happy.</div>
+    </div>
+    <p class="say" style="max-width:56ch">That's when I stopped worrying about the model and
+      started worrying about the grader.</p>
+  </div>
+  <div class="notes">
+    <span class="t">3:30 &ndash; 5:15</span>
+    <b>This is the slide that makes the talk yours.</b> Tell it as a memory, not a finding.
+    Where you were, what the image was, what the model said.<br>
+    Land the last line slowly. It is the hinge between "here's me" and "here's the problem",
+    and everything after it is evidence for it.
+  </div>
+</section>
+
+<!-- 06 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">So here's our example for tonight</p>
+    <h2>A refund, from a photo</h2>
+    <div class="flow">
+      <div class="step"><span class="n">the customer</span>
+        <span class="t">sends a photo<br>&ldquo;this isn't what I ordered&rdquo;</span></div>
+      <span class="arrow">&rarr;</span>
+      <div class="step"><span class="n">the agent</span>
+        <span class="t">looks at the photo,<br>checks the order</span></div>
+      <span class="arrow">&rarr;</span>
+      <div class="step out"><span class="n">the decision</span>
+        <span class="t">refund &middot; reject<br>&middot; escalate</span></div>
+    </div>
+    <p class="say" style="max-width:54ch">Nobody can read every one of these by hand. So we
+      ask another model: <strong>was that the right call?</strong></p>
+  </div>
+  <div class="notes">
+    <span class="t">5:15 &ndash; 6:15</span>
+    Everyone in this room has photographed a sad-looking delivery. Use that.<br>
+    Make the last line the point: the judge is not grading the food, and not even really the
+    photo &mdash; it's grading <b>a decision someone will act on</b>, with money attached.
+  </div>
+</section>
+
+<!-- 07 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">And this is what came back</p>
+    <div class="cols wide">
+      <div class="tw">
+        <table>
+          <thead><tr><th>Refund agent v2.3</th><th class="n">result</th></tr></thead>
+          <tbody>
+            <tr><td>Decision quality, judged</td><td class="n">8.4 / 10</td></tr>
+            <tr><td>Judge agrees with our reviewers</td><td class="n">85%</td></tr>
+            <tr><td>Orders evaluated</td><td class="n">600</td></tr>
+            <tr><td>Better than v2.2 by</td><td class="n">+0.4</td></tr>
+            <tr><td>Cost to run</td><td class="n">$11</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display:grid;gap:18px">
+        <h2 style="font-size:clamp(28px,3.6vw,50px)">Looks fine to me</h2>
+        <p class="say">Sample size. Agreement with humans. A clear improvement over the last
+          version. Cheap.</p>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">6:15 &ndash; 7:45</span>
+    Read the table slowly, like you're pleased with it. You want them to trust it before you
+    take it apart.<br>
+    Every number here is the kind of number a real report has. Nothing is obviously wrong.
+  </div>
+</section>
+
+<!-- 08 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <h2>Would you ship it?</h2>
+    <p class="lead">Hands up again.</p>
+  </div>
+  <div class="notes">
+    <span class="t">7:45 &ndash; 8:30</span>
+    Most hands go up. That's the point &mdash; you want them invested before the first clue.<br>
+    Then: "I shipped on a report like this. Then I ran the evaluation a second time."
+  </div>
+</section>
+
+<!-- 09 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Quick, for everyone</p>
+    <h2>What is a judge, exactly?</h2>
+    <div class="c3 cols">
+      <div class="card"><div class="tag">the idea</div>
+        <p class="say" style="font-size:clamp(15px,1.7vw,21px)">You can't pay people to read
+          a million answers. So you ask a model to score them.</p></div>
+      <div class="card"><div class="tag">why we all did it</div>
+        <p class="say" style="font-size:clamp(15px,1.7vw,21px)">It's cheap, it's instant, and
+          it agrees with humans often enough to feel safe.</p></div>
+      <div class="card"><div class="tag">what it quietly became</div>
+        <p class="say" style="font-size:clamp(15px,1.7vw,21px)">A measuring instrument. One
+          nobody ever asked for a spec sheet.</p></div>
+    </div>
+    <div class="note">You wouldn't buy a kitchen scale that gives a different weight each
+      time. We accept it from a judge because the answer comes back in good English.</div>
+  </div>
+  <div class="notes">
+    <span class="t">8:30 &ndash; 9:45</span>
+    <b>Don't skip this even if the room looks technical.</b> The kitchen scale line is the one
+    people repeat afterwards, and it's what keeps the non-researchers with you.<br>
+    "Instrument" is the word the rest of the talk runs on. Plant it here.
+  </div>
+</section>
+
+<!-- 10 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">And it's worse for agents</p>
+    <h2>One order isn't<br>one judgement</h2>
+    <div class="cols wide">
+      <figure>
+        <svg viewBox="0 0 560 150" role="img" aria-label="Six agent steps, each judged separately, rolling up into one score.">
+          <g id="traj"></g>
+        </svg>
+      </figure>
+      <p class="say">Read the photo. Check the order. Check the refund policy. Decide. Write
+        the reply. <strong>Every step gets judged, and the errors don't cancel out.</strong></p>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">9:45 &ndash; 10:45</span>
+    Promise the number, don't give it yet: "in about four minutes I'll show you how fast
+    that compounds, and it's worse than anyone guesses."<br>
+    This is why the talk is about agents and not just chatbots.
+  </div>
+</section>
+
+<!-- 11 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue 01</b></p>
+    <h2>So I ran it again.</h2>
+    <p class="lead">Same orders. Same prompt. Same model. Same everything.</p>
+  </div>
+  <div class="notes">
+    <span class="t">10:45 &ndash; 11:15</span>
+    One sentence, then move to the demo. Resist explaining.
+  </div>
+</section>
+
+<!-- 12 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <div class="demo-head">
+      <p class="eyebrow"><b>Clue 01</b> &nbsp;//&nbsp; live</p>
+      <div class="switch" role="group" aria-label="demo mode">
+        <button type="button" data-demo="1" data-mode="bug" aria-pressed="true">Buggy</button>
+        <button type="button" data-demo="1" data-mode="fix" aria-pressed="false">Fixed</button>
+      </div>
+    </div>
+    <div class="demo">
+      <div style="display:grid;gap:12px">
+        <div class="rows" id="d1-rows"></div>
+        <button id="d1-run" type="button"
+          style="font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:11px 20px;border:none;border-radius:7px;background:var(--accent);color:#fff;cursor:pointer;justify-self:start">Score them</button>
+      </div>
+      <div class="readout">
+        <div>
+          <div class="big" id="d1-big">&mdash;</div>
+          <div class="lbl" id="d1-lbl">press the button to score these orders</div>
+        </div>
+        <div class="kv"><span>passes</span><b id="d1-passes">0 / 3</b></div>
+        <div class="kv"><span>same score every time</span><b id="d1-same">&mdash;</b></div>
+        <div class="kv"><span>pass/fail changed</span><b id="d1-flip">&mdash;</b></div>
+        <div class="kv"><span>average spread</span><b id="d1-spread">&mdash;</b></div>
+        <div id="d1-state"></div>
+      </div>
+    </div>
+    <p class="banner">Synthetic orders, calibrated to published effect sizes. Your own
+      numbers come from three real passes of your harness.</p>
+  </div>
+  <div class="notes">
+    <span class="t">11:15 &ndash; 13:45 &middot; demo</span>
+    Press once: "that's the number I'd have shipped." Press twice: let them watch the scores
+    move. Press a third time.<br>
+    Then flip to <b>Fixed</b>: same data, but now it reports the middle score and the spread,
+    and it flags the orders that moved. <b>The fix isn't a better judge &mdash; it's an honest
+    report.</b>
+  </div>
+</section>
+
+<!-- 13 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue 01</b> &nbsp;//&nbsp; what that means</p>
+    <div class="cols wide">
+      <div style="display:grid;gap:22px">
+        <h2 style="font-size:clamp(30px,4.2vw,58px)">27% of verdicts moved.<br>Now multiply that.</h2>
+        <p class="say">Six steps in one order, each judged. Judge the whole thing twice and
+          ask how often you get the same answer.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b class="red">15%</b><span>of six-step orders judged the same way twice</span></div>
+      </div>
+    </div>
+    <figure>
+      <svg viewBox="0 0 560 170" role="img" aria-label="The chance a whole order is judged the same way twice falls from 73 percent at one step to 8 percent at eight steps.">
+        <g id="compound"></g>
+      </svg>
+      <figcaption>Assuming each step is judged independently &mdash; which is the usual setup.</figcaption>
+    </figure>
+  </div>
+  <div class="notes">
+    <span class="t">13:45 &ndash; 15:00</span>
+    <b>The number that makes the room go quiet.</b> Say the arithmetic out loud: 73% for one
+    step, and six of those in a row is 15% — about one in seven.<br>
+    Say the independence assumption in the same breath. It costs you nothing and it's the
+    first thing a careful person checks.
+  </div>
+</section>
+
+<!-- 14 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue 02</b></p>
+    <h2>Then I counted<br>the rows.</h2>
+    <p class="lead">600 orders went in. Fewer came back.</p>
+  </div>
+  <div class="notes">
+    <span class="t">15:00 &ndash; 15:30</span>
+    A beat of suspense. "I assumed my parser was broken. It wasn't."
+  </div>
+</section>
+
+<!-- 15 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <div class="demo-head">
+      <p class="eyebrow"><b>Clue 02</b> &nbsp;//&nbsp; live</p>
+      <div class="switch" role="group" aria-label="demo mode">
+        <button type="button" data-demo="2" data-mode="bug" aria-pressed="true">Buggy</button>
+        <button type="button" data-demo="2" data-mode="fix" aria-pressed="false">Fixed</button>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="rows" id="d2-rows"></div>
+      <div class="readout">
+        <div>
+          <div class="big" id="d2-big">&mdash;</div>
+          <div class="lbl" id="d2-lbl">how well the judge agrees with our reviewers</div>
+        </div>
+        <div class="kv"><span>orders scored</span><b id="d2-n">&mdash;</b></div>
+        <div class="kv"><span>orders dropped</span><b id="d2-drop">&mdash;</b></div>
+        <div class="kv"><span>on clear photos</span><b id="d2-easy">&mdash;</b></div>
+        <div class="kv"><span>on unreadable ones</span><b id="d2-hard">&mdash;</b></div>
+        <div id="d2-state"></div>
+      </div>
+    </div>
+    <p class="banner">Blank. Unparseable. Refused. Timed out. If your harness has a
+      try/except that skips them, this is already happening to you.</p>
+  </div>
+  <div class="notes">
+    <span class="t">15:30 &ndash; 18:00 &middot; demo</span>
+    In <b>Buggy</b> the empty rows are simply gone and agreement reads 0.74 &mdash; a number
+    anyone would publish.<br>
+    Flip to <b>Fixed</b>: ask again, put them back, and it falls. Say the uncomfortable part
+    plainly &mdash; <b>the honest number is the worse number</b>, and the nice one was made of
+    the orders the judge was willing to answer.
+  </div>
+</section>
+
+<!-- 16 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue 02</b> &nbsp;//&nbsp; what that means</p>
+    <h2>It went quiet on<br>exactly the hard ones</h2>
+    <div class="cols wide">
+      <figure>
+        <svg viewBox="0 0 560 230" role="img" aria-label="Blank rate rises from 1 percent on clear photos to 57 percent on barely readable ones; agreement falls from 0.74 to 0.41 across the same groups.">
+          <g id="strat"></g>
+        </svg>
+      </figure>
+      <p class="say">On the photos anyone could read, it agrees with us. On the blurry ones
+        it's guessing &mdash; and those are the ones it refused to answer more than half the
+        time.</p>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">18:00 &ndash; 19:15</span>
+    Say it plainly: <b>the judge agrees with you about the orders you never needed help with.</b><br>
+    Practical ask: split your results by something &mdash; photo quality, order size, how long
+    the trace was. A single average hides this completely.
+  </div>
+</section>
+
+<!-- 17 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue 03</b></p>
+    <h2>&ldquo;It agrees with us<br>75% of the time&rdquo;</h2>
+    <div class="cols wide">
+      <figure>
+        <svg viewBox="0 0 560 180" role="img" aria-label="Raw agreement 75 percent versus chance-corrected agreement kappa 0.50, with the always-guess baseline at 57 percent.">
+          <g id="kappa"></g>
+        </svg>
+      </figure>
+      <div style="display:grid;gap:18px">
+        <p class="say">Most refunds are easy. Both of us just say &ldquo;fine&rdquo;. And we
+          count all of that as the judge being right.</p>
+        <div class="note red">A judge that approves <strong>everything</strong> scores 80%
+          on a set that's 80% approvals. And knows nothing.</div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">19:15 &ndash; 21:00</span>
+    Shortest clue. The approve-everything judge is the whole argument.<br>
+    One sentence of plain English for kappa: "it's agreement after you take away the credit
+    for lucky guesses."<br>
+    Ask: never put a raw agreement percentage in a report without the baseline next to it.
+  </div>
+</section>
+
+<!-- 18 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <div class="demo-head">
+      <div>
+        <p class="eyebrow"><b>Clue 04</b> &nbsp;//&nbsp; live</p>
+        <h2 style="font-size:clamp(26px,3.4vw,46px);margin-top:10px">Confident. Well written.<br>Wrong refund.</h2>
+      </div>
+      <div class="switch" role="group" aria-label="demo mode">
+        <button type="button" data-demo="3" data-mode="bug" aria-pressed="true">Buggy</button>
+        <button type="button" data-demo="3" data-mode="fix" aria-pressed="false">Fixed</button>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="rows" id="d3-rows"></div>
+      <div class="readout">
+        <div>
+          <div class="big" id="d3-big">&mdash;</div>
+          <div class="lbl" id="d3-lbl">of the wrong refunds waved through</div>
+        </div>
+        <div class="kv"><span>checking</span><b id="d3-proto">one judge</b></div>
+        <div class="kv"><span>wrong refunds shown</span><b id="d3-n">6</b></div>
+        <div class="kv"><span>caught</span><b id="d3-caught">&mdash;</b></div>
+        <div class="kv"><span>good refunds blocked</span><b id="d3-fr">&mdash;</b></div>
+        <div id="d3-state"></div>
+      </div>
+    </div>
+    <p class="banner">One judge answers &ldquo;was this handled well?&rdquo;. The second one
+      answers &ldquo;was it the right call?&rdquo;. Those are different questions.</p>
+  </div>
+  <div class="notes">
+    <span class="t">21:00 &ndash; 23:30 &middot; demo</span>
+    In <b>Buggy</b>: every one of these is well argued and gives money to someone who
+    photographed the correct meal. The judge scores them 8 and 9.<br>
+    Flip to <b>Fixed</b>: a second judge, asked a different question, catches almost all of
+    them. The detail that makes it free &mdash; <b>it doesn't block any more good refunds</b>.
+  </div>
+</section>
+
+<!-- 19 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">So who did it</p>
+    <h2>The judge isn't broken.<br>Nobody ever<br>calibrated it.</h2>
+    <p class="lead">Not one of those four clues needed the agent to be bad. It was the
+      measurement the whole time.</p>
+  </div>
+  <div class="notes">
+    <span class="t">23:30 &ndash; 24:45</span>
+    <b>The turn of the story.</b> Slow right down. This is the line they'll repeat to their
+    team tomorrow.
+  </div>
+</section>
+
+<!-- 20 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">What it actually costs you</p>
+    <div class="cols wide">
+      <figure>
+        <svg viewBox="0 0 560 230" role="img" aria-label="The chance the judge names the better agent version rises from 62 percent at 25 orders to 98 percent at 800.">
+          <g id="risk"></g>
+        </svg>
+        <figcaption>Two agent versions, one genuinely better. How often does the judge find it?</figcaption>
+      </figure>
+      <div style="display:grid;gap:22px">
+        <h2 style="font-size:clamp(28px,3.8vw,52px)">One call in four<br>is the wrong one</h2>
+        <p class="say">At 100 orders per version. You'd need <strong>400</strong> to get it
+          right nine times out of ten.</p>
+        <div class="note">Nobody can act on a correlation. Everybody can act on this.</div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">24:45 &ndash; 26:15</span>
+    The slide that changes what people do on Monday, because it's phrased as a shipping
+    decision rather than a statistic.<br>
+    Ask them to do the same sum for their own eval size.
+  </div>
+</section>
+
+<!-- 21 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Take this home</p>
+    <h2>Five things,<br>none of them expensive</h2>
+    <ul class="list">
+      <li data-n="01"><b>Run it three times</b>Report the middle score and the spread, not one number.</li>
+      <li data-n="02"><b>Count the blanks, then ask again</b>Put them back in and publish the number you get after.</li>
+      <li data-n="03"><b>Split your results by difficulty</b>One average hides a judge that only works on easy cases.</li>
+      <li data-n="04"><b>Subtract the lucky guesses</b>Print the always-guess baseline next to your agreement number.</li>
+      <li data-n="05"><b>Ask a second judge a different question</b>&ldquo;Was it right?&rdquo; &mdash; not just &ldquo;was it good?&rdquo;</li>
+    </ul>
+    <p class="say" style="max-width:52ch">Each one is one more API call and one more column
+      in a spreadsheet.</p>
+  </div>
+  <div class="notes">
+    <span class="t">26:15 &ndash; 28:15</span>
+    One line each, fast, no elaboration. Tell them it's one page in the repo so nobody
+    photographs it in a panic.<br>
+    If you're running late, this is the slide to speed up &mdash; not to cut.
+  </div>
+</section>
+
+<!-- 22 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Thank you</p>
+    <h2>Judges aren't useless.<br>Unchecked ones are.</h2>
+    <p class="lead">You can't make the judge honest. You can make it <strong>measurable</strong>
+      &mdash; which is all we ask of anything else we measure with.</p>
+    <div class="cols" style="align-items:center">
+      <div class="qr">
+        {{QR2}}
+        <div class="qt"><b>github.com/ImSuMyatNoe/judge-audit</b>
+          the code, the checklist,<br>the refund example, these slides</div>
+      </div>
+      <div class="qr">
+        {{QR1}}
+        <div class="qt"><b>imsumyatnoe.github.io</b>
+          everything else &middot; sumyatnoe@nii.ac.jp</div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">28:15 &ndash; 30:00</span>
+    Land the two sentences and stop talking. Leave this up for questions.<br>
+    <b>Expect:</b> "does a bigger judge fix it?" &mdash; no, and a judge no better than the thing
+    it's grading has a hard ceiling. "Is this synthetic?" &mdash; yes, say so before they ask;
+    calibrated to published numbers, and the same audits run on real traces. "What about
+    agent-specific judges?" &mdash; same checks, more steps to compound.
+  </div>
+</section>
+
+</div>
+
+<div class="rail">
+  <button id="prev" type="button" aria-label="Previous slide">&larr;</button>
+  <button id="next" type="button" aria-label="Next slide">&rarr;</button>
+  <span class="count"><span id="cur">1</span> / <span id="total">22</span></span>
+  <span class="track"><span class="fill" id="fill"></span></span>
+  <span id="clock" style="font-variant-numeric:tabular-nums">00:00</span>
+  <button id="timer" type="button">start</button>
+  <button id="notesBtn" type="button">notes <span style="opacity:.55">N</span></button>
+</div>
+
+<div class="notes" id="notesPanel" hidden></div>
+
+<script>
+(function () {
+  "use strict";
+
+  const NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) {
+    const n = document.createElementNS(NS, tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+  const C = {
+    blue: "#4f6fc7", blueDim: "#e4e9f7", red: "#d93025", redDim: "#fae9e7",
+    green: "#1e7a3c", line: "#dedbd3", line2: "#c4c0b6",
+    muted: "#7a756c", ink: "#14130f", card: "#faf9f6", paper: "#f4f2ee"
+  };
+
+  /* ------------------------------------------------ slide 10: trajectory -- */
+  (function traj() {
+    const g = document.getElementById("traj");
+    if (!g) return;
+    const steps = ["read the\nphoto", "check the\norder", "check the\npolicy",
+                   "decide", "write the\nreply", "send"];
+    const x0 = 6, bw = 82, gap = 10, y = 16;
+    steps.forEach((s, i) => {
+      const x = x0 + i * (bw + gap);
+      g.appendChild(el("rect", { x, y, width: bw, height: 52, rx: 8,
+        fill: C.blueDim, stroke: C.blue, "stroke-width": 1.2 }));
+      s.split("\n").forEach((ln, j) =>
+        g.appendChild(el("text", { x: x + bw / 2, y: y + 22 + j * 14,
+          "text-anchor": "middle", class: "st", fill: C.ink }, ln)));
+      g.appendChild(el("text", { x: x + bw / 2, y: y + 70, "text-anchor": "middle",
+        class: "st" }, "judged"));
+      g.appendChild(el("line", { x1: x + bw / 2, y1: y + 76, x2: x + bw / 2, y2: y + 92,
+        stroke: C.line2, "stroke-width": 1.2 }));
+      if (i < steps.length - 1)
+        g.appendChild(el("line", { x1: x + bw, y1: y + 26, x2: x + bw + gap, y2: y + 26,
+          stroke: C.line2, "stroke-width": 1.2 }));
+    });
+    const total = steps.length * (bw + gap) - gap;
+    g.appendChild(el("line", { x1: x0 + bw / 2, y1: y + 92, x2: x0 + total - bw / 2, y2: y + 92,
+      stroke: C.line2, "stroke-width": 1.2 }));
+    g.appendChild(el("rect", { x: x0 + total / 2 - 78, y: y + 100, width: 156, height: 34, rx: 8,
+      fill: C.paper, stroke: C.red, "stroke-width": 1.4 }));
+    g.appendChild(el("text", { x: x0 + total / 2, y: y + 122, "text-anchor": "middle",
+      class: "sv", fill: C.red }, "one score: 8.4"));
+  })();
+
+  /* ------------------------------------------------ slide 13: compounding - */
+  (function compound() {
+    const g = document.getElementById("compound");
+    if (!g) return;
+    const f = 0.274;
+    const pts = [1, 2, 3, 4, 5, 6, 8].map(k => [k, Math.pow(1 - f, k)]);
+    const x0 = 56, x1 = 520, yb = 124, yt = 16;
+    const lx = k => x0 + ((k - 1) / 7) * (x1 - x0);
+    const ly = p => yb - p * (yb - yt);
+    [0, 0.5, 1].forEach(p => {
+      g.appendChild(el("line", { x1: x0, x2: x1, y1: ly(p), y2: ly(p), stroke: C.line, "stroke-width": 1 }));
+      g.appendChild(el("text", { x: x0 - 9, y: ly(p) + 4, "text-anchor": "end", class: "st" },
+        Math.round(p * 100) + "%"));
+    });
+    g.appendChild(el("polyline", { points: pts.map(p => lx(p[0]) + "," + ly(p[1])).join(" "),
+      fill: "none", stroke: C.red, "stroke-width": 2.6, "stroke-linejoin": "round" }));
+    pts.forEach(([k, p]) => {
+      const key = k === 1 || k === 6;
+      g.appendChild(el("circle", { cx: lx(k), cy: ly(p), r: key ? 6 : 3.6, fill: C.red,
+        stroke: C.paper, "stroke-width": 1.6 }));
+      g.appendChild(el("text", { x: lx(k), y: yb + 18, "text-anchor": "middle", class: "st" },
+        k === 1 ? "1 step" : String(k)));
+      if (key) g.appendChild(el("text", { x: lx(k) + (k === 1 ? 14 : 0), y: ly(p) - 13,
+        "text-anchor": k === 1 ? "start" : "middle", class: "sv", fill: C.red },
+        Math.round(p * 100) + "%"));
+    });
+    g.appendChild(el("text", { x: (x0 + x1) / 2, y: yb + 38, "text-anchor": "middle", class: "st" },
+      "steps in the order"));
+  })();
+
+  /* ------------------------------------------------------- bar helper ----- */
+  function bars(id, opts) {
+    const g = document.getElementById(id);
+    if (!g) return;
+    const { data, max, base, top, w, fmt, labelSize = 14 } = opts;
+    const x0 = 150, right = w - 150;
+    const rowH = (base - top) / data.length;
+    data.forEach((d, i) => {
+      const y = top + i * rowH + rowH * 0.22;
+      const h = rowH * 0.42;
+      const len = (d.v / max) * (right - x0);
+      g.appendChild(el("rect", { x: x0, y, width: Math.max(len, 2), height: h, rx: 4, fill: d.c }));
+      g.appendChild(el("text", { x: x0 - 12, y: y + h / 2 + 4, "text-anchor": "end", class: "st" }, d.k));
+      g.appendChild(el("text", { x: x0 + Math.max(len, 2) + 14, y: y + h / 2 + 5, class: "sv",
+        style: "font-size:" + labelSize + "px" }, fmt(d)));
+    });
+    g.appendChild(el("line", { x1: x0, x2: x0, y1: top, y2: base, stroke: C.line2, "stroke-width": 1 }));
+  }
+
+  bars("kappa", {
+    w: 560, max: 0.85, top: 22, base: 128,
+    data: [
+      { k: "what we reported", v: 0.747, c: C.blue },
+      { k: "after the subtraction", v: 0.497, c: C.red }
+    ],
+    fmt: d => d.v === 0.497 ? "0.50" : Math.round(d.v * 100) + "%", labelSize: 16
+  });
+  (function baseline() {
+    const g = document.getElementById("kappa");
+    if (!g) return;
+    const x0 = 150, right = 560 - 150;
+    const x = x0 + (0.574 / 0.85) * (right - x0);
+    g.appendChild(el("line", { x1: x, x2: x, y1: 16, y2: 134,
+      stroke: C.muted, "stroke-width": 1.2, "stroke-dasharray": "4 4" }));
+    g.appendChild(el("text", { x: x0, y: 158, class: "st" },
+      "57% = a judge that just approves everything"));
+  })();
+
+  /* --------------------------------------------------- slide 16: strata --- */
+  (function strat() {
+    const g = document.getElementById("strat");
+    if (!g) return;
+    const labels = ["clear\nphoto", "", "", "barely\nreadable"];
+    const blanks = [0.013, 0.069, 0.238, 0.569];
+    const corr = [0.74, 0.69, 0.59, 0.41];
+    const yb = 168, yt = 40;
+    function panel(ox, values, color, fmt, title, maxV) {
+      g.appendChild(el("text", { x: ox, y: 20, class: "sv", fill: C.ink }, title));
+      const bw = 44, gap = 16;
+      values.forEach((v, i) => {
+        const x = ox + i * (bw + gap);
+        const h = (v / maxV) * (yb - yt);
+        g.appendChild(el("rect", { x, y: yb - h, width: bw, height: Math.max(h, 2), rx: 4, fill: color }));
+        g.appendChild(el("text", { x: x + bw / 2, y: yb - h - 9, "text-anchor": "middle", class: "sv" }, fmt(v)));
+      });
+      g.appendChild(el("line", { x1: ox - 7, x2: ox + values.length * (bw + gap) - gap + 7,
+        y1: yb, y2: yb, stroke: C.line2, "stroke-width": 1 }));
+      labels.forEach((l, i) => {
+        if (!l) return;
+        const x = ox + i * (bw + gap) + bw / 2;
+        l.split("\n").forEach((ln, j) =>
+          g.appendChild(el("text", { x, y: yb + 19 + j * 14, "text-anchor": "middle", class: "st" }, ln)));
+      });
+    }
+    panel(44, blanks, C.red, v => Math.round(v * 100) + "%", "came back blank", 0.62);
+    panel(324, corr, C.blue, v => v.toFixed(2), "agreement with us", 0.85);
+  })();
+
+  /* ---------------------------------------------------- slide 20: risk ---- */
+  (function risk() {
+    const g = document.getElementById("risk");
+    if (!g) return;
+    const pts = [[25, 0.616], [50, 0.680], [100, 0.739], [200, 0.843], [400, 0.920], [800, 0.976]];
+    const x0 = 58, x1 = 524, yb = 180, yt = 24;
+    const lx = n => x0 + (Math.log(n / 25) / Math.log(800 / 25)) * (x1 - x0);
+    const ly = v => yb - ((v - 0.5) / 0.52) * (yb - yt);
+    [0.6, 0.8, 1.0].forEach(v => {
+      g.appendChild(el("line", { x1: x0, x2: x1, y1: ly(v), y2: ly(v), stroke: C.line, "stroke-width": 1 }));
+      g.appendChild(el("text", { x: x0 - 9, y: ly(v) + 4, "text-anchor": "end", class: "st" },
+        Math.round(v * 100) + "%"));
+    });
+    g.appendChild(el("line", { x1: x0, x2: x1, y1: ly(0.9), y2: ly(0.9),
+      stroke: C.blue, "stroke-width": 1.3, "stroke-dasharray": "5 4" }));
+    g.appendChild(el("text", { x: x0 + 7, y: ly(0.9) - 9, class: "st", fill: C.blue },
+      "right nine times out of ten"));
+    g.appendChild(el("polyline", { points: pts.map(p => lx(p[0]) + "," + ly(p[1])).join(" "),
+      fill: "none", stroke: C.red, "stroke-width": 2.6, "stroke-linejoin": "round" }));
+    pts.forEach(([n, v]) => {
+      g.appendChild(el("circle", { cx: lx(n), cy: ly(v), r: n === 100 ? 6 : 4.4, fill: C.red,
+        stroke: C.paper, "stroke-width": 1.6 }));
+      g.appendChild(el("text", { x: lx(n), y: yb + 19, "text-anchor": "middle", class: "st" }, String(n)));
+      if (n === 25 || n === 100 || n === 800)
+        g.appendChild(el("text", { x: lx(n), y: ly(v) - 13, "text-anchor": "middle", class: "sv" },
+          Math.round(v * 100) + "%"));
+    });
+    g.appendChild(el("text", { x: (x0 + x1) / 2, y: yb + 39, "text-anchor": "middle", class: "st" },
+      "orders per version"));
+  })();
+
+  /* ================== demo 1: score the same orders again ================= */
+
+  const D1 = [
+    { id: "ORD-40021", dish: "laksa, spilled", runs: [6, 8, 5] },
+    { id: "ORD-40088", dish: "chicken rice, wrong item", runs: [7, 7, 6] },
+    { id: "ORD-40134", dish: "satay set, missing side", runs: [5, 6, 6] },
+    { id: "ORD-40205", dish: "prata, cold", runs: [7, 8, 8] },
+    { id: "ORD-40297", dish: "hokkien mee, crushed", runs: [6, 5, 7] },
+    { id: "ORD-40318", dish: "fish soup, wrong size", runs: [9, 8, 9] },
+    { id: "ORD-40402", dish: "nasi lemak, spilled", runs: [7, 6, 7] },
+    { id: "ORD-40476", dish: "wanton mee, missing side", runs: [8, 8, 8] }
+  ];
+  const THRESH = 7;
+  let d1Passes = 0, d1Mode = "bug";
+
+  function orderRow(t) {
+    const row = document.createElement("div");
+    row.className = "row-i";
+    const id = document.createElement("span");
+    id.className = "rid";
+    const th = document.createElement("span");
+    th.className = "thumb";
+    id.appendChild(th);
+    id.appendChild(document.createTextNode(t.id));
+    const em = document.createElement("em");
+    em.textContent = t.dish;
+    id.appendChild(em);
+    row.appendChild(id);
+    return row;
+  }
+
+  function d1Render() {
+    const rows = document.getElementById("d1-rows");
+    if (!rows) return;
+    rows.innerHTML = "";
+    D1.forEach(t => {
+      const row = orderRow(t);
+      const shown = t.runs.slice(0, d1Passes);
+      const cells = document.createElement("div");
+      cells.className = "cells";
+      for (let i = 0; i < 3; i++) {
+        const c = document.createElement("div");
+        c.className = "cell";
+        if (i < d1Passes) {
+          c.textContent = String(t.runs[i]);
+          if (i > 0 && t.runs[i] !== t.runs[0]) c.classList.add("moved");
+        } else { c.textContent = "·"; c.classList.add("blank"); }
+        cells.appendChild(c);
+      }
+      row.appendChild(cells);
+      const flag = document.createElement("span");
+      flag.className = "flag";
+      if (d1Passes >= 2) {
+        const moved = new Set(shown.map(v => v >= THRESH)).size > 1;
+        if (d1Mode === "bug") {
+          flag.textContent = moved ? "verdict changed" : "held";
+          flag.className = "flag " + (moved ? "bad" : "");
+        } else {
+          const lo = Math.min.apply(null, shown), hi = Math.max.apply(null, shown);
+          const sorted = shown.slice().sort((a, b) => a - b);
+          flag.textContent = sorted[Math.floor(shown.length / 2)] + " ±" + (hi - lo);
+          flag.className = "flag good";
+        }
+      }
+      row.appendChild(flag);
+      rows.appendChild(row);
+    });
+
+    const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+    const bigEl = document.getElementById("d1-big");
+    if (bigEl) bigEl.style.color = d1Passes ? "" : "var(--line-2)";
+    set("d1-passes", d1Passes + " / 3");
+    if (d1Passes === 0) {
+      set("d1-big", "—"); set("d1-lbl", "press the button to score these orders");
+      set("d1-same", "—"); set("d1-flip", "—"); set("d1-spread", "—");
+    } else {
+      const mean = D1.reduce((a, t) =>
+        a + t.runs.slice(0, d1Passes).reduce((x, y) => x + y, 0) / d1Passes, 0) / D1.length;
+      if (d1Passes === 1) {
+        set("d1-big", mean.toFixed(1) + " / 10");
+        set("d1-lbl", d1Mode === "bug" ? "the score you'd put in the report"
+                                       : "one pass isn't a measurement yet");
+        set("d1-same", "—"); set("d1-flip", "—"); set("d1-spread", "—");
+      } else {
+        const same = D1.filter(t => new Set(t.runs.slice(0, d1Passes)).size === 1).length;
+        const flip = D1.filter(t => new Set(t.runs.slice(0, d1Passes).map(v => v >= THRESH)).size > 1).length;
+        const spread = D1.reduce((a, t) => {
+          const s = t.runs.slice(0, d1Passes);
+          return a + (Math.max.apply(null, s) - Math.min.apply(null, s));
+        }, 0) / D1.length;
+        set("d1-big", d1Mode === "bug" ? mean.toFixed(1) + " / 10"
+                                       : mean.toFixed(1) + " ±" + spread.toFixed(1));
+        set("d1-lbl", d1Mode === "bug" ? "still reported as one number"
+                                       : "middle score, with the spread");
+        set("d1-same", Math.round(same / D1.length * 100) + "%");
+        set("d1-flip", Math.round(flip / D1.length * 100) + "%");
+        set("d1-spread", spread.toFixed(2) + " pts");
+      }
+    }
+    const st = document.getElementById("d1-state");
+    if (st) {
+      st.innerHTML = "";
+      const chip = document.createElement("span");
+      chip.className = d1Mode === "bug" ? "state bug" : "state fix";
+      chip.textContent = d1Mode === "bug"
+        ? (d1Passes >= 2 ? "the wobble is hidden" : "one pass, reported as fact")
+        : "spread reported";
+      st.appendChild(chip);
+    }
+    const btn = document.getElementById("d1-run");
+    if (btn) {
+      btn.textContent = d1Passes >= 3 ? "scored 3 times" : (d1Passes === 0 ? "Score them" : "Score them again");
+      btn.disabled = d1Passes >= 3;
+      btn.style.opacity = d1Passes >= 3 ? ".45" : "1";
+      btn.style.cursor = d1Passes >= 3 ? "default" : "pointer";
+    }
+  }
+  const d1Btn = document.getElementById("d1-run");
+  if (d1Btn) d1Btn.addEventListener("click", () => { if (d1Passes < 3) { d1Passes += 1; d1Render(); } });
+
+  /* ===================== demo 2: the orders that vanished ================= */
+
+  const D2 = [
+    { id: "ORD-40033", dish: "clear photo", score: 8, human: 8 },
+    { id: "ORD-40119", dish: "clear photo", score: 6, human: 6 },
+    { id: "ORD-40240", dish: "barely readable", score: null, human: 4, retry: 6 },
+    { id: "ORD-40371", dish: "mostly clear", score: 9, human: 9 },
+    { id: "ORD-40488", dish: "barely readable", score: null, human: 3, retry: 7 },
+    { id: "ORD-40555", dish: "clear photo", score: 5, human: 5 },
+    { id: "ORD-40667", dish: "barely readable", score: null, human: 8, retry: 6 },
+    { id: "ORD-40724", dish: "mostly clear", score: 7, human: 7 }
+  ];
+  let d2Mode = "bug";
+
+  function d2Render() {
+    const rows = document.getElementById("d2-rows");
+    if (!rows) return;
+    rows.innerHTML = "";
+    D2.forEach(t => {
+      const row = orderRow(t);
+      const cells = document.createElement("div");
+      cells.className = "cells";
+      const judge = document.createElement("div");
+      judge.className = "cell";
+      if (t.score !== null) judge.textContent = String(t.score);
+      else if (d2Mode === "fix") { judge.textContent = String(t.retry); judge.classList.add("recovered"); }
+      else { judge.textContent = "·"; judge.classList.add("blank"); }
+      cells.appendChild(judge);
+      const human = document.createElement("div");
+      human.className = "cell";
+      human.style.background = "var(--paper-2)";
+      human.textContent = String(t.human);
+      cells.appendChild(human);
+      row.appendChild(cells);
+      const flag = document.createElement("span");
+      flag.className = "flag";
+      if (t.score === null) {
+        flag.textContent = d2Mode === "bug" ? "dropped" : "asked again";
+        flag.className = "flag " + (d2Mode === "bug" ? "bad" : "good");
+      } else {
+        flag.textContent = "judge / us";
+      }
+      row.appendChild(flag);
+      rows.appendChild(row);
+    });
+    const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+    const dropped = D2.filter(t => t.score === null).length;
+    if (d2Mode === "bug") {
+      set("d2-big", "0.74"); set("d2-n", (D2.length - dropped) + " of " + D2.length);
+      set("d2-drop", dropped + " blank"); set("d2-easy", "0.74"); set("d2-hard", "never measured");
+    } else {
+      set("d2-big", "0.62"); set("d2-n", D2.length + " of " + D2.length);
+      set("d2-drop", "0"); set("d2-easy", "0.74"); set("d2-hard", "0.41");
+    }
+    const st = document.getElementById("d2-state");
+    if (st) {
+      st.innerHTML = "";
+      const chip = document.createElement("span");
+      chip.className = d2Mode === "bug" ? "state bug" : "state fix";
+      chip.textContent = d2Mode === "bug" ? "hard orders quietly dropped" : "asked again, kept";
+      st.appendChild(chip);
+    }
+  }
+
+  /* ================= demo 3: confident, well written, wrong =============== */
+
+  const D3 = [
+    { id: "ORD-40052", dish: "correct meal, refunded $22", graded: 9, caught: true },
+    { id: "ORD-40163", dish: "correct meal, refunded $14", graded: 8, caught: true },
+    { id: "ORD-40290", dish: "duplicate claim", graded: 9, caught: true },
+    { id: "ORD-40415", dish: "correct meal, refunded $19", graded: 8, caught: true },
+    { id: "ORD-40533", dish: "photo of a different order", graded: 9, caught: false },
+    { id: "ORD-40691", dish: "already refunded once", graded: 8, caught: true }
+  ];
+  let d3Mode = "bug";
+
+  function d3Render() {
+    const rows = document.getElementById("d3-rows");
+    if (!rows) return;
+    rows.innerHTML = "";
+    D3.forEach(t => {
+      const row = orderRow(t);
+      const cells = document.createElement("div");
+      cells.className = "cells";
+      const g1 = document.createElement("div");
+      g1.className = "cell";
+      g1.textContent = String(t.graded);
+      cells.appendChild(g1);
+      if (d3Mode === "fix") {
+        const g2 = document.createElement("div");
+        g2.className = "cell";
+        g2.style.width = "auto"; g2.style.padding = "0 12px";
+        g2.textContent = t.caught ? "not right" : "right";
+        if (t.caught) { g2.style.borderColor = C.green; g2.style.color = C.green; }
+        cells.appendChild(g2);
+      }
+      row.appendChild(cells);
+      const flag = document.createElement("span");
+      const accepted = d3Mode === "bug" ? true : !t.caught;
+      flag.className = "flag " + (accepted ? "bad" : "good");
+      flag.textContent = accepted ? "money sent" : "stopped";
+      row.appendChild(flag);
+      rows.appendChild(row);
+    });
+    const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+    const caught = D3.filter(t => t.caught).length;
+    if (d3Mode === "bug") {
+      set("d3-big", "89%"); set("d3-proto", "one judge");
+      set("d3-caught", "0 of 6"); set("d3-fr", "36%");
+    } else {
+      set("d3-big", "10%"); set("d3-proto", "two judges");
+      set("d3-caught", caught + " of 6"); set("d3-fr", "36% — unchanged");
+    }
+    const st = document.getElementById("d3-state");
+    if (st) {
+      st.innerHTML = "";
+      const chip = document.createElement("span");
+      chip.className = d3Mode === "bug" ? "state bug" : "state fix";
+      chip.textContent = d3Mode === "bug" ? "graded on how it reads" : "checked on whether it's right";
+      st.appendChild(chip);
+    }
+  }
+
+  document.querySelectorAll(".switch button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const demo = btn.getAttribute("data-demo");
+      const mode = btn.getAttribute("data-mode");
+      document.querySelectorAll('.switch button[data-demo="' + demo + '"]').forEach(b =>
+        b.setAttribute("aria-pressed", String(b === btn)));
+      if (demo === "1") { d1Mode = mode; d1Render(); }
+      if (demo === "2") { d2Mode = mode; d2Render(); }
+      if (demo === "3") { d3Mode = mode; d3Render(); }
+    });
+  });
+
+  d1Render(); d2Render(); d3Render();
+
+  /* ------------------------------------------------------------- deck ----- */
+
+  const slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+
+  slides.forEach((slide, k) => {
+    const head = document.createElement("div");
+    head.className = "slide-head";
+    const glyph = document.createElement("div");
+    glyph.className = "glyph";
+    [1, 1, 0, 1, 0, 1, 0, 1, 1].forEach(on => {
+      const dot = document.createElement("i");
+      if (!on) dot.className = "off";
+      glyph.appendChild(dot);
+    });
+    const word = document.createElement("div");
+    word.className = "wordmark";
+    word.innerHTML = "Judge Audit<span>Su Myat Noe · NII Tokyo</span>";
+    head.appendChild(glyph);
+    head.appendChild(word);
+    slide.insertBefore(head, slide.firstChild);
+
+    const foot = document.createElement("div");
+    foot.className = "slide-foot";
+    foot.innerHTML = '<a href="https://imsumyatnoe.github.io/">imsumyatnoe.github.io</a>' +
+                     '<span class="pg">' + (k === 0 ? "" : String(k + 1).padStart(2, "0")) + '</span>';
+    slide.appendChild(foot);
+  });
+
+  const notes = slides.map(s => s.querySelector(".notes"));
+  const panel = document.getElementById("notesPanel");
+  const fill = document.getElementById("fill");
+  const cur = document.getElementById("cur");
+  document.getElementById("total").textContent = String(slides.length);
+  let i = 0;
+
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle("on", k === i));
+    cur.textContent = String(i + 1);
+    fill.style.width = ((i + 1) / slides.length * 100) + "%";
+    panel.innerHTML = notes[i] ? notes[i].innerHTML : "";
+    if (location.hash !== "#" + (i + 1)) history.replaceState(null, "", "#" + (i + 1));
+    window.scrollTo(0, 0);
+  }
+
+  document.getElementById("next").addEventListener("click", () => show(i + 1));
+  document.getElementById("prev").addEventListener("click", () => show(i - 1));
+
+  const notesBtn = document.getElementById("notesBtn");
+  function toggleNotes() {
+    const on = document.body.classList.toggle("notes-on");
+    panel.hidden = !on;
+    notesBtn.setAttribute("aria-pressed", String(on));
+  }
+  notesBtn.addEventListener("click", toggleNotes);
+
+  let t0 = null, tick = null;
+  const clock = document.getElementById("clock");
+  const timerBtn = document.getElementById("timer");
+  timerBtn.addEventListener("click", function () {
+    if (tick) { clearInterval(tick); tick = null; timerBtn.textContent = "start"; return; }
+    t0 = Date.now();
+    timerBtn.textContent = "stop";
+    tick = setInterval(function () {
+      const s = Math.floor((Date.now() - t0) / 1000);
+      clock.textContent = String(Math.floor(s / 60)).padStart(2, "0") + ":" +
+                          String(s % 60).padStart(2, "0");
+      clock.style.color = s > 1800 ? C.red : "";
+    }, 250);
+  });
+
+  let buffer = "";
+  document.addEventListener("keydown", function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.target && e.target.tagName === "BUTTON" && e.key === " ") return;
+    const k = e.key;
+    if (k === "ArrowRight" || k === "PageDown" || k === " ") { e.preventDefault(); show(i + 1); }
+    else if (k === "ArrowLeft" || k === "PageUp") { e.preventDefault(); show(i - 1); }
+    else if (k === "Home") { e.preventDefault(); show(0); }
+    else if (k === "End") { e.preventDefault(); show(slides.length - 1); }
+    else if (k === "n" || k === "N") { e.preventDefault(); toggleNotes(); }
+    else if (/^[0-9]$/.test(k)) buffer += k;
+  });
+  document.addEventListener("keyup", function (e) {
+    if (e.key === "Enter" && buffer) { show(parseInt(buffer, 10) - 1); buffer = ""; }
+  });
+
+  const fromHash = parseInt((location.hash || "").slice(1), 10);
+  show(isFinite(fromHash) && fromHash > 0 ? fromHash - 1 : 0);
+})();
+</script>

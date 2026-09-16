@@ -4,11 +4,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
 
 <style>
-  /* A warm paper ground, one bold grotesque, a mono for everything small, and
-     a single periwinkle accent. Red and green appear only as buggy/fixed
-     states, and because those two hues sit below the safe colour-vision
-     separation they always carry a word and a glyph as well. Charts use
-     periwinkle and red only -- a pair that passes every check on this ground. */
+  /* Warm paper, one bold grotesque, a mono for everything small, one
+     periwinkle accent. Red and green appear only as buggy/fixed states, and
+     because those two hues sit below the safe colour-vision separation they
+     always carry a word and a glyph too. Charts use periwinkle and red only --
+     a pair that passes every check on this ground. */
   :root {
     --paper:    #f4f2ee;
     --paper-2:  #eceae4;
@@ -28,7 +28,7 @@
 
     --display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
     --mono: "Space Mono", ui-monospace, Menlo, monospace;
-    --pad: clamp(22px, 5vw, 86px);
+    --pad: clamp(24px, 5vw, 92px);
   }
 
   * { box-sizing: border-box; }
@@ -43,251 +43,206 @@
   .deck { flex: 1; min-height: 0; display: flex; flex-direction: column; }
   .slide {
     display: none; flex: 1; min-height: 0; overflow-y: auto;
-    padding: clamp(18px, 3vh, 34px) var(--pad) 0;
+    padding: clamp(16px, 2.6vh, 30px) var(--pad) 0;
     animation: in .2s ease-out both;
   }
   .slide.on { display: flex; flex-direction: column; }
   @keyframes in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce) { .slide { animation: none; } }
 
-  /* --- slide chrome: mark on top, hairline + footer at the bottom -------- */
   .slide-head { display: flex; align-items: center; gap: 11px; flex: none; }
-  .slide-head .glyph {
-    width: 26px; height: 26px; flex: none;
-    display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 2px;
-  }
+  .slide-head .glyph { width: 24px; height: 24px; flex: none;
+    display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 2px; }
   .slide-head .glyph i { background: var(--ink); border-radius: 50%; display: block; }
   .slide-head .glyph i.off { background: transparent; }
-  .slide-head .wordmark {
-    font-family: var(--display); font-weight: 700; font-size: 13px;
-    line-height: 1.15; letter-spacing: -.01em;
-  }
-  .slide-head .wordmark span { display: block; font-weight: 400; color: var(--muted); }
+  .slide-head .wordmark { font-weight: 700; font-size: 12.5px; line-height: 1.15; letter-spacing: -.01em; }
+  .slide-head .wordmark span { display: block; font-weight: 400; color: var(--muted); font-size: 11.5px; }
 
   .slide-foot {
     flex: none; border-top: 1px solid var(--line);
-    padding: 11px 0 clamp(12px, 2vh, 20px);
+    padding: 10px 0 clamp(10px, 1.8vh, 18px);
     display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
-    font-family: var(--mono); font-size: 12px; color: var(--muted);
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
   }
   .slide-foot a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
   .slide-foot .pg { font-variant-numeric: tabular-nums; }
 
   .inner {
-    width: 100%; max-width: 1180px; margin: 0 auto; flex: 1;
+    width: 100%; max-width: 1240px; margin: 0 auto; flex: 1;
     display: flex; flex-direction: column; justify-content: center;
-    gap: clamp(14px, 2.2vh, 30px); padding: clamp(14px, 3vh, 40px) 0;
+    gap: clamp(16px, 2.6vh, 34px); padding: clamp(10px, 2.4vh, 32px) 0;
   }
 
-  /* --- type ------------------------------------------------------------- */
+  /* --- type: bigger than before, one idea per slide --------------------- */
   h1, h2 {
     font-family: var(--display); font-weight: 700; margin: 0;
-    letter-spacing: -.03em; line-height: 1.02; text-wrap: balance; color: var(--ink);
+    letter-spacing: -.035em; line-height: 1.0; text-wrap: balance; color: var(--ink);
   }
-  h1 { font-size: clamp(36px, 6.2vw, 78px); }
-  h2 { font-size: clamp(28px, 4.6vw, 60px); }
-  h3 { font-family: var(--display); font-weight: 700; margin: 0;
-       font-size: clamp(16px, 1.8vw, 21px); letter-spacing: -.012em; }
-  .accent { color: var(--accent); }
+  h1 { font-size: clamp(40px, 6.6vw, 92px); }
+  h2 { font-size: clamp(30px, 4.9vw, 66px); }
+  h3 { font-weight: 700; margin: 0; font-size: clamp(18px, 2.1vw, 26px); letter-spacing: -.018em; }
 
   .eyebrow {
-    font-family: var(--mono); font-weight: 400; font-size: clamp(11px, 1.05vw, 13px);
+    font-family: var(--mono); font-size: clamp(11px, 1.05vw, 13.5px);
     letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
     display: block; margin: 0;
   }
-  .eyebrow b { color: var(--ink); font-weight: 700; }
-  .eyebrow::after { content: none; }
+  .eyebrow b { color: var(--accent); font-weight: 700; }
 
-  p { margin: 0; max-width: 60ch; }
-  .lead { font-size: clamp(16px, 1.95vw, 24px); color: var(--ink-2); line-height: 1.65; font-weight: 400; }
+  p { margin: 0; max-width: 46ch; }
+  .lead { font-size: clamp(19px, 2.4vw, 34px); color: var(--ink-2); line-height: 1.4; letter-spacing: -.015em; }
   .lead .accent { color: var(--accent); }
-  .small { font-family: var(--mono); font-size: clamp(11.5px, 1.15vw, 14px);
-           color: var(--ink-2); line-height: 1.7; }
-  .plain { font-family: var(--mono); font-size: clamp(11px, 1.05vw, 13px);
-           color: var(--muted); line-height: 1.7; }
+  .lead strong { color: var(--ink); }
+  .say { font-size: clamp(17px, 2vw, 27px); color: var(--ink-2); line-height: 1.45; letter-spacing: -.01em; }
+  .small { font-family: var(--mono); font-size: clamp(12px, 1.2vw, 15px); color: var(--ink-2); line-height: 1.7; }
+  .plain { font-family: var(--mono); font-size: clamp(11px, 1.08vw, 13.5px); color: var(--muted); line-height: 1.7; }
   strong { font-weight: 700; color: var(--ink); }
+  .accent { color: var(--accent); }
   .cite { font-family: var(--mono); font-size: clamp(10px, .95vw, 11.5px);
           color: var(--muted); max-width: none; line-height: 1.7; }
 
-  /* --- layout ----------------------------------------------------------- */
-  .cols { display: grid; gap: clamp(18px, 3vw, 46px); grid-template-columns: 1fr 1fr; align-items: start; }
+  .cols { display: grid; gap: clamp(20px, 3.4vw, 54px); grid-template-columns: 1fr 1fr; align-items: start; }
   .c3 { grid-template-columns: repeat(3, 1fr); }
-  .c4 { grid-template-columns: repeat(4, 1fr); }
   .wide { grid-template-columns: 1.35fr 1fr; }
   .narrow { grid-template-columns: 1fr 1.35fr; }
-  @media (max-width: 900px) { .cols, .c3, .c4, .wide, .narrow { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .cols, .c3, .wide, .narrow { grid-template-columns: 1fr; } }
 
-  /* Cards are plain columns here, in his idiom: a mono label, a bold line,
-     then mono body. No boxes unless a box means something. */
-  .card { display: flex; flex-direction: column; gap: 9px; }
-  .card .tag {
-    font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em;
-    color: var(--muted); font-weight: 400;
-  }
+  .card { display: flex; flex-direction: column; gap: 10px; }
+  .card .tag { font-family: var(--mono); font-size: 12px; letter-spacing: .05em; color: var(--muted); }
   .card.red .tag { color: var(--red); }
   .card.green .tag { color: var(--green); }
-  .card.fill { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
-               padding: clamp(14px, 1.8vw, 24px); }
-  .card.boxed { border: 1px solid var(--line); border-radius: 10px;
-                padding: clamp(14px, 1.8vw, 24px); }
+  .card.fill { background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+               padding: clamp(16px, 2vw, 28px); }
 
-  .stats { display: flex; flex-wrap: wrap; gap: clamp(20px, 4vw, 64px); }
-  .stat { display: flex; flex-direction: column; gap: 4px; }
-  .stat b { font-family: var(--display); font-weight: 700; line-height: 1;
-            font-size: clamp(40px, 6.4vw, 82px); letter-spacing: -.045em;
-            font-variant-numeric: tabular-nums; }
+  .stats { display: flex; flex-wrap: wrap; gap: clamp(24px, 5vw, 76px); }
+  .stat { display: flex; flex-direction: column; gap: 6px; }
+  .stat b { font-weight: 700; line-height: .95; font-size: clamp(50px, 8vw, 112px);
+            letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
   .stat b.blue { color: var(--accent); }
   .stat b.red { color: var(--red); }
   .stat b.green { color: var(--green); }
-  .stat span { font-family: var(--mono); font-size: clamp(11px, 1.1vw, 13px);
-               color: var(--muted); max-width: 26ch; line-height: 1.6; }
+  .stat span { font-family: var(--mono); font-size: clamp(12px, 1.2vw, 15px);
+               color: var(--muted); max-width: 24ch; line-height: 1.6; }
 
-  .note { border-left: 3px solid var(--accent); padding: 4px 0 4px 20px;
-          font-size: clamp(14px, 1.6vw, 19px); color: var(--ink); line-height: 1.55;
-          background: none; border-radius: 0; }
+  .note { border-left: 4px solid var(--accent); padding: 6px 0 6px 22px;
+          font-size: clamp(17px, 2vw, 26px); color: var(--ink); line-height: 1.4;
+          letter-spacing: -.012em; max-width: 44ch; }
   .note.red { border-left-color: var(--red); }
   .note.green { border-left-color: var(--green); }
   .note.warn { border-left-color: var(--line-2); color: var(--ink-2); }
 
-  /* numbered items, his signature block */
-  ul.list { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(12px, 1.8vh, 22px); }
-  ul.list li { display: grid; grid-template-columns: 46px 1fr; gap: 16px; align-items: start;
-               font-family: var(--mono); font-size: clamp(11.5px, 1.15vw, 14px);
-               color: var(--muted); line-height: 1.7; }
-  ul.list li::before {
-    content: attr(data-n); font-family: var(--mono); font-size: 14px; color: var(--line-2);
-    background: none; padding: 0; border-radius: 0; font-weight: 400; margin-top: 2px;
-    font-variant-numeric: tabular-nums;
-  }
+  ul.list { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(12px, 1.7vh, 20px); }
+  ul.list li { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start;
+               font-family: var(--mono); font-size: clamp(12px, 1.18vw, 14.5px);
+               color: var(--muted); line-height: 1.65; }
+  ul.list li::before { content: attr(data-n); font-family: var(--mono); font-size: 14px;
+                       color: var(--line-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
   ul.list li b { display: block; font-family: var(--display); font-weight: 700;
-                 font-size: clamp(15px, 1.7vw, 20px); color: var(--ink);
-                 letter-spacing: -.012em; margin-bottom: 4px; }
+                 font-size: clamp(17px, 1.95vw, 24px); color: var(--ink);
+                 letter-spacing: -.018em; margin-bottom: 3px; }
 
-  /* --- tables: black header, hairlines ---------------------------------- */
-  table { border-collapse: collapse; width: 100%; font-size: clamp(12px, 1.25vw, 15.5px); }
+  table { border-collapse: collapse; width: 100%; font-size: clamp(13px, 1.35vw, 17px); }
   thead tr { background: var(--ink); }
-  th { color: var(--paper); font-family: var(--display); font-weight: 500;
-       text-transform: none; letter-spacing: 0; font-size: clamp(12px, 1.25vw, 15px);
-       padding: 12px 16px; text-align: left; border: none; }
-  td { padding: 12px 16px; border-bottom: 1px solid var(--line); color: var(--ink-2); }
+  th { color: var(--paper); font-weight: 500; font-size: clamp(13px, 1.3vw, 16px);
+       padding: 13px 18px; text-align: left; border: none; }
+  td { padding: 13px 18px; border-bottom: 1px solid var(--line); color: var(--ink-2); }
   tbody tr:nth-child(even) { background: var(--card); }
-  td.n, th.n { text-align: right; font-family: var(--mono);
-               font-variant-numeric: tabular-nums; width: 100px; }
-  .tw { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+  td.n, th.n { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; width: 108px; }
+  .tw { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
 
-  code { font-family: var(--mono); font-size: .92em; color: var(--accent);
-         background: none; padding: 0; }
-  pre {
-    font-family: var(--mono); font-size: clamp(11.5px, 1.2vw, 14px);
-    background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--accent);
-    border-radius: 0 8px 8px 0; padding: 16px 18px; margin: 0;
-    overflow-x: auto; color: var(--ink-2); line-height: 1.75;
-  }
-  pre b { color: var(--ink); font-weight: 700; }
-  pre i { color: var(--muted); font-style: normal; }
+  code { font-family: var(--mono); font-size: .92em; color: var(--accent); }
 
   figure { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-  figcaption { font-family: var(--mono); font-size: clamp(11px, 1.08vw, 13px);
-               color: var(--muted); line-height: 1.65; }
+  figcaption { font-family: var(--mono); font-size: clamp(11px, 1.1vw, 13.5px); color: var(--muted); line-height: 1.6; }
   svg { max-width: 100%; height: auto; display: block; }
   .st { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
   .sv { font-family: var(--mono); font-size: 13px; font-weight: 700; fill: var(--ink); }
 
-  /* --- buggy / fixed: word + glyph first, colour second ------------------ */
-  .state {
-    display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono);
-    font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase;
-    padding: 5px 11px; border-radius: 4px;
-  }
+  .state { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono);
+           font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
+           padding: 6px 12px; border-radius: 5px; }
   .state.bug { color: var(--red); background: var(--red-dim); border: 1px solid var(--red); }
   .state.bug::before { content: "\2715"; }
   .state.fix { color: var(--green); background: var(--green-dim); border: 1px solid var(--green); }
   .state.fix::before { content: "\2713"; }
-  .state.warn { color: var(--ink-2); background: var(--paper-2); border: 1px solid var(--line-2); }
-  .state.warn::before { content: "\26A0"; }
 
-  .switch { display: inline-flex; border: 1px solid var(--line-2); border-radius: 6px; overflow: hidden; }
-  .switch button {
-    font-family: var(--mono); font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase;
-    padding: 9px 17px; border: none; background: var(--card); color: var(--muted);
-    cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
-  }
+  .switch { display: inline-flex; border: 1px solid var(--line-2); border-radius: 7px; overflow: hidden; }
+  .switch button { font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em;
+                   text-transform: uppercase; padding: 10px 19px; border: none;
+                   background: var(--card); color: var(--muted); cursor: pointer;
+                   display: inline-flex; align-items: center; gap: 8px; }
   .switch button + button { border-left: 1px solid var(--line-2); }
   .switch button[aria-pressed="true"][data-mode="bug"] { background: var(--red); color: #fff; }
   .switch button[aria-pressed="true"][data-mode="fix"] { background: var(--green); color: #fff; }
   .switch button[data-mode="bug"]::before { content: "\2715"; }
   .switch button[data-mode="fix"]::before { content: "\2713"; }
 
-  .demo { display: grid; grid-template-columns: 1.45fr 1fr; gap: clamp(18px, 2.6vw, 34px); align-items: start; }
+  .demo { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(20px, 3vw, 40px); align-items: start; }
   @media (max-width: 960px) { .demo { grid-template-columns: 1fr; } }
-  .demo-head { display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap; }
+  .demo-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 
-  .rows { display: grid; gap: 5px; }
-  .row-i {
-    display: grid; grid-template-columns: 104px 1fr auto; gap: 14px; align-items: center;
-    background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 9px 14px;
-    font-family: var(--mono); font-size: 12.5px;
-  }
-  .row-i .rid { color: var(--muted); }
+  .rows { display: grid; gap: 6px; }
+  .row-i { display: grid; grid-template-columns: 1fr auto auto; gap: 16px; align-items: center;
+           background: var(--card); border: 1px solid var(--line); border-radius: 9px;
+           padding: 10px 16px; font-family: var(--mono); font-size: 13px; }
+  .row-i .rid { color: var(--ink-2); display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .row-i .rid em { font-style: normal; color: var(--muted); font-size: 11.5px;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .thumb { width: 26px; height: 22px; border-radius: 4px; flex: none;
+           background: var(--paper-2); border: 1px solid var(--line-2); position: relative; }
+  .thumb::after { content: ""; position: absolute; left: 4px; right: 4px; bottom: 4px; height: 7px;
+                  border-radius: 3px 3px 5px 5px; background: var(--line-2); }
   .cells { display: flex; gap: 6px; }
-  .cell {
-    width: 34px; height: 30px; display: grid; place-items: center; border-radius: 5px;
-    background: var(--paper); border: 1px solid var(--line); color: var(--ink);
-    font-variant-numeric: tabular-nums;
-  }
+  .cell { width: 36px; height: 32px; display: grid; place-items: center; border-radius: 6px;
+          background: var(--paper); border: 1px solid var(--line); color: var(--ink);
+          font-variant-numeric: tabular-nums; }
   .cell.moved { border-color: var(--red); color: var(--red); font-weight: 700; }
   .cell.blank { border-style: dashed; color: var(--line-2); }
   .cell.recovered { border-color: var(--accent); color: var(--accent); }
-  .flag { font-family: var(--mono); font-size: 11px; letter-spacing: .04em; color: var(--muted); }
+  .flag { font-family: var(--mono); font-size: 11.5px; color: var(--muted); min-width: 108px; text-align: right; }
   .flag.bad { color: var(--red); }
   .flag.good { color: var(--green); }
 
-  .readout { display: flex; flex-direction: column; gap: 11px; }
-  .readout .big {
-    font-family: var(--display); font-weight: 700; font-size: clamp(34px, 4.8vw, 60px);
-    line-height: 1; letter-spacing: -.045em; font-variant-numeric: tabular-nums;
-  }
-  .readout .lbl { font-family: var(--mono); font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .readout { display: flex; flex-direction: column; gap: 12px; }
+  .readout .big { font-weight: 700; font-size: clamp(42px, 5.6vw, 76px); line-height: 1;
+                  letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
+  .readout .lbl { font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.6; }
   .kv { display: flex; justify-content: space-between; gap: 10px; font-family: var(--mono);
-        font-size: 12px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 7px; }
+        font-size: 12.5px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
   .kv b { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 700; }
 
-  .banner {
-    font-family: var(--mono); font-size: 11px; line-height: 1.7;
-    border-left: 3px solid var(--line-2); padding: 2px 0 2px 14px; color: var(--muted);
-  }
+  .banner { font-family: var(--mono); font-size: 11.5px; line-height: 1.7;
+            border-left: 3px solid var(--line-2); padding: 3px 0 3px 15px; color: var(--muted); }
 
-  /* --- intro + QR ------------------------------------------------------- */
-  .me { display: grid; grid-template-columns: 290px 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+  .me { display: grid; grid-template-columns: 300px 1fr; gap: clamp(26px, 4.4vw, 62px); align-items: center; }
   @media (max-width: 900px) { .me { grid-template-columns: 1fr; } }
-  .me img { width: 100%; border-radius: 10px; display: block; }
-  .threads { display: grid; gap: 14px; }
-  .thread { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; }
-  .thread .dot { width: 9px; height: 9px; border-radius: 50%; margin-top: 9px; }
-  .thread b { display: block; font-family: var(--display); font-weight: 700;
-              font-size: clamp(16px, 1.8vw, 21px); letter-spacing: -.015em; }
-  .thread span { font-family: var(--mono); font-size: clamp(11px, 1.1vw, 13.5px);
-                 color: var(--muted); line-height: 1.65; }
-  .qr { display: flex; align-items: center; gap: 16px; }
-  .qr svg { width: clamp(84px, 10vw, 124px); height: auto; border-radius: 6px; }
-  .qr .qt { font-family: var(--mono); font-size: 11.5px; color: var(--muted); line-height: 1.7; }
-  .qr .qt b { display: block; color: var(--ink); font-size: 12.5px; font-weight: 700; }
+  .me img { width: 100%; border-radius: 12px; display: block; }
+  .threads { display: grid; gap: 16px; }
+  .thread { display: grid; grid-template-columns: auto 1fr; gap: 15px; align-items: start; }
+  .thread .dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 11px; }
+  .thread b { display: block; font-weight: 700; font-size: clamp(18px, 2.1vw, 25px); letter-spacing: -.02em; }
+  .thread span { font-family: var(--mono); font-size: clamp(11.5px, 1.15vw, 14px); color: var(--muted); line-height: 1.6; }
+  .qr { display: flex; align-items: center; gap: 18px; }
+  .qr svg { width: clamp(92px, 11vw, 138px); height: auto; border-radius: 7px; }
+  .qr .qt { font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+  .qr .qt b { display: block; color: var(--ink); font-size: 13.5px; font-weight: 700; }
 
-  /* --- hands up --------------------------------------------------------- */
-  .ask { display: grid; gap: clamp(20px, 3.4vh, 42px); }
-  .ask .q { display: grid; grid-template-columns: 58px 1fr; gap: 18px; align-items: start; }
-  .ask .num { font-family: var(--mono); font-size: clamp(14px, 1.4vw, 17px);
-              color: var(--line-2); margin-top: 8px; font-variant-numeric: tabular-nums; }
-  .ask .q h3 { font-size: clamp(21px, 3vw, 38px); font-weight: 700;
-               letter-spacing: -.025em; line-height: 1.14; }
-  .ask .q p { margin-top: 9px; }
+  .ask { display: grid; gap: clamp(20px, 3vh, 38px); }
+  .ask p { max-width: 34ch; }
+  .ask h2 { max-width: 18ch; }
+  .hand { font-size: clamp(56px, 9vw, 120px); line-height: 1; }
 
-  /* --- rail + notes ----------------------------------------------------- */
-  .rail {
-    display: flex; align-items: center; gap: 14px; padding: 9px var(--pad);
-    border-top: 1px solid var(--line); font-family: var(--mono); font-size: 11.5px;
-    color: var(--muted); background: var(--paper-2);
-  }
+  .flow { display: flex; align-items: center; gap: clamp(8px, 1.4vw, 20px); flex-wrap: wrap; }
+  .step { background: var(--card); border: 1px solid var(--line-2); border-radius: 10px;
+          padding: clamp(12px, 1.6vw, 20px) clamp(14px, 1.8vw, 24px); min-width: 0; }
+  .step .n { font-family: var(--mono); font-size: 11.5px; color: var(--muted); display: block; margin-bottom: 4px; }
+  .step .t { font-weight: 700; font-size: clamp(14px, 1.6vw, 19px); letter-spacing: -.015em; }
+  .step.out { border-color: var(--accent); }
+  .arrow { color: var(--line-2); font-size: 20px; flex: none; }
+
+  .rail { display: flex; align-items: center; gap: 14px; padding: 9px var(--pad);
+          border-top: 1px solid var(--line); font-family: var(--mono); font-size: 11.5px;
+          color: var(--muted); background: var(--paper-2); }
   .rail .track { flex: 1; height: 2px; background: var(--line); position: relative; }
   .rail .fill { position: absolute; inset: 0 auto 0 0; background: var(--accent); width: 0; }
   .rail button { font: inherit; color: var(--muted); background: var(--card);
@@ -296,304 +251,355 @@
   .rail .count { color: var(--ink-2); font-variant-numeric: tabular-nums; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-  .notes {
-    display: none; border-top: 1px solid var(--line); background: var(--paper-2);
-    padding: 14px var(--pad) 18px; font-size: 13.5px; color: var(--ink-2); line-height: 1.6;
-    max-height: 34vh; overflow-y: auto;
-  }
+  .notes { display: none; border-top: 1px solid var(--line); background: var(--paper-2);
+           padding: 14px var(--pad) 18px; font-size: 13.5px; color: var(--ink-2); line-height: 1.65;
+           max-height: 34vh; overflow-y: auto; }
   body.notes-on .notes { display: block; }
   .notes b { color: var(--ink); }
   .notes .t { font-family: var(--mono); color: var(--accent); font-size: 11px;
               letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 6px; }
 
-  @media print {
-    .slide { display: flex !important; page-break-after: always; min-height: 100vh; }
-    .rail { display: none; }
-  }
+  @media print { .slide { display: flex !important; page-break-after: always; min-height: 100vh; } .rail { display: none; } }
 </style>
 
 <div class="deck" id="deck">
 
-<!-- 1 --------------------------------------------------------------- -->
+<!-- 01 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Beyond the Vibes</b> &nbsp;//&nbsp; Learn Series Session 03 &nbsp;//&nbsp; SGInnovate</p>
-    <h1>Your LLM Judge Is<br>Probably Lying to You</h1>
-    <p class="lead">We hand agent evaluation to a model, get a number back, and ship on it.
-      This is the story of pulling one thread on a number like that &mdash; and what was
-      underneath.</p>
-    <div class="stats" style="margin-top:8px">
-      <div class="stat"><b class="blue">4</b><span>clues</span></div>
-      <div class="stat"><b class="blue">3</b><span>demos you can run on this page</span></div>
-      <div class="stat"><b class="blue">1</b><span>checklist to take home</span></div>
-    </div>
-    <p class="cite">Su Myat Noe &nbsp;&middot;&nbsp; AI Research Scientist, National Institute of Informatics, Tokyo &nbsp;&middot;&nbsp; 28 September 2026</p>
+    <p class="eyebrow">Beyond the Vibes &nbsp;//&nbsp; Session 03</p>
+    <h1>Your LLM judge is<br>probably lying<br>to you</h1>
+    <p class="lead">Four clues, three demos, one checklist you can use on Monday.</p>
   </div>
   <div class="notes">
-    <span class="t">0:00 &ndash; 1:00</span>
-    <b>Open as a detective story, not a lecture.</b> "I'm going to show you a number, and then
-    we're going to find out together whether it's real."<br>
-    Set the contract with a mixed room: every statistic gets explained in plain English the
-    first time it appears, and there are three things on this page you can press.
+    <span class="t">0:00 &ndash; 0:45</span>
+    Say the title out loud and then undercut it a little: "I don't mean the model is evil.
+    I mean the thing we use to grade our models has never been checked, and when I finally
+    checked mine, it did not survive."<br>
+    Don't explain the structure yet. Just start.
   </div>
 </section>
 
-<!-- 2 --------------------------------------------------------------- -->
+<!-- 02 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Who is talking</b> &nbsp;//&nbsp; 90 seconds</p>
+    <p class="eyebrow">Hello</p>
     <div class="me">
       <img src="data:image/jpeg;base64,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" alt="Su Myat Noe">
-      <div style="display:grid;gap:clamp(14px,2vh,24px)">
+      <div style="display:grid;gap:clamp(16px,2.4vh,30px)">
         <div>
-          <h2 style="font-size:clamp(26px,3.6vw,46px)">Su Myat Noe</h2>
-          <p class="lead" style="margin-top:6px">AI Research Scientist, National Institute
-            of Informatics &mdash; Tokyo</p>
+          <h2 style="font-size:clamp(30px,4vw,56px)">Su Myat Noe</h2>
+          <p class="say" style="margin-top:8px">I'm a researcher at NII in Tokyo.</p>
         </div>
         <div class="threads">
-          <div class="thread"><span class="dot" style="background:var(--blue)"></span>
+          <div class="thread"><span class="dot" style="background:var(--accent)"></span>
             <div><b>Multimodal AI safety</b>
-              <span>Do vision-language models behave when there is an image in the prompt?</span></div></div>
+              <span>what models do when there's a picture in the prompt</span></div></div>
           <div class="thread"><span class="dot" style="background:var(--red)"></span>
-            <div><b>How we evaluate those models</b>
-              <span>Which is where this talk comes from.</span></div></div>
-          <div class="thread"><span class="dot" style="background:var(--green)"></span>
-            <div><b>AI for law</b>
-              <span>Road signs, where &ldquo;correct&rdquo; is a legal fact and not an opinion.</span></div></div>
+            <div><b>How we evaluate them</b>
+              <span>which is how I ended up here</span></div></div>
         </div>
         <div class="qr">
           <svg viewBox="0 0 35 35" shape-rendering="crispEdges" role="img" aria-label="QR code"><rect width="35" height="35" fill="#ffffff"/><path d="M3 3h7v1h-7zM12 3h1v1h-1zM16 3h1v1h-1zM19 3h1v1h-1zM22 3h1v1h-1zM25 3h7v1h-7zM3 4h1v1h-1zM9 4h1v1h-1zM12 4h1v1h-1zM14 4h5v1h-5zM20 4h2v1h-2zM23 4h1v1h-1zM25 4h1v1h-1zM31 4h1v1h-1zM3 5h1v1h-1zM5 5h3v1h-3zM9 5h1v1h-1zM13 5h2v1h-2zM16 5h1v1h-1zM19 5h3v1h-3zM25 5h1v1h-1zM27 5h3v1h-3zM31 5h1v1h-1zM3 6h1v1h-1zM5 6h3v1h-3zM9 6h1v1h-1zM15 6h4v1h-4zM21 6h1v1h-1zM25 6h1v1h-1zM27 6h3v1h-3zM31 6h1v1h-1zM3 7h1v1h-1zM5 7h3v1h-3zM9 7h1v1h-1zM13 7h5v1h-5zM19 7h3v1h-3zM25 7h1v1h-1zM27 7h3v1h-3zM31 7h1v1h-1zM3 8h1v1h-1zM9 8h1v1h-1zM11 8h1v1h-1zM15 8h3v1h-3zM22 8h1v1h-1zM25 8h1v1h-1zM31 8h1v1h-1zM3 9h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM21 9h1v1h-1zM23 9h1v1h-1zM25 9h7v1h-7zM13 10h2v1h-2zM17 10h1v1h-1zM20 10h1v1h-1zM22 10h2v1h-2zM3 11h1v1h-1zM6 11h1v1h-1zM8 11h2v1h-2zM11 11h1v1h-1zM13 11h1v1h-1zM18 11h1v1h-1zM24 11h1v1h-1zM26 11h1v1h-1zM3 12h5v1h-5zM12 12h1v1h-1zM17 12h2v1h-2zM20 12h2v1h-2zM23 12h3v1h-3zM28 12h1v1h-1zM31 12h1v1h-1zM3 13h1v1h-1zM6 13h1v1h-1zM9 13h3v1h-3zM13 13h1v1h-1zM19 13h1v1h-1zM22 13h9v1h-9zM4 14h2v1h-2zM8 14h1v1h-1zM11 14h1v1h-1zM13 14h1v1h-1zM15 14h1v1h-1zM17 14h2v1h-2zM21 14h1v1h-1zM26 14h1v1h-1zM29 14h2v1h-2zM3 15h2v1h-2zM9 15h2v1h-2zM12 15h1v1h-1zM14 15h2v1h-2zM19 15h2v1h-2zM22 15h5v1h-5zM28 15h1v1h-1zM30 15h2v1h-2zM4 16h1v1h-1zM6 16h3v1h-3zM12 16h1v1h-1zM15 16h1v1h-1zM18 16h1v1h-1zM20 16h1v1h-1zM22 16h1v1h-1zM4 17h2v1h-2zM7 17h1v1h-1zM9 17h1v1h-1zM14 17h2v1h-2zM18 17h2v1h-2zM21 17h1v1h-1zM23 17h1v1h-1zM28 17h4v1h-4zM3 18h2v1h-2zM10 18h1v1h-1zM13 18h2v1h-2zM16 18h2v1h-2zM19 18h2v1h-2zM22 18h2v1h-2zM26 18h1v1h-1zM28 18h1v1h-1zM30 18h1v1h-1zM5 19h1v1h-1zM7 19h3v1h-3zM11 19h2v1h-2zM14 19h1v1h-1zM16 19h9v1h-9zM26 19h1v1h-1zM30 19h1v1h-1zM5 20h2v1h-2zM11 20h1v1h-1zM14 20h2v1h-2zM18 20h1v1h-1zM20 20h1v1h-1zM24 20h3v1h-3zM28 20h1v1h-1zM31 20h1v1h-1zM3 21h1v1h-1zM5 21h3v1h-3zM9 21h6v1h-6zM16 21h1v1h-1zM20 21h1v1h-1zM25 21h3v1h-3zM30 21h2v1h-2zM5 22h1v1h-1zM8 22h1v1h-1zM10 22h1v1h-1zM12 22h2v1h-2zM15 22h2v1h-2zM18 22h3v1h-3zM22 22h2v1h-2zM25 22h1v1h-1zM27 22h1v1h-1zM30 22h2v1h-2zM3 23h1v1h-1zM6 23h4v1h-4zM11 23h1v1h-1zM14 23h2v1h-2zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h6v1h-6zM29 23h1v1h-1zM11 24h2v1h-2zM15 24h2v1h-2zM18 24h2v1h-2zM22 24h2v1h-2zM27 24h1v1h-1zM29 24h3v1h-3zM3 25h7v1h-7zM12 25h2v1h-2zM15 25h4v1h-4zM21 25h1v1h-1zM23 25h1v1h-1zM25 25h1v1h-1zM27 25h1v1h-1zM30 25h1v1h-1zM3 26h1v1h-1zM9 26h1v1h-1zM11 26h1v1h-1zM14 26h3v1h-3zM19 26h1v1h-1zM21 26h1v1h-1zM23 26h1v1h-1zM27 26h5v1h-5zM3 27h1v1h-1zM5 27h3v1h-3zM9 27h1v1h-1zM13 27h2v1h-2zM17 27h4v1h-4zM23 27h5v1h-5zM30 27h1v1h-1zM3 28h1v1h-1zM5 28h3v1h-3zM9 28h1v1h-1zM11 28h2v1h-2zM14 28h1v1h-1zM17 28h3v1h-3zM23 28h1v1h-1zM25 28h5v1h-5zM31 28h1v1h-1zM3 29h1v1h-1zM5 29h3v1h-3zM9 29h1v1h-1zM12 29h3v1h-3zM16 29h1v1h-1zM22 29h3v1h-3zM27 29h3v1h-3zM31 29h1v1h-1zM3 30h1v1h-1zM9 30h1v1h-1zM12 30h1v1h-1zM16 30h2v1h-2zM19 30h5v1h-5zM30 30h1v1h-1zM3 31h7v1h-7zM11 31h1v1h-1zM15 31h2v1h-2zM18 31h1v1h-1zM20 31h2v1h-2zM23 31h1v1h-1zM28 31h1v1h-1zM30 31h1v1h-1z" fill="#202124"/></svg>
           <div class="qt"><b>imsumyatnoe.github.io</b>
-            papers, code and everything<br>behind tonight's numbers</div>
+            everything I work on</div>
         </div>
       </div>
     </div>
   </div>
   <div class="notes">
-    <span class="t">1:00 &ndash; 2:30</span>
-    <b>Keep it to 90 seconds and make the third line land.</b> The AI-for-law thread is what
-    makes you different from every other person who has opinions about evals: you work where
-    a wrong answer is a wrong reading of the law, not a bad vibe.<br>
-    Then the turn into the next slide: "all three of those kept running into the same
-    problem &mdash; I could not trust the thing measuring them."
+    <span class="t">0:45 &ndash; 2:00</span>
+    Keep it short and human. Two threads, not a CV.<br>
+    The line that sets up the whole talk: <b>"the second one is how I ended up here."</b>
+    Then move.
   </div>
 </section>
 
-<!-- 3 --------------------------------------------------------------- -->
+<!-- 03 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow mint" style="color:var(--blue)"><b>Hands up</b> &nbsp;//&nbsp; before we start</p>
+    <p class="eyebrow">First, a show of hands</p>
     <div class="ask">
-      <div class="q live">
-        <span class="num">01</span>
-        <div>
-          <h3>Who here has used an LLM to grade, score or review something?</h3>
-          <p class="small">A rubric. A code review. A RAG answer. An agent trajectory.
-            Anything where a model gave something else a score.</p>
-        </div>
-      </div>
-      <div class="q live">
-        <span class="num">02</span>
-        <div>
-          <h3>Keep your hand up if you ran the same evaluation twice.</h3>
-          <p class="small">Same inputs, same prompt, same model &mdash; just a second time.</p>
-        </div>
-      </div>
-      <div class="note">Whatever just happened to the hands in this room is the whole talk.
-        The next 25 minutes are about what lives in that gap.</div>
+      <div class="hand">&#9995;</div>
+      <h2>Who's used an LLM to grade something?</h2>
+      <p class="say">A rubric. A code review. An answer. Anything where you asked a model
+        to score something.</p>
     </div>
   </div>
   <div class="notes">
-    <span class="t">2:30 &ndash; 4:00</span>
-    <b>Wait for the hands. Do not rush it.</b> Ask the first question, look around, say what you
-    see ("most of the room"). Then the second, and watch almost all of them drop.<br>
-    If only a few hands go up on question one, adapt: "then you are about to be very glad you
-    came." If a lot stay up on question two, say "good &mdash; you are the exception, and you
-    already know where this is going."<br>
-    Do not skip this even if you are running late: it is what makes a mixed room feel part of
-    the investigation rather than lectured at.
+    <span class="t">2:00 &ndash; 2:45</span>
+    Ask it, then <b>actually wait</b>. Look around. Say what you see: "okay, most of the room."<br>
+    Don't move on until hands are up. The next slide only works if they're already holding
+    their arms in the air.
   </div>
 </section>
 
-<!-- 4 --------------------------------------------------------------- -->
+<!-- 04 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>The case</b> &nbsp;//&nbsp; exhibit A</p>
-    <h2>This landed in my inbox.<br>Ship it?</h2>
+    <p class="eyebrow">Keep them up</p>
+    <div class="ask">
+      <h2>Keep it up if you ran it <span class="accent">twice</span>.</h2>
+      <p class="say">Same inputs. Same prompt. Same model. Just a second time.</p>
+      <div class="note">Whatever just happened to the hands in this room &mdash; that's the talk.</div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">2:45 &ndash; 3:30</span>
+    Almost every hand drops. Let the silence sit for a beat before you say the line.<br>
+    If a few hands stay up: "good &mdash; you already know where this is going."<br>
+    If nobody put a hand up at all on the first question: "then you're about to be very glad
+    you came."
+  </div>
+</section>
+
+<!-- 05 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Why I care about this</p>
+    <h2>A model told me<br>what was in a photo.<br>It wasn't there.</h2>
     <div class="cols wide">
-      <div class="card fill">
-        <div class="tag">Agent evaluation report &mdash; v2.3 release candidate</div>
-        <div class="tw">
-          <table>
-            <tbody>
-              <tr><td>Task success, judged</td><td class="n">8.4 / 10</td></tr>
-              <tr><td>Judge agreement with humans</td><td class="n">85%</td></tr>
-              <tr><td>Trajectories evaluated</td><td class="n">120</td></tr>
-              <tr><td>Beats v2.2 by</td><td class="n">+0.4</td></tr>
-              <tr><td>Cost of the eval run</td><td class="n">$11</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="plain">Every number here is the kind of number a real eval report contains.
-          Nothing is obviously wrong with it.</p>
+      <p class="say">I work on what models do when you give them an image. So I spend a lot
+        of time watching them describe things confidently &mdash; and sometimes describe things
+        that are not in the picture at all.</p>
+      <div class="note">The part that kept me up: <strong>the evaluation gave that answer a
+        good score.</strong> The model was wrong and the grader was happy.</div>
+    </div>
+    <p class="say" style="max-width:56ch">That's when I stopped worrying about the model and
+      started worrying about the grader.</p>
+  </div>
+  <div class="notes">
+    <span class="t">3:30 &ndash; 5:15</span>
+    <b>This is the slide that makes the talk yours.</b> Tell it as a memory, not a finding.
+    Where you were, what the image was, what the model said.<br>
+    Land the last line slowly. It is the hinge between "here's me" and "here's the problem",
+    and everything after it is evidence for it.
+  </div>
+</section>
+
+<!-- 06 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">So here's our example for tonight</p>
+    <h2>A refund, from a photo</h2>
+    <div class="flow">
+      <div class="step"><span class="n">the customer</span>
+        <span class="t">sends a photo<br>&ldquo;this isn't what I ordered&rdquo;</span></div>
+      <span class="arrow">&rarr;</span>
+      <div class="step"><span class="n">the agent</span>
+        <span class="t">looks at the photo,<br>checks the order</span></div>
+      <span class="arrow">&rarr;</span>
+      <div class="step out"><span class="n">the decision</span>
+        <span class="t">refund &middot; reject<br>&middot; escalate</span></div>
+    </div>
+    <p class="say" style="max-width:54ch">Nobody can read every one of these by hand. So we
+      ask another model: <strong>was that the right call?</strong></p>
+  </div>
+  <div class="notes">
+    <span class="t">5:15 &ndash; 6:15</span>
+    Everyone in this room has photographed a sad-looking delivery. Use that.<br>
+    Make the last line the point: the judge is not grading the food, and not even really the
+    photo &mdash; it's grading <b>a decision someone will act on</b>, with money attached.
+  </div>
+</section>
+
+<!-- 07 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">And this is what came back</p>
+    <div class="cols wide">
+      <div class="tw">
+        <table>
+          <thead><tr><th>Refund agent v2.3</th><th class="n">result</th></tr></thead>
+          <tbody>
+            <tr><td>Decision quality, judged</td><td class="n">8.4 / 10</td></tr>
+            <tr><td>Judge agrees with our reviewers</td><td class="n">85%</td></tr>
+            <tr><td>Orders evaluated</td><td class="n">600</td></tr>
+            <tr><td>Better than v2.2 by</td><td class="n">+0.4</td></tr>
+            <tr><td>Cost to run</td><td class="n">$11</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div style="display:grid;gap:14px">
-        <p class="lead">Nobody in this room would reject this. It has a sample size, a human
-          agreement figure, and a delta over the previous version.</p>
-        <div class="note">I believed a report like this. Then I ran the evaluation a second
-          time, and got a different answer.</div>
-        <p class="small">Four clues, and none of them require you to distrust the model under
-          test. The suspect is the measurement.</p>
+      <div style="display:grid;gap:18px">
+        <h2 style="font-size:clamp(28px,3.6vw,50px)">Looks fine to me</h2>
+        <p class="say">Sample size. Agreement with humans. A clear improvement over the last
+          version. Cheap.</p>
       </div>
     </div>
   </div>
   <div class="notes">
-    <span class="t">4:00 &ndash; 5:30</span>
-    Ask for hands: "who would ship on this?" Most hands go up. That is the hook &mdash; you want
-    the room invested in the number before you take it apart.<br>
-    Say the personal line plainly: <b>you believed a report like this.</b> The talk is not
-    "researchers found", it is "I got caught".
+    <span class="t">6:15 &ndash; 7:45</span>
+    Read the table slowly, like you're pleased with it. You want them to trust it before you
+    take it apart.<br>
+    Every number here is the kind of number a real report has. Nothing is obviously wrong.
   </div>
 </section>
 
-<!-- 3 --------------------------------------------------------------- -->
+<!-- 08 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Plain english</b> &nbsp;//&nbsp; for everyone in the room</p>
-    <h2>What an LLM judge<br>actually is</h2>
+    <h2>Would you ship it?</h2>
+    <p class="lead">Hands up again.</p>
+  </div>
+  <div class="notes">
+    <span class="t">7:45 &ndash; 8:30</span>
+    Most hands go up. That's the point &mdash; you want them invested before the first clue.<br>
+    Then: "I shipped on a report like this. Then I ran the evaluation a second time."
+  </div>
+</section>
+
+<!-- 09 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">Quick, for everyone</p>
+    <h2>What is a judge, exactly?</h2>
     <div class="c3 cols">
-      <div class="card"><div class="tag">The idea</div>
-        <p class="small">You cannot pay humans to read a million model outputs. So you ask
-          another model: <em>&ldquo;here is a task, here is what the agent did &mdash; score it
-          0 to 10.&rdquo;</em></p></div>
-      <div class="card"><div class="tag">Why it caught on</div>
-        <p class="small">It is cheap, instant, scales past any annotation budget, and it
-          agrees with human raters often enough to look trustworthy.</p></div>
-      <div class="card"><div class="tag">What it quietly became</div>
-        <p class="small">A <strong>measuring instrument</strong> &mdash; and one nobody asked
-          for a datasheet: no repeatability spec, no dead zones, no calibration date.</p></div>
+      <div class="card"><div class="tag">the idea</div>
+        <p class="say" style="font-size:clamp(15px,1.7vw,21px)">You can't pay people to read
+          a million answers. So you ask a model to score them.</p></div>
+      <div class="card"><div class="tag">why we all did it</div>
+        <p class="say" style="font-size:clamp(15px,1.7vw,21px)">It's cheap, it's instant, and
+          it agrees with humans often enough to feel safe.</p></div>
+      <div class="card"><div class="tag">what it quietly became</div>
+        <p class="say" style="font-size:clamp(15px,1.7vw,21px)">A measuring instrument. One
+          nobody ever asked for a spec sheet.</p></div>
     </div>
-    <div class="note">You would not accept a kitchen scale with no repeatability spec. We
-      accept it from a judge because the answer arrives in fluent English with a decimal point
-      in it.</div>
+    <div class="note">You wouldn't buy a kitchen scale that gives a different weight each
+      time. We accept it from a judge because the answer comes back in good English.</div>
   </div>
   <div class="notes">
-    <span class="t">5:30 &ndash; 6:45</span>
-    <b>The slide that keeps the non-researchers with you.</b> Do not skip it even if the room
-    looks technical &mdash; the kitchen-scale line is what everyone quotes back afterwards.<br>
-    "Instrument" is the metaphor the whole talk runs on. Plant it here.
+    <span class="t">8:30 &ndash; 9:45</span>
+    <b>Don't skip this even if the room looks technical.</b> The kitchen scale line is the one
+    people repeat afterwards, and it's what keeps the non-researchers with you.<br>
+    "Instrument" is the word the rest of the talk runs on. Plant it here.
   </div>
 </section>
 
-<!-- 4 --------------------------------------------------------------- -->
+<!-- 10 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Why agents</b> &nbsp;//&nbsp; make all of this worse</p>
-    <h2>One agent run is<br>not one judgement</h2>
+    <p class="eyebrow">And it's worse for agents</p>
+    <h2>One order isn't<br>one judgement</h2>
     <div class="cols wide">
       <figure>
-        <svg viewBox="0 0 560 180" role="img" aria-label="A trajectory of eight agent steps, each one judged separately, feeding a single final score.">
+        <svg viewBox="0 0 560 150" role="img" aria-label="Six agent steps, each judged separately, rolling up into one score.">
           <g id="traj"></g>
         </svg>
-        <figcaption>A support agent: look up the order, check the policy, call the refund tool,
-          write the reply. Each step is judged. The scores roll up into one number.</figcaption>
       </figure>
-      <div style="display:grid;gap:13px">
-        <p class="lead">A single-turn answer gets one judgement. An agent trajectory gets one
-          per step &mdash; and the errors do not cancel, they compound.</p>
-        <div class="note warn">Hold that thought. In four minutes we will put a real number on
-          how fast it compounds, and it is worse than anyone guesses.</div>
-      </div>
+      <p class="say">Read the photo. Check the order. Check the refund policy. Decide. Write
+        the reply. <strong>Every step gets judged, and the errors don't cancel out.</strong></p>
     </div>
   </div>
   <div class="notes">
-    <span class="t">6:45 &ndash; 8:00</span>
-    This slide is why the talk is about agents and not just chatbots &mdash; and it sets up the
-    compounding arithmetic on slide 6, which is the single most surprising number you have.<br>
-    Do not reveal it yet. Promise it.
+    <span class="t">9:45 &ndash; 10:45</span>
+    Promise the number, don't give it yet: "in about four minutes I'll show you how fast
+    that compounds, and it's worse than anyone guesses."<br>
+    This is why the talk is about agents and not just chatbots.
   </div>
 </section>
 
-<!-- 5 --------------------------------------------------------------- -->
+<!-- 11 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Clue 01</b> &nbsp;//&nbsp; run it twice</p>
+    <p class="eyebrow"><b>Clue 01</b></p>
+    <h2>So I ran it again.</h2>
+    <p class="lead">Same orders. Same prompt. Same model. Same everything.</p>
+  </div>
+  <div class="notes">
+    <span class="t">10:45 &ndash; 11:15</span>
+    One sentence, then move to the demo. Resist explaining.
+  </div>
+</section>
+
+<!-- 12 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
     <div class="demo-head">
-      <h2 style="flex:1;min-width:280px">Same input.<br>Different answer.</h2>
+      <p class="eyebrow"><b>Clue 01</b> &nbsp;//&nbsp; live</p>
       <div class="switch" role="group" aria-label="demo mode">
         <button type="button" data-demo="1" data-mode="bug" aria-pressed="true">Buggy</button>
         <button type="button" data-demo="1" data-mode="fix" aria-pressed="false">Fixed</button>
       </div>
     </div>
     <div class="demo">
-      <div style="display:grid;gap:10px">
+      <div style="display:grid;gap:12px">
         <div class="rows" id="d1-rows"></div>
-        <button class="rail-btn" id="d1-run" type="button"
-          style="font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;padding:9px 16px;border:none;border-radius:6px;background:var(--blue);color:#fff;cursor:pointer;justify-self:start">Run pass 1</button>
+        <button id="d1-run" type="button"
+          style="font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:11px 20px;border:none;border-radius:7px;background:var(--accent);color:#fff;cursor:pointer;justify-self:start">Score them</button>
       </div>
       <div class="readout">
         <div>
           <div class="big" id="d1-big">&mdash;</div>
-          <div class="lbl" id="d1-lbl">press run to score the items</div>
+          <div class="lbl" id="d1-lbl">press the button to score these orders</div>
         </div>
-        <div class="kv"><span>passes run</span><b id="d1-passes">0 / 3</b></div>
-        <div class="kv"><span>identical every pass</span><b id="d1-same">&mdash;</b></div>
-        <div class="kv"><span>pass/fail verdict moved</span><b id="d1-flip">&mdash;</b></div>
-        <div class="kv"><span>mean spread</span><b id="d1-spread">&mdash;</b></div>
+        <div class="kv"><span>passes</span><b id="d1-passes">0 / 3</b></div>
+        <div class="kv"><span>same score every time</span><b id="d1-same">&mdash;</b></div>
+        <div class="kv"><span>pass/fail changed</span><b id="d1-flip">&mdash;</b></div>
+        <div class="kv"><span>average spread</span><b id="d1-spread">&mdash;</b></div>
         <div id="d1-state"></div>
       </div>
     </div>
-    <p class="cite">Synthetic trace, calibrated to published effect sizes &mdash; your own numbers come from three real passes of your harness. Haldar et al., EMNLP 2025 (arXiv:2510.27106) report all-three-runs-identical at 61.3% for one judge.</p>
+    <p class="banner">Synthetic orders, calibrated to published effect sizes. Your own
+      numbers come from three real passes of your harness.</p>
   </div>
   <div class="notes">
-    <span class="t">8:00 &ndash; 10:30 &middot; demo 1</span>
-    Press <b>Run pass 1</b> and say "this is the number you would ship". Press pass 2 and let
-    the room watch scores move. Press pass 3.<br>
-    Then flip to <b>Fixed</b>: same data, but three passes reported as median plus spread, and
-    the unstable items surfaced instead of hidden. The fix is not a better judge, it is an
-    honest report.
+    <span class="t">11:15 &ndash; 13:45 &middot; demo</span>
+    Press once: "that's the number I'd have shipped." Press twice: let them watch the scores
+    move. Press a third time.<br>
+    Then flip to <b>Fixed</b>: same data, but now it reports the middle score and the spread,
+    and it flags the orders that moved. <b>The fix isn't a better judge &mdash; it's an honest
+    report.</b>
   </div>
 </section>
 
-<!-- 6 --------------------------------------------------------------- -->
+<!-- 13 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Clue 01</b> &nbsp;//&nbsp; what it means for an agent</p>
-    <h2>A 27% flip rate<br>does not stay at 27%</h2>
+    <p class="eyebrow"><b>Clue 01</b> &nbsp;//&nbsp; what that means</p>
     <div class="cols wide">
-      <figure>
-        <svg viewBox="0 0 540 230" role="img" aria-label="Probability a whole trajectory is judged the same way twice falls from 73 percent at one step to 8 percent at eight steps, and 2 percent at twelve steps.">
-          <g id="compound"></g>
-        </svg>
-        <figcaption>Chance the <em>whole trajectory</em> gets the same verdict twice, if each
-          step is judged independently at the observed flip rate.</figcaption>
-      </figure>
-      <div style="display:grid;gap:14px">
-        <div class="stats">
-          <div class="stat"><b class="red">7.7%</b><span>of 8-step trajectories judged the same way twice</span></div>
-        </div>
-        <div class="note red">Re-run your agent eval tomorrow and most trajectories change
-          verdict &mdash; without a single line of the agent changing.</div>
-        <p class="plain">Assumes steps are judged independently, which is the common setup.
-          Correlated steps soften it; they do not remove it.</p>
+      <div style="display:grid;gap:22px">
+        <h2 style="font-size:clamp(30px,4.2vw,58px)">27% of verdicts moved.<br>Now multiply that.</h2>
+        <p class="say">Six steps in one order, each judged. Judge the whole thing twice and
+          ask how often you get the same answer.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b class="red">15%</b><span>of six-step orders judged the same way twice</span></div>
       </div>
     </div>
+    <figure>
+      <svg viewBox="0 0 560 170" role="img" aria-label="The chance a whole order is judged the same way twice falls from 73 percent at one step to 8 percent at eight steps.">
+        <g id="compound"></g>
+      </svg>
+      <figcaption>Assuming each step is judged independently &mdash; which is the usual setup.</figcaption>
+    </figure>
   </div>
   <div class="notes">
-    <span class="t">10:30 &ndash; 12:00</span>
+    <span class="t">13:45 &ndash; 15:00</span>
     <b>The number that makes the room go quiet.</b> Say the arithmetic out loud: 73% for one
-    step, and eight steps of that is 8%.<br>
-    Be honest about the independence assumption in the same breath &mdash; it costs you nothing
-    and it is the first thing a careful listener will test.
+    step, and six of those in a row is 15% — about one in seven.<br>
+    Say the independence assumption in the same breath. It costs you nothing and it's the
+    first thing a careful person checks.
   </div>
 </section>
 
-<!-- 7 --------------------------------------------------------------- -->
+<!-- 14 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Clue 02</b> &nbsp;//&nbsp; the rows that never came back</p>
+    <p class="eyebrow"><b>Clue 02</b></p>
+    <h2>Then I counted<br>the rows.</h2>
+    <p class="lead">600 orders went in. Fewer came back.</p>
+  </div>
+  <div class="notes">
+    <span class="t">15:00 &ndash; 15:30</span>
+    A beat of suspense. "I assumed my parser was broken. It wasn't."
+  </div>
+</section>
+
+<!-- 15 ---------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
     <div class="demo-head">
-      <h2 style="flex:1;min-width:280px">The judge went quiet<br>on the hard ones</h2>
+      <p class="eyebrow"><b>Clue 02</b> &nbsp;//&nbsp; live</p>
       <div class="switch" role="group" aria-label="demo mode">
         <button type="button" data-demo="2" data-mode="bug" aria-pressed="true">Buggy</button>
         <button type="button" data-demo="2" data-mode="fix" aria-pressed="false">Fixed</button>
@@ -604,97 +610,88 @@
       <div class="readout">
         <div>
           <div class="big" id="d2-big">&mdash;</div>
-          <div class="lbl" id="d2-lbl">agreement with human raters</div>
+          <div class="lbl" id="d2-lbl">how well the judge agrees with our reviewers</div>
         </div>
-        <div class="kv"><span>rows scored</span><b id="d2-n">&mdash;</b></div>
-        <div class="kv"><span>rows dropped</span><b id="d2-drop">&mdash;</b></div>
-        <div class="kv"><span>on the easy quarter</span><b id="d2-easy">&mdash;</b></div>
-        <div class="kv"><span>on the hard quarter</span><b id="d2-hard">&mdash;</b></div>
+        <div class="kv"><span>orders scored</span><b id="d2-n">&mdash;</b></div>
+        <div class="kv"><span>orders dropped</span><b id="d2-drop">&mdash;</b></div>
+        <div class="kv"><span>on clear photos</span><b id="d2-easy">&mdash;</b></div>
+        <div class="kv"><span>on unreadable ones</span><b id="d2-hard">&mdash;</b></div>
         <div id="d2-state"></div>
       </div>
     </div>
-    <p class="cite">Blank, unparseable, refused, timed out. If your harness has a try/except that skips them, this is already happening in your pipeline.</p>
+    <p class="banner">Blank. Unparseable. Refused. Timed out. If your harness has a
+      try/except that skips them, this is already happening to you.</p>
   </div>
   <div class="notes">
-    <span class="t">12:00 &ndash; 14:00 &middot; demo 2</span>
-    In <b>Buggy</b>, the empty rows are simply gone and the correlation reads 0.74 &mdash; a
-    number anyone would publish.<br>
-    Flip to <b>Fixed</b>: retry the blanks, put them back, and agreement falls. Say the
-    uncomfortable part clearly &mdash; <b>the honest number is the worse number</b>, and the
-    good one was an artefact of what the judge refused to answer.
+    <span class="t">15:30 &ndash; 18:00 &middot; demo</span>
+    In <b>Buggy</b> the empty rows are simply gone and agreement reads 0.74 &mdash; a number
+    anyone would publish.<br>
+    Flip to <b>Fixed</b>: ask again, put them back, and it falls. Say the uncomfortable part
+    plainly &mdash; <b>the honest number is the worse number</b>, and the nice one was made of
+    the orders the judge was willing to answer.
   </div>
 </section>
 
-<!-- 8 --------------------------------------------------------------- -->
+<!-- 16 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Clue 02</b> &nbsp;//&nbsp; what it means</p>
-    <h2>Your agreement lives<br>on the easy items</h2>
+    <p class="eyebrow"><b>Clue 02</b> &nbsp;//&nbsp; what that means</p>
+    <h2>It went quiet on<br>exactly the hard ones</h2>
     <div class="cols wide">
       <figure>
-        <svg viewBox="0 0 540 250" role="img" aria-label="Two panels: blank rate rises from 1 percent on the clearest quarter to 57 percent on the most ambiguous; agreement with humans falls from 0.74 to 0.41 across the same quarters.">
+        <svg viewBox="0 0 560 230" role="img" aria-label="Blank rate rises from 1 percent on clear photos to 57 percent on barely readable ones; agreement falls from 0.74 to 0.41 across the same groups.">
           <g id="strat"></g>
         </svg>
-        <figcaption>Same judge, same prompt, same eval set &mdash; split into four groups by how
-          ambiguous the item is.</figcaption>
       </figure>
-      <div style="display:grid;gap:13px">
-        <p class="lead">The judge agrees with you on the cases you never needed a judge for.
-          On the contested quarter it is guessing &mdash; and that is also the quarter where it
-          returned nothing more than half the time.</p>
-        <div class="note red">A single pooled correlation averages two different populations
-          and describes neither.</div>
-        <p class="plain"><strong>Correlation</strong> here just means: when humans rate
-          something highly, does the judge too? 1.0 is perfect agreement, 0 is a coin flip.</p>
-      </div>
+      <p class="say">On the photos anyone could read, it agrees with us. On the blurry ones
+        it's guessing &mdash; and those are the ones it refused to answer more than half the
+        time.</p>
     </div>
   </div>
   <div class="notes">
-    <span class="t">14:00 &ndash; 15:15</span>
-    The plain-English gloss on correlation is there for the mixed room &mdash; read it out, do
-    not assume.<br>
-    Practical ask: stratify by <i>anything</i> you have &mdash; task type, trajectory length,
-    tool count, annotator confidence.
+    <span class="t">18:00 &ndash; 19:15</span>
+    Say it plainly: <b>the judge agrees with you about the orders you never needed help with.</b><br>
+    Practical ask: split your results by something &mdash; photo quality, order size, how long
+    the trace was. A single average hides this completely.
   </div>
 </section>
 
-<!-- 9 --------------------------------------------------------------- -->
+<!-- 17 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Clue 03</b> &nbsp;//&nbsp; agreement that isn't</p>
-    <h2>&ldquo;It agrees with humans<br>75% of the time&rdquo;</h2>
+    <p class="eyebrow"><b>Clue 03</b></p>
+    <h2>&ldquo;It agrees with us<br>75% of the time&rdquo;</h2>
     <div class="cols wide">
       <figure>
-        <svg viewBox="0 0 520 190" role="img" aria-label="Raw agreement 75 percent, always-guess-the-common-answer baseline 57 percent, and chance-corrected agreement kappa 0.50.">
+        <svg viewBox="0 0 560 180" role="img" aria-label="Raw agreement 75 percent versus chance-corrected agreement kappa 0.50, with the always-guess baseline at 57 percent.">
           <g id="kappa"></g>
         </svg>
-        <figcaption>Three ways of describing how well the same judge did on the same items.</figcaption>
       </figure>
-      <div style="display:grid;gap:13px">
-        <p class="lead">Most eval items are easy, and both raters say &ldquo;fine&rdquo; a lot.
-          Raw agreement counts all of that as skill.</p>
-        <div class="note red">A judge that says <strong>pass</strong> to everything scores 80%
-          agreement on a set that is 80% passes &mdash; and knows nothing.</div>
-        <p class="plain"><strong>Kappa</strong> is agreement after you subtract the credit for
-          lucky guesses. Same data, honest scale.</p>
+      <div style="display:grid;gap:18px">
+        <p class="say">Most refunds are easy. Both of us just say &ldquo;fine&rdquo;. And we
+          count all of that as the judge being right.</p>
+        <div class="note red">A judge that approves <strong>everything</strong> scores 80%
+          on a set that's 80% approvals. And knows nothing.</div>
       </div>
     </div>
-    <p class="cite">Chance-correcting deflates raw agreement by 33&ndash;41 points of kappa across 21 judges and ~541,000 judgments &mdash; Norman et al. 2026 (arXiv:2606.19544)</p>
   </div>
   <div class="notes">
-    <span class="t">15:15 &ndash; 16:30</span>
-    Shortest clue. The always-says-pass judge is the whole argument; everything else is
-    bookkeeping.<br>
-    Practical ask: never ship a raw agreement percentage without the baseline next to it.
+    <span class="t">19:15 &ndash; 21:00</span>
+    Shortest clue. The approve-everything judge is the whole argument.<br>
+    One sentence of plain English for kappa: "it's agreement after you take away the credit
+    for lucky guesses."<br>
+    Ask: never put a raw agreement percentage in a report without the baseline next to it.
   </div>
 </section>
 
-<!-- 10 -------------------------------------------------------------- -->
+<!-- 18 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Clue 04</b> &nbsp;//&nbsp; it likes the confident wrong answer</p>
     <div class="demo-head">
-      <h2 style="flex:1;min-width:280px">Fluent, decisive,<br>and wrong</h2>
+      <div>
+        <p class="eyebrow"><b>Clue 04</b> &nbsp;//&nbsp; live</p>
+        <h2 style="font-size:clamp(26px,3.4vw,46px);margin-top:10px">Confident. Well written.<br>Wrong refund.</h2>
+      </div>
       <div class="switch" role="group" aria-label="demo mode">
         <button type="button" data-demo="3" data-mode="bug" aria-pressed="true">Buggy</button>
         <button type="button" data-demo="3" data-mode="fix" aria-pressed="false">Fixed</button>
@@ -705,247 +702,119 @@
       <div class="readout">
         <div>
           <div class="big" id="d3-big">&mdash;</div>
-          <div class="lbl" id="d3-lbl">of wrong answers accepted</div>
+          <div class="lbl" id="d3-lbl">of the wrong refunds waved through</div>
         </div>
-        <div class="kv"><span>protocol</span><b id="d3-proto">graded judge</b></div>
-        <div class="kv"><span>wrong answers shown</span><b id="d3-n">6</b></div>
+        <div class="kv"><span>checking</span><b id="d3-proto">one judge</b></div>
+        <div class="kv"><span>wrong refunds shown</span><b id="d3-n">6</b></div>
         <div class="kv"><span>caught</span><b id="d3-caught">&mdash;</b></div>
-        <div class="kv"><span>false rejects</span><b id="d3-fr">&mdash;</b></div>
+        <div class="kv"><span>good refunds blocked</span><b id="d3-fr">&mdash;</b></div>
         <div id="d3-state"></div>
       </div>
     </div>
-    <p class="cite">Graded judge alone vs graded + a strict binary &ldquo;does this mean the same thing as the reference?&rdquo; check &mdash; dual-judge protocol, Noe, Nguyen, Zin &amp; Satoh 2026</p>
+    <p class="banner">One judge answers &ldquo;was this handled well?&rdquo;. The second one
+      answers &ldquo;was it the right call?&rdquo;. Those are different questions.</p>
   </div>
   <div class="notes">
-    <span class="t">16:30 &ndash; 18:30 &middot; demo 3</span>
-    In <b>Buggy</b>, the graded judge scores every one of these 8 or 9 out of 10 &mdash; they are
-    well written. Flip to <b>Fixed</b> and a second judge, asked a different question, catches
-    almost all of them.<br>
-    The detail that makes it a free lunch: <b>false rejects do not go up.</b> Say it, because a
-    careful listener checks for exactly that.
+    <span class="t">21:00 &ndash; 23:30 &middot; demo</span>
+    In <b>Buggy</b>: every one of these is well argued and gives money to someone who
+    photographed the correct meal. The judge scores them 8 and 9.<br>
+    Flip to <b>Fixed</b>: a second judge, asked a different question, catches almost all of
+    them. The detail that makes it free &mdash; <b>it doesn't block any more good refunds</b>.
   </div>
 </section>
 
-<!-- 11 -------------------------------------------------------------- -->
+<!-- 19 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>The reveal</b> &nbsp;//&nbsp; who did it</p>
-    <h2>The judge isn't broken.<br>It was never calibrated.</h2>
-    <div class="cols">
-      <div class="card red"><div class="tag">What we assumed</div>
-        <p class="small">A judge is a cheaper human rater. If it agrees with humans often
-          enough, the number it produces means what a human's number would mean.</p></div>
-      <div class="card green"><div class="tag">What it actually is</div>
-        <p class="small">An instrument with noise, dead zones and drift &mdash; none of which
-          are reported, because we never asked. Every clue tonight was a missing spec on a
-          datasheet nobody wrote.</p></div>
-    </div>
-    <div class="note">Not one of these four clues required the agent under test to be bad.
-      The suspect was the measurement the whole time.</div>
+    <p class="eyebrow">So who did it</p>
+    <h2>The judge isn't broken.<br>Nobody ever<br>calibrated it.</h2>
+    <p class="lead">Not one of those four clues needed the agent to be bad. It was the
+      measurement the whole time.</p>
   </div>
   <div class="notes">
-    <span class="t">18:30 &ndash; 19:30</span>
-    <b>The turn of the detective story.</b> Slow down. This is where the audience gets the
-    satisfaction of the reveal, and it is the line they will repeat to their team.
+    <span class="t">23:30 &ndash; 24:45</span>
+    <b>The turn of the story.</b> Slow right down. This is the line they'll repeat to their
+    team tomorrow.
   </div>
 </section>
 
-<!-- 12 -------------------------------------------------------------- -->
+<!-- 20 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Fix 01</b> &nbsp;//&nbsp; for agent evaluation specifically</p>
-    <h2>Deterministic first.<br>Judge last.</h2>
-    <div class="cols wide">
-      <div class="tw">
-        <table>
-          <thead><tr><th>Question about a trajectory</th><th>Who should answer it</th></tr></thead>
-          <tbody>
-            <tr><td>Did it call the tools in the required order?</td><td><span class="state fix">Assertion</span></td></tr>
-            <tr><td>Did the arguments match the schema?</td><td><span class="state fix">Assertion</span></td></tr>
-            <tr><td>Did it refuse the ineligible refund?</td><td><span class="state fix">Assertion</span></td></tr>
-            <tr><td>Did it recover from the 503?</td><td><span class="state fix">Assertion</span></td></tr>
-            <tr><td>Was the final reply actually helpful?</td><td><span class="state warn">Judge</span></td></tr>
-            <tr><td>Was the tone right for an upset customer?</td><td><span class="state warn">Judge</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div style="display:grid;gap:13px">
-        <p class="lead">Most of what we ask a judge about an agent is not a matter of taste.
-          It is a fact about the trace, and a plain assertion answers it perfectly, for free,
-          every time.</p>
-        <div class="note green">Use the judge only where a deterministic check genuinely cannot
-          reach &mdash; and then audit it, because that is exactly where you cannot see it fail.</div>
-      </div>
-    </div>
-  </div>
-  <div class="notes">
-    <span class="t">19:30 &ndash; 21:00</span>
-    This slide complements the other talk in the session rather than repeating it: deterministic
-    invariants are the right tool for most agent questions, and the judge is a last resort.<br>
-    Practical framing: every row you move from "judge" to "assertion" is a row that stops
-    being noisy and starts being free.
-  </div>
-</section>
-
-<!-- 13 -------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow"><b>Fix 02</b> &nbsp;//&nbsp; the number your team can act on</p>
-    <h2>&ldquo;r = 0.7&rdquo; is not a decision</h2>
+    <p class="eyebrow">What it actually costs you</p>
     <div class="cols wide">
       <figure>
-        <svg viewBox="0 0 520 240" role="img" aria-label="Probability the judge picks the better system rises from 62 percent at 25 items to 98 percent at 800 items, crossing 90 percent around 400 items.">
+        <svg viewBox="0 0 560 230" role="img" aria-label="The chance the judge names the better agent version rises from 62 percent at 25 orders to 98 percent at 800.">
           <g id="risk"></g>
         </svg>
-        <figcaption>Resampling the eval set. The two systems genuinely differ; the judge has to find it.</figcaption>
+        <figcaption>Two agent versions, one genuinely better. How often does the judge find it?</figcaption>
       </figure>
-      <div style="display:grid;gap:13px">
-        <div class="stats">
-          <div class="stat"><b class="red">74%</b><span>correct calls at 100 items per system</span></div>
-          <div class="stat"><b class="blue">400</b><span>items needed to reach 90%</span></div>
-        </div>
-        <div class="note">Nobody can act on a correlation. Everybody can act on &ldquo;at our
-          eval size, this judge names the wrong winner one time in four&rdquo;.</div>
+      <div style="display:grid;gap:22px">
+        <h2 style="font-size:clamp(28px,3.8vw,52px)">One call in four<br>is the wrong one</h2>
+        <p class="say">At 100 orders per version. You'd need <strong>400</strong> to get it
+          right nine times out of ten.</p>
+        <div class="note">Nobody can act on a correlation. Everybody can act on this.</div>
       </div>
     </div>
   </div>
   <div class="notes">
-    <span class="t">21:00 &ndash; 22:30</span>
-    The slide that changes behaviour in an industry room, because it is phrased as a shipping
-    decision rather than a statistic. Convert judge noise into P(wrong call) at <i>their</i>
-    eval size.
+    <span class="t">24:45 &ndash; 26:15</span>
+    The slide that changes what people do on Monday, because it's phrased as a shipping
+    decision rather than a statistic.<br>
+    Ask them to do the same sum for their own eval size.
   </div>
 </section>
 
-<!-- 14 -------------------------------------------------------------- -->
+<!-- 21 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Fix 03</b> &nbsp;//&nbsp; clue by clue</p>
-    <h2>What to do about<br>each one</h2>
-    <div class="tw">
-      <table>
-        <thead><tr><th style="width:18%">Clue</th><th>What goes wrong</th><th>What fixes it</th></tr></thead>
-        <tbody>
-          <tr><td><span class="state bug">01</span></td>
-              <td>One pass, and the score is partly a coin flip</td>
-              <td><strong>Run three passes.</strong> Report the median and the spread.</td></tr>
-          <tr><td><span class="state bug">02</span></td>
-              <td>Unparseable rows dropped, inflating agreement</td>
-              <td><strong>Retry blanks and keep them.</strong> Publish the recovered number.</td></tr>
-          <tr><td><span class="state bug">03</span></td>
-              <td>Raw agreement counts lucky guesses as skill</td>
-              <td><strong>Chance-correct</strong>, and print the baseline beside it.</td></tr>
-          <tr><td><span class="state bug">04</span></td>
-              <td>A graded score rewards style over correctness</td>
-              <td><strong>Add a binary check</strong> against a reference; require both.</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="note green">Every fix is one more API call and one more column in a CSV. None
-      of them needs a new model, a fine-tune, or an annotation budget.</div>
-  </div>
-  <div class="notes">
-    <span class="t">22:30 &ndash; 24:00</span>
-    Walk the right-hand column only &mdash; they have already seen the middle one demonstrated.
-    Land the closing line about cost: this is the slide that makes the whole thing feel doable
-    on Monday.
-  </div>
-</section>
-
-<!-- 15 -------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow"><b>Take home</b> &nbsp;//&nbsp; the checklist</p>
-    <h2>Seven things,<br>none expensive</h2>
+    <p class="eyebrow">Take this home</p>
+    <h2>Five things,<br>none of them expensive</h2>
     <ul class="list">
-      <li data-n="1"><b>Run the judge three times</b> on the same inputs, and report the spread.</li>
-      <li data-n="2"><b>Count the blanks, then retry them</b> &mdash; and publish the number you get afterwards.</li>
-      <li data-n="3"><b>Stratify by difficulty</b> before you believe any single correlation.</li>
-      <li data-n="4"><b>Chance-correct</b> every agreement figure, with the baseline printed beside it.</li>
-      <li data-n="5"><b>Pair the graded judge with a binary check</b> against a human reference.</li>
-      <li data-n="6"><b>Move every checkable question to an assertion</b> and leave the judge only what needs taste.</li>
-      <li data-n="7"><b>Report decision risk, not correlation</b> &mdash; and re-audit when the vendor ships a new version.</li>
+      <li data-n="01"><b>Run it three times</b>Report the middle score and the spread, not one number.</li>
+      <li data-n="02"><b>Count the blanks, then ask again</b>Put them back in and publish the number you get after.</li>
+      <li data-n="03"><b>Split your results by difficulty</b>One average hides a judge that only works on easy cases.</li>
+      <li data-n="04"><b>Subtract the lucky guesses</b>Print the always-guess baseline next to your agreement number.</li>
+      <li data-n="05"><b>Ask a second judge a different question</b>&ldquo;Was it right?&rdquo; &mdash; not just &ldquo;was it good?&rdquo;</li>
     </ul>
+    <p class="say" style="max-width:52ch">Each one is one more API call and one more column
+      in a spreadsheet.</p>
   </div>
   <div class="notes">
-    <span class="t">24:00 &ndash; 26:00</span>
-    One line each, fast. Tell them it is one page in the repo so nobody photographs it in a
-    panic.
+    <span class="t">26:15 &ndash; 28:15</span>
+    One line each, fast, no elaboration. Tell them it's one page in the repo so nobody
+    photographs it in a panic.<br>
+    If you're running late, this is the slide to speed up &mdash; not to cut.
   </div>
 </section>
 
-<!-- 16 -------------------------------------------------------------- -->
+<!-- 22 ---------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Take home</b> &nbsp;//&nbsp; when to trust it at all</p>
-    <h2>Automate, or ask<br>a human?</h2>
-    <div class="cols wide">
-      <figure>
-        <svg viewBox="0 0 460 300" role="img" aria-label="A two-by-two grid. Horizontal axis is measured judge reliability, vertical axis is the cost of a wrong accept. Top left: human review. Top right: dual judge plus sampled audit. Bottom left: sample and monitor. Bottom right: automate.">
-          <g id="trust"></g>
-        </svg>
-        <figcaption>Both axes are measured: reliability from the audit, cost from your own incident history.</figcaption>
-      </figure>
-      <div style="display:grid;gap:12px">
-        <p class="small"><strong>Measured reliability</strong> means the numbers from tonight
-          &mdash; spread across passes and chance-corrected agreement &mdash; not a vendor
-          benchmark and not a figure from a blog post.</p>
-        <p class="small"><strong>Cost of a wrong accept</strong> is yours to know. A tone check
-          and a refund approval are not in the same quadrant, even behind the same API.</p>
-        <div class="note warn">The quadrant nobody staffs is <strong>top right</strong>: high
-          stakes, and the judge looks reliable. That is where a single number is most expensive.</div>
-      </div>
-    </div>
-  </div>
-  <div class="notes">
-    <span class="t">26:00 &ndash; 28:00</span>
-    The most photographed slide of the talk. Be explicit that the framework is only as good as
-    the measurement &mdash; the first twenty minutes exist to put a defensible number on the
-    horizontal axis.
-  </div>
-</section>
-
-<!-- 17 -------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow"><b>Close</b></p>
-    <h2>Judges aren't useless.<br>Unaudited judges are.</h2>
-    <p class="lead">None of this makes the judge honest. It makes the judge's dishonesty
-      <strong>measurable</strong> &mdash; which is all we ask of any other instrument we publish
-      with.</p>
-    <div class="c3 cols">
-      <div class="card"><div class="tag">Run it yourself</div>
-        <p class="small"><code>judge-audit</code><br>
-          <span class="plain">Six audits, a stage demo menu, and this deck.</span></p></div>
-      <div class="card"><div class="tag">The checklist</div>
-        <p class="small"><code>docs/checklist.md</code><br>
-          <span class="plain">One printable page.</span></p></div>
-      <div class="card"><div class="tag">Find me</div>
-        <p class="small">Su Myat Noe &mdash; NII, Tokyo<br>
-          <span class="plain">sumyatnoe@nii.ac.jp</span></p></div>
-    </div>
-    <div class="cols" style="align-items:center;margin-top:4px">
+    <p class="eyebrow">Thank you</p>
+    <h2>Judges aren't useless.<br>Unchecked ones are.</h2>
+    <p class="lead">You can't make the judge honest. You can make it <strong>measurable</strong>
+      &mdash; which is all we ask of anything else we measure with.</p>
+    <div class="cols" style="align-items:center">
       <div class="qr">
         <svg viewBox="0 0 35 35" shape-rendering="crispEdges" role="img" aria-label="QR code"><rect width="35" height="35" fill="#ffffff"/><path d="M3 3h7v1h-7zM16 3h1v1h-1zM22 3h2v1h-2zM25 3h7v1h-7zM3 4h1v1h-1zM9 4h1v1h-1zM12 4h2v1h-2zM17 4h3v1h-3zM23 4h1v1h-1zM25 4h1v1h-1zM31 4h1v1h-1zM3 5h1v1h-1zM5 5h3v1h-3zM9 5h1v1h-1zM11 5h3v1h-3zM17 5h3v1h-3zM22 5h1v1h-1zM25 5h1v1h-1zM27 5h3v1h-3zM31 5h1v1h-1zM3 6h1v1h-1zM5 6h3v1h-3zM9 6h1v1h-1zM11 6h4v1h-4zM16 6h3v1h-3zM23 6h1v1h-1zM25 6h1v1h-1zM27 6h3v1h-3zM31 6h1v1h-1zM3 7h1v1h-1zM5 7h3v1h-3zM9 7h1v1h-1zM11 7h2v1h-2zM14 7h2v1h-2zM19 7h3v1h-3zM23 7h1v1h-1zM25 7h1v1h-1zM27 7h3v1h-3zM31 7h1v1h-1zM3 8h1v1h-1zM9 8h1v1h-1zM11 8h5v1h-5zM18 8h2v1h-2zM23 8h1v1h-1zM25 8h1v1h-1zM31 8h1v1h-1zM3 9h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM21 9h1v1h-1zM23 9h1v1h-1zM25 9h7v1h-7zM11 10h4v1h-4zM17 10h1v1h-1zM19 10h1v1h-1zM23 10h1v1h-1zM3 11h1v1h-1zM5 11h5v1h-5zM12 11h2v1h-2zM15 11h4v1h-4zM20 11h1v1h-1zM22 11h1v1h-1zM25 11h5v1h-5zM4 12h5v1h-5zM11 12h2v1h-2zM15 12h1v1h-1zM17 12h1v1h-1zM19 12h2v1h-2zM22 12h2v1h-2zM25 12h3v1h-3zM31 12h1v1h-1zM3 13h1v1h-1zM6 13h5v1h-5zM12 13h4v1h-4zM17 13h2v1h-2zM21 13h1v1h-1zM23 13h1v1h-1zM27 13h1v1h-1zM3 14h1v1h-1zM5 14h2v1h-2zM8 14h1v1h-1zM17 14h3v1h-3zM28 14h1v1h-1zM30 14h1v1h-1zM5 15h2v1h-2zM9 15h2v1h-2zM12 15h1v1h-1zM14 15h1v1h-1zM16 15h3v1h-3zM20 15h1v1h-1zM22 15h1v1h-1zM28 15h2v1h-2zM6 16h2v1h-2zM13 16h2v1h-2zM19 16h1v1h-1zM21 16h1v1h-1zM23 16h5v1h-5zM31 16h1v1h-1zM3 17h3v1h-3zM7 17h1v1h-1zM9 17h1v1h-1zM13 17h2v1h-2zM17 17h3v1h-3zM21 17h1v1h-1zM23 17h2v1h-2zM27 17h3v1h-3zM4 18h2v1h-2zM10 18h2v1h-2zM18 18h2v1h-2zM22 18h6v1h-6zM30 18h1v1h-1zM3 19h1v1h-1zM5 19h1v1h-1zM7 19h1v1h-1zM9 19h3v1h-3zM13 19h2v1h-2zM16 19h5v1h-5zM22 19h1v1h-1zM24 19h1v1h-1zM26 19h1v1h-1zM28 19h2v1h-2zM3 20h4v1h-4zM8 20h1v1h-1zM10 20h1v1h-1zM12 20h1v1h-1zM14 20h3v1h-3zM19 20h1v1h-1zM22 20h1v1h-1zM24 20h4v1h-4zM29 20h1v1h-1zM31 20h1v1h-1zM3 21h1v1h-1zM5 21h3v1h-3zM9 21h1v1h-1zM11 21h4v1h-4zM18 21h1v1h-1zM23 21h1v1h-1zM25 21h3v1h-3zM29 21h1v1h-1zM3 22h1v1h-1zM5 22h1v1h-1zM12 22h1v1h-1zM17 22h1v1h-1zM21 22h1v1h-1zM23 22h3v1h-3zM30 22h1v1h-1zM3 23h1v1h-1zM6 23h5v1h-5zM13 23h5v1h-5zM22 23h6v1h-6zM29 23h3v1h-3zM11 24h4v1h-4zM17 24h1v1h-1zM19 24h3v1h-3zM23 24h1v1h-1zM27 24h5v1h-5zM3 25h7v1h-7zM13 25h3v1h-3zM17 25h4v1h-4zM22 25h2v1h-2zM25 25h1v1h-1zM27 25h3v1h-3zM3 26h1v1h-1zM9 26h1v1h-1zM11 26h1v1h-1zM15 26h1v1h-1zM19 26h1v1h-1zM21 26h3v1h-3zM27 26h1v1h-1zM30 26h2v1h-2zM3 27h1v1h-1zM5 27h3v1h-3zM9 27h1v1h-1zM11 27h2v1h-2zM20 27h1v1h-1zM23 27h5v1h-5zM29 27h3v1h-3zM3 28h1v1h-1zM5 28h3v1h-3zM9 28h1v1h-1zM11 28h1v1h-1zM13 28h2v1h-2zM20 28h4v1h-4zM28 28h4v1h-4zM3 29h1v1h-1zM5 29h3v1h-3zM9 29h1v1h-1zM11 29h1v1h-1zM13 29h1v1h-1zM18 29h3v1h-3zM22 29h9v1h-9zM3 30h1v1h-1zM9 30h1v1h-1zM16 30h4v1h-4zM23 30h2v1h-2zM26 30h1v1h-1zM28 30h1v1h-1zM30 30h1v1h-1zM3 31h7v1h-7zM11 31h4v1h-4zM18 31h1v1h-1zM20 31h1v1h-1zM22 31h1v1h-1zM25 31h3v1h-3zM29 31h1v1h-1z" fill="#202124"/></svg>
         <div class="qt"><b>github.com/ImSuMyatNoe/judge-audit</b>
-          the code, the checklist,<br>and these slides</div>
+          the code, the checklist,<br>the refund example, these slides</div>
       </div>
       <div class="qr">
         <svg viewBox="0 0 35 35" shape-rendering="crispEdges" role="img" aria-label="QR code"><rect width="35" height="35" fill="#ffffff"/><path d="M3 3h7v1h-7zM12 3h1v1h-1zM16 3h1v1h-1zM19 3h1v1h-1zM22 3h1v1h-1zM25 3h7v1h-7zM3 4h1v1h-1zM9 4h1v1h-1zM12 4h1v1h-1zM14 4h5v1h-5zM20 4h2v1h-2zM23 4h1v1h-1zM25 4h1v1h-1zM31 4h1v1h-1zM3 5h1v1h-1zM5 5h3v1h-3zM9 5h1v1h-1zM13 5h2v1h-2zM16 5h1v1h-1zM19 5h3v1h-3zM25 5h1v1h-1zM27 5h3v1h-3zM31 5h1v1h-1zM3 6h1v1h-1zM5 6h3v1h-3zM9 6h1v1h-1zM15 6h4v1h-4zM21 6h1v1h-1zM25 6h1v1h-1zM27 6h3v1h-3zM31 6h1v1h-1zM3 7h1v1h-1zM5 7h3v1h-3zM9 7h1v1h-1zM13 7h5v1h-5zM19 7h3v1h-3zM25 7h1v1h-1zM27 7h3v1h-3zM31 7h1v1h-1zM3 8h1v1h-1zM9 8h1v1h-1zM11 8h1v1h-1zM15 8h3v1h-3zM22 8h1v1h-1zM25 8h1v1h-1zM31 8h1v1h-1zM3 9h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM21 9h1v1h-1zM23 9h1v1h-1zM25 9h7v1h-7zM13 10h2v1h-2zM17 10h1v1h-1zM20 10h1v1h-1zM22 10h2v1h-2zM3 11h1v1h-1zM6 11h1v1h-1zM8 11h2v1h-2zM11 11h1v1h-1zM13 11h1v1h-1zM18 11h1v1h-1zM24 11h1v1h-1zM26 11h1v1h-1zM3 12h5v1h-5zM12 12h1v1h-1zM17 12h2v1h-2zM20 12h2v1h-2zM23 12h3v1h-3zM28 12h1v1h-1zM31 12h1v1h-1zM3 13h1v1h-1zM6 13h1v1h-1zM9 13h3v1h-3zM13 13h1v1h-1zM19 13h1v1h-1zM22 13h9v1h-9zM4 14h2v1h-2zM8 14h1v1h-1zM11 14h1v1h-1zM13 14h1v1h-1zM15 14h1v1h-1zM17 14h2v1h-2zM21 14h1v1h-1zM26 14h1v1h-1zM29 14h2v1h-2zM3 15h2v1h-2zM9 15h2v1h-2zM12 15h1v1h-1zM14 15h2v1h-2zM19 15h2v1h-2zM22 15h5v1h-5zM28 15h1v1h-1zM30 15h2v1h-2zM4 16h1v1h-1zM6 16h3v1h-3zM12 16h1v1h-1zM15 16h1v1h-1zM18 16h1v1h-1zM20 16h1v1h-1zM22 16h1v1h-1zM4 17h2v1h-2zM7 17h1v1h-1zM9 17h1v1h-1zM14 17h2v1h-2zM18 17h2v1h-2zM21 17h1v1h-1zM23 17h1v1h-1zM28 17h4v1h-4zM3 18h2v1h-2zM10 18h1v1h-1zM13 18h2v1h-2zM16 18h2v1h-2zM19 18h2v1h-2zM22 18h2v1h-2zM26 18h1v1h-1zM28 18h1v1h-1zM30 18h1v1h-1zM5 19h1v1h-1zM7 19h3v1h-3zM11 19h2v1h-2zM14 19h1v1h-1zM16 19h9v1h-9zM26 19h1v1h-1zM30 19h1v1h-1zM5 20h2v1h-2zM11 20h1v1h-1zM14 20h2v1h-2zM18 20h1v1h-1zM20 20h1v1h-1zM24 20h3v1h-3zM28 20h1v1h-1zM31 20h1v1h-1zM3 21h1v1h-1zM5 21h3v1h-3zM9 21h6v1h-6zM16 21h1v1h-1zM20 21h1v1h-1zM25 21h3v1h-3zM30 21h2v1h-2zM5 22h1v1h-1zM8 22h1v1h-1zM10 22h1v1h-1zM12 22h2v1h-2zM15 22h2v1h-2zM18 22h3v1h-3zM22 22h2v1h-2zM25 22h1v1h-1zM27 22h1v1h-1zM30 22h2v1h-2zM3 23h1v1h-1zM6 23h4v1h-4zM11 23h1v1h-1zM14 23h2v1h-2zM17 23h1v1h-1zM19 23h1v1h-1zM22 23h6v1h-6zM29 23h1v1h-1zM11 24h2v1h-2zM15 24h2v1h-2zM18 24h2v1h-2zM22 24h2v1h-2zM27 24h1v1h-1zM29 24h3v1h-3zM3 25h7v1h-7zM12 25h2v1h-2zM15 25h4v1h-4zM21 25h1v1h-1zM23 25h1v1h-1zM25 25h1v1h-1zM27 25h1v1h-1zM30 25h1v1h-1zM3 26h1v1h-1zM9 26h1v1h-1zM11 26h1v1h-1zM14 26h3v1h-3zM19 26h1v1h-1zM21 26h1v1h-1zM23 26h1v1h-1zM27 26h5v1h-5zM3 27h1v1h-1zM5 27h3v1h-3zM9 27h1v1h-1zM13 27h2v1h-2zM17 27h4v1h-4zM23 27h5v1h-5zM30 27h1v1h-1zM3 28h1v1h-1zM5 28h3v1h-3zM9 28h1v1h-1zM11 28h2v1h-2zM14 28h1v1h-1zM17 28h3v1h-3zM23 28h1v1h-1zM25 28h5v1h-5zM31 28h1v1h-1zM3 29h1v1h-1zM5 29h3v1h-3zM9 29h1v1h-1zM12 29h3v1h-3zM16 29h1v1h-1zM22 29h3v1h-3zM27 29h3v1h-3zM31 29h1v1h-1zM3 30h1v1h-1zM9 30h1v1h-1zM12 30h1v1h-1zM16 30h2v1h-2zM19 30h5v1h-5zM30 30h1v1h-1zM3 31h7v1h-7zM11 31h1v1h-1zM15 31h2v1h-2zM18 31h1v1h-1zM20 31h2v1h-2zM23 31h1v1h-1zM28 31h1v1h-1zM30 31h1v1h-1z" fill="#202124"/></svg>
         <div class="qt"><b>imsumyatnoe.github.io</b>
-          everything else I work on</div>
+          everything else &middot; sumyatnoe@nii.ac.jp</div>
       </div>
     </div>
-
   </div>
   <div class="notes">
-    <span class="t">28:00 &ndash; 30:00</span>
+    <span class="t">28:15 &ndash; 30:00</span>
     Land the two sentences and stop talking. Leave this up for questions.<br>
-    <b>Expect:</b> (1) "Doesn't a bigger judge fix it?" &mdash; capability does not buy you low
-    self-preference bias, and a judge no better than the system it grades has a hard ceiling.
-    (2) "Is this synthetic?" &mdash; the demo trace is, calibrated to published effect sizes;
-    say so before they ask. (3) "What about agent-specific judges?" &mdash; same audit, more
-    steps to compound.
+    <b>Expect:</b> "does a bigger judge fix it?" &mdash; no, and a judge no better than the thing
+    it's grading has a hard ceiling. "Is this synthetic?" &mdash; yes, say so before they ask;
+    calibrated to published numbers, and the same audits run on real traces. "What about
+    agent-specific judges?" &mdash; same checks, more steps to compound.
   </div>
 </section>
 
@@ -954,7 +823,7 @@
 <div class="rail">
   <button id="prev" type="button" aria-label="Previous slide">&larr;</button>
   <button id="next" type="button" aria-label="Next slide">&rarr;</button>
-  <span class="count"><span id="cur">1</span> / <span id="total">19</span></span>
+  <span class="count"><span id="cur">1</span> / <span id="total">22</span></span>
   <span class="track"><span class="fill" id="fill"></span></span>
   <span id="clock" style="font-variant-numeric:tabular-nums">00:00</span>
   <button id="timer" type="button">start</button>
@@ -976,239 +845,208 @@
   }
   const C = {
     blue: "#4f6fc7", blueDim: "#e4e9f7", red: "#d93025", redDim: "#fae9e7",
-    green: "#1e7a3c", yellow: "#b8860b", line: "#dedbd3", line2: "#c4c0b6",
-    muted: "#7a756c", ink: "#14130f", surface: "#faf9f6", white: "#f4f2ee"
+    green: "#1e7a3c", line: "#dedbd3", line2: "#c4c0b6",
+    muted: "#7a756c", ink: "#14130f", card: "#faf9f6", paper: "#f4f2ee"
   };
 
-  /* ---------------------------------------------------- slide 4: trajectory */
+  /* ------------------------------------------------ slide 10: trajectory -- */
   (function traj() {
     const g = document.getElementById("traj");
     if (!g) return;
-    const steps = ["parse", "look up\norder", "check\npolicy", "call\nrefund",
-                   "verify", "draft\nreply", "tone", "send"];
-    const x0 = 10, bw = 56, gap = 8, y = 30;
+    const steps = ["read the\nphoto", "check the\norder", "check the\npolicy",
+                   "decide", "write the\nreply", "send"];
+    const x0 = 6, bw = 82, gap = 10, y = 16;
     steps.forEach((s, i) => {
       const x = x0 + i * (bw + gap);
-      g.appendChild(el("rect", { x, y, width: bw, height: 50, rx: 6,
+      g.appendChild(el("rect", { x, y, width: bw, height: 52, rx: 8,
         fill: C.blueDim, stroke: C.blue, "stroke-width": 1.2 }));
-      s.split("\n").forEach((ln, j) => {
-        g.appendChild(el("text", { x: x + bw / 2, y: y + (s.includes("\n") ? 22 : 30) + j * 13,
-          "text-anchor": "middle", class: "st", fill: C.ink }, ln));
-      });
-      g.appendChild(el("text", { x: x + bw / 2, y: y + 68, "text-anchor": "middle",
-        class: "st" }, "judge"));
-      g.appendChild(el("line", { x1: x + bw / 2, y1: y + 74, x2: x + bw / 2, y2: y + 92,
+      s.split("\n").forEach((ln, j) =>
+        g.appendChild(el("text", { x: x + bw / 2, y: y + 22 + j * 14,
+          "text-anchor": "middle", class: "st", fill: C.ink }, ln)));
+      g.appendChild(el("text", { x: x + bw / 2, y: y + 70, "text-anchor": "middle",
+        class: "st" }, "judged"));
+      g.appendChild(el("line", { x1: x + bw / 2, y1: y + 76, x2: x + bw / 2, y2: y + 92,
         stroke: C.line2, "stroke-width": 1.2 }));
-      if (i < steps.length - 1) {
-        g.appendChild(el("line", { x1: x + bw, y1: y + 25, x2: x + bw + gap, y2: y + 25,
+      if (i < steps.length - 1)
+        g.appendChild(el("line", { x1: x + bw, y1: y + 26, x2: x + bw + gap, y2: y + 26,
           stroke: C.line2, "stroke-width": 1.2 }));
-      }
     });
-    const totalW = steps.length * (bw + gap) - gap;
-    g.appendChild(el("line", { x1: x0 + bw / 2, y1: y + 92, x2: x0 + totalW - bw / 2, y2: y + 92,
+    const total = steps.length * (bw + gap) - gap;
+    g.appendChild(el("line", { x1: x0 + bw / 2, y1: y + 92, x2: x0 + total - bw / 2, y2: y + 92,
       stroke: C.line2, "stroke-width": 1.2 }));
-    g.appendChild(el("rect", { x: x0 + totalW / 2 - 70, y: y + 100, width: 140, height: 34, rx: 6,
-      fill: C.white, stroke: C.red, "stroke-width": 1.4 }));
-    g.appendChild(el("text", { x: x0 + totalW / 2, y: y + 121, "text-anchor": "middle",
-      class: "sv", fill: C.red }, "one final score"));
-    g.appendChild(el("text", { x: x0 + totalW + 14, y: y + 30, class: "st" }, "8 steps"));
+    g.appendChild(el("rect", { x: x0 + total / 2 - 78, y: y + 100, width: 156, height: 34, rx: 8,
+      fill: C.paper, stroke: C.red, "stroke-width": 1.4 }));
+    g.appendChild(el("text", { x: x0 + total / 2, y: y + 122, "text-anchor": "middle",
+      class: "sv", fill: C.red }, "one score: 8.4"));
   })();
 
-  /* ---------------------------------------------------- slide 6: compounding */
+  /* ------------------------------------------------ slide 13: compounding - */
   (function compound() {
     const g = document.getElementById("compound");
     if (!g) return;
     const f = 0.274;
-    const pts = [1, 2, 3, 4, 5, 6, 8, 10, 12].map(k => [k, Math.pow(1 - f, k)]);
-    const x0 = 54, x1 = 496, yb = 178, yt = 22;
-    const lx = k => x0 + ((k - 1) / 11) * (x1 - x0);
+    const pts = [1, 2, 3, 4, 5, 6, 8].map(k => [k, Math.pow(1 - f, k)]);
+    const x0 = 56, x1 = 520, yb = 124, yt = 16;
+    const lx = k => x0 + ((k - 1) / 7) * (x1 - x0);
     const ly = p => yb - p * (yb - yt);
-    [0, 0.25, 0.5, 0.75, 1].forEach(p => {
-      g.appendChild(el("line", { x1: x0, x2: x1, y1: ly(p), y2: ly(p),
-        stroke: C.line, "stroke-width": 1 }));
-      g.appendChild(el("text", { x: x0 - 8, y: ly(p) + 4, "text-anchor": "end", class: "st" },
+    [0, 0.5, 1].forEach(p => {
+      g.appendChild(el("line", { x1: x0, x2: x1, y1: ly(p), y2: ly(p), stroke: C.line, "stroke-width": 1 }));
+      g.appendChild(el("text", { x: x0 - 9, y: ly(p) + 4, "text-anchor": "end", class: "st" },
         Math.round(p * 100) + "%"));
     });
     g.appendChild(el("polyline", { points: pts.map(p => lx(p[0]) + "," + ly(p[1])).join(" "),
-      fill: "none", stroke: C.red, "stroke-width": 2.4, "stroke-linejoin": "round" }));
+      fill: "none", stroke: C.red, "stroke-width": 2.6, "stroke-linejoin": "round" }));
     pts.forEach(([k, p]) => {
-      const key = k === 1 || k === 8;
-      g.appendChild(el("circle", { cx: lx(k), cy: ly(p), r: key ? 5.5 : 3.4, fill: C.red,
-        stroke: C.white, "stroke-width": 1.5 }));
-      if (k % 2 === 1 || k === 8 || k === 12) {
-        g.appendChild(el("text", { x: lx(k), y: yb + 18, "text-anchor": "middle", class: "st" },
-          String(k)));
-      }
-      if (key) {
-        g.appendChild(el("text", { x: lx(k) + (k === 1 ? 12 : 0), y: ly(p) - 12,
-          "text-anchor": k === 1 ? "start" : "middle", class: "sv", fill: C.red },
-          (p * 100).toFixed(1) + "%"));
-      }
+      const key = k === 1 || k === 6;
+      g.appendChild(el("circle", { cx: lx(k), cy: ly(p), r: key ? 6 : 3.6, fill: C.red,
+        stroke: C.paper, "stroke-width": 1.6 }));
+      g.appendChild(el("text", { x: lx(k), y: yb + 18, "text-anchor": "middle", class: "st" },
+        k === 1 ? "1 step" : String(k)));
+      if (key) g.appendChild(el("text", { x: lx(k) + (k === 1 ? 14 : 0), y: ly(p) - 13,
+        "text-anchor": k === 1 ? "start" : "middle", class: "sv", fill: C.red },
+        Math.round(p * 100) + "%"));
     });
     g.appendChild(el("text", { x: (x0 + x1) / 2, y: yb + 38, "text-anchor": "middle", class: "st" },
-      "steps in the trajectory"));
+      "steps in the order"));
   })();
 
-  /* --------------------------------------------------------- bar helper ---- */
+  /* ------------------------------------------------------- bar helper ----- */
   function bars(id, opts) {
     const g = document.getElementById(id);
     if (!g) return;
-    const { data, max, base, top, w, fmt, labelSize = 13 } = opts;
-    const x0 = 118, right = w - 130;
+    const { data, max, base, top, w, fmt, labelSize = 14 } = opts;
+    const x0 = 150, right = w - 150;
     const rowH = (base - top) / data.length;
     data.forEach((d, i) => {
-      const y = top + i * rowH + rowH * 0.24;
-      const h = rowH * 0.4;
+      const y = top + i * rowH + rowH * 0.22;
+      const h = rowH * 0.42;
       const len = (d.v / max) * (right - x0);
-      g.appendChild(el("rect", { x: x0, y, width: Math.max(len, 2), height: h, rx: 3, fill: d.c }));
-      g.appendChild(el("text", { x: x0 - 10, y: y + h / 2 + 4, "text-anchor": "end", class: "st" }, d.k));
-      g.appendChild(el("text", { x: x0 + Math.max(len, 2) + 12, y: y + h / 2 + 5, class: "sv",
-        style: `font-size:${labelSize}px` }, fmt(d)));
+      g.appendChild(el("rect", { x: x0, y, width: Math.max(len, 2), height: h, rx: 4, fill: d.c }));
+      g.appendChild(el("text", { x: x0 - 12, y: y + h / 2 + 4, "text-anchor": "end", class: "st" }, d.k));
+      g.appendChild(el("text", { x: x0 + Math.max(len, 2) + 14, y: y + h / 2 + 5, class: "sv",
+        style: "font-size:" + labelSize + "px" }, fmt(d)));
     });
     g.appendChild(el("line", { x1: x0, x2: x0, y1: top, y2: base, stroke: C.line2, "stroke-width": 1 }));
   }
 
   bars("kappa", {
-    w: 520, max: 0.85, top: 26, base: 132,
+    w: 560, max: 0.85, top: 22, base: 128,
     data: [
-      { k: "raw agreement", v: 0.747, c: C.blue },
-      { k: "chance-corrected", v: 0.497, c: C.red }
+      { k: "what we reported", v: 0.747, c: C.blue },
+      { k: "after the subtraction", v: 0.497, c: C.red }
     ],
-    fmt: d => d.k === "chance-corrected" ? "κ = 0.50" : Math.round(d.v * 100) + "%"
+    fmt: d => d.v === 0.497 ? "0.50" : Math.round(d.v * 100) + "%", labelSize: 16
   });
-  // The majority baseline is a reference, not a series -- a dashed rule, so it
-  // never competes with the two bars for a colour.
   (function baseline() {
     const g = document.getElementById("kappa");
     if (!g) return;
-    const x0 = 118, right = 520 - 130;
+    const x0 = 150, right = 560 - 150;
     const x = x0 + (0.574 / 0.85) * (right - x0);
-    g.appendChild(el("line", { x1: x, x2: x, y1: 20, y2: 140,
+    g.appendChild(el("line", { x1: x, x2: x, y1: 16, y2: 134,
       stroke: C.muted, "stroke-width": 1.2, "stroke-dasharray": "4 4" }));
-    g.appendChild(el("text", { x: x0, y: 166, class: "st" },
-      "57% = always guessing the common answer"));
+    g.appendChild(el("text", { x: x0, y: 158, class: "st" },
+      "57% = a judge that just approves everything"));
   })();
 
-  /* ------------------------------------------------------ slide 8: strata -- */
+  /* --------------------------------------------------- slide 16: strata --- */
   (function strat() {
     const g = document.getElementById("strat");
     if (!g) return;
-    const labels = ["easiest\nquarter", "", "", "hardest\nquarter"];
+    const labels = ["clear\nphoto", "", "", "barely\nreadable"];
     const blanks = [0.013, 0.069, 0.238, 0.569];
     const corr = [0.74, 0.69, 0.59, 0.41];
-    const panelW = 240, x0 = 42, x1 = 300, yb = 178, yt = 34;
+    const yb = 168, yt = 40;
     function panel(ox, values, color, fmt, title, maxV) {
       g.appendChild(el("text", { x: ox, y: 20, class: "sv", fill: C.ink }, title));
-      const bw = 40, gap = 14;
+      const bw = 44, gap = 16;
       values.forEach((v, i) => {
         const x = ox + i * (bw + gap);
         const h = (v / maxV) * (yb - yt);
-        g.appendChild(el("rect", { x, y: yb - h, width: bw, height: Math.max(h, 2), rx: 3, fill: color }));
-        g.appendChild(el("text", { x: x + bw / 2, y: yb - h - 8, "text-anchor": "middle",
-          class: "sv" }, fmt(v)));
+        g.appendChild(el("rect", { x, y: yb - h, width: bw, height: Math.max(h, 2), rx: 4, fill: color }));
+        g.appendChild(el("text", { x: x + bw / 2, y: yb - h - 9, "text-anchor": "middle", class: "sv" }, fmt(v)));
       });
-      g.appendChild(el("line", { x1: ox - 6, x2: ox + values.length * (bw + gap) - gap + 6,
+      g.appendChild(el("line", { x1: ox - 7, x2: ox + values.length * (bw + gap) - gap + 7,
         y1: yb, y2: yb, stroke: C.line2, "stroke-width": 1 }));
       labels.forEach((l, i) => {
         if (!l) return;
         const x = ox + i * (bw + gap) + bw / 2;
         l.split("\n").forEach((ln, j) =>
-          g.appendChild(el("text", { x, y: yb + 18 + j * 13, "text-anchor": "middle", class: "st" }, ln)));
+          g.appendChild(el("text", { x, y: yb + 19 + j * 14, "text-anchor": "middle", class: "st" }, ln)));
       });
     }
-    panel(x0, blanks, C.red, v => Math.round(v * 100) + "%", "blank rate", 0.62);
-    panel(x1, corr, C.blue, v => v.toFixed(2), "agreement with humans", 0.85);
+    panel(44, blanks, C.red, v => Math.round(v * 100) + "%", "came back blank", 0.62);
+    panel(324, corr, C.blue, v => v.toFixed(2), "agreement with us", 0.85);
   })();
 
-  /* ------------------------------------------------------- slide 13: risk -- */
+  /* ---------------------------------------------------- slide 20: risk ---- */
   (function risk() {
     const g = document.getElementById("risk");
     if (!g) return;
     const pts = [[25, 0.616], [50, 0.680], [100, 0.739], [200, 0.843], [400, 0.920], [800, 0.976]];
-    const x0 = 56, x1 = 486, yb = 190, yt = 26;
+    const x0 = 58, x1 = 524, yb = 180, yt = 24;
     const lx = n => x0 + (Math.log(n / 25) / Math.log(800 / 25)) * (x1 - x0);
     const ly = v => yb - ((v - 0.5) / 0.52) * (yb - yt);
     [0.6, 0.8, 1.0].forEach(v => {
       g.appendChild(el("line", { x1: x0, x2: x1, y1: ly(v), y2: ly(v), stroke: C.line, "stroke-width": 1 }));
-      g.appendChild(el("text", { x: x0 - 8, y: ly(v) + 4, "text-anchor": "end", class: "st" },
+      g.appendChild(el("text", { x: x0 - 9, y: ly(v) + 4, "text-anchor": "end", class: "st" },
         Math.round(v * 100) + "%"));
     });
     g.appendChild(el("line", { x1: x0, x2: x1, y1: ly(0.9), y2: ly(0.9),
-      stroke: C.blue, "stroke-width": 1.2, "stroke-dasharray": "5 4" }));
-    g.appendChild(el("text", { x: x0 + 6, y: ly(0.9) - 8, class: "st", fill: C.blue },
-      "90% of calls correct"));
+      stroke: C.blue, "stroke-width": 1.3, "stroke-dasharray": "5 4" }));
+    g.appendChild(el("text", { x: x0 + 7, y: ly(0.9) - 9, class: "st", fill: C.blue },
+      "right nine times out of ten"));
     g.appendChild(el("polyline", { points: pts.map(p => lx(p[0]) + "," + ly(p[1])).join(" "),
-      fill: "none", stroke: C.red, "stroke-width": 2.4, "stroke-linejoin": "round" }));
+      fill: "none", stroke: C.red, "stroke-width": 2.6, "stroke-linejoin": "round" }));
     pts.forEach(([n, v]) => {
-      g.appendChild(el("circle", { cx: lx(n), cy: ly(v), r: 4.6, fill: C.red,
-        stroke: C.white, "stroke-width": 1.5 }));
-      g.appendChild(el("text", { x: lx(n), y: yb + 18, "text-anchor": "middle", class: "st" }, String(n)));
-      if (n === 25 || n === 100 || n === 800) {
-        g.appendChild(el("text", { x: lx(n), y: ly(v) - 12, "text-anchor": "middle", class: "sv" },
+      g.appendChild(el("circle", { cx: lx(n), cy: ly(v), r: n === 100 ? 6 : 4.4, fill: C.red,
+        stroke: C.paper, "stroke-width": 1.6 }));
+      g.appendChild(el("text", { x: lx(n), y: yb + 19, "text-anchor": "middle", class: "st" }, String(n)));
+      if (n === 25 || n === 100 || n === 800)
+        g.appendChild(el("text", { x: lx(n), y: ly(v) - 13, "text-anchor": "middle", class: "sv" },
           Math.round(v * 100) + "%"));
-      }
     });
-    g.appendChild(el("text", { x: (x0 + x1) / 2, y: yb + 38, "text-anchor": "middle", class: "st" },
-      "items per system"));
+    g.appendChild(el("text", { x: (x0 + x1) / 2, y: yb + 39, "text-anchor": "middle", class: "st" },
+      "orders per version"));
   })();
 
-  /* ------------------------------------------------------ slide 16: trust -- */
-  (function trust() {
-    const g = document.getElementById("trust");
-    if (!g) return;
-    const x0 = 66, y0 = 16, w = 372, h = 224;
-    const cells = [
-      { cx: 0, cy: 0, t: "HUMAN REVIEW", s: "not measuring; do not automate", c: C.red },
-      { cx: 1, cy: 0, t: "DUAL + AUDIT", s: "two judges, sampled human check", c: C.yellow },
-      { cx: 0, cy: 1, t: "SAMPLE & WATCH", s: "automate, monitor for drift", c: C.blue },
-      { cx: 1, cy: 1, t: "AUTOMATE", s: "report the spread anyway", c: C.green }
-    ];
-    cells.forEach(cell => {
-      const x = x0 + cell.cx * (w / 2), y = y0 + cell.cy * (h / 2);
-      g.appendChild(el("rect", { x: x + 3, y: y + 3, width: w / 2 - 6, height: h / 2 - 6, rx: 7,
-        fill: C.white, stroke: cell.c, "stroke-width": 1.4 }));
-      g.appendChild(el("text", { x: x + 14, y: y + 30, class: "sv", fill: cell.c }, cell.t));
-      let line = "", ln = 0;
-      cell.s.split(" ").forEach(word => {
-        if ((line + " " + word).length > 20) {
-          g.appendChild(el("text", { x: x + 14, y: y + 50 + ln * 14, class: "st" }, line));
-          line = word; ln += 1;
-        } else line = line ? line + " " + word : word;
-      });
-      g.appendChild(el("text", { x: x + 14, y: y + 50 + ln * 14, class: "st" }, line));
-    });
-    g.appendChild(el("text", { x: x0 + w / 2, y: y0 + h + 28, "text-anchor": "middle", class: "st" },
-      "measured judge reliability →"));
-    g.appendChild(el("text", { x: 0, y: 0, class: "st", "text-anchor": "middle",
-      transform: `translate(${x0 - 18}, ${y0 + h / 2}) rotate(-90)` }, "cost of a wrong accept →"));
-  })();
-
-  /* ======================= demo 1: run it three times ===================== */
+  /* ================== demo 1: score the same orders again ================= */
 
   const D1 = [
-    { id: "trace 014", runs: [6, 8, 5] },
-    { id: "trace 027", runs: [7, 7, 6] },
-    { id: "trace 033", runs: [5, 6, 6] },
-    { id: "trace 041", runs: [7, 8, 8] },
-    { id: "trace 056", runs: [6, 5, 7] },
-    { id: "trace 062", runs: [9, 8, 9] },
-    { id: "trace 078", runs: [7, 6, 7] },
-    { id: "trace 091", runs: [8, 8, 8] }
+    { id: "ORD-40021", dish: "laksa, spilled", runs: [6, 8, 5] },
+    { id: "ORD-40088", dish: "chicken rice, wrong item", runs: [7, 7, 6] },
+    { id: "ORD-40134", dish: "satay set, missing side", runs: [5, 6, 6] },
+    { id: "ORD-40205", dish: "prata, cold", runs: [7, 8, 8] },
+    { id: "ORD-40297", dish: "hokkien mee, crushed", runs: [6, 5, 7] },
+    { id: "ORD-40318", dish: "fish soup, wrong size", runs: [9, 8, 9] },
+    { id: "ORD-40402", dish: "nasi lemak, spilled", runs: [7, 6, 7] },
+    { id: "ORD-40476", dish: "wanton mee, missing side", runs: [8, 8, 8] }
   ];
   const THRESH = 7;
   let d1Passes = 0, d1Mode = "bug";
+
+  function orderRow(t) {
+    const row = document.createElement("div");
+    row.className = "row-i";
+    const id = document.createElement("span");
+    id.className = "rid";
+    const th = document.createElement("span");
+    th.className = "thumb";
+    id.appendChild(th);
+    id.appendChild(document.createTextNode(t.id));
+    const em = document.createElement("em");
+    em.textContent = t.dish;
+    id.appendChild(em);
+    row.appendChild(id);
+    return row;
+  }
 
   function d1Render() {
     const rows = document.getElementById("d1-rows");
     if (!rows) return;
     rows.innerHTML = "";
     D1.forEach(t => {
+      const row = orderRow(t);
       const shown = t.runs.slice(0, d1Passes);
-      const row = document.createElement("div");
-      row.className = "row-i";
-      const id = document.createElement("span");
-      id.className = "rid"; id.textContent = t.id;
-      row.appendChild(id);
       const cells = document.createElement("div");
       cells.className = "cells";
       for (let i = 0; i < 3; i++) {
@@ -1226,12 +1064,12 @@
       if (d1Passes >= 2) {
         const moved = new Set(shown.map(v => v >= THRESH)).size > 1;
         if (d1Mode === "bug") {
-          flag.textContent = moved ? "pass → fail" : "held";
+          flag.textContent = moved ? "verdict changed" : "held";
           flag.className = "flag " + (moved ? "bad" : "");
         } else {
           const lo = Math.min.apply(null, shown), hi = Math.max.apply(null, shown);
-          flag.textContent = "median " + shown.slice().sort((a, b) => a - b)[Math.floor(shown.length / 2)] +
-                             "  ±" + (hi - lo);
+          const sorted = shown.slice().sort((a, b) => a - b);
+          flag.textContent = sorted[Math.floor(shown.length / 2)] + " ±" + (hi - lo);
           flag.className = "flag good";
         }
       }
@@ -1244,48 +1082,45 @@
     if (bigEl) bigEl.style.color = d1Passes ? "" : "var(--line-2)";
     set("d1-passes", d1Passes + " / 3");
     if (d1Passes === 0) {
-      set("d1-big", "—"); set("d1-lbl", "press run to score the items");
-      set("d1-same", "—"); set("d1-flip", "—"); set("d1-spread", "—");
-    } else if (d1Passes === 1) {
-      const mean = D1.reduce((a, t) => a + t.runs[0], 0) / D1.length;
-      set("d1-big", mean.toFixed(1) + " / 10");
-      set("d1-lbl", d1Mode === "bug" ? "the score you would ship" : "one pass is not a measurement yet");
+      set("d1-big", "—"); set("d1-lbl", "press the button to score these orders");
       set("d1-same", "—"); set("d1-flip", "—"); set("d1-spread", "—");
     } else {
-      const same = D1.filter(t => new Set(t.runs.slice(0, d1Passes)).size === 1).length;
-      const flip = D1.filter(t => new Set(t.runs.slice(0, d1Passes).map(v => v >= THRESH)).size > 1).length;
-      const spread = D1.reduce((a, t) => {
-        const s = t.runs.slice(0, d1Passes);
-        return a + (Math.max.apply(null, s) - Math.min.apply(null, s));
-      }, 0) / D1.length;
-      const mean = D1.reduce((a, t) => a + t.runs.slice(0, d1Passes).reduce((x, y) => x + y, 0) / d1Passes, 0) / D1.length;
-      if (d1Mode === "bug") {
+      const mean = D1.reduce((a, t) =>
+        a + t.runs.slice(0, d1Passes).reduce((x, y) => x + y, 0) / d1Passes, 0) / D1.length;
+      if (d1Passes === 1) {
         set("d1-big", mean.toFixed(1) + " / 10");
-        set("d1-lbl", "reported as a single number");
+        set("d1-lbl", d1Mode === "bug" ? "the score you'd put in the report"
+                                       : "one pass isn't a measurement yet");
+        set("d1-same", "—"); set("d1-flip", "—"); set("d1-spread", "—");
       } else {
-        set("d1-big", mean.toFixed(1) + " ±" + spread.toFixed(1));
-        set("d1-lbl", "median with the spread across passes");
+        const same = D1.filter(t => new Set(t.runs.slice(0, d1Passes)).size === 1).length;
+        const flip = D1.filter(t => new Set(t.runs.slice(0, d1Passes).map(v => v >= THRESH)).size > 1).length;
+        const spread = D1.reduce((a, t) => {
+          const s = t.runs.slice(0, d1Passes);
+          return a + (Math.max.apply(null, s) - Math.min.apply(null, s));
+        }, 0) / D1.length;
+        set("d1-big", d1Mode === "bug" ? mean.toFixed(1) + " / 10"
+                                       : mean.toFixed(1) + " ±" + spread.toFixed(1));
+        set("d1-lbl", d1Mode === "bug" ? "still reported as one number"
+                                       : "middle score, with the spread");
+        set("d1-same", Math.round(same / D1.length * 100) + "%");
+        set("d1-flip", Math.round(flip / D1.length * 100) + "%");
+        set("d1-spread", spread.toFixed(2) + " pts");
       }
-      set("d1-same", Math.round(same / D1.length * 100) + "%");
-      set("d1-flip", Math.round(flip / D1.length * 100) + "%");
-      set("d1-spread", spread.toFixed(2) + " pts");
     }
     const st = document.getElementById("d1-state");
     if (st) {
       st.innerHTML = "";
       const chip = document.createElement("span");
-      if (d1Mode === "bug") {
-        chip.className = "state bug";
-        chip.textContent = d1Passes >= 2 ? "instability hidden" : "single pass reported";
-      } else {
-        chip.className = "state fix";
-        chip.textContent = "spread reported";
-      }
+      chip.className = d1Mode === "bug" ? "state bug" : "state fix";
+      chip.textContent = d1Mode === "bug"
+        ? (d1Passes >= 2 ? "the wobble is hidden" : "one pass, reported as fact")
+        : "spread reported";
       st.appendChild(chip);
     }
     const btn = document.getElementById("d1-run");
     if (btn) {
-      btn.textContent = d1Passes >= 3 ? "All 3 passes run" : "Run pass " + (d1Passes + 1);
+      btn.textContent = d1Passes >= 3 ? "scored 3 times" : (d1Passes === 0 ? "Score them" : "Score them again");
       btn.disabled = d1Passes >= 3;
       btn.style.opacity = d1Passes >= 3 ? ".45" : "1";
       btn.style.cursor = d1Passes >= 3 ? "default" : "pointer";
@@ -1294,17 +1129,17 @@
   const d1Btn = document.getElementById("d1-run");
   if (d1Btn) d1Btn.addEventListener("click", () => { if (d1Passes < 3) { d1Passes += 1; d1Render(); } });
 
-  /* ===================== demo 2: the rows that never came back ============ */
+  /* ===================== demo 2: the orders that vanished ================= */
 
   const D2 = [
-    { id: "trace 003", easy: true, score: 8, human: 8 },
-    { id: "trace 019", easy: true, score: 6, human: 6 },
-    { id: "trace 024", easy: false, score: null, human: 4, retry: 6 },
-    { id: "trace 037", easy: true, score: 9, human: 9 },
-    { id: "trace 048", easy: false, score: null, human: 3, retry: 7 },
-    { id: "trace 055", easy: true, score: 5, human: 5 },
-    { id: "trace 067", easy: false, score: null, human: 8, retry: 6 },
-    { id: "trace 072", easy: true, score: 7, human: 7 }
+    { id: "ORD-40033", dish: "clear photo", score: 8, human: 8 },
+    { id: "ORD-40119", dish: "clear photo", score: 6, human: 6 },
+    { id: "ORD-40240", dish: "barely readable", score: null, human: 4, retry: 6 },
+    { id: "ORD-40371", dish: "mostly clear", score: 9, human: 9 },
+    { id: "ORD-40488", dish: "barely readable", score: null, human: 3, retry: 7 },
+    { id: "ORD-40555", dish: "clear photo", score: 5, human: 5 },
+    { id: "ORD-40667", dish: "barely readable", score: null, human: 8, retry: 6 },
+    { id: "ORD-40724", dish: "mostly clear", score: 7, human: 7 }
   ];
   let d2Mode = "bug";
 
@@ -1313,11 +1148,7 @@
     if (!rows) return;
     rows.innerHTML = "";
     D2.forEach(t => {
-      const row = document.createElement("div");
-      row.className = "row-i";
-      const id = document.createElement("span");
-      id.className = "rid"; id.textContent = t.id;
-      row.appendChild(id);
+      const row = orderRow(t);
       const cells = document.createElement("div");
       cells.className = "cells";
       const judge = document.createElement("div");
@@ -1328,17 +1159,17 @@
       cells.appendChild(judge);
       const human = document.createElement("div");
       human.className = "cell";
-      human.style.background = "var(--surface-2)";
+      human.style.background = "var(--paper-2)";
       human.textContent = String(t.human);
       cells.appendChild(human);
       row.appendChild(cells);
       const flag = document.createElement("span");
       flag.className = "flag";
       if (t.score === null) {
-        flag.textContent = d2Mode === "bug" ? "dropped" : "retried";
+        flag.textContent = d2Mode === "bug" ? "dropped" : "asked again";
         flag.className = "flag " + (d2Mode === "bug" ? "bad" : "good");
       } else {
-        flag.textContent = "judge / human";
+        flag.textContent = "judge / us";
       }
       row.appendChild(flag);
       rows.appendChild(row);
@@ -1346,39 +1177,31 @@
     const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
     const dropped = D2.filter(t => t.score === null).length;
     if (d2Mode === "bug") {
-      set("d2-big", "0.74");
-      set("d2-lbl", "agreement with human raters");
-      set("d2-n", (D2.length - dropped) + " of " + D2.length);
-      set("d2-drop", dropped + "  (blank)");
-      set("d2-easy", "0.74");
-      set("d2-hard", "not measured");
+      set("d2-big", "0.74"); set("d2-n", (D2.length - dropped) + " of " + D2.length);
+      set("d2-drop", dropped + " blank"); set("d2-easy", "0.74"); set("d2-hard", "never measured");
     } else {
-      set("d2-big", "0.62");
-      set("d2-lbl", "agreement once the blanks are back");
-      set("d2-n", D2.length + " of " + D2.length);
-      set("d2-drop", "0");
-      set("d2-easy", "0.74");
-      set("d2-hard", "0.41");
+      set("d2-big", "0.62"); set("d2-n", D2.length + " of " + D2.length);
+      set("d2-drop", "0"); set("d2-easy", "0.74"); set("d2-hard", "0.41");
     }
     const st = document.getElementById("d2-state");
     if (st) {
       st.innerHTML = "";
       const chip = document.createElement("span");
       chip.className = d2Mode === "bug" ? "state bug" : "state fix";
-      chip.textContent = d2Mode === "bug" ? "hard rows silently dropped" : "blanks retried and kept";
+      chip.textContent = d2Mode === "bug" ? "hard orders quietly dropped" : "asked again, kept";
       st.appendChild(chip);
     }
   }
 
-  /* ================== demo 3: fluent, decisive, and wrong ================= */
+  /* ================= demo 3: confident, well written, wrong =============== */
 
   const D3 = [
-    { id: "trace 011", graded: 9, equivalent: false, caught: true },
-    { id: "trace 023", graded: 8, equivalent: false, caught: true },
-    { id: "trace 039", graded: 9, equivalent: false, caught: true },
-    { id: "trace 044", graded: 8, equivalent: false, caught: true },
-    { id: "trace 058", graded: 9, equivalent: false, caught: false },
-    { id: "trace 070", graded: 8, equivalent: false, caught: true }
+    { id: "ORD-40052", dish: "correct meal, refunded $22", graded: 9, caught: true },
+    { id: "ORD-40163", dish: "correct meal, refunded $14", graded: 8, caught: true },
+    { id: "ORD-40290", dish: "duplicate claim", graded: 9, caught: true },
+    { id: "ORD-40415", dish: "correct meal, refunded $19", graded: 8, caught: true },
+    { id: "ORD-40533", dish: "photo of a different order", graded: 9, caught: false },
+    { id: "ORD-40691", dish: "already refunded once", graded: 8, caught: true }
   ];
   let d3Mode = "bug";
 
@@ -1387,11 +1210,7 @@
     if (!rows) return;
     rows.innerHTML = "";
     D3.forEach(t => {
-      const row = document.createElement("div");
-      row.className = "row-i";
-      const id = document.createElement("span");
-      id.className = "rid"; id.textContent = t.id;
-      row.appendChild(id);
+      const row = orderRow(t);
       const cells = document.createElement("div");
       cells.className = "cells";
       const g1 = document.createElement("div");
@@ -1401,8 +1220,8 @@
       if (d3Mode === "fix") {
         const g2 = document.createElement("div");
         g2.className = "cell";
-        g2.style.width = "auto"; g2.style.padding = "0 10px";
-        g2.textContent = t.caught ? "not equivalent" : "equivalent";
+        g2.style.width = "auto"; g2.style.padding = "0 12px";
+        g2.textContent = t.caught ? "not right" : "right";
         if (t.caught) { g2.style.borderColor = C.green; g2.style.color = C.green; }
         cells.appendChild(g2);
       }
@@ -1410,41 +1229,34 @@
       const flag = document.createElement("span");
       const accepted = d3Mode === "bug" ? true : !t.caught;
       flag.className = "flag " + (accepted ? "bad" : "good");
-      flag.textContent = accepted ? "accepted" : "rejected";
+      flag.textContent = accepted ? "money sent" : "stopped";
       row.appendChild(flag);
       rows.appendChild(row);
     });
     const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
     const caught = D3.filter(t => t.caught).length;
     if (d3Mode === "bug") {
-      set("d3-big", "89%");
-      set("d3-lbl", "of wrong answers accepted");
-      set("d3-proto", "graded judge only");
-      set("d3-caught", "0 of 6");
-      set("d3-fr", "36%");
+      set("d3-big", "89%"); set("d3-proto", "one judge");
+      set("d3-caught", "0 of 6"); set("d3-fr", "36%");
     } else {
-      set("d3-big", "10%");
-      set("d3-lbl", "of wrong answers accepted");
-      set("d3-proto", "graded + binary check");
-      set("d3-caught", caught + " of 6");
-      set("d3-fr", "36%  (unchanged)");
+      set("d3-big", "10%"); set("d3-proto", "two judges");
+      set("d3-caught", caught + " of 6"); set("d3-fr", "36% — unchanged");
     }
     const st = document.getElementById("d3-state");
     if (st) {
       st.innerHTML = "";
       const chip = document.createElement("span");
       chip.className = d3Mode === "bug" ? "state bug" : "state fix";
-      chip.textContent = d3Mode === "bug" ? "style scored, meaning ignored" : "meaning checked separately";
+      chip.textContent = d3Mode === "bug" ? "graded on how it reads" : "checked on whether it's right";
       st.appendChild(chip);
     }
   }
 
-  /* ---------------------------------------------------------- the switches - */
   document.querySelectorAll(".switch button").forEach(btn => {
     btn.addEventListener("click", () => {
       const demo = btn.getAttribute("data-demo");
       const mode = btn.getAttribute("data-mode");
-      document.querySelectorAll(`.switch button[data-demo="${demo}"]`).forEach(b =>
+      document.querySelectorAll('.switch button[data-demo="' + demo + '"]').forEach(b =>
         b.setAttribute("aria-pressed", String(b === btn)));
       if (demo === "1") { d1Mode = mode; d1Render(); }
       if (demo === "2") { d2Mode = mode; d2Render(); }
@@ -1454,13 +1266,10 @@
 
   d1Render(); d2Render(); d3Render();
 
-  /* ------------------------------------------------------------- deck nav -- */
+  /* ------------------------------------------------------------- deck ----- */
 
   const slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
 
-  // Every slide gets the same chrome: a small mark at the top, a hairline
-  // footer with the link and the page number. Built here rather than repeated
-  // nineteen times in the markup.
   slides.forEach((slide, k) => {
     const head = document.createElement("div");
     head.className = "slide-head";
@@ -1473,7 +1282,7 @@
     });
     const word = document.createElement("div");
     word.className = "wordmark";
-    word.innerHTML = "Judge Audit<span>Su Myat Noe \u00b7 NII Tokyo</span>";
+    word.innerHTML = "Judge Audit<span>Su Myat Noe · NII Tokyo</span>";
     head.appendChild(glyph);
     head.appendChild(word);
     slide.insertBefore(head, slide.firstChild);
@@ -1484,6 +1293,7 @@
                      '<span class="pg">' + (k === 0 ? "" : String(k + 1).padStart(2, "0")) + '</span>';
     slide.appendChild(foot);
   });
+
   const notes = slides.map(s => s.querySelector(".notes"));
   const panel = document.getElementById("notesPanel");
   const fill = document.getElementById("fill");
