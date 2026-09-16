@@ -1,0 +1,1352 @@
+<title>Is Your Judge Lying?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Roboto+Mono:wght@400;500&display=swap">
+
+<style>
+  /* Light by intent: a white presentation ground, Google's brand hues used
+     semantically. Blue = the mechanism, red = the failure, green = the fix,
+     yellow = the caveat. Red and green are 5.0 CVD delta-E apart, which is
+     below the safe floor, so every state that uses them ALSO carries a word
+     and a glyph -- colour never carries meaning alone here. Charts use only
+     blue + red + grey, a pair that passes every check on white. */
+  :root {
+    --white:    #ffffff;
+    --surface:  #f8f9fa;
+    --surface-2:#f1f3f4;
+    --line:     #dadce0;
+    --line-2:   #bdc1c6;
+    --ink:      #202124;
+    --ink-2:    #3c4043;
+    --muted:    #5f6368;
+
+    --blue:     #1a73e8;
+    --blue-dim: #e8f0fe;
+    --red:      #d93025;
+    --red-dim:  #fce8e6;
+    --green:    #1e8e3e;
+    --green-dim:#e6f4ea;
+    --yellow:   #f9ab00;
+    --yellow-dim:#fef7e0;
+
+    --display: "DM Sans", "Google Sans", Roboto, Arial, sans-serif;
+    --mono: "Roboto Mono", ui-monospace, Menlo, monospace;
+    --pad: clamp(20px, 4.2vw, 76px);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0; min-height: 100svh; display: flex; flex-direction: column;
+    background: var(--white); color: var(--ink);
+    font-family: var(--display); font-size: 16px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .deck { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .slide {
+    display: none; flex: 1; min-height: 0; overflow-y: auto;
+    padding: calc(var(--pad) * .7) var(--pad);
+    animation: in .22s ease-out both;
+  }
+  .slide.on { display: flex; flex-direction: column; }
+  @keyframes in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .slide { animation: none; } }
+
+  .inner {
+    width: 100%; max-width: 1140px; margin: 0 auto; flex: 1;
+    display: flex; flex-direction: column; justify-content: center;
+    gap: clamp(12px, 1.9vh, 28px);
+  }
+
+  h1, h2 {
+    font-family: var(--display); font-weight: 700; margin: 0;
+    letter-spacing: -.022em; line-height: 1.04; text-wrap: balance; color: var(--ink);
+  }
+  h1 { font-size: clamp(34px, 5.8vw, 70px); }
+  h2 { font-size: clamp(27px, 4.1vw, 52px); }
+  h3 { font-family: var(--display); font-weight: 700; margin: 0;
+       font-size: clamp(15px, 1.7vw, 20px); letter-spacing: -.008em; }
+
+  .eyebrow {
+    font-family: var(--mono); font-weight: 500; font-size: clamp(10.5px, 1vw, 12.5px);
+    letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+    display: flex; align-items: center; gap: 10px; margin: 0;
+  }
+  .eyebrow b { color: var(--blue); font-weight: 500; }
+  .eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+  p { margin: 0; max-width: 62ch; }
+  .lead { font-size: clamp(15px, 1.75vw, 21px); color: var(--ink-2); line-height: 1.45; }
+  .small { font-size: clamp(12.5px, 1.25vw, 15px); color: var(--ink-2); }
+  .plain { font-size: clamp(12.5px, 1.2vw, 14.5px); color: var(--muted); }
+  strong { font-weight: 700; color: var(--ink); }
+  .cite { font-family: var(--mono); font-size: clamp(10px, .98vw, 11.5px);
+          color: var(--muted); max-width: none; line-height: 1.6; }
+
+  .cols { display: grid; gap: clamp(14px, 2.2vw, 32px); grid-template-columns: 1fr 1fr; align-items: start; }
+  .c3 { grid-template-columns: repeat(3, 1fr); }
+  .c4 { grid-template-columns: repeat(4, 1fr); }
+  .wide { grid-template-columns: 1.35fr 1fr; }
+  .narrow { grid-template-columns: 1fr 1.35fr; }
+  @media (max-width: 900px) { .cols, .c3, .c4, .wide, .narrow { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--white); border: 1px solid var(--line); border-radius: 8px;
+    padding: clamp(13px, 1.6vw, 22px); display: flex; flex-direction: column; gap: 9px;
+  }
+  .card.fill { background: var(--surface); border-color: transparent; }
+  .card .tag {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--blue); font-weight: 500;
+  }
+  .card.red .tag { color: var(--red); }
+  .card.green .tag { color: var(--green); }
+
+  .stats { display: flex; flex-wrap: wrap; gap: clamp(16px, 3vw, 48px); }
+  .stat { display: flex; flex-direction: column; gap: 2px; }
+  .stat b { font-family: var(--display); font-weight: 700; line-height: 1;
+            font-size: clamp(36px, 6vw, 74px); letter-spacing: -.035em;
+            font-variant-numeric: tabular-nums; }
+  .stat b.blue { color: var(--blue); }
+  .stat b.red { color: var(--red); }
+  .stat b.green { color: var(--green); }
+  .stat span { font-size: clamp(12px, 1.2vw, 14px); color: var(--muted); max-width: 26ch; }
+
+  .note { border-left: 4px solid var(--blue); background: var(--blue-dim);
+          padding: 12px 18px; border-radius: 0 6px 6px 0;
+          font-size: clamp(13px, 1.45vw, 16.5px); color: var(--ink); }
+  .note.red { border-left-color: var(--red); background: var(--red-dim); }
+  .note.green { border-left-color: var(--green); background: var(--green-dim); }
+  .note.warn { border-left-color: var(--yellow); background: var(--yellow-dim); }
+
+  ul.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  ul.list li { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start;
+               font-size: clamp(13px, 1.42vw, 17px); color: var(--ink-2); }
+  ul.list li::before {
+    content: attr(data-n); font-family: var(--mono); font-size: .76em; color: var(--blue);
+    background: var(--blue-dim); padding: 2px 7px; border-radius: 10px; margin-top: 3px;
+    font-weight: 500;
+  }
+  ul.list li b { color: var(--ink); }
+
+  table { border-collapse: collapse; width: 100%; font-size: clamp(12px, 1.28vw, 15px); }
+  th, td { text-align: left; padding: 9px 14px 9px 0; border-bottom: 1px solid var(--line); }
+  th { font-family: var(--mono); font-size: .78em; text-transform: uppercase;
+       letter-spacing: .07em; color: var(--muted); font-weight: 500; }
+  td.n, th.n { text-align: right; font-family: var(--mono);
+               font-variant-numeric: tabular-nums; width: 92px; padding-right: 22px; }
+  .tw { overflow-x: auto; }
+
+  code { font-family: var(--mono); font-size: .9em; color: var(--blue);
+         background: var(--blue-dim); padding: 1px 5px; border-radius: 3px; }
+
+  figure { margin: 0; display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+  figcaption { font-size: clamp(11.5px, 1.18vw, 13.5px); color: var(--muted); }
+  svg { max-width: 100%; height: auto; display: block; }
+  .st { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+  .sv { font-family: var(--mono); font-size: 13px; font-weight: 500; fill: var(--ink); }
+
+  /* ---- state chips: word + glyph first, colour second (CVD-safe) -------- */
+  .state {
+    display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .09em; text-transform: uppercase; font-weight: 500;
+    padding: 5px 11px; border-radius: 4px;
+  }
+  .state.bug { color: var(--red); background: var(--red-dim); border: 1px solid var(--red); }
+  .state.bug::before { content: "\2715"; font-size: 12px; }
+  .state.fix { color: var(--green); background: var(--green-dim); border: 1px solid var(--green); }
+  .state.fix::before { content: "\2713"; font-size: 13px; }
+  .state.warn { color: #8a6100; background: var(--yellow-dim); border: 1px solid var(--yellow); }
+  .state.warn::before { content: "\26A0"; font-size: 12px; }
+
+  /* ---- the buggy/fixed switch ------------------------------------------ */
+  .switch { display: inline-flex; border: 1px solid var(--line-2); border-radius: 6px; overflow: hidden; }
+  .switch button {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .09em; text-transform: uppercase;
+    padding: 8px 16px; border: none; background: var(--white); color: var(--muted);
+    cursor: pointer; font-weight: 500; display: inline-flex; align-items: center; gap: 7px;
+  }
+  .switch button + button { border-left: 1px solid var(--line-2); }
+  .switch button[aria-pressed="true"][data-mode="bug"] { background: var(--red); color: #fff; }
+  .switch button[aria-pressed="true"][data-mode="fix"] { background: var(--green); color: #fff; }
+  .switch button[data-mode="bug"]::before { content: "\2715"; }
+  .switch button[data-mode="fix"]::before { content: "\2713"; }
+
+  .demo { display: grid; grid-template-columns: 1.45fr 1fr; gap: clamp(14px, 2vw, 26px); align-items: start; }
+  @media (max-width: 960px) { .demo { grid-template-columns: 1fr; } }
+  .demo-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+  .rows { display: grid; gap: 6px; }
+  .row-i {
+    display: grid; grid-template-columns: 96px 1fr auto; gap: 12px; align-items: center;
+    background: var(--surface); border-radius: 6px; padding: 8px 12px;
+    font-family: var(--mono); font-size: 12.5px;
+  }
+  .row-i .rid { color: var(--muted); }
+  .cells { display: flex; gap: 6px; }
+  .cell {
+    width: 34px; height: 30px; display: grid; place-items: center; border-radius: 4px;
+    background: var(--white); border: 1px solid var(--line); color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .cell.moved { border-color: var(--red); color: var(--red); font-weight: 500; }
+  .cell.blank { border-style: dashed; color: var(--line-2); }
+  .cell.recovered { border-color: var(--blue); color: var(--blue); }
+  .flag { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em;
+          text-transform: uppercase; color: var(--muted); }
+  .flag.bad { color: var(--red); }
+  .flag.good { color: var(--green); }
+
+  .readout { display: flex; flex-direction: column; gap: 10px; }
+  .readout .big {
+    font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4.4vw, 52px);
+    line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums;
+  }
+  .readout .lbl { font-size: 13px; color: var(--muted); }
+  .kv { display: flex; justify-content: space-between; gap: 10px; font-family: var(--mono);
+        font-size: 12.5px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+  .kv b { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 500; }
+
+  .banner {
+    font-family: var(--mono); font-size: 11px; line-height: 1.55; letter-spacing: .02em;
+    border: 1px solid var(--yellow); background: var(--yellow-dim); color: #6b4c00;
+    padding: 8px 12px; border-radius: 5px;
+  }
+
+  .rail {
+    display: flex; align-items: center; gap: 14px; padding: 10px var(--pad);
+    border-top: 1px solid var(--line); font-family: var(--mono); font-size: 11.5px;
+    color: var(--muted); background: var(--white);
+  }
+  .rail .track { flex: 1; height: 2px; background: var(--line); position: relative; }
+  .rail .fill { position: absolute; inset: 0 auto 0 0; background: var(--blue); width: 0; }
+  .rail button { font: inherit; color: var(--muted); background: var(--white);
+                 border: 1px solid var(--line); border-radius: 4px; padding: 3px 9px; cursor: pointer; }
+  .rail button:hover { color: var(--blue); border-color: var(--blue); }
+  .rail .count { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+  .notes {
+    display: none; border-top: 1px solid var(--line); background: var(--surface);
+    padding: 13px var(--pad) 18px; font-size: 13.5px; color: var(--ink-2);
+    max-height: 34vh; overflow-y: auto;
+  }
+  body.notes-on .notes { display: block; }
+  .notes b { color: var(--ink); }
+  .notes .t { font-family: var(--mono); color: var(--blue); font-size: 11px;
+              letter-spacing: .1em; text-transform: uppercase; display: block; margin-bottom: 5px; }
+
+  @media print {
+    .slide { display: flex !important; page-break-after: always; min-height: 100vh; }
+    .rail { display: none; }
+  }
+</style>
+
+<div class="deck" id="deck">
+
+<!-- 1 --------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Beyond the Vibes</b> &nbsp;//&nbsp; Learn Series Session 03 &nbsp;//&nbsp; SGInnovate</p>
+    <h1>Your LLM Judge Is<br>Probably Lying to You</h1>
+    <p class="lead">We hand agent evaluation to a model, get a number back, and ship on it.
+      This is the story of pulling one thread on a number like that &mdash; and what was
+      underneath.</p>
+    <div class="stats" style="margin-top:8px">
+      <div class="stat"><b class="blue">4</b><span>clues</span></div>
+      <div class="stat"><b class="blue">3</b><span>demos you can run on this page</span></div>
+      <div class="stat"><b class="blue">1</b><span>checklist to take home</span></div>
+    </div>
+    <p class="cite">Su Myat Noe &nbsp;&middot;&nbsp; AI Research Scientist, National Institute of Informatics, Tokyo &nbsp;&middot;&nbsp; 28 September 2026</p>
+  </div>
+  <div class="notes">
+    <span class="t">0:00 &ndash; 1:30</span>
+    <b>Open as a detective story, not a lecture.</b> "I'm going to show you a number, and then
+    we're going to find out together whether it's real."<br>
+    Set the contract with a mixed room: every statistic gets explained in plain English the
+    first time it appears, and there are three things on this page you can press.
+  </div>
+</section>
+
+<!-- 2 --------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>The case</b> &nbsp;//&nbsp; exhibit A</p>
+    <h2>This landed in my inbox.<br>Ship it?</h2>
+    <div class="cols wide">
+      <div class="card fill">
+        <div class="tag">Agent evaluation report &mdash; v2.3 release candidate</div>
+        <div class="tw">
+          <table>
+            <tbody>
+              <tr><td>Task success, judged</td><td class="n">8.4 / 10</td></tr>
+              <tr><td>Judge agreement with humans</td><td class="n">85%</td></tr>
+              <tr><td>Trajectories evaluated</td><td class="n">120</td></tr>
+              <tr><td>Beats v2.2 by</td><td class="n">+0.4</td></tr>
+              <tr><td>Cost of the eval run</td><td class="n">$11</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="plain">Every number here is the kind of number a real eval report contains.
+          Nothing is obviously wrong with it.</p>
+      </div>
+      <div style="display:grid;gap:14px">
+        <p class="lead">Nobody in this room would reject this. It has a sample size, a human
+          agreement figure, and a delta over the previous version.</p>
+        <div class="note">I believed a report like this. Then I ran the evaluation a second
+          time, and got a different answer.</div>
+        <p class="small">Four clues, and none of them require you to distrust the model under
+          test. The suspect is the measurement.</p>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">1:30 &ndash; 3:30</span>
+    Ask for hands: "who would ship on this?" Most hands go up. That is the hook &mdash; you want
+    the room invested in the number before you take it apart.<br>
+    Say the personal line plainly: <b>you believed a report like this.</b> The talk is not
+    "researchers found", it is "I got caught".
+  </div>
+</section>
+
+<!-- 3 --------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Plain english</b> &nbsp;//&nbsp; for everyone in the room</p>
+    <h2>What an LLM judge<br>actually is</h2>
+    <div class="c3 cols">
+      <div class="card"><div class="tag">The idea</div>
+        <p class="small">You cannot pay humans to read a million model outputs. So you ask
+          another model: <em>&ldquo;here is a task, here is what the agent did &mdash; score it
+          0 to 10.&rdquo;</em></p></div>
+      <div class="card"><div class="tag">Why it caught on</div>
+        <p class="small">It is cheap, instant, scales past any annotation budget, and it
+          agrees with human raters often enough to look trustworthy.</p></div>
+      <div class="card"><div class="tag">What it quietly became</div>
+        <p class="small">A <strong>measuring instrument</strong> &mdash; and one nobody asked
+          for a datasheet: no repeatability spec, no dead zones, no calibration date.</p></div>
+    </div>
+    <div class="note">You would not accept a kitchen scale with no repeatability spec. We
+      accept it from a judge because the answer arrives in fluent English with a decimal point
+      in it.</div>
+  </div>
+  <div class="notes">
+    <span class="t">3:30 &ndash; 5:00</span>
+    <b>The slide that keeps the non-researchers with you.</b> Do not skip it even if the room
+    looks technical &mdash; the kitchen-scale line is what everyone quotes back afterwards.<br>
+    "Instrument" is the metaphor the whole talk runs on. Plant it here.
+  </div>
+</section>
+
+<!-- 4 --------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Why agents</b> &nbsp;//&nbsp; make all of this worse</p>
+    <h2>One agent run is<br>not one judgement</h2>
+    <div class="cols wide">
+      <figure>
+        <svg viewBox="0 0 560 180" role="img" aria-label="A trajectory of eight agent steps, each one judged separately, feeding a single final score.">
+          <g id="traj"></g>
+        </svg>
+        <figcaption>A support agent: look up the order, check the policy, call the refund tool,
+          write the reply. Each step is judged. The scores roll up into one number.</figcaption>
+      </figure>
+      <div style="display:grid;gap:13px">
+        <p class="lead">A single-turn answer gets one judgement. An agent trajectory gets one
+          per step &mdash; and the errors do not cancel, they compound.</p>
+        <div class="note warn">Hold that thought. In four minutes we will put a real number on
+          how fast it compounds, and it is worse than anyone guesses.</div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">5:00 &ndash; 6:30</span>
+    This slide is why the talk is about agents and not just chatbots &mdash; and it sets up the
+    compounding arithmetic on slide 6, which is the single most surprising number you have.<br>
+    Do not reveal it yet. Promise it.
+  </div>
+</section>
+
+<!-- 5 --------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue 01</b> &nbsp;//&nbsp; run it twice</p>
+    <div class="demo-head">
+      <h2 style="flex:1;min-width:280px">Same input.<br>Different answer.</h2>
+      <div class="switch" role="group" aria-label="demo mode">
+        <button type="button" data-demo="1" data-mode="bug" aria-pressed="true">Buggy</button>
+        <button type="button" data-demo="1" data-mode="fix" aria-pressed="false">Fixed</button>
+      </div>
+    </div>
+    <div class="demo">
+      <div style="display:grid;gap:10px">
+        <div class="rows" id="d1-rows"></div>
+        <button class="rail-btn" id="d1-run" type="button"
+          style="font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;padding:9px 16px;border:none;border-radius:6px;background:var(--blue);color:#fff;cursor:pointer;justify-self:start">Run pass 1</button>
+      </div>
+      <div class="readout">
+        <div>
+          <div class="big" id="d1-big">&mdash;</div>
+          <div class="lbl" id="d1-lbl">press run to score the items</div>
+        </div>
+        <div class="kv"><span>passes run</span><b id="d1-passes">0 / 3</b></div>
+        <div class="kv"><span>identical every pass</span><b id="d1-same">&mdash;</b></div>
+        <div class="kv"><span>pass/fail verdict moved</span><b id="d1-flip">&mdash;</b></div>
+        <div class="kv"><span>mean spread</span><b id="d1-spread">&mdash;</b></div>
+        <div id="d1-state"></div>
+      </div>
+    </div>
+    <p class="cite">Synthetic trace, calibrated to published effect sizes &mdash; your own numbers come from three real passes of your harness. Haldar et al., EMNLP 2025 (arXiv:2510.27106) report all-three-runs-identical at 61.3% for one judge.</p>
+  </div>
+  <div class="notes">
+    <span class="t">6:30 &ndash; 9:00 &middot; demo 1</span>
+    Press <b>Run pass 1</b> and say "this is the number you would ship". Press pass 2 and let
+    the room watch scores move. Press pass 3.<br>
+    Then flip to <b>Fixed</b>: same data, but three passes reported as median plus spread, and
+    the unstable items surfaced instead of hidden. The fix is not a better judge, it is an
+    honest report.
+  </div>
+</section>
+
+<!-- 6 --------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue 01</b> &nbsp;//&nbsp; what it means for an agent</p>
+    <h2>A 27% flip rate<br>does not stay at 27%</h2>
+    <div class="cols wide">
+      <figure>
+        <svg viewBox="0 0 540 230" role="img" aria-label="Probability a whole trajectory is judged the same way twice falls from 73 percent at one step to 8 percent at eight steps, and 2 percent at twelve steps.">
+          <g id="compound"></g>
+        </svg>
+        <figcaption>Chance the <em>whole trajectory</em> gets the same verdict twice, if each
+          step is judged independently at the observed flip rate.</figcaption>
+      </figure>
+      <div style="display:grid;gap:14px">
+        <div class="stats">
+          <div class="stat"><b class="red">7.7%</b><span>of 8-step trajectories judged the same way twice</span></div>
+        </div>
+        <div class="note red">Re-run your agent eval tomorrow and most trajectories change
+          verdict &mdash; without a single line of the agent changing.</div>
+        <p class="plain">Assumes steps are judged independently, which is the common setup.
+          Correlated steps soften it; they do not remove it.</p>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">9:00 &ndash; 10:30</span>
+    <b>The number that makes the room go quiet.</b> Say the arithmetic out loud: 73% for one
+    step, and eight steps of that is 8%.<br>
+    Be honest about the independence assumption in the same breath &mdash; it costs you nothing
+    and it is the first thing a careful listener will test.
+  </div>
+</section>
+
+<!-- 7 --------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue 02</b> &nbsp;//&nbsp; the rows that never came back</p>
+    <div class="demo-head">
+      <h2 style="flex:1;min-width:280px">The judge went quiet<br>on the hard ones</h2>
+      <div class="switch" role="group" aria-label="demo mode">
+        <button type="button" data-demo="2" data-mode="bug" aria-pressed="true">Buggy</button>
+        <button type="button" data-demo="2" data-mode="fix" aria-pressed="false">Fixed</button>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="rows" id="d2-rows"></div>
+      <div class="readout">
+        <div>
+          <div class="big" id="d2-big">&mdash;</div>
+          <div class="lbl" id="d2-lbl">agreement with human raters</div>
+        </div>
+        <div class="kv"><span>rows scored</span><b id="d2-n">&mdash;</b></div>
+        <div class="kv"><span>rows dropped</span><b id="d2-drop">&mdash;</b></div>
+        <div class="kv"><span>on the easy quarter</span><b id="d2-easy">&mdash;</b></div>
+        <div class="kv"><span>on the hard quarter</span><b id="d2-hard">&mdash;</b></div>
+        <div id="d2-state"></div>
+      </div>
+    </div>
+    <p class="cite">Blank, unparseable, refused, timed out. If your harness has a try/except that skips them, this is already happening in your pipeline.</p>
+  </div>
+  <div class="notes">
+    <span class="t">10:30 &ndash; 13:00 &middot; demo 2</span>
+    In <b>Buggy</b>, the empty rows are simply gone and the correlation reads 0.74 &mdash; a
+    number anyone would publish.<br>
+    Flip to <b>Fixed</b>: retry the blanks, put them back, and agreement falls. Say the
+    uncomfortable part clearly &mdash; <b>the honest number is the worse number</b>, and the
+    good one was an artefact of what the judge refused to answer.
+  </div>
+</section>
+
+<!-- 8 --------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue 02</b> &nbsp;//&nbsp; what it means</p>
+    <h2>Your agreement lives<br>on the easy items</h2>
+    <div class="cols wide">
+      <figure>
+        <svg viewBox="0 0 540 250" role="img" aria-label="Two panels: blank rate rises from 1 percent on the clearest quarter to 57 percent on the most ambiguous; agreement with humans falls from 0.74 to 0.41 across the same quarters.">
+          <g id="strat"></g>
+        </svg>
+        <figcaption>Same judge, same prompt, same eval set &mdash; split into four groups by how
+          ambiguous the item is.</figcaption>
+      </figure>
+      <div style="display:grid;gap:13px">
+        <p class="lead">The judge agrees with you on the cases you never needed a judge for.
+          On the contested quarter it is guessing &mdash; and that is also the quarter where it
+          returned nothing more than half the time.</p>
+        <div class="note red">A single pooled correlation averages two different populations
+          and describes neither.</div>
+        <p class="plain"><strong>Correlation</strong> here just means: when humans rate
+          something highly, does the judge too? 1.0 is perfect agreement, 0 is a coin flip.</p>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">13:00 &ndash; 14:30</span>
+    The plain-English gloss on correlation is there for the mixed room &mdash; read it out, do
+    not assume.<br>
+    Practical ask: stratify by <i>anything</i> you have &mdash; task type, trajectory length,
+    tool count, annotator confidence.
+  </div>
+</section>
+
+<!-- 9 --------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue 03</b> &nbsp;//&nbsp; agreement that isn't</p>
+    <h2>&ldquo;It agrees with humans<br>75% of the time&rdquo;</h2>
+    <div class="cols wide">
+      <figure>
+        <svg viewBox="0 0 520 190" role="img" aria-label="Raw agreement 75 percent, always-guess-the-common-answer baseline 57 percent, and chance-corrected agreement kappa 0.50.">
+          <g id="kappa"></g>
+        </svg>
+        <figcaption>Three ways of describing how well the same judge did on the same items.</figcaption>
+      </figure>
+      <div style="display:grid;gap:13px">
+        <p class="lead">Most eval items are easy, and both raters say &ldquo;fine&rdquo; a lot.
+          Raw agreement counts all of that as skill.</p>
+        <div class="note red">A judge that says <strong>pass</strong> to everything scores 80%
+          agreement on a set that is 80% passes &mdash; and knows nothing.</div>
+        <p class="plain"><strong>Kappa</strong> is agreement after you subtract the credit for
+          lucky guesses. Same data, honest scale.</p>
+      </div>
+    </div>
+    <p class="cite">Chance-correcting deflates raw agreement by 33&ndash;41 points of kappa across 21 judges and ~541,000 judgments &mdash; Norman et al. 2026 (arXiv:2606.19544)</p>
+  </div>
+  <div class="notes">
+    <span class="t">14:30 &ndash; 16:00</span>
+    Shortest clue. The always-says-pass judge is the whole argument; everything else is
+    bookkeeping.<br>
+    Practical ask: never ship a raw agreement percentage without the baseline next to it.
+  </div>
+</section>
+
+<!-- 10 -------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Clue 04</b> &nbsp;//&nbsp; it likes the confident wrong answer</p>
+    <div class="demo-head">
+      <h2 style="flex:1;min-width:280px">Fluent, decisive,<br>and wrong</h2>
+      <div class="switch" role="group" aria-label="demo mode">
+        <button type="button" data-demo="3" data-mode="bug" aria-pressed="true">Buggy</button>
+        <button type="button" data-demo="3" data-mode="fix" aria-pressed="false">Fixed</button>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="rows" id="d3-rows"></div>
+      <div class="readout">
+        <div>
+          <div class="big" id="d3-big">&mdash;</div>
+          <div class="lbl" id="d3-lbl">of wrong answers accepted</div>
+        </div>
+        <div class="kv"><span>protocol</span><b id="d3-proto">graded judge</b></div>
+        <div class="kv"><span>wrong answers shown</span><b id="d3-n">6</b></div>
+        <div class="kv"><span>caught</span><b id="d3-caught">&mdash;</b></div>
+        <div class="kv"><span>false rejects</span><b id="d3-fr">&mdash;</b></div>
+        <div id="d3-state"></div>
+      </div>
+    </div>
+    <p class="cite">Graded judge alone vs graded + a strict binary &ldquo;does this mean the same thing as the reference?&rdquo; check &mdash; dual-judge protocol, Noe, Nguyen, Zin &amp; Satoh 2026</p>
+  </div>
+  <div class="notes">
+    <span class="t">16:00 &ndash; 18:30 &middot; demo 3</span>
+    In <b>Buggy</b>, the graded judge scores every one of these 8 or 9 out of 10 &mdash; they are
+    well written. Flip to <b>Fixed</b> and a second judge, asked a different question, catches
+    almost all of them.<br>
+    The detail that makes it a free lunch: <b>false rejects do not go up.</b> Say it, because a
+    careful listener checks for exactly that.
+  </div>
+</section>
+
+<!-- 11 -------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>The reveal</b> &nbsp;//&nbsp; who did it</p>
+    <h2>The judge isn't broken.<br>It was never calibrated.</h2>
+    <div class="cols">
+      <div class="card red"><div class="tag">What we assumed</div>
+        <p class="small">A judge is a cheaper human rater. If it agrees with humans often
+          enough, the number it produces means what a human's number would mean.</p></div>
+      <div class="card green"><div class="tag">What it actually is</div>
+        <p class="small">An instrument with noise, dead zones and drift &mdash; none of which
+          are reported, because we never asked. Every clue tonight was a missing spec on a
+          datasheet nobody wrote.</p></div>
+    </div>
+    <div class="note">Not one of these four clues required the agent under test to be bad.
+      The suspect was the measurement the whole time.</div>
+  </div>
+  <div class="notes">
+    <span class="t">18:30 &ndash; 19:30</span>
+    <b>The turn of the detective story.</b> Slow down. This is where the audience gets the
+    satisfaction of the reveal, and it is the line they will repeat to their team.
+  </div>
+</section>
+
+<!-- 12 -------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Fix 01</b> &nbsp;//&nbsp; for agent evaluation specifically</p>
+    <h2>Deterministic first.<br>Judge last.</h2>
+    <div class="cols wide">
+      <div class="tw">
+        <table>
+          <thead><tr><th>Question about a trajectory</th><th>Who should answer it</th></tr></thead>
+          <tbody>
+            <tr><td>Did it call the tools in the required order?</td><td><span class="state fix">Assertion</span></td></tr>
+            <tr><td>Did the arguments match the schema?</td><td><span class="state fix">Assertion</span></td></tr>
+            <tr><td>Did it refuse the ineligible refund?</td><td><span class="state fix">Assertion</span></td></tr>
+            <tr><td>Did it recover from the 503?</td><td><span class="state fix">Assertion</span></td></tr>
+            <tr><td>Was the final reply actually helpful?</td><td><span class="state warn">Judge</span></td></tr>
+            <tr><td>Was the tone right for an upset customer?</td><td><span class="state warn">Judge</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display:grid;gap:13px">
+        <p class="lead">Most of what we ask a judge about an agent is not a matter of taste.
+          It is a fact about the trace, and a plain assertion answers it perfectly, for free,
+          every time.</p>
+        <div class="note green">Use the judge only where a deterministic check genuinely cannot
+          reach &mdash; and then audit it, because that is exactly where you cannot see it fail.</div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">19:30 &ndash; 21:00</span>
+    This slide complements the other talk in the session rather than repeating it: deterministic
+    invariants are the right tool for most agent questions, and the judge is a last resort.<br>
+    Practical framing: every row you move from "judge" to "assertion" is a row that stops
+    being noisy and starts being free.
+  </div>
+</section>
+
+<!-- 13 -------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Fix 02</b> &nbsp;//&nbsp; the number your team can act on</p>
+    <h2>&ldquo;r = 0.7&rdquo; is not a decision</h2>
+    <div class="cols wide">
+      <figure>
+        <svg viewBox="0 0 520 240" role="img" aria-label="Probability the judge picks the better system rises from 62 percent at 25 items to 98 percent at 800 items, crossing 90 percent around 400 items.">
+          <g id="risk"></g>
+        </svg>
+        <figcaption>Resampling the eval set. The two systems genuinely differ; the judge has to find it.</figcaption>
+      </figure>
+      <div style="display:grid;gap:13px">
+        <div class="stats">
+          <div class="stat"><b class="red">74%</b><span>correct calls at 100 items per system</span></div>
+          <div class="stat"><b class="blue">400</b><span>items needed to reach 90%</span></div>
+        </div>
+        <div class="note">Nobody can act on a correlation. Everybody can act on &ldquo;at our
+          eval size, this judge names the wrong winner one time in four&rdquo;.</div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">21:00 &ndash; 22:30</span>
+    The slide that changes behaviour in an industry room, because it is phrased as a shipping
+    decision rather than a statistic. Convert judge noise into P(wrong call) at <i>their</i>
+    eval size.
+  </div>
+</section>
+
+<!-- 14 -------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Fix 03</b> &nbsp;//&nbsp; clue by clue</p>
+    <h2>What to do about<br>each one</h2>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:18%">Clue</th><th>What goes wrong</th><th>What fixes it</th></tr></thead>
+        <tbody>
+          <tr><td><span class="state bug">01</span></td>
+              <td>One pass, and the score is partly a coin flip</td>
+              <td><strong>Run three passes.</strong> Report the median and the spread.</td></tr>
+          <tr><td><span class="state bug">02</span></td>
+              <td>Unparseable rows dropped, inflating agreement</td>
+              <td><strong>Retry blanks and keep them.</strong> Publish the recovered number.</td></tr>
+          <tr><td><span class="state bug">03</span></td>
+              <td>Raw agreement counts lucky guesses as skill</td>
+              <td><strong>Chance-correct</strong>, and print the baseline beside it.</td></tr>
+          <tr><td><span class="state bug">04</span></td>
+              <td>A graded score rewards style over correctness</td>
+              <td><strong>Add a binary check</strong> against a reference; require both.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note green">Every fix is one more API call and one more column in a CSV. None
+      of them needs a new model, a fine-tune, or an annotation budget.</div>
+  </div>
+  <div class="notes">
+    <span class="t">22:30 &ndash; 24:30</span>
+    Walk the right-hand column only &mdash; they have already seen the middle one demonstrated.
+    Land the closing line about cost: this is the slide that makes the whole thing feel doable
+    on Monday.
+  </div>
+</section>
+
+<!-- 15 -------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Take home</b> &nbsp;//&nbsp; the checklist</p>
+    <h2>Seven things,<br>none expensive</h2>
+    <ul class="list">
+      <li data-n="1"><b>Run the judge three times</b> on the same inputs, and report the spread.</li>
+      <li data-n="2"><b>Count the blanks, then retry them</b> &mdash; and publish the number you get afterwards.</li>
+      <li data-n="3"><b>Stratify by difficulty</b> before you believe any single correlation.</li>
+      <li data-n="4"><b>Chance-correct</b> every agreement figure, with the baseline printed beside it.</li>
+      <li data-n="5"><b>Pair the graded judge with a binary check</b> against a human reference.</li>
+      <li data-n="6"><b>Move every checkable question to an assertion</b> and leave the judge only what needs taste.</li>
+      <li data-n="7"><b>Report decision risk, not correlation</b> &mdash; and re-audit when the vendor ships a new version.</li>
+    </ul>
+  </div>
+  <div class="notes">
+    <span class="t">24:30 &ndash; 26:30</span>
+    One line each, fast. Tell them it is one page in the repo so nobody photographs it in a
+    panic.
+  </div>
+</section>
+
+<!-- 16 -------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Take home</b> &nbsp;//&nbsp; when to trust it at all</p>
+    <h2>Automate, or ask<br>a human?</h2>
+    <div class="cols wide">
+      <figure>
+        <svg viewBox="0 0 460 300" role="img" aria-label="A two-by-two grid. Horizontal axis is measured judge reliability, vertical axis is the cost of a wrong accept. Top left: human review. Top right: dual judge plus sampled audit. Bottom left: sample and monitor. Bottom right: automate.">
+          <g id="trust"></g>
+        </svg>
+        <figcaption>Both axes are measured: reliability from the audit, cost from your own incident history.</figcaption>
+      </figure>
+      <div style="display:grid;gap:12px">
+        <p class="small"><strong>Measured reliability</strong> means the numbers from tonight
+          &mdash; spread across passes and chance-corrected agreement &mdash; not a vendor
+          benchmark and not a figure from a blog post.</p>
+        <p class="small"><strong>Cost of a wrong accept</strong> is yours to know. A tone check
+          and a refund approval are not in the same quadrant, even behind the same API.</p>
+        <div class="note warn">The quadrant nobody staffs is <strong>top right</strong>: high
+          stakes, and the judge looks reliable. That is where a single number is most expensive.</div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">26:30 &ndash; 28:30</span>
+    The most photographed slide of the talk. Be explicit that the framework is only as good as
+    the measurement &mdash; the first twenty minutes exist to put a defensible number on the
+    horizontal axis.
+  </div>
+</section>
+
+<!-- 17 -------------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow"><b>Close</b></p>
+    <h2>Judges aren't useless.<br>Unaudited judges are.</h2>
+    <p class="lead">None of this makes the judge honest. It makes the judge's dishonesty
+      <strong>measurable</strong> &mdash; which is all we ask of any other instrument we publish
+      with.</p>
+    <div class="c3 cols">
+      <div class="card"><div class="tag">Run it yourself</div>
+        <p class="small"><code>judge-audit</code><br>
+          <span class="plain">Six audits, a stage demo menu, and this deck.</span></p></div>
+      <div class="card"><div class="tag">The checklist</div>
+        <p class="small"><code>docs/checklist.md</code><br>
+          <span class="plain">One printable page.</span></p></div>
+      <div class="card"><div class="tag">Find me</div>
+        <p class="small">Su Myat Noe &mdash; NII, Tokyo<br>
+          <span class="plain">sumyatnoe@nii.ac.jp &middot; github.com/ImSuMyatNoe</span></p></div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">28:30 &ndash; 30:00</span>
+    Land the two sentences and stop talking. Leave this up for questions.<br>
+    <b>Expect:</b> (1) "Doesn't a bigger judge fix it?" &mdash; capability does not buy you low
+    self-preference bias, and a judge no better than the system it grades has a hard ceiling.
+    (2) "Is this synthetic?" &mdash; the demo trace is, calibrated to published effect sizes;
+    say so before they ask. (3) "What about agent-specific judges?" &mdash; same audit, more
+    steps to compound.
+  </div>
+</section>
+
+</div>
+
+<div class="rail">
+  <button id="prev" type="button" aria-label="Previous slide">&larr;</button>
+  <button id="next" type="button" aria-label="Next slide">&rarr;</button>
+  <span class="count"><span id="cur">1</span> / <span id="total">17</span></span>
+  <span class="track"><span class="fill" id="fill"></span></span>
+  <span id="clock" style="font-variant-numeric:tabular-nums">00:00</span>
+  <button id="timer" type="button">start</button>
+  <button id="notesBtn" type="button">notes <span style="opacity:.55">N</span></button>
+</div>
+
+<div class="notes" id="notesPanel" hidden></div>
+
+<script>
+(function () {
+  "use strict";
+
+  const NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) {
+    const n = document.createElementNS(NS, tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+  const C = {
+    blue: "#1a73e8", blueDim: "#e8f0fe", red: "#d93025", redDim: "#fce8e6",
+    green: "#1e8e3e", yellow: "#f9ab00", line: "#dadce0", line2: "#bdc1c6",
+    muted: "#5f6368", ink: "#202124", surface: "#f8f9fa", white: "#ffffff"
+  };
+
+  /* ---------------------------------------------------- slide 4: trajectory */
+  (function traj() {
+    const g = document.getElementById("traj");
+    if (!g) return;
+    const steps = ["parse", "look up\norder", "check\npolicy", "call\nrefund",
+                   "verify", "draft\nreply", "tone", "send"];
+    const x0 = 10, bw = 56, gap = 8, y = 30;
+    steps.forEach((s, i) => {
+      const x = x0 + i * (bw + gap);
+      g.appendChild(el("rect", { x, y, width: bw, height: 50, rx: 6,
+        fill: C.blueDim, stroke: C.blue, "stroke-width": 1.2 }));
+      s.split("\n").forEach((ln, j) => {
+        g.appendChild(el("text", { x: x + bw / 2, y: y + (s.includes("\n") ? 22 : 30) + j * 13,
+          "text-anchor": "middle", class: "st", fill: C.ink }, ln));
+      });
+      g.appendChild(el("text", { x: x + bw / 2, y: y + 68, "text-anchor": "middle",
+        class: "st" }, "judge"));
+      g.appendChild(el("line", { x1: x + bw / 2, y1: y + 74, x2: x + bw / 2, y2: y + 92,
+        stroke: C.line2, "stroke-width": 1.2 }));
+      if (i < steps.length - 1) {
+        g.appendChild(el("line", { x1: x + bw, y1: y + 25, x2: x + bw + gap, y2: y + 25,
+          stroke: C.line2, "stroke-width": 1.2 }));
+      }
+    });
+    const totalW = steps.length * (bw + gap) - gap;
+    g.appendChild(el("line", { x1: x0 + bw / 2, y1: y + 92, x2: x0 + totalW - bw / 2, y2: y + 92,
+      stroke: C.line2, "stroke-width": 1.2 }));
+    g.appendChild(el("rect", { x: x0 + totalW / 2 - 70, y: y + 100, width: 140, height: 34, rx: 6,
+      fill: C.white, stroke: C.red, "stroke-width": 1.4 }));
+    g.appendChild(el("text", { x: x0 + totalW / 2, y: y + 121, "text-anchor": "middle",
+      class: "sv", fill: C.red }, "one final score"));
+    g.appendChild(el("text", { x: x0 + totalW + 14, y: y + 30, class: "st" }, "8 steps"));
+  })();
+
+  /* ---------------------------------------------------- slide 6: compounding */
+  (function compound() {
+    const g = document.getElementById("compound");
+    if (!g) return;
+    const f = 0.274;
+    const pts = [1, 2, 3, 4, 5, 6, 8, 10, 12].map(k => [k, Math.pow(1 - f, k)]);
+    const x0 = 54, x1 = 496, yb = 178, yt = 22;
+    const lx = k => x0 + ((k - 1) / 11) * (x1 - x0);
+    const ly = p => yb - p * (yb - yt);
+    [0, 0.25, 0.5, 0.75, 1].forEach(p => {
+      g.appendChild(el("line", { x1: x0, x2: x1, y1: ly(p), y2: ly(p),
+        stroke: C.line, "stroke-width": 1 }));
+      g.appendChild(el("text", { x: x0 - 8, y: ly(p) + 4, "text-anchor": "end", class: "st" },
+        Math.round(p * 100) + "%"));
+    });
+    g.appendChild(el("polyline", { points: pts.map(p => lx(p[0]) + "," + ly(p[1])).join(" "),
+      fill: "none", stroke: C.red, "stroke-width": 2.4, "stroke-linejoin": "round" }));
+    pts.forEach(([k, p]) => {
+      const key = k === 1 || k === 8;
+      g.appendChild(el("circle", { cx: lx(k), cy: ly(p), r: key ? 5.5 : 3.4, fill: C.red,
+        stroke: C.white, "stroke-width": 1.5 }));
+      if (k % 2 === 1 || k === 8 || k === 12) {
+        g.appendChild(el("text", { x: lx(k), y: yb + 18, "text-anchor": "middle", class: "st" },
+          String(k)));
+      }
+      if (key) {
+        g.appendChild(el("text", { x: lx(k) + (k === 1 ? 12 : 0), y: ly(p) - 12,
+          "text-anchor": k === 1 ? "start" : "middle", class: "sv", fill: C.red },
+          (p * 100).toFixed(1) + "%"));
+      }
+    });
+    g.appendChild(el("text", { x: (x0 + x1) / 2, y: yb + 38, "text-anchor": "middle", class: "st" },
+      "steps in the trajectory"));
+  })();
+
+  /* --------------------------------------------------------- bar helper ---- */
+  function bars(id, opts) {
+    const g = document.getElementById(id);
+    if (!g) return;
+    const { data, max, base, top, w, fmt, labelSize = 13 } = opts;
+    const x0 = 118, right = w - 130;
+    const rowH = (base - top) / data.length;
+    data.forEach((d, i) => {
+      const y = top + i * rowH + rowH * 0.24;
+      const h = rowH * 0.4;
+      const len = (d.v / max) * (right - x0);
+      g.appendChild(el("rect", { x: x0, y, width: Math.max(len, 2), height: h, rx: 3, fill: d.c }));
+      g.appendChild(el("text", { x: x0 - 10, y: y + h / 2 + 4, "text-anchor": "end", class: "st" }, d.k));
+      g.appendChild(el("text", { x: x0 + Math.max(len, 2) + 12, y: y + h / 2 + 5, class: "sv",
+        style: `font-size:${labelSize}px` }, fmt(d)));
+    });
+    g.appendChild(el("line", { x1: x0, x2: x0, y1: top, y2: base, stroke: C.line2, "stroke-width": 1 }));
+  }
+
+  bars("kappa", {
+    w: 520, max: 0.85, top: 20, base: 150,
+    data: [
+      { k: "raw agreement", v: 0.747, c: C.blue },
+      { k: "guess-the-common", v: 0.574, c: C.line2 },
+      { k: "chance-corrected", v: 0.497, c: C.red }
+    ],
+    fmt: d => d.k === "chance-corrected" ? "κ = 0.50" : Math.round(d.v * 100) + "%"
+  });
+
+  /* ------------------------------------------------------ slide 8: strata -- */
+  (function strat() {
+    const g = document.getElementById("strat");
+    if (!g) return;
+    const labels = ["easiest\nquarter", "", "", "hardest\nquarter"];
+    const blanks = [0.013, 0.069, 0.238, 0.569];
+    const corr = [0.74, 0.69, 0.59, 0.41];
+    const panelW = 240, x0 = 42, x1 = 300, yb = 178, yt = 34;
+    function panel(ox, values, color, fmt, title, maxV) {
+      g.appendChild(el("text", { x: ox, y: 20, class: "sv", fill: C.ink }, title));
+      const bw = 40, gap = 14;
+      values.forEach((v, i) => {
+        const x = ox + i * (bw + gap);
+        const h = (v / maxV) * (yb - yt);
+        g.appendChild(el("rect", { x, y: yb - h, width: bw, height: Math.max(h, 2), rx: 3, fill: color }));
+        g.appendChild(el("text", { x: x + bw / 2, y: yb - h - 8, "text-anchor": "middle",
+          class: "sv" }, fmt(v)));
+      });
+      g.appendChild(el("line", { x1: ox - 6, x2: ox + values.length * (bw + gap) - gap + 6,
+        y1: yb, y2: yb, stroke: C.line2, "stroke-width": 1 }));
+      labels.forEach((l, i) => {
+        if (!l) return;
+        const x = ox + i * (bw + gap) + bw / 2;
+        l.split("\n").forEach((ln, j) =>
+          g.appendChild(el("text", { x, y: yb + 18 + j * 13, "text-anchor": "middle", class: "st" }, ln)));
+      });
+    }
+    panel(x0, blanks, C.red, v => Math.round(v * 100) + "%", "blank rate", 0.62);
+    panel(x1, corr, C.blue, v => v.toFixed(2), "agreement with humans", 0.85);
+  })();
+
+  /* ------------------------------------------------------- slide 13: risk -- */
+  (function risk() {
+    const g = document.getElementById("risk");
+    if (!g) return;
+    const pts = [[25, 0.616], [50, 0.680], [100, 0.739], [200, 0.843], [400, 0.920], [800, 0.976]];
+    const x0 = 56, x1 = 486, yb = 190, yt = 26;
+    const lx = n => x0 + (Math.log(n / 25) / Math.log(800 / 25)) * (x1 - x0);
+    const ly = v => yb - ((v - 0.5) / 0.52) * (yb - yt);
+    [0.6, 0.8, 1.0].forEach(v => {
+      g.appendChild(el("line", { x1: x0, x2: x1, y1: ly(v), y2: ly(v), stroke: C.line, "stroke-width": 1 }));
+      g.appendChild(el("text", { x: x0 - 8, y: ly(v) + 4, "text-anchor": "end", class: "st" },
+        Math.round(v * 100) + "%"));
+    });
+    g.appendChild(el("line", { x1: x0, x2: x1, y1: ly(0.9), y2: ly(0.9),
+      stroke: C.blue, "stroke-width": 1.2, "stroke-dasharray": "5 4" }));
+    g.appendChild(el("text", { x: x0 + 6, y: ly(0.9) - 8, class: "st", fill: C.blue },
+      "90% of calls correct"));
+    g.appendChild(el("polyline", { points: pts.map(p => lx(p[0]) + "," + ly(p[1])).join(" "),
+      fill: "none", stroke: C.red, "stroke-width": 2.4, "stroke-linejoin": "round" }));
+    pts.forEach(([n, v]) => {
+      g.appendChild(el("circle", { cx: lx(n), cy: ly(v), r: 4.6, fill: C.red,
+        stroke: C.white, "stroke-width": 1.5 }));
+      g.appendChild(el("text", { x: lx(n), y: yb + 18, "text-anchor": "middle", class: "st" }, String(n)));
+      if (n === 25 || n === 100 || n === 800) {
+        g.appendChild(el("text", { x: lx(n), y: ly(v) - 12, "text-anchor": "middle", class: "sv" },
+          Math.round(v * 100) + "%"));
+      }
+    });
+    g.appendChild(el("text", { x: (x0 + x1) / 2, y: yb + 38, "text-anchor": "middle", class: "st" },
+      "items per system"));
+  })();
+
+  /* ------------------------------------------------------ slide 16: trust -- */
+  (function trust() {
+    const g = document.getElementById("trust");
+    if (!g) return;
+    const x0 = 66, y0 = 16, w = 372, h = 224;
+    const cells = [
+      { cx: 0, cy: 0, t: "HUMAN REVIEW", s: "not measuring; do not automate", c: C.red },
+      { cx: 1, cy: 0, t: "DUAL + AUDIT", s: "two judges, sampled human check", c: C.yellow },
+      { cx: 0, cy: 1, t: "SAMPLE & WATCH", s: "automate, monitor for drift", c: C.blue },
+      { cx: 1, cy: 1, t: "AUTOMATE", s: "report the spread anyway", c: C.green }
+    ];
+    cells.forEach(cell => {
+      const x = x0 + cell.cx * (w / 2), y = y0 + cell.cy * (h / 2);
+      g.appendChild(el("rect", { x: x + 3, y: y + 3, width: w / 2 - 6, height: h / 2 - 6, rx: 7,
+        fill: C.white, stroke: cell.c, "stroke-width": 1.4 }));
+      g.appendChild(el("text", { x: x + 14, y: y + 30, class: "sv", fill: cell.c }, cell.t));
+      let line = "", ln = 0;
+      cell.s.split(" ").forEach(word => {
+        if ((line + " " + word).length > 20) {
+          g.appendChild(el("text", { x: x + 14, y: y + 50 + ln * 14, class: "st" }, line));
+          line = word; ln += 1;
+        } else line = line ? line + " " + word : word;
+      });
+      g.appendChild(el("text", { x: x + 14, y: y + 50 + ln * 14, class: "st" }, line));
+    });
+    g.appendChild(el("text", { x: x0 + w / 2, y: y0 + h + 28, "text-anchor": "middle", class: "st" },
+      "measured judge reliability →"));
+    g.appendChild(el("text", { x: 0, y: 0, class: "st", "text-anchor": "middle",
+      transform: `translate(${x0 - 18}, ${y0 + h / 2}) rotate(-90)` }, "cost of a wrong accept →"));
+  })();
+
+  /* ======================= demo 1: run it three times ===================== */
+
+  const D1 = [
+    { id: "trace 014", runs: [6, 8, 5] },
+    { id: "trace 027", runs: [7, 7, 6] },
+    { id: "trace 033", runs: [5, 6, 6] },
+    { id: "trace 041", runs: [7, 8, 8] },
+    { id: "trace 056", runs: [6, 5, 7] },
+    { id: "trace 062", runs: [9, 8, 9] },
+    { id: "trace 078", runs: [7, 6, 7] },
+    { id: "trace 091", runs: [8, 8, 8] }
+  ];
+  const THRESH = 7;
+  let d1Passes = 0, d1Mode = "bug";
+
+  function d1Render() {
+    const rows = document.getElementById("d1-rows");
+    if (!rows) return;
+    rows.innerHTML = "";
+    D1.forEach(t => {
+      const shown = t.runs.slice(0, d1Passes);
+      const row = document.createElement("div");
+      row.className = "row-i";
+      const id = document.createElement("span");
+      id.className = "rid"; id.textContent = t.id;
+      row.appendChild(id);
+      const cells = document.createElement("div");
+      cells.className = "cells";
+      for (let i = 0; i < 3; i++) {
+        const c = document.createElement("div");
+        c.className = "cell";
+        if (i < d1Passes) {
+          c.textContent = String(t.runs[i]);
+          if (i > 0 && t.runs[i] !== t.runs[0]) c.classList.add("moved");
+        } else { c.textContent = "·"; c.classList.add("blank"); }
+        cells.appendChild(c);
+      }
+      row.appendChild(cells);
+      const flag = document.createElement("span");
+      flag.className = "flag";
+      if (d1Passes >= 2) {
+        const moved = new Set(shown.map(v => v >= THRESH)).size > 1;
+        if (d1Mode === "bug") {
+          flag.textContent = moved ? "pass → fail" : "held";
+          flag.className = "flag " + (moved ? "bad" : "");
+        } else {
+          const lo = Math.min.apply(null, shown), hi = Math.max.apply(null, shown);
+          flag.textContent = "median " + shown.slice().sort((a, b) => a - b)[Math.floor(shown.length / 2)] +
+                             "  ±" + (hi - lo);
+          flag.className = "flag good";
+        }
+      }
+      row.appendChild(flag);
+      rows.appendChild(row);
+    });
+
+    const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+    const bigEl = document.getElementById("d1-big");
+    if (bigEl) bigEl.style.color = d1Passes ? "" : "var(--line-2)";
+    set("d1-passes", d1Passes + " / 3");
+    if (d1Passes === 0) {
+      set("d1-big", "—"); set("d1-lbl", "press run to score the items");
+      set("d1-same", "—"); set("d1-flip", "—"); set("d1-spread", "—");
+    } else if (d1Passes === 1) {
+      const mean = D1.reduce((a, t) => a + t.runs[0], 0) / D1.length;
+      set("d1-big", mean.toFixed(1) + " / 10");
+      set("d1-lbl", d1Mode === "bug" ? "the score you would ship" : "one pass is not a measurement yet");
+      set("d1-same", "—"); set("d1-flip", "—"); set("d1-spread", "—");
+    } else {
+      const same = D1.filter(t => new Set(t.runs.slice(0, d1Passes)).size === 1).length;
+      const flip = D1.filter(t => new Set(t.runs.slice(0, d1Passes).map(v => v >= THRESH)).size > 1).length;
+      const spread = D1.reduce((a, t) => {
+        const s = t.runs.slice(0, d1Passes);
+        return a + (Math.max.apply(null, s) - Math.min.apply(null, s));
+      }, 0) / D1.length;
+      const mean = D1.reduce((a, t) => a + t.runs.slice(0, d1Passes).reduce((x, y) => x + y, 0) / d1Passes, 0) / D1.length;
+      if (d1Mode === "bug") {
+        set("d1-big", mean.toFixed(1) + " / 10");
+        set("d1-lbl", "reported as a single number");
+      } else {
+        set("d1-big", mean.toFixed(1) + " ±" + spread.toFixed(1));
+        set("d1-lbl", "median with the spread across passes");
+      }
+      set("d1-same", Math.round(same / D1.length * 100) + "%");
+      set("d1-flip", Math.round(flip / D1.length * 100) + "%");
+      set("d1-spread", spread.toFixed(2) + " pts");
+    }
+    const st = document.getElementById("d1-state");
+    if (st) {
+      st.innerHTML = "";
+      const chip = document.createElement("span");
+      if (d1Mode === "bug") {
+        chip.className = "state bug";
+        chip.textContent = d1Passes >= 2 ? "instability hidden" : "single pass reported";
+      } else {
+        chip.className = "state fix";
+        chip.textContent = "spread reported";
+      }
+      st.appendChild(chip);
+    }
+    const btn = document.getElementById("d1-run");
+    if (btn) {
+      btn.textContent = d1Passes >= 3 ? "All 3 passes run" : "Run pass " + (d1Passes + 1);
+      btn.disabled = d1Passes >= 3;
+      btn.style.opacity = d1Passes >= 3 ? ".45" : "1";
+      btn.style.cursor = d1Passes >= 3 ? "default" : "pointer";
+    }
+  }
+  const d1Btn = document.getElementById("d1-run");
+  if (d1Btn) d1Btn.addEventListener("click", () => { if (d1Passes < 3) { d1Passes += 1; d1Render(); } });
+
+  /* ===================== demo 2: the rows that never came back ============ */
+
+  const D2 = [
+    { id: "trace 003", easy: true, score: 8, human: 8 },
+    { id: "trace 019", easy: true, score: 6, human: 6 },
+    { id: "trace 024", easy: false, score: null, human: 4, retry: 6 },
+    { id: "trace 037", easy: true, score: 9, human: 9 },
+    { id: "trace 048", easy: false, score: null, human: 3, retry: 7 },
+    { id: "trace 055", easy: true, score: 5, human: 5 },
+    { id: "trace 067", easy: false, score: null, human: 8, retry: 6 },
+    { id: "trace 072", easy: true, score: 7, human: 7 }
+  ];
+  let d2Mode = "bug";
+
+  function d2Render() {
+    const rows = document.getElementById("d2-rows");
+    if (!rows) return;
+    rows.innerHTML = "";
+    D2.forEach(t => {
+      const row = document.createElement("div");
+      row.className = "row-i";
+      const id = document.createElement("span");
+      id.className = "rid"; id.textContent = t.id;
+      row.appendChild(id);
+      const cells = document.createElement("div");
+      cells.className = "cells";
+      const judge = document.createElement("div");
+      judge.className = "cell";
+      if (t.score !== null) judge.textContent = String(t.score);
+      else if (d2Mode === "fix") { judge.textContent = String(t.retry); judge.classList.add("recovered"); }
+      else { judge.textContent = "·"; judge.classList.add("blank"); }
+      cells.appendChild(judge);
+      const human = document.createElement("div");
+      human.className = "cell";
+      human.style.background = "var(--surface-2)";
+      human.textContent = String(t.human);
+      cells.appendChild(human);
+      row.appendChild(cells);
+      const flag = document.createElement("span");
+      flag.className = "flag";
+      if (t.score === null) {
+        flag.textContent = d2Mode === "bug" ? "dropped" : "retried";
+        flag.className = "flag " + (d2Mode === "bug" ? "bad" : "good");
+      } else {
+        flag.textContent = "judge / human";
+      }
+      row.appendChild(flag);
+      rows.appendChild(row);
+    });
+    const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+    const dropped = D2.filter(t => t.score === null).length;
+    if (d2Mode === "bug") {
+      set("d2-big", "0.74");
+      set("d2-lbl", "agreement with human raters");
+      set("d2-n", (D2.length - dropped) + " of " + D2.length);
+      set("d2-drop", dropped + "  (blank)");
+      set("d2-easy", "0.74");
+      set("d2-hard", "not measured");
+    } else {
+      set("d2-big", "0.62");
+      set("d2-lbl", "agreement once the blanks are back");
+      set("d2-n", D2.length + " of " + D2.length);
+      set("d2-drop", "0");
+      set("d2-easy", "0.74");
+      set("d2-hard", "0.41");
+    }
+    const st = document.getElementById("d2-state");
+    if (st) {
+      st.innerHTML = "";
+      const chip = document.createElement("span");
+      chip.className = d2Mode === "bug" ? "state bug" : "state fix";
+      chip.textContent = d2Mode === "bug" ? "hard rows silently dropped" : "blanks retried and kept";
+      st.appendChild(chip);
+    }
+  }
+
+  /* ================== demo 3: fluent, decisive, and wrong ================= */
+
+  const D3 = [
+    { id: "trace 011", graded: 9, equivalent: false, caught: true },
+    { id: "trace 023", graded: 8, equivalent: false, caught: true },
+    { id: "trace 039", graded: 9, equivalent: false, caught: true },
+    { id: "trace 044", graded: 8, equivalent: false, caught: true },
+    { id: "trace 058", graded: 9, equivalent: false, caught: false },
+    { id: "trace 070", graded: 8, equivalent: false, caught: true }
+  ];
+  let d3Mode = "bug";
+
+  function d3Render() {
+    const rows = document.getElementById("d3-rows");
+    if (!rows) return;
+    rows.innerHTML = "";
+    D3.forEach(t => {
+      const row = document.createElement("div");
+      row.className = "row-i";
+      const id = document.createElement("span");
+      id.className = "rid"; id.textContent = t.id;
+      row.appendChild(id);
+      const cells = document.createElement("div");
+      cells.className = "cells";
+      const g1 = document.createElement("div");
+      g1.className = "cell";
+      g1.textContent = String(t.graded);
+      cells.appendChild(g1);
+      if (d3Mode === "fix") {
+        const g2 = document.createElement("div");
+        g2.className = "cell";
+        g2.style.width = "auto"; g2.style.padding = "0 10px";
+        g2.textContent = t.caught ? "not equivalent" : "equivalent";
+        if (t.caught) { g2.style.borderColor = C.green; g2.style.color = C.green; }
+        cells.appendChild(g2);
+      }
+      row.appendChild(cells);
+      const flag = document.createElement("span");
+      const accepted = d3Mode === "bug" ? true : !t.caught;
+      flag.className = "flag " + (accepted ? "bad" : "good");
+      flag.textContent = accepted ? "accepted" : "rejected";
+      row.appendChild(flag);
+      rows.appendChild(row);
+    });
+    const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+    const caught = D3.filter(t => t.caught).length;
+    if (d3Mode === "bug") {
+      set("d3-big", "89%");
+      set("d3-lbl", "of wrong answers accepted");
+      set("d3-proto", "graded judge only");
+      set("d3-caught", "0 of 6");
+      set("d3-fr", "36%");
+    } else {
+      set("d3-big", "10%");
+      set("d3-lbl", "of wrong answers accepted");
+      set("d3-proto", "graded + binary check");
+      set("d3-caught", caught + " of 6");
+      set("d3-fr", "36%  (unchanged)");
+    }
+    const st = document.getElementById("d3-state");
+    if (st) {
+      st.innerHTML = "";
+      const chip = document.createElement("span");
+      chip.className = d3Mode === "bug" ? "state bug" : "state fix";
+      chip.textContent = d3Mode === "bug" ? "style scored, meaning ignored" : "meaning checked separately";
+      st.appendChild(chip);
+    }
+  }
+
+  /* ---------------------------------------------------------- the switches - */
+  document.querySelectorAll(".switch button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const demo = btn.getAttribute("data-demo");
+      const mode = btn.getAttribute("data-mode");
+      document.querySelectorAll(`.switch button[data-demo="${demo}"]`).forEach(b =>
+        b.setAttribute("aria-pressed", String(b === btn)));
+      if (demo === "1") { d1Mode = mode; d1Render(); }
+      if (demo === "2") { d2Mode = mode; d2Render(); }
+      if (demo === "3") { d3Mode = mode; d3Render(); }
+    });
+  });
+
+  d1Render(); d2Render(); d3Render();
+
+  /* ------------------------------------------------------------- deck nav -- */
+
+  const slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  const notes = slides.map(s => s.querySelector(".notes"));
+  const panel = document.getElementById("notesPanel");
+  const fill = document.getElementById("fill");
+  const cur = document.getElementById("cur");
+  document.getElementById("total").textContent = String(slides.length);
+  let i = 0;
+
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle("on", k === i));
+    cur.textContent = String(i + 1);
+    fill.style.width = ((i + 1) / slides.length * 100) + "%";
+    panel.innerHTML = notes[i] ? notes[i].innerHTML : "";
+    if (location.hash !== "#" + (i + 1)) history.replaceState(null, "", "#" + (i + 1));
+    window.scrollTo(0, 0);
+  }
+
+  document.getElementById("next").addEventListener("click", () => show(i + 1));
+  document.getElementById("prev").addEventListener("click", () => show(i - 1));
+
+  const notesBtn = document.getElementById("notesBtn");
+  function toggleNotes() {
+    const on = document.body.classList.toggle("notes-on");
+    panel.hidden = !on;
+    notesBtn.setAttribute("aria-pressed", String(on));
+  }
+  notesBtn.addEventListener("click", toggleNotes);
+
+  let t0 = null, tick = null;
+  const clock = document.getElementById("clock");
+  const timerBtn = document.getElementById("timer");
+  timerBtn.addEventListener("click", function () {
+    if (tick) { clearInterval(tick); tick = null; timerBtn.textContent = "start"; return; }
+    t0 = Date.now();
+    timerBtn.textContent = "stop";
+    tick = setInterval(function () {
+      const s = Math.floor((Date.now() - t0) / 1000);
+      clock.textContent = String(Math.floor(s / 60)).padStart(2, "0") + ":" +
+                          String(s % 60).padStart(2, "0");
+      clock.style.color = s > 1800 ? C.red : "";
+    }, 250);
+  });
+
+  let buffer = "";
+  document.addEventListener("keydown", function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.target && e.target.tagName === "BUTTON" && e.key === " ") return;
+    const k = e.key;
+    if (k === "ArrowRight" || k === "PageDown" || k === " ") { e.preventDefault(); show(i + 1); }
+    else if (k === "ArrowLeft" || k === "PageUp") { e.preventDefault(); show(i - 1); }
+    else if (k === "Home") { e.preventDefault(); show(0); }
+    else if (k === "End") { e.preventDefault(); show(slides.length - 1); }
+    else if (k === "n" || k === "N") { e.preventDefault(); toggleNotes(); }
+    else if (/^[0-9]$/.test(k)) buffer += k;
+  });
+  document.addEventListener("keyup", function (e) {
+    if (e.key === "Enter" && buffer) { show(parseInt(buffer, 10) - 1); buffer = ""; }
+  });
+
+  const fromHash = parseInt((location.hash || "").slice(1), 10);
+  show(isFinite(fromHash) && fromHash > 0 ? fromHash - 1 : 0);
+})();
+</script>

@@ -15,10 +15,20 @@ Two things live here:
 
 ```
 pip install -r requirements.txt
-python -m judge_audit.demo            # the whole demo
-python -m judge_audit.demo --act 2    # just the survivorship act
-python -m judge_audit.audit --input my_trace.csv   # your data
+python stage.py                       # live demo selector, broken vs fixed
+python -m judge_audit.scenarios 1     # one scenario, measured the usual way
+python -m judge_audit.scenarios 1 --fix        # the same data, measured honestly
+python -m judge_audit.demo            # the full seven-act walkthrough
+python -m judge_audit.audit --input my_trace.csv   # your own data
 ```
+
+Two talk decks live in `talk/`, both self-contained HTML with the demos built
+into the page:
+
+| File | Talk |
+|---|---|
+| `talk/btv-slides.html` | *Your LLM Judge Is Probably Lying to You* — 17 slides, white/Google palette, three buggy-vs-fixed demos you drive from the slide |
+| `talk/slides.html` | The original dark-theme version of the same argument |
 
 ---
 
@@ -92,13 +102,15 @@ The talk ends with a one-page checklist: `docs/checklist.md`. Short version:
 ```
 judge_audit/metrics.py     the audits            (the reusable part)
 judge_audit/simulate.py    the synthetic judge   (clearly labelled)
-judge_audit/demo.py        the talk demo, seven acts
+judge_audit/scenarios.py   four stage scenarios, each with --fix
+judge_audit/demo.py        the full walkthrough, seven acts
 judge_audit/audit.py       CLI for your own CSV
 judge_audit/figures.py     the talk's figures
+stage.py                   live demo selector for presenting
 docs/calibration.md        every simulator default, and the paper it came from
 docs/using-your-own-data.md
 docs/checklist.md
-talk/                      slides, speaker notes, run-of-show
+talk/                      two decks, speaker notes, run-of-show
 tests/                     pytest suite for the metrics
 ```
 
