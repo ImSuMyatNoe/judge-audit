@@ -22,33 +22,33 @@ it works from a USB stick on a laptop that has never seen this repo.
 The URL carries the slide number (`btv-slides.html#18`), so you can reopen where
 you left off, and printing gives one slide per page.
 
-## Run of show, 37 slides in 30 minutes
+## Run of show, 35 slides in 30 minutes
 
 | Slides | What is happening |
 |---|---|
 | 1 to 2 | Title, then twenty seconds of who you are. The portfolio QR goes up once. |
-| 3 to 4 | Why this matters to them, then the plan for the half hour. |
-| 5 | Ask who is hungry. Wait. Let the table scene animate in. |
-| 6 | The pizza journey, six boxes with emoji. Say each one out loud. |
-| 7 to 8 | The wrong pizza arrives, and the three calls somebody has to make. |
-| 9 to 11 | A model answers, an agent acts, and why that difference matters tonight. |
-| 12 | The six steps this agent takes. |
-| 13 | Who checks the agent. Two thousand refunds a day, nobody reading them. |
-| 14 to 16 | What LLM as a judge is, what goes in and comes out, and why everybody does it. |
-| 17 | The thesis. |
-| 18 to 19 | The instrument framing, and three instruments you would throw out. |
-| 20 to 21 | Hands up twice. Almost every hand goes down on the second question. |
-| 22 to 23 | Your story, in two beats. The refusal, then what it taught you. |
-| 24 to 25 | The report anyone would ship on, and whether you would. |
-| 26 to 27 | Clue one, then the live demo. Press the button three times, then flip the switch. |
-| 28 to 30 | Clue two, the line that stings, then the demo where the honest number goes down. |
-| 31 | Clue three. Chance correction, said plainly before it is named. |
-| 32 to 33 | Clue four, then the two judge demo. |
-| 34 to 35 | Compounding across six steps, and the decision risk number. |
-| 36 to 37 | The five point checklist, then the close with both QR codes. |
+| 3 | Why this matters to them. Something in their stack is already graded by a model. |
+| 4 to 7 | Four words, defined before anything else: agent, LLM as a judge, eval, trace and ground truth. |
+| 8 | The plan for the half hour. |
+| 9 | Ask who is hungry. Wait. Let the table scene animate in. |
+| 10 | The pizza journey, six boxes with emoji. Say each one out loud. |
+| 11 to 12 | The wrong pizza arrives, and the three calls somebody has to make. |
+| 13 | The six steps this agent takes. |
+| 14 | Who checks the agent. Two thousand refunds a day, nobody reading them. |
+| 15 | The thesis. |
+| 16 to 17 | The instrument framing, and three instruments you would throw out. |
+| 18 to 19 | Hands up twice. Almost every hand goes down on the second question. |
+| 20 to 21 | Your story, in two beats. The refusal, then what it taught you. |
+| 22 to 23 | The report anyone would ship on, and whether you would. |
+| 24 to 25 | Clue one, then the live demo. Press the button three times, then flip the switch. |
+| 26 to 28 | Clue two, the line that stings, then the demo where the honest number goes down. |
+| 29 | Clue three. Chance correction, said plainly before it is named. |
+| 30 to 31 | Clue four, then the two judge demo. |
+| 32 to 33 | Compounding across six steps, and the decision risk number. |
+| 34 to 35 | The five point checklist, then the close with both QR codes. |
 
-Rough pacing: slides 1 to 19 in the first twelve minutes (most are one beat each),
-the four clues and their demos in the middle thirteen, and the last four slides in five. The clock in the
+Rough pacing: slides 1 to 17 in the first twelve minutes, the four clues and their
+demos in the middle thirteen, and the last four slides in five. The clock in the
 rail is there so you can check without looking at your phone.
 
 ## Before you walk on
@@ -63,12 +63,12 @@ rail is there so you can check without looking at your phone.
 
 ## Trimming to 20 minutes
 
-Cut slides 3, 11, 16, 19 and 29. The argument still closes, and you keep two of the
+Cut slides 6, 7, 12, 17 and 27. The argument still closes, and you keep two of the
 three demos.
 
 ## Extending to 45 minutes
 
-Add a walk through `judge_audit/metrics.py` after slide 35, and run
+Add a walk through `judge_audit/metrics.py` after slide 33, and run
 `python examples/photo_refund/run_audit.py` live so the room sees the same
 numbers come out of real code.
 

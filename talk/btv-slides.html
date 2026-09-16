@@ -41,7 +41,7 @@
   body {
     margin: 0; min-height: 100svh; display: flex; flex-direction: column;
     background: var(--paper); color: var(--ink);
-    font-family: var(--body); font-size: 19px; line-height: 1.5;
+    font-family: var(--body); font-size: 17px; line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -113,15 +113,15 @@
     letter-spacing: -.022em; line-height: 1.03; text-wrap: balance; color: var(--ink);
     font-variation-settings: "SOFT" 40, "WONK" 1;
   }
-  h1 { font-size: clamp(46px, 7.2vw, 104px); }
-  h2 { font-size: clamp(33px, 5.2vw, 74px); }
+  h1 { font-size: clamp(42px, 6.6vw, 94px); }
+  h2 { font-size: clamp(31px, 4.8vw, 66px); }
   h3 { font-family: var(--display); font-weight: 600; margin: 0;
-       font-size: clamp(22px, 2.6vw, 34px); letter-spacing: -.015em; }
+       font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -.015em; }
 
   .eyebrow {
-    font-family: var(--mono); font-size: clamp(13px, 1.25vw, 16.5px);
-    letter-spacing: .13em; text-transform: uppercase; color: var(--muted);
-    display: block; margin: 0; text-align: left;
+    font-family: var(--mono); font-size: clamp(12px, 1.12vw, 15px);
+    letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+    display: block; margin: 0; max-width: none; text-align: left; white-space: nowrap;
   }
   .eyebrow b { color: var(--plum); font-weight: 500; }
 
@@ -129,11 +129,11 @@
   .lead, .say, .small, .thread span.t, ul.list li > div, .card p {
     text-align: justify; text-align-last: left; hyphens: none;
   }
-  .lead { font-size: clamp(23px, 3vw, 42px); color: var(--ink-2); line-height: 1.34; letter-spacing: -.012em; }
+  .lead { font-size: clamp(19px, 2.2vw, 30px); color: var(--ink-2); line-height: 1.38; letter-spacing: -.012em; }
   .lead strong { color: var(--ink); font-weight: 700; }
-  .say { font-size: clamp(21px, 2.5vw, 34px); color: var(--ink-2); line-height: 1.42; }
-  .small { font-size: clamp(16px, 1.75vw, 24px); color: var(--ink-2); line-height: 1.52; }
-  .plain { font-family: var(--mono); font-size: clamp(13.5px, 1.35vw, 18px); color: var(--muted); line-height: 1.65; }
+  .say { font-size: clamp(18px, 1.95vw, 26px); color: var(--ink-2); line-height: 1.45; }
+  .small { font-size: clamp(14px, 1.35vw, 18px); color: var(--ink-2); line-height: 1.55; }
+  .plain { font-family: var(--mono); font-size: clamp(12.5px, 1.2vw, 15.5px); color: var(--muted); line-height: 1.65; }
   strong { font-weight: 700; color: var(--ink); }
   .rose { color: var(--rose); } .teal { color: var(--teal); } .plum { color: var(--plum); }
   .e { font-family: var(--emoji); font-style: normal; }
@@ -145,7 +145,7 @@
   @media (max-width: 900px) { .cols, .c3, .wide, .narrow { grid-template-columns: 1fr; } }
 
   .card { display: flex; flex-direction: column; gap: 10px; }
-  .card .tag { font-family: var(--mono); font-size: clamp(13.5px, 1.3vw, 16px); letter-spacing: .06em;
+  .card .tag { font-family: var(--mono); font-size: clamp(12.5px, 1.2vw, 14.5px); letter-spacing: .06em;
                text-transform: uppercase; color: var(--muted); text-align: left; }
   .card.bad .tag { color: var(--rose); }
   .card.ok .tag { color: var(--teal); }
@@ -155,38 +155,38 @@
   .stats { display: flex; flex-wrap: wrap; gap: clamp(24px, 5vw, 76px); }
   .stat { display: flex; flex-direction: column; gap: 8px; }
   .stat b { font-family: var(--display); font-weight: 600; line-height: .92;
-            font-size: clamp(50px, 7.4vw, 104px);
+            font-size: clamp(46px, 6.8vw, 92px);
             letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
   .stat b.rose { color: var(--rose); }
   .stat b.teal { color: var(--teal); }
   .stat b.plum { color: var(--plum); }
-  .stat span { font-family: var(--mono); font-size: clamp(14px, 1.45vw, 19px);
+  .stat span { font-family: var(--mono); font-size: clamp(13px, 1.25vw, 16px);
                color: var(--muted); max-width: 24ch; line-height: 1.55; }
 
-  .note { border-left: 5px solid var(--plum); padding: 8px 0 8px 24px;
-          font-size: clamp(21px, 2.5vw, 34px); color: var(--ink); line-height: 1.34;
+  .note { border-left: 5px solid var(--plum); padding: 7px 0 7px 22px;
+          font-size: clamp(18px, 1.9vw, 25px); color: var(--ink); line-height: 1.34;
           letter-spacing: -.01em; max-width: 48ch; }
   .note.bad { border-left-color: var(--rose); }
   .note.ok { border-left-color: var(--teal); }
   .note.warn { border-left-color: var(--line-2); color: var(--ink-2); }
 
   ul.list { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(12px, 1.8vh, 24px); }
-  ul.list li { display: grid; grid-template-columns: 58px 1fr; gap: 18px; align-items: start;
-               font-size: clamp(16px, 1.75vw, 23px); color: var(--ink-2); line-height: 1.48; }
-  ul.list li::before { content: attr(data-n); font-family: var(--emoji); font-size: 30px;
+  ul.list li { display: grid; grid-template-columns: 50px 1fr; gap: 16px; align-items: start;
+               font-size: clamp(14px, 1.35vw, 18px); color: var(--ink-2); line-height: 1.55; }
+  ul.list li::before { content: attr(data-n); font-family: var(--emoji); font-size: 26px;
                        line-height: 1; margin-top: 2px; }
   ul.list li > div { min-width: 0; max-width: 66ch; }
   ul.list li b { display: block; font-family: var(--display); font-weight: 600;
-                 font-size: clamp(20px, 2.35vw, 30px); color: var(--ink);
-                 letter-spacing: -.015em; margin-bottom: 4px; text-align: left; }
+                 font-size: clamp(17px, 1.9vw, 24px); color: var(--ink);
+                 letter-spacing: -.015em; margin-bottom: 3px; text-align: left; }
 
   code { font-family: var(--mono); font-size: .92em; color: var(--plum); }
 
   figure { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-  figcaption { font-family: var(--mono); font-size: clamp(13.5px, 1.4vw, 18px); color: var(--muted); line-height: 1.55; }
+  figcaption { font-family: var(--mono); font-size: clamp(12.5px, 1.2vw, 15.5px); color: var(--muted); line-height: 1.55; }
   svg { max-width: 100%; height: auto; display: block; }
-  .st { font-family: var(--mono); font-size: 15px; fill: var(--muted); }
-  .sv { font-family: var(--mono); font-size: 17px; font-weight: 500; fill: var(--ink); }
+  .st { font-family: var(--mono); font-size: 13px; fill: var(--muted); }
+  .sv { font-family: var(--mono); font-size: 15px; font-weight: 500; fill: var(--ink); }
 
   /* ------------------------------ scenes -------------------------------- */
   .scene { width: 100%; }
@@ -214,7 +214,7 @@
   .hop { flex: 1 1 0; min-width: 126px; background: var(--card); border: 1px solid var(--line);
          border-radius: 20px; padding: clamp(12px, 1.7vh, 22px) 10px; text-align: center; }
   .hop .ico { font-family: var(--emoji); font-size: clamp(32px, 3.8vw, 56px); line-height: 1.15; display: block; }
-  .hop .lb { font-family: var(--mono); font-size: clamp(12.5px, 1.25vw, 16px);
+  .hop .lb { font-family: var(--mono); font-size: clamp(11.5px, 1.15vw, 14.5px);
              color: var(--muted); display: block; margin-top: 8px; line-height: 1.4; }
   .hop.end { border-color: var(--rose); background: var(--rose-dim); }
   .hop.end .lb { color: var(--rose); }
@@ -256,9 +256,9 @@
   .rows { display: grid; gap: 6px; }
   .row-i { display: grid; grid-template-columns: 1fr auto auto; gap: 16px; align-items: center;
            background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-           padding: 8px 16px; font-family: var(--mono); font-size: 14.5px; }
+           padding: 8px 16px; font-family: var(--mono); font-size: 13.5px; }
   .row-i .rid { color: var(--ink-2); display: flex; align-items: center; gap: 11px; min-width: 0; }
-  .row-i .rid em { font-style: normal; color: var(--muted); font-size: 13.5px;
+  .row-i .rid em { font-style: normal; color: var(--muted); font-size: 12.5px;
                    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .thumb { font-family: var(--emoji); font-size: 21px; line-height: 1; flex: none; }
   .cells { display: flex; gap: 6px; }
@@ -268,7 +268,7 @@
   .cell.moved { border-color: var(--rose); color: var(--rose); font-weight: 500; background: var(--rose-dim); }
   .cell.blank { border-style: dashed; color: var(--line-2); }
   .cell.recovered { border-color: var(--teal); color: var(--teal); background: var(--teal-dim); }
-  .flag { font-family: var(--mono); font-size: 13.5px; color: var(--muted); min-width: 126px; text-align: right; }
+  .flag { font-family: var(--mono); font-size: 12.5px; color: var(--muted); min-width: 118px; text-align: right; }
   .flag.bad { color: var(--rose); }
   .flag.good { color: var(--teal); }
 
@@ -276,12 +276,12 @@
   .readout .big { font-family: var(--display); font-weight: 600;
                   font-size: clamp(44px, 5.6vw, 80px); line-height: 1;
                   letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
-  .readout .lbl { font-family: var(--mono); font-size: 15px; color: var(--muted); line-height: 1.55; }
+  .readout .lbl { font-family: var(--mono); font-size: 13.5px; color: var(--muted); line-height: 1.55; }
   .kv { display: flex; justify-content: space-between; gap: 10px; font-family: var(--mono);
-        font-size: 15px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 9px; }
+        font-size: 13.5px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
   .kv b { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 500; }
 
-  .banner { font-family: var(--mono); font-size: 14.5px; line-height: 1.5;
+  .banner { font-family: var(--mono); font-size: 13.5px; line-height: 1.55;
             border-left: 3px solid var(--line-2); padding: 3px 0 3px 16px; color: var(--muted); }
 
   .me { display: grid; grid-template-columns: 300px 1fr; gap: clamp(26px, 4.2vw, 58px); align-items: center; }
@@ -291,12 +291,12 @@
   .thread { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; }
   .thread .dot { font-family: var(--emoji); font-size: 25px; line-height: 1.2; }
   .thread b { display: block; font-family: var(--display); font-weight: 600;
-              font-size: clamp(21px, 2.4vw, 30px); letter-spacing: -.015em; }
-  .thread span.t { display: block; font-size: clamp(15px, 1.6vw, 21px); color: var(--muted); line-height: 1.5; }
+              font-size: clamp(19px, 2.1vw, 26px); letter-spacing: -.015em; }
+  .thread span.t { display: block; font-size: clamp(13.5px, 1.35vw, 17px); color: var(--muted); line-height: 1.5; }
   .qr { display: flex; align-items: center; gap: 20px; }
   .qr svg { width: clamp(100px, 11.5vw, 150px); height: auto; border-radius: 12px; }
-  .qr .qt { font-family: var(--mono); font-size: 15px; color: var(--muted); line-height: 1.6; }
-  .qr .qt b { display: block; color: var(--ink); font-size: 17px; font-weight: 500; }
+  .qr .qt { font-family: var(--mono); font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+  .qr .qt b { display: block; color: var(--ink); font-size: 15px; font-weight: 500; }
 
   .ask { display: grid; gap: clamp(16px, 2.2vh, 28px); }
   .ask p { max-width: 40ch; }
@@ -308,12 +308,12 @@
           padding: clamp(11px, 1.5vw, 18px) clamp(11px, 1.5vw, 19px); min-width: 0; text-align: center; }
   .step .n { font-family: var(--emoji); font-size: clamp(20px, 2.2vw, 29px); display: block; line-height: 1.2; }
   .step .t { font-family: var(--display); font-weight: 600; display: block; margin-top: 5px;
-             font-size: clamp(15px, 1.7vw, 21px); letter-spacing: -.012em; }
+             font-size: clamp(14px, 1.5vw, 18.5px); letter-spacing: -.012em; }
   .step.out { border-color: var(--rose); background: var(--rose-dim); }
   .arrow { color: var(--line-2); font-size: 21px; flex: none; }
 
   .chips { display: flex; flex-wrap: wrap; gap: 13px; }
-  .chip { font-family: var(--mono); font-size: clamp(14.5px, 1.5vw, 19px); padding: 13px 22px;
+  .chip { font-family: var(--mono); font-size: clamp(13.5px, 1.35vw, 17px); padding: 12px 20px;
           border-radius: 999px; background: var(--card); border: 1px solid var(--line-2); color: var(--ink-2); }
   .chip .e { margin-right: 8px; }
   .chip.a { border-color: var(--apricot); color: #a4552a; background: #fdf0e7; }
@@ -334,7 +334,7 @@
   :focus-visible { outline: 2px solid var(--plum); outline-offset: 2px; }
 
   .notes { display: none; border-top: 1px solid var(--line); background: var(--paper-2);
-           padding: 14px var(--pad) 18px; font-size: 15px; color: var(--ink-2); line-height: 1.6;
+           padding: 14px var(--pad) 18px; font-size: 14px; color: var(--ink-2); line-height: 1.6;
            max-height: 34vh; overflow-y: auto; }
   body.notes-on .notes { display: block; }
   .notes b { color: var(--ink); }
@@ -413,22 +413,104 @@
   </div>
 </section>
 
-<!-- 04 the plan ----------------------------------------------------------- -->
+<!-- 04 word one: agent ------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">A few words first &nbsp;//&nbsp; one of four</p>
+    <h2><span class="e">&#129302;</span> Agent</h2>
+    <p class="lead">A model that takes actions on its own. Not just answering your question, but
+      running through several steps until something is actually done.</p>
+    <ul class="list">
+      <li data-n="&#128736;&#65039;"><div><b>It takes real actions</b>It calls tools, looks up your order, sends a refund, or passes the case to a human.</div></li>
+      <li data-n="&#129504;"><div><b>It thinks and adapts</b>It mixes your fixed business rules with its own reasoning, and picks a path as it goes.</div></li>
+      <li data-n="&#128269;"><div><b>It needs a new kind of testing</b>You have to check the path it took, not just the sentence it ended up writing.</div></li>
+      <li data-n="&#9888;&#65039;"><div><b>It fails in new ways</b>Wrong tool, endless loops, and made up arguments. Those three come up again and again.</div></li>
+    </ul>
+  </div>
+  <div class="notes">
+    <span class="t">terminology, one of four</span>
+    Half this room builds these for a living and half have never written a prompt. Say it once,
+    plainly, and do not apologise for defining it. "Actions" is the word to land.
+  </div>
+</section>
+
+<!-- 05 word two: judge --------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">A few words first &nbsp;//&nbsp; two of four</p>
+    <h2><span class="e">&#9878;&#65039;</span> LLM as a judge</h2>
+    <p class="lead">A second model that reads the first one's work and gives it a score, so nobody has to
+      sit and read two thousand refund letters by hand.</p>
+    <ul class="list">
+      <li data-n="&#128228;"><div><b>What you feed it</b>The photo, the order, your policy, and the reply the agent wrote. Sometimes the whole trace.</div></li>
+      <li data-n="&#128229;"><div><b>What it hands back</b>A number out of ten, plus a paragraph explaining the number.</div></li>
+      <li data-n="&#9889;"><div><b>Why everyone uses it</b>It keeps up with the volume, it costs cents, and it gives you something you can put in a chart.</div></li>
+      <li data-n="&#128683;"><div><b>The catch</b>That explanation paragraph is written to convince you, and nothing anywhere checks whether it's true.</div></li>
+    </ul>
+  </div>
+  <div class="notes">
+    <span class="t">terminology, two of four</span>
+    "One model does the work, another marks the homework." Point at the catch and say it is the
+    whole reason you are here tonight.
+  </div>
+</section>
+
+<!-- 06 word three: eval -------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">A few words first &nbsp;//&nbsp; three of four</p>
+    <h2><span class="e">&#128202;</span> Eval</h2>
+    <p class="lead">The test you run on your AI to decide whether it's good enough to ship, and the only
+      thing standing between a bug and your customers.</p>
+    <ul class="list">
+      <li data-n="&#128203;"><div><b>A benchmark</b>A fixed set of cases everybody tests on, so two numbers can be compared.</div></li>
+      <li data-n="&#128200;"><div><b>A pass rate</b>The share of those cases your system got right. That is the number that ends up on the slide.</div></li>
+      <li data-n="&#128682;"><div><b>A gate</b>The line you've decided not to ship below, and the reason anybody cares about the number.</div></li>
+      <li data-n="&#127919;"><div><b>Why it matters tonight</b>Every figure in this talk came out of an eval that trusted a judge to do the scoring.</div></li>
+    </ul>
+  </div>
+  <div class="notes">
+    <span class="t">terminology, three of four</span>
+    Everyone in the room uses this word and nobody defines it the same way. Say the gate line
+    slowly, because that is the one that makes eval work feel worth funding.
+  </div>
+</section>
+
+<!-- 07 word four: trace and ground truth ---------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <p class="eyebrow">A few words first &nbsp;//&nbsp; four of four</p>
+    <h2><span class="e">&#129534;</span> Trace and ground truth</h2>
+    <p class="lead">Two words the rest of the talk leans on, so let's get them out of the way now.</p>
+    <ul class="list">
+      <li data-n="&#129534;"><div><b>Trace</b>The full record of what the agent did, step by step, in the order it did it.</div></li>
+      <li data-n="&#9989;"><div><b>Ground truth</b>What a careful human says the right answer actually was. Slow, expensive, and worth it.</div></li>
+      <li data-n="&#128270;"><div><b>Why you want both</b>The trace shows you where it went wrong. Ground truth is how you know it went wrong at all.</div></li>
+      <li data-n="&#9888;&#65039;"><div><b>The gap</b>A judge with no ground truth behind it is a second opinion, not a measurement.</div></li>
+    </ul>
+  </div>
+  <div class="notes">
+    <span class="t">terminology, four of four</span>
+    Keep this one quick. It exists so that clue two and clue four do not need explaining mid flow.
+  </div>
+</section>
+
+<!-- 08 the plan ----------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
     <p class="eyebrow">The plan</p>
-    <h2>How the next half hour goes</h2>
+    <h2>How we'll spend the next<br>30 minutes together</h2>
     <ul class="list">
-      <li data-n="&#127829;"><div><b>A story about one pizza</b>Everything tonight happens to a single order, so you only ever have to hold one thing in your head.</div></li>
-      <li data-n="&#128269;"><div><b>Four clues</b>Four ways the thing grading your AI quietly misleads you, and what to do about each one.</div></li>
-      <li data-n="&#128433;&#65039;"><div><b>Three live demos</b>Running right here in this page. No terminal, no API key, nothing touching the network.</div></li>
-      <li data-n="&#9749;"><div><b>Five things for Monday</b>A checklist short enough that you can run it on your own eval before lunch.</div></li>
+      <li data-n="&#127829;"><div><b>One pizza</b>We'll walk through a single order, right from start to finish.</div></li>
+      <li data-n="&#128269;"><div><b>Four clues</b>Four sneaky ways your judge might mislead you, and how to catch them!</div></li>
+      <li data-n="&#128433;&#65039;"><div><b>Three live demos</b>Right here on this page, no terminal required!</div></li>
+      <li data-n="&#9749;"><div><b>Five things for Monday</b>A handy checklist you can take back and run yourself.</div></li>
     </ul>
   </div>
   <div class="notes">
     <span class="t">the plan</span>
-    Fifteen seconds. Do not read the whole list, just name the four and say "and that is the whole
-    thing". The demos line usually gets a small reaction, so pause after it.
+    Fifteen seconds. Do not read the whole list, just name the four. The demos line usually gets
+    a small reaction, so pause after it.
   </div>
 </section>
 
@@ -612,57 +694,6 @@
   </div>
 </section>
 
-<!-- 09 a model --------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">Word number one, part one</p>
-    <h2>A model answers. <span class="e">&#128172;</span></h2>
-    <p class="lead">You send it text, it sends text back. One question, one answer, and then it forgets
-      you completely.</p>
-    <p class="say">That is the thing most of us have been living with for the past two years. It is useful,
-      it is safe in one particular way, and on its own it cannot touch anything you own.</p>
-  </div>
-  <div class="notes">
-    <span class="t">definition</span>
-    Half this room builds these for a living and half have never written a prompt. Say it once,
-    plainly, and do not apologise for defining it.
-  </div>
-</section>
-
-<!-- 10 an agent -------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">Word number one, part two</p>
-    <h2>An agent acts. <span class="e">&#129302;</span></h2>
-    <p class="lead">An agent is a model that has been given hands. It looks things up, calls your systems,
-      decides something, and then does it, all without checking back in with you.</p>
-    <p class="say">Refunding twenty two dollars is an action. So is closing a ticket, merging a branch,
-      booking something, or emailing a customer who is already annoyed.</p>
-  </div>
-  <div class="notes">
-    <span class="t">definition</span>
-    "Given hands" is the phrase people remember. Add a local example from your own work if one
-    comes to you in the moment.
-  </div>
-</section>
-
-<!-- 11 why it matters --------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">Word number one, why you should care</p>
-    <h2>Why that difference matters tonight</h2>
-    <p class="note plum">A model gives you one answer to check. An agent gives you a trail of choices,
-      and every single one of them can be wrong on its own.</p>
-    <p class="say">When you grade a model, you are grading a sentence. When you grade an agent, you are
-      grading a journey, and a journey has a lot more places to hide a mistake.</p>
-  </div>
-  <div class="notes">
-    <span class="t">the bridge</span>
-    This slide is the hinge between the two definitions and the six step picture that follows.
-    Do not rush it.
-  </div>
-</section>
-
 <!-- 12 the six steps ---------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
@@ -698,69 +729,13 @@
       <p class="say">Two thousand refunds a day. Nobody is sitting there reading two thousand refund
         letters, and nobody is going to be hired to do it either.</p>
     </div>
-    <p class="note bad">So we hand the job to another model. We paste in the whole trace, we ask it to score
-      the decision out of ten, and that number goes straight onto a slide.</p>
+    <p class="note bad">So we hand the job to another model, exactly the way we described at the start.
+      We paste in the whole trace, we ask it to score the decision out of ten, and that number goes
+      straight onto a slide.</p>
   </div>
   <div class="notes">
     <span class="t">pivot</span>
     This is the turn of the talk. Slow right down here.
-  </div>
-</section>
-
-<!-- 14 llm as a judge --------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">Word number two, part one</p>
-    <h2>LLM as a judge <span class="e">&#9878;&#65039;</span></h2>
-    <p class="lead">A second model reads what the first one did, and grades it. It is cheap, it is instant,
-      and it never gets tired or grumpy on a Friday evening.</p>
-    <p class="say">That is the whole idea. One model does the work, and another model marks the homework.</p>
-  </div>
-  <div class="notes">
-    <span class="t">definition</span>
-    "One model does the work, another marks the homework" is the line to land. Everything after
-    this is about the marker, never about the worker.
-  </div>
-</section>
-
-<!-- 15 in and out -------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">Word number two, part two</p>
-    <h2>What goes in, what comes out</h2>
-    <div class="cols">
-      <div class="card fill"><span class="tag"><span class="e">&#128228;</span> what you send it</span>
-        <p class="small">The photo, the order, the refund policy, and the reply the agent wrote. Sometimes
-          the whole trace, every step of it.</p></div>
-      <div class="card fill"><span class="tag"><span class="e">&#128229;</span> what comes back</span>
-        <p class="small">A number out of ten, and a paragraph explaining the number. The paragraph always
-          sounds like it was written by someone who read carefully.</p></div>
-    </div>
-    <p class="note bad">The paragraph is the dangerous half. It is written to be convincing, and nothing,
-      anywhere, checks whether it is true.</p>
-  </div>
-  <div class="notes">
-    <span class="t">definition</span>
-    Point at the right hand card when you say "written to be convincing". People nod at this one.
-  </div>
-</section>
-
-<!-- 16 why everyone does it ----------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">Word number two, part three</p>
-    <h2>Why everybody does it this way</h2>
-    <ul class="list">
-      <li data-n="&#9889;"><div><b>It keeps up</b>Two thousand refunds a day is nothing to it, and no rota of humans can match that.</div></li>
-      <li data-n="&#129689;"><div><b>It costs cents</b>Cheap enough that nobody has to justify running it on every single trace.</div></li>
-      <li data-n="&#128200;"><div><b>It gives you a number</b>And a number goes in a chart, a chart goes in a review, and a review moves a roadmap.</div></li>
-    </ul>
-    <p class="note">Every one of those is real, and not one of them is a reason to believe the number.</p>
-  </div>
-  <div class="notes">
-    <span class="t">be fair to it</span>
-    Be generous here. If you are dismissive of the practice the room stops listening. You use
-    judges too. You just check them now.
   </div>
 </section>
 
@@ -1231,7 +1206,7 @@
   <button id="prev" aria-label="previous slide">prev</button>
   <button id="next" aria-label="next slide">next</button>
   <div class="track"><div class="fill" id="fill"></div></div>
-  <span class="count"><span id="cur">1</span> / <span id="total">37</span></span>
+  <span class="count"><span id="cur">1</span> / <span id="total">35</span></span>
   <button id="notesBtn" aria-pressed="false">notes</button>
   <span class="count" id="clock">00:00</span>
   <button id="timer">start</button>
@@ -1294,7 +1269,7 @@
   function bars(id, opts) {
     const g = document.getElementById(id);
     if (!g) return;
-    const { data, max, base, top, w, fmt, labelSize = 18 } = opts;
+    const { data, max, base, top, w, fmt, labelSize = 16 } = opts;
     const x0 = 196, right = w - 148;
     const rowH = (base - top) / data.length;
     data.forEach((d, i) => {
@@ -1318,7 +1293,7 @@
       { k: "what we reported", v: 0.747, c: C.plum },
       { k: "after taking out luck", v: 0.497, c: C.rose }
     ],
-    fmt: d => d.v === 0.497 ? "0.50" : Math.round(d.v * 100) + "%", labelSize: 20
+    fmt: d => d.v === 0.497 ? "0.50" : Math.round(d.v * 100) + "%", labelSize: 18
   });
   (function baseline() {
     const g = document.getElementById("kappa");
