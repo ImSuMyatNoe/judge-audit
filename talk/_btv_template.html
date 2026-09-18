@@ -391,6 +391,7 @@
   .htitle h2 em { font-style: normal; color: var(--teal); }
   .htitle h2 em.p { color: var(--plum); }
   .htitle h2 em.r { color: var(--rose); }
+  .htitle h2 em.a { color: #a4552a; }
 
   .gcards { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(15px, 2.2vw, 32px);
              align-items: stretch; grid-auto-rows: 1fr; }
@@ -403,6 +404,7 @@
   .gcard.p .lab { color: var(--plum); }
   .gcard.r .lab { color: var(--rose); }
   .gcard.m .lab { color: var(--ink-2); }
+  .gcard.a .lab { color: #a4552a; }
   .gcard p { font-size: var(--t-card); color: var(--ink-2); line-height: 1.58;
              text-align: left; hyphens: none; }
   .gcard p + p { margin-top: -2px; }
@@ -499,9 +501,9 @@
       <img src="{{PHOTO}}" alt="Su Myat Noe">
       <table class="tbl">
         <tbody>
-          <tr><td>Role</td><td>Project Researcher, NII and LLMC, Tokyo</td></tr>
-          <tr><td>Focus</td><td>multimodal safety, vision language evaluation, AI for law</td></tr>
-          <tr><td>Day job</td><td>checking whether a model's safety refusal is grounded in the image, or only in its own sentence</td></tr>
+          <tr><td>Focus</td><td>Multimodal safety, vision language evaluation, agentic AI, AI for law</td></tr>
+          <tr><td>Day job</td><td>Checking whether a model's safety refusal is grounded in the image, or only in its own sentence</td></tr>
+          <tr><td>Based in</td><td>Tokyo</td></tr>
         </tbody>
       </table>
     </div>
@@ -514,6 +516,40 @@
     <span class="t">who is talking &nbsp;//&nbsp; 20 seconds</span>
     Twenty seconds. The last row is the only one that matters. Point at the QR, say it comes back
     at the end, move on.
+  </div>
+</section>
+
+<!-- 03 disclaimer -------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <div class="htitle">
+      <h2>Take this with a <em class="a">grain of salt</em></h2>
+      <div class="bar"></div>
+    </div>
+    <p class="lead">Before we start, three things about where this talk comes from.</p>
+    <div class="gcards g3">
+      <div class="gcard a pop">
+        <span class="lab">This is my own work</span>
+        <p>I put it together for tonight. It is not my employer's research and it does not represent
+          NII or LLMC.</p>
+      </div>
+      <div class="gcard m pop">
+        <span class="lab">The numbers are from a worked example</span>
+        <p>Synthetic data with fixed seeds, built so the failure modes are easy to see. Your numbers
+          will look different.</p>
+      </div>
+      <div class="gcard r pop">
+        <span class="lab">Some of it is still in progress</span>
+        <p>Where I am not sure about something, I will say so on the slide rather than round it up.</p>
+      </div>
+    </div>
+    <p class="foot-note">The one real story in here is on slide 26, and it has no figures attached to it.</p>
+  </div>
+  <div class="notes">
+    <span class="t">disclaimer &nbsp;//&nbsp; 30 seconds</span>
+    Say it lightly and move on. It is a real disclaimer, not a joke, but it does not need a solemn
+    delivery. "None of this is my lab's official position. I built it for this talk, on made up
+    orders, and where I am unsure I will tell you."
   </div>
 </section>
 
