@@ -34,6 +34,16 @@
     --mono: "DM Mono", ui-monospace, Menlo, monospace;
     --emoji: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
     --pad: clamp(22px, 4.4vw, 82px);
+
+    /* One type scale for the whole deck. Sizes come from this list and
+       nowhere else, so nothing shrinks to fit its own content. */
+    --t-h1:     clamp(36px, 5.0vw, 72px);   /* title and question slides */
+    --t-title:  clamp(31px, 4.0vw, 56px);   /* slide title */
+    --t-lead:   clamp(19px, 1.98vw, 28px);  /* main explanatory text */
+    --t-strong: clamp(17px, 1.72vw, 24px);  /* card headings, table key column */
+    --t-card:   clamp(16px, 1.62vw, 23px);  /* text inside cards and boxes */
+    --t-small:  clamp(14px, 1.32vw, 18px);  /* supporting text, captions */
+    --t-micro:  clamp(12.5px, 1.12vw, 15px);/* chrome, column heads, readouts */
   }
 
   * { box-sizing: border-box; }
@@ -115,13 +125,13 @@
     letter-spacing: -.022em; line-height: 1.03; text-wrap: balance; color: var(--ink);
     font-variation-settings: "SOFT" 40, "WONK" 1;
   }
-  h1 { font-size: clamp(36px, 5.5vw, 78px); }
-  h2 { font-size: clamp(27px, 3.95vw, 54px); }
+  h1 { font-size: var(--t-h1); }
+  h2 { font-size: var(--t-title); }
   h3 { font-family: var(--display); font-weight: 600; margin: 0;
-       font-size: clamp(17px, 1.8vw, 23px); letter-spacing: -.015em; }
+       font-size: var(--t-strong); letter-spacing: -.015em; }
 
   .eyebrow {
-    font-family: var(--mono); font-size: clamp(11px, 1vw, 13.5px);
+    font-family: var(--mono); font-size: var(--t-micro);
     letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
     display: block; margin: 0; max-width: none; text-align: left; white-space: nowrap;
   }
@@ -131,11 +141,11 @@
   .lead, .say, .small, .thread span.t, ul.list li > div, .card p {
     text-align: left; hyphens: none;
   }
-  .lead { font-size: clamp(17px, 1.75vw, 23px); color: var(--ink-2); line-height: 1.42; letter-spacing: -.012em; }
+  .lead { font-size: var(--t-lead); color: var(--ink-2); line-height: 1.42; letter-spacing: -.012em; }
   .lead strong { color: var(--ink); font-weight: 700; }
-  .say { font-size: clamp(15.5px, 1.48vw, 19px); color: var(--ink-2); line-height: 1.5; }
-  .small { font-size: clamp(12.5px, 1.1vw, 14px); color: var(--ink-2); line-height: 1.6; }
-  .plain { font-family: var(--mono); font-size: clamp(11.5px, 1.05vw, 13.5px); color: var(--muted); line-height: 1.65; }
+  .say { font-size: var(--t-lead); color: var(--ink-2); line-height: 1.5; }
+  .small { font-size: var(--t-card); color: var(--ink-2); line-height: 1.6; }
+  .plain { font-family: var(--mono); font-size: var(--t-small); color: var(--muted); line-height: 1.65; }
   strong { font-weight: 700; color: var(--ink); }
   .rose { color: var(--rose); } .teal { color: var(--teal); } .plum { color: var(--plum); }
   .e { font-family: var(--emoji); font-style: normal; }
@@ -162,11 +172,11 @@
   .stat b.rose { color: var(--rose); }
   .stat b.teal { color: var(--teal); }
   .stat b.plum { color: var(--plum); }
-  .stat span { font-family: var(--mono); font-size: clamp(11.5px, 1.05vw, 14px);
+  .stat span { font-family: var(--mono); font-size: var(--t-small);
                color: var(--muted); max-width: 26ch; line-height: 1.55; }
 
   .note { border-left: 5px solid var(--plum); padding: 7px 0 7px 22px;
-          font-size: clamp(15.5px, 1.48vw, 19px); color: var(--ink); line-height: 1.45;
+          font-size: var(--t-lead); color: var(--ink); line-height: 1.45;
           letter-spacing: -.01em; max-width: none; }
   .note.bad { border-left-color: var(--rose); }
   .note.ok { border-left-color: var(--teal); }
@@ -185,10 +195,10 @@
   code { font-family: var(--mono); font-size: .92em; color: var(--plum); }
 
   figure { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-  figcaption { font-family: var(--mono); font-size: clamp(11.5px, 1.05vw, 13.5px); color: var(--muted); line-height: 1.55; }
+  figcaption { font-family: var(--mono); font-size: var(--t-small); color: var(--muted); line-height: 1.55; }
   svg { max-width: 100%; height: auto; display: block; }
-  .st { font-family: var(--mono); font-size: 12px; fill: var(--muted); }
-  .sv { font-family: var(--mono); font-size: 13.5px; font-weight: 500; fill: var(--ink); }
+  .st { font-family: var(--mono); font-size: 13px; fill: var(--muted); }
+  .sv { font-family: var(--mono); font-size: 15px; font-weight: 500; fill: var(--ink); }
 
   /* ------------------------------ scenes -------------------------------- */
   .scene { width: 100%; }
@@ -212,12 +222,17 @@
   .slide.live .bubble.b2 { animation-delay: 1.15s; }
   .slide.live .bubble.b3 { animation-delay: 1.6s; }
 
-  .journey { display: flex; align-items: stretch; gap: clamp(4px, .9vw, 14px); flex-wrap: wrap; }
-  .hop { flex: 1 1 0; min-width: 126px; background: var(--card); border: 1px solid var(--line);
-         border-radius: 20px; padding: clamp(12px, 1.7vh, 22px) 10px; text-align: center; }
-  .hop .ico { font-family: var(--emoji); font-size: clamp(28px, 3.2vw, 46px); line-height: 1.15; display: block; }
-  .hop .lb { font-family: var(--mono); font-size: clamp(10.5px, 1vw, 13px);
-             color: var(--muted); display: block; margin-top: 8px; line-height: 1.4; }
+  .journey { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
+             align-items: stretch; grid-auto-rows: 1fr; gap: clamp(6px, .9vw, 16px); }
+  .hop { min-width: 0; height: 100%; background: var(--card); border: 1px solid var(--line);
+         border-radius: 20px; padding: clamp(14px, 1.9vh, 24px) clamp(6px, .8vw, 12px);
+         text-align: center; display: flex; flex-direction: column;
+         align-items: center; justify-content: flex-start; }
+  .hop .ico { font-family: var(--emoji); font-size: clamp(28px, 3.2vw, 46px); line-height: 1;
+              height: 1.25em; display: flex; align-items: center; justify-content: center; }
+  .hop .lb { font-family: var(--mono); font-size: var(--t-small);
+             color: var(--muted); display: block; margin-top: 10px; line-height: 1.45;
+             min-height: 2.9em; }
   .hop.end { border-color: var(--rose); background: var(--rose-dim); }
   .hop.end .lb { color: var(--rose); }
   .slide.live .hop .ico { animation: bob 2.6s ease-in-out infinite; }
@@ -255,12 +270,12 @@
   @media (max-width: 960px) { .demo { grid-template-columns: 1fr; } }
   .demo-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 
-  .rows { display: grid; gap: 6px; }
+  .rows { display: grid; gap: 5px; }
   .row-i { display: grid; grid-template-columns: 1fr auto auto; gap: 16px; align-items: center;
            background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-           padding: 7px 15px; font-family: var(--mono); font-size: 12.5px; }
+           padding: 8px 15px; font-family: var(--mono); font-size: var(--t-micro); }
   .row-i .rid { color: var(--ink-2); display: flex; align-items: center; gap: 11px; min-width: 0; }
-  .row-i .rid em { font-style: normal; color: var(--muted); font-size: 11.5px;
+  .row-i .rid em { font-style: normal; color: var(--muted); font-size: var(--t-micro);
                    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .thumb { font-family: var(--emoji); font-size: 21px; line-height: 1; flex: none; }
   .cells { display: flex; gap: 6px; }
@@ -270,7 +285,7 @@
   .cell.moved { border-color: var(--rose); color: var(--rose); font-weight: 500; background: var(--rose-dim); }
   .cell.blank { border-style: dashed; color: var(--line-2); }
   .cell.recovered { border-color: var(--teal); color: var(--teal); background: var(--teal-dim); }
-  .flag { font-family: var(--mono); font-size: 11.5px; color: var(--muted); min-width: 110px; text-align: right; }
+  .flag { font-family: var(--mono); font-size: var(--t-micro); color: var(--muted); min-width: 118px; text-align: right; }
   .flag.bad { color: var(--rose); }
   .flag.good { color: var(--teal); }
 
@@ -278,15 +293,16 @@
   .readout .big { font-family: var(--display); font-weight: 600;
                   font-size: clamp(38px, 4.6vw, 64px); line-height: 1;
                   letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
-  .readout .lbl { font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+  .readout .lbl { font-family: var(--mono); font-size: var(--t-micro); color: var(--muted); line-height: 1.55; }
   .kv { display: flex; justify-content: space-between; gap: 10px; font-family: var(--mono);
-        font-size: 12.5px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+        font-size: var(--t-micro); color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
   .kv b { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 500; }
 
-  .banner { font-family: var(--mono); font-size: 12.5px; line-height: 1.6;
+  .banner { font-family: var(--mono); font-size: var(--t-small); line-height: 1.6;
             border-left: 3px solid var(--line-2); padding: 3px 0 3px 16px; color: var(--muted); }
 
-  .me { display: grid; grid-template-columns: 300px 1fr; gap: clamp(26px, 4.2vw, 58px); align-items: center; }
+  .me { display: grid; grid-template-columns: clamp(190px, 20vw, 290px) 1fr;
+        gap: clamp(22px, 3.6vw, 52px); align-items: center; }
   @media (max-width: 900px) { .me { grid-template-columns: 1fr; } }
   .me img { width: 100%; border-radius: 22px; display: block; box-shadow: 0 18px 44px rgba(123,75,148,.16); }
   .threads { display: grid; gap: 18px; }
@@ -297,8 +313,8 @@
   .thread span.t { display: block; font-size: clamp(12.5px, 1.12vw, 14.5px); color: var(--muted); line-height: 1.5; }
   .qr { display: flex; align-items: center; gap: 20px; }
   .qr svg { width: clamp(100px, 11.5vw, 150px); height: auto; border-radius: 12px; }
-  .qr .qt { font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.6; }
-  .qr .qt b { display: block; color: var(--ink); font-size: 13.5px; font-weight: 500; }
+  .qr .qt { font-family: var(--mono); font-size: var(--t-small); color: var(--muted); line-height: 1.6; }
+  .qr .qt b { display: block; color: var(--ink); font-size: var(--t-small); font-weight: 500; }
 
   .title h1, .thesis h1 { white-space: nowrap; font-size: min(4.5vw, 64px); letter-spacing: -.03em; }
   .title .plain { white-space: nowrap; font-size: min(1.45vw, 18px); }
@@ -308,7 +324,7 @@
 
   .part .inner { align-items: center; justify-content: center; text-align: center; }
   .part h1 { font-size: clamp(36px, 5.2vw, 72px); color: var(--plum); text-align: center; }
-  .part .sub { font-family: var(--mono); font-size: clamp(13px, 1.3vw, 17px);
+  .part .sub { font-family: var(--mono); font-size: var(--t-small);
                color: var(--muted); letter-spacing: .04em; margin-top: 18px; text-align: center; }
   .part .rule { width: 92px; height: 3px; border-radius: 3px; margin: 26px auto 0;
                 background: linear-gradient(90deg, var(--plum), var(--rose), var(--apricot)); }
@@ -318,17 +334,26 @@
   .ask h2 { max-width: 26ch; }
   .hand { font-family: var(--emoji); font-size: clamp(46px, 6.8vw, 90px); line-height: 1.1; }
 
-  .flow { display: flex; align-items: center; gap: clamp(4px, .9vw, 13px); flex-wrap: wrap; }
+  .flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr) auto) minmax(0, 1fr);
+          align-items: stretch; grid-auto-rows: 1fr; gap: clamp(3px, .55vw, 10px); }
   .step { background: var(--card); border: 1px solid var(--line-2); border-radius: 16px;
-          padding: clamp(11px, 1.5vw, 18px) clamp(11px, 1.5vw, 19px); min-width: 0; text-align: center; }
-  .step .n { font-family: var(--emoji); font-size: clamp(17px, 1.8vw, 24px); display: block; line-height: 1.2; }
+          padding: clamp(12px, 1.5vw, 20px) clamp(6px, .8vw, 12px);
+          min-width: 0; height: 100%; text-align: center; display: flex; flex-direction: column;
+          align-items: center; justify-content: center; gap: 6px; }
+  .step .n { font-family: var(--emoji); font-size: clamp(19px, 1.95vw, 27px); line-height: 1;
+             height: 1.35em; display: flex; align-items: center; justify-content: center; }
+  .step .n.num { font-family: var(--mono); font-size: clamp(10.5px, 1vw, 12.5px);
+                 letter-spacing: .14em; color: var(--muted); line-height: 1.6; }
+  .step.out .n.num { color: var(--rose); }
   .step .t { font-family: var(--display); font-weight: 600; display: block; margin-top: 5px;
-             font-size: clamp(12.5px, 1.25vw, 15.5px); letter-spacing: -.012em; }
+             font-size: var(--t-card); letter-spacing: -.012em; }
   .step.out { border-color: var(--rose); background: var(--rose-dim); }
-  .arrow { color: var(--line-2); font-size: 21px; flex: none; }
+  .step .t { min-height: 2.5em; display: flex; align-items: center; justify-content: center; }
+  .arrow { color: var(--line-2); font-size: clamp(15px, 1.5vw, 21px); flex: none;
+           align-self: center; line-height: 1; }
 
   .chips { display: flex; flex-wrap: wrap; gap: 13px; }
-  .chip { font-family: var(--mono); font-size: clamp(12.5px, 1.15vw, 14.5px); padding: 11px 18px;
+  .chip { font-family: var(--mono); font-size: var(--t-card); padding: 11px 18px;
           border-radius: 999px; background: var(--card); border: 1px solid var(--line-2); color: var(--ink-2); }
   .chip .e { margin-right: 8px; }
   .chip.a { border-color: var(--apricot); color: #a4552a; background: #fdf0e7; }
@@ -356,13 +381,97 @@
   .notes .t { font-family: var(--mono); color: var(--plum); font-size: 12.5px;
               letter-spacing: .09em; text-transform: uppercase; display: block; margin-bottom: 6px; }
 
+  /* ---------- technical slide grammar ----------------------------------- */
+  /* A heading, a hairline that sweeps in under it, then either a two column
+     table or a row of labelled cards. Body copy is short and declarative.
+     Colour on the heading accent and the card label only. */
+  .htitle { display: flex; flex-direction: column; gap: clamp(9px, 1.3vh, 15px); }
+  .htitle .bar { height: 1px; background: var(--line-2); transform-origin: left center; }
+  .slide.live .htitle .bar { animation: sweep .62s cubic-bezier(.2,.75,.3,1) both; animation-delay: .2s; }
+  .htitle h2 em { font-style: normal; color: var(--teal); }
+  .htitle h2 em.p { color: var(--plum); }
+  .htitle h2 em.r { color: var(--rose); }
+
+  .gcards { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(15px, 2.2vw, 32px);
+             align-items: stretch; grid-auto-rows: 1fr; }
+  .gcards.g3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 900px) { .gcards, .gcards.g3 { grid-template-columns: 1fr; } }
+  .gcard { background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+           padding: clamp(15px, 1.8vw, 26px); display: flex; flex-direction: column; gap: 10px; }
+  .gcard .lab { font-family: var(--display); font-weight: 600; letter-spacing: -.015em;
+                font-size: var(--t-strong); color: var(--teal); }
+  .gcard.p .lab { color: var(--plum); }
+  .gcard.r .lab { color: var(--rose); }
+  .gcard.m .lab { color: var(--ink-2); }
+  .gcard p { font-size: var(--t-card); color: var(--ink-2); line-height: 1.58;
+             text-align: left; hyphens: none; }
+  .gcard p + p { margin-top: -2px; }
+  .gcard code, .gcard .mono { font-family: var(--mono); font-size: .93em; color: var(--plum); }
+
+  table.tbl { border-collapse: collapse; width: 100%; max-width: 1120px;
+              font-size: var(--t-card); }
+  table.tbl th { font-family: var(--mono); font-weight: 400; text-align: left;
+                 font-size: var(--t-micro); letter-spacing: .1em;
+                 text-transform: uppercase; color: var(--muted);
+                 padding: 0 0 9px; border-bottom: 1px solid var(--line-2); }
+  table.tbl td { padding: clamp(9px, 1.35vh, 15px) 0; border-bottom: 1px solid var(--line);
+                 color: var(--ink-2); line-height: 1.5; vertical-align: baseline; }
+  table.tbl td:first-child { font-family: var(--display); font-weight: 600; color: var(--ink);
+                 font-size: var(--t-strong); letter-spacing: -.012em;
+                 padding-right: clamp(18px, 2.4vw, 40px); white-space: nowrap; width: 1%; }
+  table.tbl td + td + td { font-family: var(--mono); color: var(--muted); white-space: nowrap;
+                 text-align: right; font-size: var(--t-small); }
+  table.tbl tr:last-child td { border-bottom: none; }
+  table.tbl td b { color: var(--ink); font-weight: 500; }
+  table.tbl td .r { color: var(--rose); } table.tbl td .t { color: var(--teal); }
+  table.tbl tbody tr { opacity: 0; }
+  .slide.live table.tbl tbody tr { animation: rise .46s cubic-bezier(.2,.75,.3,1) both; }
+  .slide.live table.tbl tbody tr:nth-child(1) { animation-delay: .38s; }
+  .slide.live table.tbl tbody tr:nth-child(2) { animation-delay: .50s; }
+  .slide.live table.tbl tbody tr:nth-child(3) { animation-delay: .62s; }
+  .slide.live table.tbl tbody tr:nth-child(4) { animation-delay: .74s; }
+  .slide.live table.tbl tbody tr:nth-child(5) { animation-delay: .86s; }
+  .slide.live table.tbl tbody tr:nth-child(6) { animation-delay: .98s; }
+
+  .foot-note { font-family: var(--mono); font-size: var(--t-small);
+               color: var(--muted); line-height: 1.6; }
+  .foot-note b { color: var(--ink-2); font-weight: 500; }
+
+
+  /* ---------- investigation slides -------------------------------------- */
+  @keyframes pulse { 0%,100% { opacity: .25; } 50% { opacity: 1; } }
+  .blankcell { animation: pulse 1.8s ease-in-out infinite; }
+  .blankcell.b { animation-delay: .6s; }
+  .blankcell.c { animation-delay: 1.2s; }
+  .blankcell.d { animation-delay: .3s; }
+
+  .snippet { background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+             padding: clamp(13px, 1.6vw, 22px) clamp(15px, 1.8vw, 24px);
+             font-family: var(--mono); font-size: var(--t-small);
+             line-height: 1.75; color: var(--ink-2); white-space: pre-wrap; overflow-x: auto; }
+  .snippet .k { color: var(--plum); }
+  .snippet .g { color: var(--teal); }
+  .snippet .r { color: var(--rose); }
+  .snippet .m { color: var(--muted); }
+
+  .qslide .inner { justify-content: center; }
+  .qslide h1 { font-size: var(--t-h1); max-width: 21ch; line-height: 1.08; }
+  .qslide .sub { font-family: var(--mono); font-size: var(--t-small);
+                 color: var(--muted); margin-top: 22px; letter-spacing: .03em; }
+
+  .caution { font-family: var(--mono); font-size: var(--t-small);
+             color: var(--muted); border-left: 3px solid var(--line-2);
+             padding: 2px 0 2px 16px; line-height: 1.75; }
+  .caution b { color: var(--rose); font-weight: 500; }
+  .ph { color: var(--line-2); }
+
   @media print { .slide { display: flex !important; page-break-after: always; min-height: 100vh; }
+                 table.tbl tbody tr { opacity: 1 !important; animation: none !important; }
                  .slide .inner > *, .pop, .scene .grow { opacity: 1 !important; animation: none !important; }
                  .rail { display: none; } }
 </style>
 
 <div class="deck" id="deck">
-
 <!-- 01 title ------------------------------------------------------------ -->
 <section class="slide title">
   <div class="inner">
@@ -372,169 +481,131 @@
     <p class="plain venue">SGInnovate, Singapore &nbsp;&middot;&nbsp; 28 September 2026</p>
   </div>
   <div class="notes">
-    <span class="t">opening</span>
-    Say the title, then soften it. "I am not saying the model is evil. I am saying the thing we use
-    to grade our models has never been checked, and when I finally checked mine, it did not survive."
-    Do not explain the structure yet. Just start.
+    <span class="t">opening &nbsp;//&nbsp; 40 seconds</span>
+    Read the title, then undercut it. "That title is a bit dramatic. What I mean is narrower:
+    I used a judge for a year, I finally audited it, and the audit changed my numbers. I want to
+    walk you through what happened." Do not preview the findings.
   </div>
 </section>
 
 <!-- 02 hello ------------------------------------------------------------ -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">Hello <span class="e">&#128075;</span></p>
+    <div class="htitle">
+      <h2>Su Myat Noe</h2>
+      <div class="bar"></div>
+    </div>
     <div class="me">
       <img src="{{PHOTO}}" alt="Su Myat Noe">
-      <div class="threads">
-        <h2 style="margin-bottom:6px">Su Myat Noe</h2>
-        <div class="thread"><span class="dot e pop">&#128300;</span>
-          <div><b>AI Research Scientist, NII Tokyo</b>
-          <span class="t">I spend my days checking whether a model's safety behaviour is real, or whether it only looks real.</span></div></div>
-        <div class="thread"><span class="dot e pop">&#128444;&#65039;</span>
-          <div><b>Multimodal safety</b>
-          <span class="t">Models that read pictures as well as words, and say no for reasons we can actually verify.</span></div></div>
-        <div class="thread"><span class="dot e pop">&#128207;</span>
-          <div><b>Measurement, mostly</b>
-          <span class="t">Most of my week goes into asking whether a number deserves to exist at all.</span></div></div>
-      </div>
+      <table class="tbl">
+        <tbody>
+          <tr><td>Role</td><td>Project Researcher, NII and LLMC, Tokyo</td></tr>
+          <tr><td>Focus</td><td>multimodal safety, vision language evaluation, AI for law</td></tr>
+          <tr><td>Day job</td><td>checking whether a model's safety refusal is grounded in the image, or only in its own sentence</td></tr>
+        </tbody>
+      </table>
     </div>
     <div class="qr">
       {{QR1}}
-      <div class="qt"><b>imsumyatnoe.github.io</b>papers, code, and tonight's slides</div>
+      <div class="qt"><b>imsumyatnoe.github.io</b>papers, code, and these slides</div>
     </div>
   </div>
   <div class="notes">
-    <span class="t">who is talking</span>
-    Twenty seconds, no more. They care about what you can do for them tonight.
-    Point at the QR, say it comes back at the end, move on.
+    <span class="t">who is talking &nbsp;//&nbsp; 20 seconds</span>
+    Twenty seconds. The last row is the only one that matters. Point at the QR, say it comes back
+    at the end, move on.
   </div>
 </section>
 
-<!-- 03 why this matters --------------------------------------------------- -->
-<section class="slide">
+<!-- 03 the question ----------------------------------------------------- -->
+<section class="slide qslide">
   <div class="inner">
-    <p class="eyebrow">Before we start</p>
-    <h2>Why this one matters to you</h2>
-    <p class="lead">If you are building with AI right now, something in your stack is already being graded
-      by a model. A pull request, a support reply, a summary, a refund.</p>
-    <p class="say">Nobody sat down and voted on that. It just happened, quietly, over about eighteen months,
-      because it was the only thing that could keep up.</p>
-    <p class="note">And that grade is what decides which version ships, which prompt wins, and which agent
-      goes live on Monday.</p>
+    <p class="eyebrow">The question this talk is about</p>
+    <h1>Can we trust an LLM judge before we audit the judge?</h1>
+    <p class="sub">I want to walk you through one example from start to finish, including the parts where we got it wrong.</p>
   </div>
   <div class="notes">
-    <span class="t">why care</span>
-    This is the contract with the room. Say it slowly and look at people. The point is not that
-    anybody was careless. The point is that nobody checked.
+    <span class="t">framing &nbsp;//&nbsp; 20 seconds</span>
+    Say it once and move. Do not answer it here. The room should get to the answer about one slide
+    before you do.
   </div>
 </section>
 
-<!-- 04 word one: agent ------------------------------------------------- -->
+<!-- 04 what is an agent -------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">A few words first &nbsp;//&nbsp; one of four</p>
-    <h2><span class="e">&#129302;</span> Agent</h2>
-    <p class="lead">A model that takes actions on its own. Not just answering your question, but
-      running through several steps until something is actually done.</p>
-    <ul class="list">
-      <li data-n="&#128736;&#65039;"><div><b>It takes real actions</b>It calls tools, looks up your order, sends a refund, or passes the case to a human.</div></li>
-      <li data-n="&#129504;"><div><b>It thinks and adapts</b>It mixes your fixed business rules with its own reasoning, and picks a path as it goes.</div></li>
-      <li data-n="&#128269;"><div><b>It needs a new kind of testing</b>You have to check the path it took, not just the sentence it ended up writing.</div></li>
-      <li data-n="&#9888;&#65039;"><div><b>It fails in new ways</b>Wrong tool, endless loops, and made up arguments. Those three come up again and again.</div></li>
-    </ul>
+    <div class="htitle">
+      <h2>What is an <em>AI agent</em>?</h2>
+      <div class="bar"></div>
+    </div>
+    <p class="lead">It is a model with tools attached and a loop around it. It plans, calls a tool,
+      looks at what came back, and decides what to do next, until it finishes or runs out of steps.</p>
+    <div class="gcards">
+      <div class="gcard pop">
+        <span class="lab">Uses tools</span>
+        <p>The agent can act on other systems. It can look up an order, query a database, or issue a refund.</p>
+      </div>
+      <div class="gcard pop">
+        <span class="lab">Decides what to do next</span>
+        <p>It picks the next action from the task and from whatever the last step returned. The path is not fixed in advance.</p>
+      </div>
+      <div class="gcard m pop">
+        <span class="lab">We need to evaluate the whole process</span>
+        <p>Checking the final response tells us whether the answer is correct. It does not tell us whether the agent got there the right way.</p>
+      </div>
+      <div class="gcard r pop">
+        <span class="lab">Things can go wrong along the way</span>
+        <p>It might pick the wrong tool, pass the wrong argument, repeat a call, or do work it did not need to do, and still land on the correct answer.</p>
+      </div>
+    </div>
   </div>
   <div class="notes">
-    <span class="t">terminology, one of four</span>
-    Half this room builds these for a living and half have never written a prompt. Say it once,
-    plainly, and do not apologise for defining it. "Actions" is the word to land.
+    <span class="t">terminology &nbsp;//&nbsp; 1 minute</span>
+    Half the room builds these for a living and half have never written a prompt. Read the lead,
+    then take the four boxes in order without reading them word for word. The bottom left box is
+    the one that matters for this talk, so slow down there.
   </div>
 </section>
 
-<!-- 05 word two: judge --------------------------------------------------- -->
+<!-- 05 what is a judge --------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">A few words first &nbsp;//&nbsp; two of four</p>
-    <h2><span class="e">&#9878;&#65039;</span> LLM as a judge</h2>
-    <p class="lead">A second model that reads the first one's work and gives it a score, so nobody has to
-      sit and read two thousand refund letters by hand.</p>
-    <ul class="list">
-      <li data-n="&#128228;"><div><b>What you feed it</b>The photo, the order, your policy, and the reply the agent wrote. Sometimes the whole trace.</div></li>
-      <li data-n="&#128229;"><div><b>What it hands back</b>A number out of ten, plus a paragraph explaining the number.</div></li>
-      <li data-n="&#9889;"><div><b>Why everyone uses it</b>It keeps up with the volume, it costs cents, and it gives you something you can put in a chart.</div></li>
-      <li data-n="&#128683;"><div><b>The catch</b>That explanation paragraph is written to convince you, and nothing anywhere checks whether it's true.</div></li>
-    </ul>
+    <div class="htitle">
+      <h2>What is <em>LLM as a judge</em>?</h2>
+      <div class="bar"></div>
+    </div>
+    <p class="lead">We ask a second model to read the first model's output and give it a score, so that nobody has to read every case by hand.</p>
+    <div class="gcards">
+      <div class="gcard pop">
+        <span class="lab">Reads another model's work</span>
+        <p>It gets the request, the response, and sometimes the whole trace, and returns a number on a fixed scale.</p>
+      </div>
+      <div class="gcard pop">
+        <span class="lab">Handles volumes people cannot</span>
+        <p>A person needs a few minutes per case. The judge costs a fraction of a cent and runs overnight. That is why we started using one.</p>
+      </div>
+      <div class="gcard m pop">
+        <span class="lab">It explains itself convincingly</span>
+        <p>It also writes a paragraph explaining the score. That paragraph is written to read well, and nothing checks whether it is true.</p>
+      </div>
+      <div class="gcard r pop">
+        <span class="lab">It is also a model</span>
+        <p>Give it the same input twice and you can get two answers. Sometimes you get nothing back. We test the agent for this. We rarely test the judge.</p>
+      </div>
+    </div>
   </div>
   <div class="notes">
-    <span class="t">terminology, two of four</span>
-    "One model does the work, another marks the homework." Point at the catch and say it is the
-    whole reason you are here tonight.
+    <span class="t">terminology &nbsp;//&nbsp; 1 minute</span>
+    "One model does the work, another marks the homework." The bottom right box is the thesis of
+    the talk, so say it once here and then leave it alone until the evidence arrives.
   </div>
 </section>
 
-<!-- 06 word three: eval -------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">A few words first &nbsp;//&nbsp; three of four</p>
-    <h2><span class="e">&#128202;</span> Eval</h2>
-    <p class="lead">The test you run on your AI to decide whether it's good enough to ship, and the only
-      thing standing between a bug and your customers.</p>
-    <ul class="list">
-      <li data-n="&#128203;"><div><b>A benchmark</b>A fixed set of cases everybody tests on, so two numbers can be compared.</div></li>
-      <li data-n="&#128200;"><div><b>A pass rate</b>The share of those cases your system got right. That is the number that ends up on the slide.</div></li>
-      <li data-n="&#128682;"><div><b>A gate</b>The line you've decided not to ship below, and the reason anybody cares about the number.</div></li>
-      <li data-n="&#127919;"><div><b>Why it matters tonight</b>Every figure in this talk came out of an eval that trusted a judge to do the scoring.</div></li>
-    </ul>
-  </div>
-  <div class="notes">
-    <span class="t">terminology, three of four</span>
-    Everyone in the room uses this word and nobody defines it the same way. Say the gate line
-    slowly, because that is the one that makes eval work feel worth funding.
-  </div>
-</section>
-
-<!-- 07 word four: trace and ground truth ---------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">A few words first &nbsp;//&nbsp; four of four</p>
-    <h2><span class="e">&#129534;</span> Trace and ground truth</h2>
-    <p class="lead">Two words the rest of the talk leans on, so let's get them out of the way now.</p>
-    <ul class="list">
-      <li data-n="&#129534;"><div><b>Trace</b>The full record of what the agent did, step by step, in the order it did it.</div></li>
-      <li data-n="&#9989;"><div><b>Ground truth</b>What a careful human says the right answer actually was. Slow, expensive, and worth it.</div></li>
-      <li data-n="&#128270;"><div><b>Why you want both</b>The trace shows you where it went wrong. Ground truth is how you know it went wrong at all.</div></li>
-      <li data-n="&#9888;&#65039;"><div><b>The gap</b>A judge with no ground truth behind it is a second opinion, not a measurement.</div></li>
-    </ul>
-  </div>
-  <div class="notes">
-    <span class="t">terminology, four of four</span>
-    Keep this one quick. It exists so that clue two and clue four do not need explaining mid flow.
-  </div>
-</section>
-
-<!-- 08 the plan ----------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">The plan</p>
-    <h2>How we'll spend the next 30 minutes together</h2>
-    <ul class="list">
-      <li data-n="&#127829;"><div><b>One pizza</b>We'll walk through a single order, right from start to finish.</div></li>
-      <li data-n="&#128269;"><div><b>Four clues</b>Four sneaky ways your judge might mislead you, and how to catch them!</div></li>
-      <li data-n="&#128433;&#65039;"><div><b>Three live demos</b>Right here on this page, no terminal required!</div></li>
-      <li data-n="&#9749;"><div><b>Five things for Monday</b>A handy checklist you can take back and run yourself.</div></li>
-    </ul>
-  </div>
-  <div class="notes">
-    <span class="t">the plan</span>
-    Fifteen seconds. Do not read the whole list, just name the four. The demos line usually gets
-    a small reaction, so pause after it.
-  </div>
-</section>
-
-<!-- 05 hungry ------------------------------------------------------------- -->
+<!-- 06 hungry ----------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
     <div class="ask">
-      <h2>Quick one first. <span class="e">&#127829;</span><br>Is anyone here hungry?</h2>
+      <h2>Is anyone here hungry?</h2>
       <p class="say">Keep your hand up if you ordered food on your phone this week. Supper counts.</p>
     </div>
     <figure style="max-width:770px">
@@ -597,21 +668,23 @@
         <circle class="spark b" cx="80" cy="124" r="4" fill="#ef8f5a"/>
         <circle class="spark c" cx="470" cy="80" r="4.5" fill="#7b4b94"/>
       </svg>
-      <figcaption>We are eating out for the next half hour. Everything tonight happens at this table.</figcaption>
+      <figcaption>We will follow one order all the way through. Every number later in the talk comes from it.</figcaption>
     </figure>
   </div>
   <div class="notes">
-    <span class="t">scene setting</span>
+    <span class="t">scene setting &nbsp;//&nbsp; 45 seconds</span>
     Really ask it, and really wait. Three seconds of silence is fine. The whole talk lives inside
     this one story, so it is worth buying their attention here.
   </div>
 </section>
 
-<!-- 06 the journey --------------------------------------------------------- -->
+<!-- 07 the journey ------------------------------------------------------ -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">So here is the example</p>
-    <h2>One pizza, six hops <span class="e">&#127829;</span></h2>
+    <div class="htitle">
+      <h2>Where the order goes before it reaches you</h2>
+      <div class="bar"></div>
+    </div>
     <div class="journey">
       <div class="hop"><span class="ico">&#128241;</span><span class="lb">you order<br>on the app</span></div>
       <div class="hop"><span class="ico">&#127829;</span><span class="lb">kitchen<br>makes it</span></div>
@@ -620,23 +693,25 @@
       <div class="hop"><span class="ico">&#129302;</span><span class="lb">an agent<br>decides</span></div>
       <div class="hop end"><span class="ico">&#9878;&#65039;</span><span class="lb">a judge<br>scores it</span></div>
     </div>
-    <p class="say">Only the last box is unusual. The first five happen a few million times a day across this
-      region already, and none of us think twice about them. The last one is where tonight's trouble lives.</p>
+    <p class="foot-note">We monitor the first five steps. But the final score comes from the judge, so how do we know the judge is right?</p>
   </div>
   <div class="notes">
-    <span class="t">the map</span>
-    Walk left to right with your hand and say each box out loud. Tap the last box twice and say
-    "this is the one nobody looks at". You come back to this picture on the compounding slide.
+    <span class="t">the map &nbsp;//&nbsp; 45 seconds</span>
+    Walk left to right with your hand and say each box out loud. Tap the last box twice: "this is
+    the one nobody looks at." You come back to this picture later.
   </div>
 </section>
 
-<!-- 07 it arrives ---------------------------------------------------------- -->
+<!-- 08 it arrives wrong -------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">Twenty minutes later</p>
-    <h2>It comes, and it is not your pizza.</h2>
+    <div class="htitle">
+      <p class="eyebrow">Twenty minutes later</p>
+      <h2>The order arrives, and it is wrong</h2>
+      <div class="bar"></div>
+    </div>
     <div class="cols narrow">
-      <figure style="max-width:282px">
+      <figure style="max-width:262px">
         <svg class="scene" viewBox="0 0 300 380" role="img" aria-label="A phone showing a photo of a wrong pizza and a refund request">
           <rect x="24" y="10" width="252" height="360" rx="30" fill="#fffcf9" stroke="#cfc2b6" stroke-width="2.5"/>
           <rect x="118" y="24" width="64" height="8" rx="4" fill="#e6ddd4"/>
@@ -670,146 +745,132 @@
           </g>
         </svg>
       </figure>
-      <div style="display:grid;gap:clamp(14px,2.2vh,26px)">
-        <p class="say">So you take a photo of the bag, you say the order is wrong, and you ask for your money
-          back. Nothing unusual about any of that.</p>
-        <p class="say">What is unusual is that nobody will ever open that photo. Nine times out of ten a model
-          reads it first, and it has about four seconds to make up its mind.</p>
+      <div class="gcards" style="grid-template-columns:1fr">
+        <div class="gcard m pop">
+          <span class="lab">What the system receives</span>
+          <p>A photo, a few lines of free text, the order record, and the refund policy. The claim is worth twenty two dollars.</p>
+        </div>
+        <div class="gcard r pop">
+          <span class="lab">Who reads it</span>
+          <p>Nobody opens the photo. A model reads it first about nine times out of ten, and it has roughly four seconds.</p>
+        </div>
       </div>
     </div>
-    <p class="plain">That is already how most refund messages get answered here. The open question was never
-      whether to automate it. The open question is who checks the answers.</p>
+    <p class="foot-note">We decided to automate this years ago. What we never decided was who checks the answers.</p>
   </div>
   <div class="notes">
-    <span class="t">the case</span>
-    Say the amount out loud once so it feels like money. Twenty two dollars.
-    Everything later in the talk is this one order.
+    <span class="t">the case &nbsp;//&nbsp; 45 seconds</span>
+    Say the amount out loud once so it feels like money. Twenty two dollars. Everything later in
+    the talk is this one order.
   </div>
 </section>
 
-<!-- 08 three calls ---------------------------------------------------------- -->
+<!-- 09 what happens before the refund ------------------------------------ -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">Three ways this can go</p>
-    <h2>Somebody has to call it.</h2>
-    <div class="chips">
-      <span class="chip t pop"><span class="e">&#128176;</span>refund you</span>
-      <span class="chip a pop"><span class="e">&#10060;</span>reject the claim</span>
-      <span class="chip p pop"><span class="e">&#128100;</span>pass it to a human</span>
+    <div class="htitle">
+      <h2>What happens before the refund?</h2>
+      <div class="bar"></div>
     </div>
-    <p class="say">Refund a claim that was never true and the company quietly bleeds. Reject a real one and
-      that customer is gone for good. Send everything to a person and there was no point automating
-      anything in the first place.</p>
-    <p class="note">Making the call is the cheap part. Knowing whether the call was any good is the
-      expensive part, and that is the whole talk.</p>
-  </div>
-  <div class="notes">
-    <span class="t">stakes</span>
-    Keep it light. The point is that all three answers are defensible for some orders, which is
-    exactly why grading them is hard.
-  </div>
-</section>
-
-<!-- 12 the six steps ---------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">What the refund agent actually does</p>
-    <h2>Six steps, four seconds.</h2>
     <div class="flow">
-      <div class="step pop"><span class="n e">&#128248;</span><span class="t">read the photo</span></div>
+      <div class="step pop"><span class="n e">&#128248;</span><span class="t">read the<br>photo</span></div>
       <span class="arrow">&rarr;</span>
-      <div class="step pop"><span class="n e">&#128203;</span><span class="t">check the order</span></div>
+      <div class="step pop"><span class="n e">&#129534;</span><span class="t">check the<br>order</span></div>
       <span class="arrow">&rarr;</span>
-      <div class="step pop"><span class="n e">&#128220;</span><span class="t">check the policy</span></div>
+      <div class="step pop"><span class="n e">&#128214;</span><span class="t">look up<br>the policy</span></div>
       <span class="arrow">&rarr;</span>
-      <div class="step pop"><span class="n e">&#129504;</span><span class="t">decide</span></div>
+      <div class="step pop"><span class="n e">&#129504;</span><span class="t">make a<br>decision</span></div>
       <span class="arrow">&rarr;</span>
-      <div class="step pop"><span class="n e">&#9997;&#65039;</span><span class="t">write the reply</span></div>
+      <div class="step pop"><span class="n e">&#128172;</span><span class="t">draft the<br>response</span></div>
       <span class="arrow">&rarr;</span>
-      <div class="step out pop"><span class="n e">&#128176;</span><span class="t">send the money</span></div>
+      <div class="step out pop"><span class="n e">&#128184;</span><span class="t">issue the<br>refund</span></div>
     </div>
-    <p class="say">Six chances to get it wrong, and only the last one leaves a mark that anybody notices.</p>
-    <p class="plain">Hold on to this picture. It comes back near the end, and by then it looks a lot worse.</p>
+    <p class="lead">The benchmark checks the final result. But the agent made several decisions
+      before getting there. Did it take the right path?</p>
+    <p class="foot-note">If the agent looked up the wrong policy and still paid the right amount, the score comes out the same.</p>
   </div>
   <div class="notes">
-    <span class="t">the trajectory</span>
-    Walk it left to right. Tap the money box and say "this is the only one finance ever sees".
+    <span class="t">the trajectory &nbsp;//&nbsp; 1 minute</span>
+    Walk it left to right. Tap the money box: "this is the only one finance ever sees." Then read
+    the three lines under it slowly, because that is the question the rest of the talk answers.
   </div>
 </section>
 
-<!-- 13 who checks ------------------------------------------------------------- -->
+<!-- 10 why a judge ------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <div class="ask">
-      <h2>So who checks the agent? <span class="e">&#128064;</span></h2>
-      <p class="say">Two thousand refunds a day. Nobody is sitting there reading two thousand refund
-        letters, and nobody is going to be hired to do it either.</p>
+    <div class="htitle">
+      <h2>Why we used a judge at all</h2>
+      <div class="bar"></div>
     </div>
-    <p class="note bad">So we hand the job to another model, exactly the way we described at the start.
-      We paste in the whole trace, we ask it to score the decision out of ten, and that number goes
-      straight onto a slide.</p>
+    <div class="stats">
+      <div class="stat"><b class="plum" data-count="2000">0</b>
+        <span>refund decisions per day</span></div>
+      <div class="stat"><b class="plum" data-count="4" data-suffix=" min">0 min</b>
+        <span>for a person to read one trace properly</span></div>
+      <div class="stat"><b class="rose" data-count="16.7" data-dec="1" data-suffix=" FTE">0.0 FTE</b>
+        <span>to review all of them by hand</span></div>
+    </div>
+    <p class="foot-note">Nobody picked a judge out of laziness. That headcount was never going to be approved, so the trace goes to a second model and the model gives us a number.</p>
   </div>
   <div class="notes">
-    <span class="t">pivot</span>
-    This is the turn of the talk. Slow right down here.
+    <span class="t">motivation &nbsp;//&nbsp; 45 seconds</span>
+    This is the sympathetic part. Say plainly that the judge was the reasonable choice, because the
+    rest of the talk is easier to hear once the room knows you are not scolding them.
   </div>
 </section>
 
-<!-- 17 thesis -------------------------------------------------------------------- -->
-<section class="slide thesis">
-  <div class="inner">
-    <p class="eyebrow">The claim</p>
-    <h1>Your judge is probably lying to you.</h1>
-    <p class="lead">Not on purpose, and not because anyone was careless. It hands you a confident number,
-      in the right format, on time, and that number does not mean what you think it means.</p>
-  </div>
-  <div class="notes">
-    <span class="t">thesis</span>
-    Let the slide sit for a beat before you talk over it.
-  </div>
-</section>
-
-<!-- 18 instrument ----------------------------------------------------------------- -->
+<!-- 11 what the judge receives -------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">How to think about it</p>
-    <h2>A judge is an instrument.</h2>
-    <p class="lead">Somewhere in your pipeline there is a thing that measures quality, and you have been
-      reading whatever it prints as if it were a fact.</p>
-    <p class="say">That makes it an instrument, and we have known for about four hundred years what you do
-      with an instrument before you trust it. You calibrate it.</p>
+    <div class="htitle">
+      <h2>What the judge actually receives</h2>
+      <div class="bar"></div>
+    </div>
+    <div class="snippet"><span class="m"># judge input</span>
+<span class="k">photo:</span>      &lt;the image the customer sent&gt;      <span class="m">(vision configs only)</span>
+<span class="k">complaint:</span>  "this is not what I ordered, half of it is on the bag"
+<span class="k">trace:</span>      &lt;the six steps the agent took&gt;
+<span class="k">reply:</span>      &lt;the refund letter the agent wrote&gt;
+<span class="k">policy:</span>     &lt;the refund policy&gt;                <span class="m">(reference configs only)</span>
+
+<span class="m"># judge output</span>
+<span class="g">score:</span>      8 / 10
+<span class="g">reasoning:</span>  "Handled politely, policy correctly cited, customer retained..."</div>
+    <p class="foot-note">Anything below 7 counts as a fail here. We ran two judges so we could check one against the other.</p>
   </div>
   <div class="notes">
-    <span class="t">framing</span>
-    The instrument metaphor does a lot of work for the rest of the talk. Say it once and then
-    stop explaining it.
+    <span class="t">method &nbsp;//&nbsp; 1 minute</span>
+    Point at the photo line and the policy line. Those two switches come back near the end of the
+    talk, so plant them now and do not explain them yet.
   </div>
 </section>
 
-<!-- 19 what we would never accept -------------------------------------------------- -->
+<!-- 12 it worked --------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">Nobody would accept these</p>
-    <h2>Three instruments you would throw out <span class="e">&#128683;</span></h2>
-    <div class="cols c3">
-      <div class="card fill"><span class="tag"><span class="e">&#127777;&#65039;</span> a thermometer</span>
-        <p class="small">that reads differently every time you use it on the same thing</p></div>
-      <div class="card fill"><span class="tag"><span class="e">&#9878;&#65039;</span> a weighing scale</span>
-        <p class="small">that quietly skips the heavy items and reports the average of the rest</p></div>
-      <div class="card fill"><span class="tag"><span class="e">&#128207;</span> a ruler</span>
-        <p class="small">that agrees with you mostly because everything you measure is the same length</p></div>
+    <div class="htitle">
+      <h2>The first results looked fine</h2>
+      <div class="bar"></div>
     </div>
-    <p class="note ok">All three are real failures in real judges, and you will see each one tonight,
-      live in this room, with no terminal and no API key.</p>
+    <div class="stats">
+      <div class="stat"><b class="plum" data-count="6.9" data-dec="1" data-suffix=" / 10">0.0 / 10</b>
+        <span>mean judge score, 600 orders</span></div>
+      <div class="stat"><b class="plum" data-count="0.74" data-dec="2">0.00</b>
+        <span>correlation with our human reviewers</span></div>
+      <div class="stat"><b class="plum" data-count="75" data-suffix="%">0%</b>
+        <span>raw agreement with a person</span></div>
+    </div>
+    <p class="foot-note">Every one of those numbers is computed correctly. Nothing here is wrong. This is where we stopped looking and started planning the next experiment.</p>
   </div>
   <div class="notes">
-    <span class="t">framing</span>
-    Each card maps to a clue: thermometer is clue one, scale is clue two, ruler is clue three.
-    Clue four has no instrument, because it is not a measurement error. It is the wrong question.
+    <span class="t">the calm &nbsp;//&nbsp; 45 seconds</span>
+    Sell it honestly. You were happy with this. If the room does not believe you were happy, the
+    turn later does not land.
   </div>
 </section>
 
-<!-- 20 hands up 1 ------------------------------------------------------------------- -->
+<!-- 13 hands up 1 -------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
     <div class="ask">
@@ -819,151 +880,152 @@
     </div>
   </div>
   <div class="notes">
-    <span class="t">participation</span>
+    <span class="t">participation &nbsp;//&nbsp; 30 seconds</span>
     Wait for it. Count out loud if the room is big. Usually half to two thirds go up.
   </div>
 </section>
 
-<!-- 21 hands up 2 -------------------------------------------------------------------- -->
+<!-- 14 hands up 2 -------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
     <div class="ask">
       <span class="hand">&#128064;</span>
-      <h2>Keep it up if you ever checked whether that grader was any good.</h2>
-      <p class="say">Ran it twice on the same input. Compared it against people. Looked at what it did on
-        the hard cases.</p>
+      <h2>Keep it up if you ever measured whether that grader was any good.</h2>
+      <p class="say">Repeat runs on the same input. Agreement against human labels. Behaviour on the
+        hard cases, reported separately.</p>
     </div>
-    <p class="note bad">Every room I have asked, nearly every hand goes down. That gap is the reason I am
-      standing up here.</p>
+    <p class="foot-note">In every room I have asked, almost every hand goes down here. Mine was down for about two years, and that is where the rest of this talk comes from.</p>
   </div>
   <div class="notes">
-    <span class="t">participation</span>
-    Do not make anyone feel caught out. Say "my own hand went down too, for about two years".
+    <span class="t">participation &nbsp;//&nbsp; 40 seconds</span>
+    Do not make anyone feel caught out. Say "my own hand went down too" before anyone else has to.
   </div>
 </section>
 
-<!-- 22 story one ---------------------------------------------------------------------- -->
+<!-- 15 empty rows -------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">Why I care about this one</p>
-    <h2>When a model saw something that was not there <span class="e">&#128064;</span></h2>
-    <p class="lead">I work on multimodal safety. My models look at a picture and decide whether to help.</p>
-    <p class="say">One of them refused a request, and explained itself beautifully. It named the dangerous
-      object in the image, told me where it was sitting, and declined.</p>
-    <p class="note bad">There was no object. I had already removed it.</p>
+    <div class="htitle">
+      <h2>Then we noticed some rows had no score</h2>
+      <div class="bar"></div>
+    </div>
+    <div class="cols wide">
+      <figure>
+        <svg class="scene" viewBox="0 0 620 210" role="img" aria-label="A score matrix with four empty cells">
+          <g class="st" font-size="11">
+            <text x="0" y="24">batch 1</text>
+            <text x="0" y="60">batch 2</text>
+            <text x="0" y="96">batch 3</text>
+            <text x="0" y="132">batch 4</text>
+            <text x="0" y="168">batch 5</text>
+          </g>
+          <g id="mx"></g>
+        </svg>
+        <figcaption>Judge scores, one row per batch of orders. Four cells came back with nothing in them.</figcaption>
+      </figure>
+      <div class="gcards" style="grid-template-columns:1fr">
+        <div class="gcard m pop">
+          <span class="lab">What came back</span>
+          <p>Not a zero, not an error message, not a refusal. Just an empty string where a number should be.</p>
+        </div>
+        <div class="gcard r pop">
+          <span class="lab">What we did first</span>
+          <p>We dropped those rows and carried on. That is one call to dropna, and it is in almost every eval script I have written.</p>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="notes">
-    <span class="t">personal, part one</span>
-    Slow, first person, no hedging. Land the last line and then stop talking for a second.
+    <span class="t">the turn &nbsp;//&nbsp; 1 minute</span>
+    Slow down. This is the hinge of the talk. Admit the dropna without embarrassment, because
+    everybody in the room has written it, and that honesty buys you the next ten minutes.
   </div>
 </section>
 
-<!-- 23 story two ----------------------------------------------------------------------- -->
+<!-- 16 hypotheses -------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">What that taught me</p>
-    <h2>It was refusing its own sentence.</h2>
-    <p class="say">The model was declining something that existed only inside the paragraph it had just
-      written, and my evaluation scored that refusal as correct, because it read like a very good refusal.</p>
-    <p class="lead">My scoring never checked whether the model was right. It checked whether the model
-      sounded right.</p>
-    <p class="note plum">Every number I had published measured writing quality, and I was calling it safety.
-      Since then I build the instrument before I trust the reading.</p>
+    <div class="htitle">
+      <h2>What could cause an empty score?</h2>
+      <div class="bar"></div>
+    </div>
+    <div class="chips">
+      <span class="chip pop">a missing policy reference</span>
+      <span class="chip pop">a photo that failed to upload</span>
+      <span class="chip pop">a trace too long for the context</span>
+      <span class="chip pop">our own parser</span>
+      <span class="chip a pop">the provider safety filter</span>
+      <span class="chip p pop">something in the API itself</span>
+    </div>
+    <p class="foot-note">Six things it could be. Five of them are our own code, which is where I expected to find it.</p>
   </div>
   <div class="notes">
-    <span class="t">personal, part two</span>
-    Tie it straight back to the pizza: a judge that grades prose will love a confident wrong refund
-    for exactly the same reason. That habit is what you are handing over tonight.
+    <span class="t">hypotheses &nbsp;//&nbsp; 40 seconds</span>
+    Say you expected it to be your own parser. That is the honest prior, and it makes the result
+    more interesting when it turns out not to be.
   </div>
 </section>
 
-<!-- 24 the report ------------------------------------------------------------------------ -->
+<!-- 17 elimination ------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">Back to the refunds</p>
-    <h2>Here is the report you would get. <span class="e">&#128202;</span></h2>
+    <div class="htitle">
+      <h2>We checked each one, and ruled five out</h2>
+      <div class="bar"></div>
+    </div>
+    <table class="tbl">
+      <thead><tr><th>Candidate</th><th>How we checked</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>Reference</td><td>blanks occur with and without the policy attached</td><td><span class="r">ruled out</span></td></tr>
+        <tr><td>Photo</td><td>blanks occur in text only runs too</td><td><span class="r">ruled out</span></td></tr>
+        <tr><td>Trace</td><td>no length or content pattern separates blanks from scored rows</td><td><span class="r">ruled out</span></td></tr>
+        <tr><td>Parser</td><td>the raw payload was already empty before parsing</td><td><span class="r">ruled out</span></td></tr>
+        <tr><td>Safety filter</td><td>no filter flag returned on any blank</td><td><span class="r">ruled out</span></td></tr>
+      </tbody>
+    </table>
+    <p class="foot-note">Which left the one thing we had assumed was not a variable. So we tested that.</p>
+  </div>
+  <div class="notes">
+    <span class="t">elimination &nbsp;//&nbsp; 1 minute</span>
+    Walk the column, do not read the rows. The last line is the transition, so land it and pause
+    before you click.
+  </div>
+</section>
+
+<!-- 18 sent them again --------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <div class="htitle">
+      <h2>So we sent the same ten inputs again</h2>
+      <div class="bar"></div>
+    </div>
     <div class="stats">
-      <div class="stat"><b class="plum" data-count="6.9" data-dec="1" data-suffix=" / 10">0.0 / 10</b>
-        <span>average judge score across six hundred orders</span></div>
-      <div class="stat"><b class="plum" data-count="0.74" data-dec="2">0.00</b>
-        <span>correlation with our own human reviewers</span></div>
-      <div class="stat"><b class="plum" data-count="75" data-suffix="%">0%</b>
-        <span>of the time it agrees with a person</span></div>
+      <div class="stat"><b class="rose" data-count="10">0</b>
+        <span>blank rows picked at random</span></div>
+      <div class="stat"><b class="teal" data-count="10">0</b>
+        <span>returned a valid score on the retry</span></div>
+      <div class="stat"><b class="plum" data-count="0">0</b>
+        <span>changes to the input</span></div>
     </div>
-    <p class="say">Green on the dashboard. Nothing in it is false. Every number was computed correctly.</p>
+    <p class="caution">Ten is a small sample, so this tells us the blanks can be recovered, not how often they happen. <b>One possibility</b> is that the call is nondeterministic and the model sometimes returns nothing at all. We could not see inside the API, so we do not know for certain.</p>
   </div>
   <div class="notes">
-    <span class="t">setup</span>
-    These are the real numbers from the worked example in the repo, and each clue takes one apart.
+    <span class="t">the finding &nbsp;//&nbsp; 1 minute</span>
+    Read the caution line out loud, all of it. Ten of ten is striking and the temptation is to
+    oversell it. Saying the limitation yourself is what makes the rest credible.
   </div>
 </section>
 
-<!-- 25 would you ship ---------------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <div class="ask">
-      <h2>Would you ship on that? <span class="e">&#128640;</span></h2>
-      <p class="say">I would have. Most of us have shipped on a lot less than that.</p>
-    </div>
-    <p class="note bad">There are four things wrong with that report, and not one of them is visible
-      from the report.</p>
-  </div>
-  <div class="notes">
-    <span class="t">participation</span>
-    Ask for hands both ways. Then say "so would I, and that is exactly the problem".
-  </div>
-</section>
-
-<!-- part one divider ------------------------------------------------------ -->
-<section class="slide part">
-  <div class="inner">
-    <div>
-      <h1>Part 1: The Problem</h1>
-      <p class="sub">Four clues that your judge is lying to you</p>
-      <div class="rule"></div>
-    </div>
-  </div>
-  <div class="notes">
-    <span class="t">divider</span>
-    Five seconds. Say "so that is the setup, now here is what is actually wrong with it"
-    and move on. Do not talk over a divider, it is there to give the room a breath.
-  </div>
-</section>
-
-<!-- 26 clue 1 -------------------------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow"><b>Clue one</b> &nbsp;//&nbsp; the thermometer <span class="e">&#127777;&#65039;</span></p>
-    <h2>Same photo, different score.</h2>
-    <p class="lead">I sent the same six hundred orders to the same judge, with the same prompt, three times.
-      Temperature at zero. Nothing changed except the clock.</p>
-    <div class="stats">
-      <div class="stat"><b class="rose" data-count="21" data-suffix="%">0%</b>
-        <span>got the same score all three times</span></div>
-      <div class="stat"><b class="rose" data-count="27" data-suffix="%">0%</b>
-        <span>changed side of the pass line</span></div>
-      <div class="stat"><b class="plum" data-count="1.2" data-dec="1" data-suffix=" pts">0.0 pts</b>
-        <span>average gap, highest to lowest pass</span></div>
-    </div>
-  </div>
-  <div class="notes">
-    <span class="t">clue one</span>
-    Temperature zero is not determinism. Batching, routing and kernel nondeterminism all move the
-    number. People assume this is solved. It is not. If you scored once, a quarter of your pass and
-    fail labels were a coin toss.
-  </div>
-</section>
-
-<!-- 27 demo 1 --------------------------------------------------------------------------------- -->
+<!-- 19 demo 1 ------------------------------------------------------------ -->
 <section class="slide">
   <div class="inner">
     <div class="demo-head">
-      <div><p class="eyebrow">Live, right here in this page</p><h3>Press the button. Score them again.</h3></div>
+      <div><p class="eyebrow">Demo &nbsp;//&nbsp; runs offline in this page</p><h3>Let us score the same eight orders three times</h3></div>
       <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
         <button class="go" id="d1-run">Score them</button>
         <div class="switch">
-          <button data-demo="1" data-mode="bug" aria-pressed="true">what we do</button>
-          <button data-demo="1" data-mode="fix" aria-pressed="false">what to do</button>
+          <button data-demo="1" data-mode="bug" aria-pressed="true">report the mean</button>
+          <button data-demo="1" data-mode="fix" aria-pressed="false">report the spread</button>
         </div>
       </div>
     </div>
@@ -972,70 +1034,62 @@
       <div class="readout">
         <div id="d1-state"></div>
         <div class="big" id="d1-big">&hellip;</div>
-        <div class="lbl" id="d1-lbl">press the button and let it score these orders</div>
+        <div class="lbl" id="d1-lbl">press the button to run the first pass</div>
         <div class="kv"><span>passes run</span><b id="d1-passes">0 / 3</b></div>
-        <div class="kv"><span>same score every time</span><b id="d1-same">&middot;</b></div>
-        <div class="kv"><span>verdict changed</span><b id="d1-flip">&middot;</b></div>
-        <div class="kv"><span>average gap</span><b id="d1-spread">&middot;</b></div>
+        <div class="kv"><span>same score every pass</span><b id="d1-same">&middot;</b></div>
+        <div class="kv"><span>crossed the pass line</span><b id="d1-flip">&middot;</b></div>
+        <div class="kv"><span>mean spread</span><b id="d1-spread">&middot;</b></div>
       </div>
     </div>
-    <p class="banner">Eight real orders from the worked example in the repo. Nothing here touches the network.</p>
+    <p class="banner">Eight orders from the same example. Fixed data, no network. Press the button three times.</p>
   </div>
   <div class="notes">
-    <span class="t">demo one</span>
-    Click once and read the number out as if it were real. Click again and let them watch cells move.
-    Then flip the switch: same data, reported with its spread.
+    <span class="t">demo, part one &nbsp;//&nbsp; 1.5 minutes</span>
+    Click once and read the mean out as if it were the result. Click twice more and let them watch
+    cells move. Then flip the switch: same data, reported with its spread. Nothing is hidden and
+    nothing is fixed, the only change is what you print.
   </div>
 </section>
 
-<!-- 28 clue 2 ---------------------------------------------------------------------------------- -->
+<!-- 20 not evenly spread ------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Clue two</b> &nbsp;//&nbsp; the scale that skips things <span class="e">&#9878;&#65039;</span></p>
-    <h2>The orders the judge never scored.</h2>
+    <div class="htitle">
+      <h2>The missing scores were not spread evenly</h2>
+      <div class="bar"></div>
+    </div>
     <div class="cols wide">
       <figure>
         <svg id="strat" viewBox="0 0 640 220" role="img" aria-label="Blank rate and agreement, by how readable the photo was"></svg>
-        <figcaption>Left: how often it came back with nothing. Right: how well it agreed with us when it did.</figcaption>
+        <figcaption>How often the judge returned nothing, by photo quality, and how well it agreed with people on the rows that came back.</figcaption>
       </figure>
-      <div style="display:grid;gap:clamp(12px,2vh,22px)">
-        <p class="say">Twenty two percent came back blank, refused, or in a shape nothing could parse.
-          Your pipeline drops those rows and reports the rest.</p>
-        <p class="note bad">One percent of the clear photos went blank. Fifty seven percent of the
-          blurry ones did.</p>
+      <div class="gcards" style="grid-template-columns:1fr">
+        <div class="gcard m pop">
+          <span class="lab">What we found</span>
+          <p>About one percent of the clear photos came back empty. For the blurry ones it was fifty seven percent.</p>
+        </div>
+        <div class="gcard r pop">
+          <span class="lab">Why it matters</span>
+          <p>So the rows we dropped were not a random sample. They were the hard ones, and the hard ones are why we built the evaluation.</p>
+        </div>
       </div>
     </div>
   </div>
   <div class="notes">
-    <span class="t">clue two</span>
-    This is survivorship bias with a dropna in the middle of it. Ask who has written that line.
-    Everyone has.
+    <span class="t">stratification &nbsp;//&nbsp; 1 minute</span>
+    This is the slide engineers photograph. Say the words survivorship bias once, then stop. The
+    picture already says it.
   </div>
 </section>
 
-<!-- 28b the quiet part ------------------------------------------------------ -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow"><b>Clue two</b> &nbsp;//&nbsp; the part that stings</p>
-    <h2>It goes quiet on exactly the orders you needed it for.</h2>
-    <p class="say">The number you publish comes from the easy ones, because the hard ones never made it
-      into the calculation at all.</p>
-  </div>
-  <div class="notes">
-    <span class="t">clue two, the punch</span>
-    One sentence, then stop. Let them sit with it before you switch to the demo.
-    Retry the blanks and publish the number you get after, not before.
-  </div>
-</section>
-
-<!-- 29 demo 2 ------------------------------------------------------------------------------------ -->
+<!-- 21 demo 2 ------------------------------------------------------------ -->
 <section class="slide">
   <div class="inner">
     <div class="demo-head">
-      <div><p class="eyebrow">Live, right here in this page</p><h3>The rows that quietly left</h3></div>
+      <div><p class="eyebrow">Demo &nbsp;//&nbsp; runs offline in this page</p><h3>What happens to the number when we drop the blanks</h3></div>
       <div class="switch">
         <button data-demo="2" data-mode="bug" aria-pressed="true">drop the blanks</button>
-        <button data-demo="2" data-mode="fix" aria-pressed="false">ask again, keep them</button>
+        <button data-demo="2" data-mode="fix" aria-pressed="false">retry, keep them</button>
       </div>
     </div>
     <div class="demo">
@@ -1050,70 +1104,149 @@
         <div class="kv"><span>on blurry photos</span><b id="d2-hard">never measured</b></div>
       </div>
     </div>
-    <p class="banner">The honest number is lower and far more useful, because it finally includes the hard cases.</p>
+    <p class="banner">Flip the switch and the headline number goes down. That is the fix working, not the fix failing.</p>
   </div>
   <div class="notes">
-    <span class="t">demo two</span>
-    Flip it and point at the number going down. Say out loud: "this is the only slide tonight where
-    the fix makes your headline metric worse, and it is still the right thing to do".
+    <span class="t">demo, part two &nbsp;//&nbsp; 1.5 minutes</span>
+    Let the number fall and say nothing for two seconds. Then: this is the only change tonight that
+    makes your headline metric worse, and it is the one I would insist on.
   </div>
 </section>
 
-<!-- 30 clue 3 -------------------------------------------------------------------------------------- -->
+<!-- 22 how we read it ---------------------------------------------------- -->
+<section class="slide qslide">
+  <div class="inner">
+    <p class="eyebrow">How we read that</p>
+    <h1>The number went down because the hard cases came back in.</h1>
+    <p class="sub">Same judge, same prompt, same reviewers. We think this is the more realistic figure, but we would want to see it on a second dataset before saying that firmly.</p>
+  </div>
+  <div class="notes">
+    <span class="t">interpretation &nbsp;//&nbsp; 40 seconds</span>
+    This is the sentence people quote back to you. Say it slowly, then the caveat on the subtitle.
+    The caveat is what keeps it a research claim.
+  </div>
+</section>
+
+<!-- 23 divider ----------------------------------------------------------- -->
+<section class="slide part">
+  <div class="inner">
+    <div>
+      <h1>Where were the disagreements?</h1>
+      <p class="sub">A correlation tells you there is a gap. It does not tell you where.</p>
+      <div class="rule"></div>
+    </div>
+  </div>
+  <div class="notes">
+    <span class="t">divider &nbsp;//&nbsp; 15 seconds</span>
+    Do not talk over it. This is the pivot from measurement to failure cases.
+  </div>
+</section>
+
+<!-- 24 one example -------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Clue three</b> &nbsp;//&nbsp; the ruler that always agrees <span class="e">&#128207;</span></p>
-    <h2>Agreement that counts lucky guesses.</h2>
-    <div class="cols wide">
-      <figure>
-        <svg id="kappa" viewBox="0 0 600 190" role="img" aria-label="Reported agreement against agreement after chance correction"></svg>
-        <figcaption>Most refund calls are easy, and both sides say fine a lot.</figcaption>
-      </figure>
-      <div style="display:grid;gap:clamp(12px,2vh,22px)">
-        <p class="say">Seventy five percent agreement sounds like a working instrument. A judge that approves
-          every order, reading nothing at all, scores fifty seven.</p>
-        <p class="note bad">Take out the agreement you would get by luck and what is left is 0.50.
-          Moderate, and moderate is not a gate.</p>
+    <div class="htitle">
+      <h2>Now let us look at one example</h2>
+      <div class="bar"></div>
+    </div>
+    <div class="snippet"><span class="m"># the agent's reply</span>
+<span class="k">refund:</span> "I'm sorry your order arrived wrong. I can see from the photo that
+         the toppings do not match your order, so I've refunded $22 in full."
+
+<span class="m"># the photo</span>
+<span class="r">the pizza in the photo is the pizza that was ordered.</span>
+
+<span class="m"># the judge</span>
+<span class="g">score: 9 / 10</span>  "empathetic, specific, policy correctly applied"</div>
+    <p class="foot-note">The judge was not wrong about the writing. The letter reads well. It just was not about the photo.</p>
+  </div>
+  <div class="notes">
+    <span class="t">the case &nbsp;//&nbsp; 1.5 minutes</span>
+    Slow, no hedging. This is where the talk stops being about a metric. Land the middle block and
+    stop talking for two seconds.
+  </div>
+</section>
+
+<!-- 25 my own work -------------------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <div class="htitle">
+      <h2>I had seen the same thing in my own work</h2>
+      <div class="bar"></div>
+    </div>
+    <p class="lead">I work on multimodal safety, so my models look at a picture and decide whether to help.</p>
+    <p class="say">One of them refused a request and was very specific about why. It named the dangerous object, said where it was in the frame, and declined on those grounds.</p>
+    <p class="note bad">The object was not in the image. I had removed it in the previous step.</p>
+    <p class="caution">My evaluation scored that refusal as correct, because by the criteria I had written, it was.</p>
+  </div>
+  <div class="notes">
+    <span class="t">personal &nbsp;//&nbsp; 1 minute</span>
+    First person, quiet. Then draw the line explicitly: it is the same failure as the refund letter,
+    in a different domain. That is why you started auditing judges at all.
+  </div>
+</section>
+
+<!-- 26 what it was rewarding ---------------------------------------------- -->
+<section class="slide">
+  <div class="inner">
+    <div class="htitle">
+      <h2>What the judge was actually rewarding</h2>
+      <div class="bar"></div>
+    </div>
+    <div class="gcards">
+      <div class="gcard r pop">
+        <span class="lab">What it scored highly</span>
+        <p>Clear structure, specific detail, a named piece of evidence, and a justification that sounds like policy.</p>
+        <p>By those criteria both examples are good writing.</p>
+      </div>
+      <div class="gcard pop">
+        <span class="lab">What we meant to measure</span>
+        <p>Whether the decision was actually based on what was in front of it.</p>
+        <p>We never put that question in the judge prompt.</p>
       </div>
     </div>
+    <p class="foot-note">A graded judge tells us whether something was handled well. We never asked it whether it was right.</p>
   </div>
   <div class="notes">
-    <span class="t">clue three</span>
-    Do not say kappa first. Say the idea, then say the name once, then move on. Report the chance
-    corrected number with the always approve baseline printed beside it, or the raw number flatters
-    you every time.
+    <span class="t">interpretation &nbsp;//&nbsp; 1 minute</span>
+    The transfer to the room: an agent that pays out confidently on the wrong evidence scores high
+    for exactly the same reason. Say it explicitly.
   </div>
 </section>
 
-<!-- 31 clue 4 ---------------------------------------------------------------------------------------- -->
+<!-- 27 adding the reference ----------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow"><b>Clue four</b> &nbsp;//&nbsp; the expensive one <span class="e">&#128176;</span></p>
-    <h2>Confident, beautifully written, and wrong.</h2>
-    <p class="lead">A refund letter that is warm, clear, apologises properly, and hands over twenty two
-      dollars for a photo of the correct pizza.</p>
-    <div class="stats">
-      <div class="stat"><b class="rose" data-count="89" data-suffix="%">0%</b>
-        <span>of confident wrong refunds got approved</span></div>
-      <div class="stat"><b class="teal" data-count="10" data-suffix="%">0%</b>
-        <span>after a second judge asks if it was right</span></div>
+    <div class="htitle">
+      <h2>Adding the reference changed the judge's behavior</h2>
+      <div class="bar"></div>
     </div>
+    <table class="tbl">
+      <thead><tr><th>Config</th><th>What the judge can see</th><th>What we observed</th></tr></thead>
+      <tbody>
+        <tr><td>Reply only</td><td>the refund letter</td><td>rewards fluency</td></tr>
+        <tr><td>With policy</td><td>plus the refund policy as a reference</td><td>scores tighten</td></tr>
+        <tr><td>Without photo</td><td>no image at all</td><td>cannot check grounding</td></tr>
+        <tr><td>With photo</td><td>the customer's image as well</td><td>closer to our labels</td></tr>
+      </tbody>
+    </table>
+    <p class="caution">These are directions we saw, not effect sizes we would publish. The practical version is simpler: the judge can only check what it can see. If the thing you care about is not in its input, no amount of prompt wording will get it back.</p>
   </div>
   <div class="notes">
-    <span class="t">clue four</span>
-    A score out of ten answers one question: was this handled well? Nobody ever asked it whether the
-    answer was correct. This is the clue that connects back to your own story, so say so out loud.
+    <span class="t">what helped &nbsp;//&nbsp; 1.5 minutes</span>
+    The last sentence is the most useful thing in the talk for a practitioner. Say it twice if you
+    have the time.
   </div>
 </section>
 
-<!-- 32 demo 3 ------------------------------------------------------------------------------------------ -->
+<!-- 28 demo 3 ------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
     <div class="demo-head">
-      <div><p class="eyebrow">Live, right here in this page</p><h3>Six refunds that all read beautifully</h3></div>
+      <div><p class="eyebrow">Demo &nbsp;//&nbsp; runs offline in this page</p><h3>What a second judge catches when it only checks correctness</h3></div>
       <div class="switch">
-        <button data-demo="3" data-mode="bug" aria-pressed="true">one judge</button>
-        <button data-demo="3" data-mode="fix" aria-pressed="false">add a second</button>
+        <button data-demo="3" data-mode="bug" aria-pressed="true">graded judge only</button>
+        <button data-demo="3" data-mode="fix" aria-pressed="false">add a binary judge</button>
       </div>
     </div>
     <div class="demo">
@@ -1122,116 +1255,54 @@
         <div id="d3-state"></div>
         <div class="big" id="d3-big">89%</div>
         <div class="lbl">of the wrong refunds went through</div>
-        <div class="kv"><span>setup</span><b id="d3-proto">one judge</b></div>
+        <div class="kv"><span>protocol</span><b id="d3-proto">one judge</b></div>
         <div class="kv"><span>caught before payout</span><b id="d3-caught">0 of 6</b></div>
-        <div class="kv"><span>false refusals</span><b id="d3-fr">36%</b></div>
+        <div class="kv"><span>correct claims wrongly refused</span><b id="d3-fr">36%</b></div>
       </div>
     </div>
-    <p class="banner">The second judge answers yes or no, not a score. It costs less than the first one and it
-      is the highest value change on this list.</p>
+    <p class="banner">The second judge answers yes or no instead of giving a score. Watch the last row, which does not move.</p>
   </div>
   <div class="notes">
-    <span class="t">demo three</span>
-    Point at the false refusal row staying put. The second judge costs nothing in customer experience,
-    which is the objection you will get.
+    <span class="t">demo, part three &nbsp;//&nbsp; 1.5 minutes</span>
+    Set it up in one line: we stopped asking one model for one number, and added a second judge that
+    only answers whether the decision was correct. Then point at the false refusal row staying put,
+    because that is the objection you will get.
   </div>
 </section>
 
-<!-- 33 compounding --------------------------------------------------------------------------------------- -->
+<!-- 29 the checks ---------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">Now put it back in the agent</p>
-    <h2>Six steps, and the wobble multiplies.</h2>
-    <div class="cols wide">
-      <figure>
-        <svg id="compound" viewBox="0 0 600 190" role="img" aria-label="Chance the whole order is graded consistently, as steps are added"></svg>
-        <figcaption>Chance that every step in one order gets the same verdict twice in a row.</figcaption>
-      </figure>
-      <div style="display:grid;gap:clamp(12px,2vh,22px)">
-        <p class="say">One step held its verdict seventy three times in a hundred, which sounded survivable
-          when I first saw it.</p>
-        <p class="note bad">Across all six steps of one pizza refund, fifteen orders in a hundred come out
-          the same way twice.</p>
-      </div>
+    <div class="htitle">
+      <h2>What we check before trusting a judge number</h2>
+      <div class="bar"></div>
     </div>
-    <p class="plain">Nobody grades one step. We grade agents, and agents are made of steps.</p>
+    <table class="tbl">
+      <thead><tr><th>Check</th><th>What to publish beside the number</th></tr></thead>
+      <tbody>
+        <tr><td>Repeat</td><td>score the same inputs three times, report the spread as well as the mean</td></tr>
+        <tr><td>Count</td><td>the blank rate, broken down by how hard the case was, never a silent dropna</td></tr>
+        <tr><td>Compare</td><td>agreement with humans on a sample, with the trivial baseline printed beside it</td></tr>
+        <tr><td>Separate</td><td>quality and correctness as two questions, not one score</td></tr>
+      </tbody>
+    </table>
+    <p class="foot-note">None of this is clever, and that is rather the point. The checks are cheap, we just were not running them. The repo will run all four on your own CSV.</p>
   </div>
   <div class="notes">
-    <span class="t">compounding</span>
-    This is the slide the engineers photograph. Give it room and do not talk over the chart drawing in.
+    <span class="t">takeaway &nbsp;//&nbsp; 1.5 minutes</span>
+    This is the slide people photograph, so stand still and let them.
   </div>
 </section>
 
-<!-- 34 what it costs -------------------------------------------------------------------------------------- -->
+<!-- 30 close --------------------------------------------------------------- -->
 <section class="slide">
   <div class="inner">
-    <p class="eyebrow">The number a team can act on</p>
-    <h2>One version in four, named wrong.</h2>
-    <div class="cols wide">
-      <figure>
-        <svg id="risk" viewBox="0 0 600 240" role="img" aria-label="How often the judge picks the better agent version, by evaluation size"></svg>
-        <figcaption>How often the judge picks the genuinely better version, by how many orders you score.</figcaption>
-      </figure>
-      <div style="display:grid;gap:clamp(12px,2vh,22px)">
-        <p class="say">Two versions of the refund agent. One of them really is better. You score a hundred
-          orders on each and you ship the winner.</p>
-        <p class="note bad">At a hundred orders you name the wrong version one time in four.</p>
-      </div>
-    </div>
-    <p class="plain">Nobody can act on a correlation. Everybody can act on that sentence, including the
-      person who signs off your headcount.</p>
-  </div>
-  <div class="notes">
-    <span class="t">decision risk</span>
-    Translate every eval metric into the decision it is used for. This is how you get budget for
-    eval work.
-  </div>
-</section>
-
-<!-- part two divider ------------------------------------------------------ -->
-<section class="slide part">
-  <div class="inner">
-    <div>
-      <h1>Part 2: The Fix</h1>
-      <p class="sub">Five things you can do on Monday</p>
-      <div class="rule"></div>
-    </div>
-  </div>
-  <div class="notes">
-    <span class="t">divider</span>
-    Five seconds again. "Okay, so that is the bad news. Here is the part you can
-    actually do something about."
-  </div>
-</section>
-
-<!-- 35 checklist ------------------------------------------------------------------------------------------- -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">Monday morning</p>
-    <h2>Five things, one afternoon. <span class="e">&#9749;</span></h2>
-    <ul class="list">
-      <li data-n="&#128260;"><div><b>Score everything three times</b>Publish the spread next to the average. If the spread embarrasses you, that is information.</div></li>
-      <li data-n="&#128683;"><div><b>Count what came back blank</b>Break the blanks down by how hard the case was. Never quietly drop a row.</div></li>
-      <li data-n="&#127922;"><div><b>Take out the luck before you celebrate</b>Print the always approve baseline beside every agreement number you report.</div></li>
-      <li data-n="&#9878;&#65039;"><div><b>Add a second judge that answers yes or no</b>Was this the right call, not was this nicely written. Require both to pass.</div></li>
-      <li data-n="&#127919;"><div><b>Say what your eval size buys you</b>Turn the metric into a sentence about how often you ship the wrong thing.</div></li>
-    </ul>
-  </div>
-  <div class="notes">
-    <span class="t">takeaway</span>
-    Tell them the repo does all five on their own CSV. This is the slide people photograph.
-  </div>
-</section>
-
-<!-- 36 close ------------------------------------------------------------------------------------------------ -->
-<section class="slide">
-  <div class="inner">
-    <p class="eyebrow">Thank you <span class="e">&#128591;</span></p>
-    <h2>Your judge is an instrument.<br>Calibrate it before you trust it.</h2>
+    <p class="eyebrow">Thank you</p>
+    <h2>An LLM judge is useful, and it is also<br>a model that needs evaluating.</h2>
     <div class="cols">
       <div class="qr">
         {{QR2}}
-        <div class="qt"><b>the code</b>four audits, the pizza refund example, and this deck</div>
+        <div class="qt"><b>github.com/ImSuMyatNoe/judge-audit</b>the four checks, the demos, and this deck</div>
       </div>
       <div class="qr">
         {{QR1}}
@@ -1241,8 +1312,9 @@
     <p class="plain">Su Myat Noe &nbsp;&middot;&nbsp; NII Tokyo &nbsp;&middot;&nbsp; Beyond the Vibes, Session 03, SGInnovate</p>
   </div>
   <div class="notes">
-    <span class="t">close</span>
-    End on the sentence, not on the QR codes. Then stop talking and let them scan.
+    <span class="t">close &nbsp;//&nbsp; 30 seconds</span>
+    End on the sentence, not on the QR codes. It is deliberately not "judges are bad". Then stop
+    talking and let them scan.
   </div>
 </section>
 
@@ -1352,6 +1424,53 @@
       stroke: C.muted, "stroke-width": 1.4, "stroke-dasharray": "4 4" }));
     g.appendChild(el("text", { x: x0, y: 172, class: "st" },
       "57% = a judge that just approves everything"));
+  })();
+
+
+  /* ------------------------------------------------------- score matrix -- */
+  (function matrix() {
+    const g = document.getElementById("mx");
+    if (!g) return;
+    const rows = [
+      [8, 7, 9, 6, 8, 7, 9, 7],
+      [7, 9, 6, 8, 7, 8, 6, 9],
+      [6, null, 7, 8, 5, 7, null, 6],
+      [9, 6, 8, null, 7, 9, 7, 8],
+      [7, 8, 6, 7, 9, null, 8, 7]
+    ];
+    const x0 = 86, y0 = 6, cw = 62, ch = 36, pad = 5;
+    let blank = 0;
+    rows.forEach((row, r) => row.forEach((v, c) => {
+      const x = x0 + c * cw, y = y0 + r * ch;
+      const empty = v === null;
+      const box = el("rect", {
+        x: x, y: y, width: cw - pad, height: ch - pad, rx: 8,
+        fill: empty ? "#fbe9ec" : "#fffcf9",
+        stroke: empty ? C.rose : C.line,
+        "stroke-width": empty ? 1.6 : 1,
+        "stroke-dasharray": empty ? "4 3" : "none"
+      });
+      box.style.opacity = 0;
+      box.style.animation = "pop .4s " + (0.25 + (r * 8 + c) * 0.012) + "s ease-out both";
+      g.appendChild(box);
+      if (empty) {
+        const q = el("text", {
+          x: x + (cw - pad) / 2, y: y + 22, "text-anchor": "middle",
+          class: "sv", fill: C.rose
+        }, "\u2014");
+        q.setAttribute("class", "sv blankcell" + ["", " b", " c", " d"][blank % 4]);
+        q.setAttribute("fill", C.rose);
+        g.appendChild(q);
+        blank += 1;
+      } else {
+        const t = el("text", {
+          x: x + (cw - pad) / 2, y: y + 22, "text-anchor": "middle", class: "sv"
+        }, String(v));
+        t.style.opacity = 0;
+        t.style.animation = "pop .4s " + (0.3 + (r * 8 + c) * 0.012) + "s ease-out both";
+        g.appendChild(t);
+      }
+    }));
   })();
 
   /* ------------------------------------------------------------ strata --- */
@@ -1479,7 +1598,7 @@
       if (d1Passes >= 2) {
         const moved = new Set(shown.map(v => v >= THRESH)).size > 1;
         if (d1Mode === "bug") {
-          flag.textContent = moved ? "verdict changed" : "held";
+          flag.textContent = moved ? "crossed the line" : "held";
           flag.className = "flag " + (moved ? "bad" : "");
         } else {
           const lo = Math.min.apply(null, shown), hi = Math.max.apply(null, shown);
@@ -1497,7 +1616,7 @@
     if (bigEl) bigEl.style.color = d1Passes ? "" : "var(--line-2)";
     set("d1-passes", d1Passes + " / 3");
     if (d1Passes === 0) {
-      set("d1-big", "…"); set("d1-lbl", "press the button and let it score these orders");
+      set("d1-big", "…"); set("d1-lbl", "press the button to run the first pass");
       set("d1-same", "·"); set("d1-flip", "·"); set("d1-spread", "·");
     } else {
       const mean = D1.reduce((a, t) =>
@@ -1529,7 +1648,7 @@
       const chip = document.createElement("span");
       chip.className = d1Mode === "bug" ? "state bug" : "state fix";
       chip.textContent = d1Mode === "bug"
-        ? (d1Passes >= 2 ? "the wobble is hidden" : "one pass, reported as fact")
+        ? (d1Passes >= 2 ? "spread not reported" : "one pass, reported as the result")
         : "gap reported";
       st.appendChild(chip);
     }
