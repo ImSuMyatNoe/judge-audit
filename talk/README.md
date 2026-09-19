@@ -5,7 +5,7 @@ Beyond the Vibes, Session 03, "Do You Trust Your AI?"
 SGInnovate, 32 Carpenter St, Monday 28 September 2026, 7 to 9pm SGT.
 
 `btv-slides.html` is the deck. Open it in any browser. No build step, no server,
-no network, no API key. The photo and both QR codes are embedded in the file, so
+no network, no API key. The photo, the QR codes, the event logo and the meme are embedded in the file, so
 it works from a USB stick on a laptop that has never seen this repo.
 
 | Key | Does |
@@ -61,29 +61,54 @@ does not tell us how common that is. Slide 19 carries its limitation in the body
 Read it out loud.
 
 
-## Typography
+## Canvas and typography
 
-Every size on every slide comes from one scale, declared once at the top of the
-stylesheet. Nothing shrinks to fit its own content.
+Every slide is composed on one fixed **1920 x 1080** stage and the whole stage
+is scaled to the window. Nothing reflows between a laptop, a projector and a
+phone: the layout you check at home is the layout the room sees.
 
-| Token | Used for | At 1440 wide |
+1920px across a 16:9 slide is 13.333 inches, so **1 point is exactly 2 pixels**
+and the scale below is real points.
+
+| Token | Used for | Points |
 |---|---|---|
-| `--t-h1` | title slide, question slides, part dividers | 72px |
-| `--t-title` | slide titles | 56px |
-| `--t-lead` | the main explanatory line, the takeaway under a diagram | 28px |
-| `--t-strong` | card headings, the key column of a table | 24px |
-| `--t-card` | text inside cards, process boxes, chips | 23px |
-| `--t-small` | supporting text, captions, footnotes, cautions | 18px |
-| `--t-micro` | eyebrows, column heads, demo readouts | 15px |
+| `--t-h1` | cover, question slides, part dividers | 36 |
+| `--t-title` | slide titles | 30 |
+| `--t-lead` | main explanatory text, the takeaway under a diagram | 14 |
+| `--t-strong` | card headings, key column of a table | 13 |
+| `--t-card` | text inside cards and process boxes | 12 |
+| `--t-small` | supporting text, captions, footnotes | 12 |
+| `--t-eyebrow` | the small line above a slide title | 11 |
+| `--t-micro` | column heads, demo readouts, chrome | 10 |
 
-Diagram rows are CSS grid, not flex wrap. The six pipeline boxes and the six
-journey boxes are `minmax(0, 1fr)` columns with `grid-auto-rows: 1fr`, so every
-box has the same width, height, padding and icon box regardless of label length.
-Labels carry deliberate line breaks so all six sit on the same two lines and
-share a baseline. Arrows are their own grid column, vertically centred.
+Deliberately light. On a 16:9 slide filling a projector, 12pt body still reads
+from the back because the slide is 13 inches wide on screen and several metres
+wide in the room. If it ever needs to come back up, every size lives in these
+eight lines at the top of the stylesheet and they move together.
 
-Verified at 1280, 1440 and 1920: no slide scrolls, and on both diagram slides
-all six boxes report identical width, height and top.
+Typeface is **Poppins** throughout, with **Roboto Mono** for the running header,
+captions and code. Both load from Google Fonts and fall back to Helvetica and
+Menlo offline.
+
+The Beyond the Vibes logo sits top right on every slide at a uniform 46px on a
+dark chip, so it holds on the cream ground.
+
+Two layout variants step outside the base scale on purpose, and only these two:
+
+- `.spot` (slide 9) is one large visual on the left and two cards on the right
+  at 35 / 65. The visual is the anchor, so its card headings go to 16pt and card
+  body to 14pt.
+- `.connect` (slide 31) is the closing slide: the statement at 25pt with a wide
+  measure, a resources list, and one QR code.
+
+Diagram rows are CSS grid. The six pipeline boxes and the six journey boxes are
+`minmax(0, 1fr)` columns with `grid-auto-rows: 1fr`, so every box has the same
+width, height, padding and icon box regardless of label length. Labels carry
+deliberate line breaks so all six share a baseline. Arrows are their own centred
+column.
+
+Verified at 1920, 1440 and 1280 wide: every slide composes inside the 1080 stage
+with nothing clipped, and the three window sizes give byte identical layout.
 
 
 ## Run of show, 31 slides in 30 minutes
@@ -113,7 +138,7 @@ all six boxes report identical width, height and top.
 | 28 | Adding the reference changed the judge's behavior | 1:30 |
 | 29 | **Demo 3.** What a second judge catches | 1:30 |
 | 30 | What we check before trusting a judge number | 1:30 |
-| 31 | Close, both QR codes | 0:30 |
+| 31 | Close. One QR code, the repo | 0:30 |
 
 Demos total roughly four and a half minutes across slides 20, 22 and 29.
 
@@ -124,7 +149,7 @@ Demos total roughly four and a half minutes across slides 20, 22 and 29.
    again to hide them, and start the clock as you begin.
 2. Click through the three demos once. They are pure JavaScript with fixed data,
    so they cannot fail on stage, but muscle memory helps.
-3. Scan both QR codes with your own phone in the room you will present in.
+3. Scan the closing QR code with your own phone in the room you will present in.
 
 
 ## Where the numbers come from

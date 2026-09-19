@@ -1,7 +1,7 @@
 <title>Is Your Judge Lying?</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
 
 <style>
   /* Warm cream ground. Fraunces for the headlines, DM Sans for reading, DM Mono
@@ -29,59 +29,70 @@
     --butter:   #f0be3f;
     --sky:      #5b8fd6;
 
-    --display: "Fraunces", Georgia, serif;
-    --body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
-    --mono: "DM Mono", ui-monospace, Menlo, monospace;
+    --display: "Poppins", "Helvetica Neue", Arial, sans-serif;
+    --body: "Poppins", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Roboto Mono", ui-monospace, Menlo, monospace;
     --emoji: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-    --pad: clamp(22px, 4.4vw, 82px);
+    --pad: 104px;
 
     /* One type scale for the whole deck. Sizes come from this list and
        nowhere else, so nothing shrinks to fit its own content. */
-    --t-h1:     clamp(36px, 5.0vw, 72px);   /* title and question slides */
-    --t-title:  clamp(31px, 4.0vw, 56px);   /* slide title */
-    --t-lead:   clamp(19px, 1.98vw, 28px);  /* main explanatory text */
-    --t-strong: clamp(17px, 1.72vw, 24px);  /* card headings, table key column */
-    --t-card:   clamp(16px, 1.62vw, 23px);  /* text inside cards and boxes */
-    --t-small:  clamp(14px, 1.32vw, 18px);  /* supporting text, captions */
-    --t-micro:  clamp(12.5px, 1.12vw, 15px);/* chrome, column heads, readouts */
+    /* The stage is exactly 1920 x 1080, which is 13.333 inches wide, so
+       1 point = 2 pixels. Every size below is written in points. */
+    --t-h1:     72px;  /* 36pt, cover and question slides */
+    --t-title:  60px;  /* 30pt, slide titles */
+    --t-lead:   28px;  /* 14pt, main explanatory text */
+    --t-strong: 26px;  /* 13pt, card headings and table key column */
+    --t-card:   24px;  /* 12pt, text inside cards and process boxes */
+    --t-small:  24px;  /* 12pt, supporting text and captions */
+    --t-micro:  20px;  /* 10pt, chrome, column heads, demo readouts */
+    --t-eyebrow:22px;  /* 11pt, the small line above a slide title */
   }
 
   * { box-sizing: border-box; }
 
   body {
-    margin: 0; min-height: 100svh; display: flex; flex-direction: column;
-    background: var(--paper); color: var(--ink);
-    font-family: var(--body); font-size: 15px; line-height: 1.5;
+    margin: 0; height: 100svh; overflow: hidden;
+    display: flex; flex-direction: column;
+    background: var(--paper-2); color: var(--ink);
+    font-family: var(--body); font-size: 30px; line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
 
-  .deck { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  /* Every slide is composed on one fixed 1920 x 1080 stage and the whole
+     stage is scaled to the window, so nothing reflows between screens. */
+  .viewport { flex: 1; min-height: 0; position: relative; overflow: hidden;
+              display: grid; place-items: center; background: var(--paper-2); }
+  .deck { position: absolute; width: 1920px; height: 1080px;
+          background: var(--paper); box-shadow: 0 6px 40px rgba(32,26,25,.10);
+          transform: scale(var(--s, 1)); transform-origin: 50% 50%; }
   .slide {
-    display: none; flex: 1; min-height: 0; overflow-y: auto;
-    padding: clamp(12px, 2.2vh, 26px) var(--pad) 0;
+    display: none; position: absolute; inset: 0; overflow: hidden;
+    padding: 30px var(--pad) 0;
   }
   .slide.on { display: flex; flex-direction: column; }
 
-  .slide-head { display: flex; align-items: baseline; gap: 12px; flex: none;
-    font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--muted); }
+  .slide-head { display: flex; align-items: center; gap: 12px; flex: none; height: 42px;
+    font-family: var(--mono); font-size: 22px; letter-spacing: .04em; color: var(--muted); }
   .slide-head .who { margin-left: auto; }
+  .slide-head .logo { margin-left: auto; display: block; height: 42px; width: auto;
+    border-radius: 10px; background: #17131c; padding: 0; }
 
   .slide-foot {
-    flex: none; border-top: 1px solid var(--line);
-    padding: 9px 0 clamp(9px, 1.5vh, 15px);
-    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
-    font-family: var(--mono); font-size: 12px; color: var(--muted);
+    flex: none; border-top: 1px solid var(--line); height: 56px;
+    padding: 14px 0 0;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    font-family: var(--mono); font-size: 22px; color: var(--muted);
   }
   .slide-foot a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
   .slide-foot .pg { font-variant-numeric: tabular-nums; margin-left: auto; }
 
   .inner {
-    width: 100%; max-width: 1280px; margin: 0 auto; flex: 1;
+    width: 100%; max-width: 1712px; margin: 0 auto; flex: 1; min-height: 0;
     display: flex; flex-direction: column; justify-content: center;
-    gap: clamp(13px, 2.2vh, 28px); padding: clamp(6px, 1.5vh, 18px) 0;
+    gap: 16px; padding: 5px 0;
   }
-  .title .inner { gap: clamp(10px, 1.6vh, 20px);
-  }
+  .title .inner { gap: 26px; }
 
   /* ---------- entrance motion ------------------------------------------- */
   @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
@@ -131,7 +142,7 @@
        font-size: var(--t-strong); letter-spacing: -.015em; }
 
   .eyebrow {
-    font-family: var(--mono); font-size: var(--t-micro);
+    font-family: var(--mono); font-size: var(--t-eyebrow);
     letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
     display: block; margin: 0; max-width: none; text-align: left; white-space: nowrap;
   }
@@ -150,7 +161,7 @@
   .rose { color: var(--rose); } .teal { color: var(--teal); } .plum { color: var(--plum); }
   .e { font-family: var(--emoji); font-style: normal; }
 
-  .cols { display: grid; gap: clamp(20px, 3.2vw, 52px); grid-template-columns: 1fr 1fr; align-items: start; }
+  .cols { display: grid; gap: 64px; grid-template-columns: 1fr 1fr; align-items: start; }
   .c3 { grid-template-columns: repeat(3, 1fr); }
   .wide { grid-template-columns: 1.3fr 1fr; }
   .narrow { grid-template-columns: 1fr 1.3fr; }
@@ -164,18 +175,18 @@
   .card.fill { background: var(--card); border: 1px solid var(--line); border-radius: 18px;
                padding: clamp(18px, 2.2vw, 30px); }
 
-  .stats { display: flex; flex-wrap: wrap; gap: clamp(24px, 5vw, 76px); }
-  .stat { display: flex; flex-direction: column; gap: 8px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 76px; }
+  .stat { display: flex; flex-direction: column; gap: 16px; }
   .stat b { font-family: var(--display); font-weight: 600; line-height: .92;
-            font-size: clamp(40px, 5.6vw, 76px);
+            font-size: 68px;
             letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
   .stat b.rose { color: var(--rose); }
   .stat b.teal { color: var(--teal); }
   .stat b.plum { color: var(--plum); }
   .stat span { font-family: var(--mono); font-size: var(--t-small);
-               color: var(--muted); max-width: 26ch; line-height: 1.55; }
+               color: var(--muted); max-width: 22ch; line-height: 1.5; }
 
-  .note { border-left: 5px solid var(--plum); padding: 7px 0 7px 22px;
+  .note { border-left: 8px solid var(--plum); padding: 10px 0 10px 34px;
           font-size: var(--t-lead); color: var(--ink); line-height: 1.45;
           letter-spacing: -.01em; max-width: none; }
   .note.bad { border-left-color: var(--rose); }
@@ -194,11 +205,11 @@
 
   code { font-family: var(--mono); font-size: .92em; color: var(--plum); }
 
-  figure { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  figure { margin: 0; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
   figcaption { font-family: var(--mono); font-size: var(--t-small); color: var(--muted); line-height: 1.55; }
   svg { max-width: 100%; height: auto; display: block; }
-  .st { font-family: var(--mono); font-size: 13px; fill: var(--muted); }
-  .sv { font-family: var(--mono); font-size: 15px; font-weight: 500; fill: var(--ink); }
+  .st { font-family: var(--mono); font-size: 12px; fill: var(--muted); }
+  .sv { font-family: var(--mono); font-size: 14px; font-weight: 500; fill: var(--ink); }
 
   /* ------------------------------ scenes -------------------------------- */
   .scene { width: 100%; }
@@ -223,16 +234,16 @@
   .slide.live .bubble.b3 { animation-delay: 1.6s; }
 
   .journey { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
-             align-items: stretch; grid-auto-rows: 1fr; gap: clamp(6px, .9vw, 16px); }
+             align-items: stretch; grid-auto-rows: 1fr; gap: 18px; }
   .hop { min-width: 0; height: 100%; background: var(--card); border: 1px solid var(--line);
-         border-radius: 20px; padding: clamp(14px, 1.9vh, 24px) clamp(6px, .8vw, 12px);
+         border-radius: 26px; padding: 24px 14px;
          text-align: center; display: flex; flex-direction: column;
          align-items: center; justify-content: flex-start; }
-  .hop .ico { font-family: var(--emoji); font-size: clamp(28px, 3.2vw, 46px); line-height: 1;
+  .hop .ico { font-family: var(--emoji); font-size: 44px; line-height: 1;
               height: 1.25em; display: flex; align-items: center; justify-content: center; }
   .hop .lb { font-family: var(--mono); font-size: var(--t-small);
-             color: var(--muted); display: block; margin-top: 10px; line-height: 1.45;
-             min-height: 2.9em; }
+             color: var(--muted); display: block; margin-top: 8px; line-height: 1.4;
+             min-height: 2.8em; }
   .hop.end { border-color: var(--rose); background: var(--rose-dim); }
   .hop.end .lb { color: var(--rose); }
   .slide.live .hop .ico { animation: bob 2.6s ease-in-out infinite; }
@@ -243,17 +254,17 @@
   .slide.live .hop:nth-child(6) .ico { animation-delay: 1.25s; }
 
   /* ------------------------------ states -------------------------------- */
-  .state { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono);
-           font-size: 14px; letter-spacing: .06em; text-transform: uppercase;
-           padding: 8px 15px; border-radius: 999px; }
+  .state { display: inline-flex; align-items: center; gap: 12px; font-family: var(--mono);
+           font-size: var(--t-micro); letter-spacing: .06em; text-transform: uppercase;
+           padding: 11px 22px; border-radius: 999px; }
   .state.bug { color: var(--rose); background: var(--rose-dim); border: 1px solid var(--rose); }
   .state.bug::before { content: "\2715"; }
   .state.fix { color: var(--teal); background: var(--teal-dim); border: 1px solid var(--teal); }
   .state.fix::before { content: "\2713"; }
 
   .switch { display: inline-flex; border: 1px solid var(--line-2); border-radius: 999px; overflow: hidden; }
-  .switch button { font-family: var(--mono); font-size: 13.5px; letter-spacing: .07em;
-                   text-transform: uppercase; padding: 12px 22px; border: none;
+  .switch button { font-family: var(--mono); font-size: var(--t-micro); letter-spacing: .07em;
+                   text-transform: uppercase; padding: 16px 30px; border: none;
                    background: var(--card); color: var(--muted); cursor: pointer; transition: background .2s, color .2s; }
   .switch button + button { border-left: 1px solid var(--line-2); }
   .switch button[aria-pressed="true"][data-mode="bug"] { background: var(--rose); color: #fff; }
@@ -261,86 +272,89 @@
   .switch button[data-mode="bug"]::before { content: "\2715"; margin-right: 8px; }
   .switch button[data-mode="fix"]::before { content: "\2713"; margin-right: 8px; }
 
-  .go { font-family: var(--mono); font-size: 14px; letter-spacing: .07em; text-transform: uppercase;
-        padding: 13px 26px; border-radius: 999px; border: none; background: var(--plum);
+  .go { font-family: var(--mono); font-size: var(--t-micro); letter-spacing: .07em; text-transform: uppercase;
+        padding: 17px 36px; border-radius: 999px; border: none; background: var(--plum);
         color: #fff; cursor: pointer; transition: transform .15s, filter .2s; }
   .go:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
-  .demo { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(20px, 3vw, 40px); align-items: start; }
+  .demo { display: grid; grid-template-columns: 1.68fr 1fr; gap: 48px; align-items: start; }
   @media (max-width: 960px) { .demo { grid-template-columns: 1fr; } }
-  .demo-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .demo-head { display: flex; align-items: center; justify-content: space-between;
+                gap: 32px; flex-wrap: nowrap; }
+  .demo-head h3 { font-size: var(--t-lead); line-height: 1.15; }
+  .demo-head > div:first-child { flex: 1 1 auto; min-width: 0; }
+  .demo-head > div:last-child { flex: none; }
 
   .rows { display: grid; gap: 5px; }
   .row-i { display: grid; grid-template-columns: 1fr auto auto; gap: 16px; align-items: center;
            background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-           padding: 8px 15px; font-family: var(--mono); font-size: var(--t-micro); }
-  .row-i .rid { color: var(--ink-2); display: flex; align-items: center; gap: 11px; min-width: 0; }
+           padding: 8px 20px; font-family: var(--mono); font-size: var(--t-micro); }
+  .row-i .rid { color: var(--ink-2); display: flex; align-items: center; gap: 18px;
+                min-width: 0; white-space: nowrap; }
   .row-i .rid em { font-style: normal; color: var(--muted); font-size: var(--t-micro);
                    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .thumb { font-family: var(--emoji); font-size: 21px; line-height: 1; flex: none; }
-  .cells { display: flex; gap: 6px; }
-  .cell { width: 37px; height: 32px; display: grid; place-items: center; border-radius: 9px;
+  .thumb { font-family: var(--emoji); font-size: 28px; line-height: 1; flex: none; }
+  .cells { display: flex; gap: 9px; }
+  .cell { width: 46px; height: 36px; display: grid; place-items: center; border-radius: 14px;
           background: var(--paper); border: 1px solid var(--line); color: var(--ink);
           font-variant-numeric: tabular-nums; transition: border-color .25s, color .25s; }
   .cell.moved { border-color: var(--rose); color: var(--rose); font-weight: 500; background: var(--rose-dim); }
   .cell.blank { border-style: dashed; color: var(--line-2); }
   .cell.recovered { border-color: var(--teal); color: var(--teal); background: var(--teal-dim); }
-  .flag { font-family: var(--mono); font-size: var(--t-micro); color: var(--muted); min-width: 118px; text-align: right; }
+  .flag { font-family: var(--mono); font-size: var(--t-micro); color: var(--muted); min-width: 150px; text-align: right; }
   .flag.bad { color: var(--rose); }
   .flag.good { color: var(--teal); }
 
-  .readout { display: flex; flex-direction: column; gap: 13px; }
+  .readout { display: flex; flex-direction: column; gap: 16px; }
   .readout .big { font-family: var(--display); font-weight: 600;
-                  font-size: clamp(38px, 4.6vw, 64px); line-height: 1;
+                  font-size: 60px; line-height: 1;
                   letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
   .readout .lbl { font-family: var(--mono); font-size: var(--t-micro); color: var(--muted); line-height: 1.55; }
   .kv { display: flex; justify-content: space-between; gap: 10px; font-family: var(--mono);
-        font-size: var(--t-micro); color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+        font-size: var(--t-micro); color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 11px; }
   .kv b { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 500; }
 
-  .banner { font-family: var(--mono); font-size: var(--t-small); line-height: 1.6;
-            border-left: 3px solid var(--line-2); padding: 3px 0 3px 16px; color: var(--muted); }
+  .banner { font-family: var(--mono); font-size: var(--t-small); line-height: 1.5;
+            border-left: 5px solid var(--line-2); padding: 4px 0 4px 26px; color: var(--muted); }
 
-  .me { display: grid; grid-template-columns: clamp(190px, 20vw, 290px) 1fr;
-        gap: clamp(22px, 3.6vw, 52px); align-items: center; }
+  .me { display: grid; grid-template-columns: 330px 1fr; gap: 64px; align-items: center; }
   @media (max-width: 900px) { .me { grid-template-columns: 1fr; } }
-  .me img { width: 100%; border-radius: 22px; display: block; box-shadow: 0 18px 44px rgba(123,75,148,.16); }
+  .me img { width: 100%; border-radius: 28px; display: block; box-shadow: 0 18px 44px rgba(123,75,148,.16); }
   .threads { display: grid; gap: 18px; }
   .thread { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; }
   .thread .dot { font-family: var(--emoji); font-size: 21px; line-height: 1.2; }
   .thread b { display: block; font-family: var(--display); font-weight: 600;
               font-size: clamp(17px, 1.7vw, 21px); letter-spacing: -.015em; }
   .thread span.t { display: block; font-size: clamp(12.5px, 1.12vw, 14.5px); color: var(--muted); line-height: 1.5; }
-  .qr { display: flex; align-items: center; gap: 20px; }
-  .qr svg { width: clamp(100px, 11.5vw, 150px); height: auto; border-radius: 12px; }
+  .qr { display: flex; align-items: center; gap: 32px; }
+  .qr svg { width: 160px; height: auto; border-radius: 16px; }
   .qr .qt { font-family: var(--mono); font-size: var(--t-small); color: var(--muted); line-height: 1.6; }
   .qr .qt b { display: block; color: var(--ink); font-size: var(--t-small); font-weight: 500; }
 
-  .title h1, .thesis h1 { white-space: nowrap; font-size: min(4.5vw, 64px); letter-spacing: -.03em; }
-  .title .plain { white-space: nowrap; font-size: min(1.45vw, 18px); }
+  .title h1, .thesis h1 { white-space: nowrap; font-size: 64px; letter-spacing: -.035em; }
+  .title .plain { white-space: nowrap; font-size: var(--t-small); }
   .title .byline { color: var(--ink-2); }
   .title .venue { margin-top: 4px; }
-  .title .eyebrow { font-size: min(1.25vw, 15px); }
+  .title .eyebrow { font-size: var(--t-small); }
 
   .part .inner { align-items: center; justify-content: center; text-align: center; }
-  .part h1 { font-size: clamp(36px, 5.2vw, 72px); color: var(--plum); text-align: center; }
-  .part .sub { font-family: var(--mono); font-size: var(--t-small);
-               color: var(--muted); letter-spacing: .04em; margin-top: 18px; text-align: center; }
-  .part .rule { width: 92px; height: 3px; border-radius: 3px; margin: 26px auto 0;
+  .part h1 { font-size: var(--t-h1); color: var(--plum); text-align: center; }
+  .part .sub { font-family: var(--mono); font-size: var(--t-lead);
+               color: var(--muted); letter-spacing: .04em; margin-top: 30px; text-align: center; }
+  .part .rule { width: 160px; height: 6px; border-radius: 6px; margin: 44px auto 0;
                 background: linear-gradient(90deg, var(--plum), var(--rose), var(--apricot)); }
 
-  .ask { display: grid; gap: clamp(16px, 2.2vh, 28px); }
+  .ask { display: grid; gap: 34px; }
   .ask p { max-width: none; }
   .ask h2 { max-width: 26ch; }
-  .hand { font-family: var(--emoji); font-size: clamp(46px, 6.8vw, 90px); line-height: 1.1; }
+  .hand { font-family: var(--emoji); font-size: 80px; line-height: 1.1; }
 
   .flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr) auto) minmax(0, 1fr);
-          align-items: stretch; grid-auto-rows: 1fr; gap: clamp(3px, .55vw, 10px); }
+          align-items: stretch; grid-auto-rows: 1fr; gap: 12px; }
   .step { background: var(--card); border: 1px solid var(--line-2); border-radius: 16px;
-          padding: clamp(12px, 1.5vw, 20px) clamp(6px, .8vw, 12px);
-          min-width: 0; height: 100%; text-align: center; display: flex; flex-direction: column;
+          padding: 22px 14px; min-width: 0; height: 100%; text-align: center; display: flex; flex-direction: column;
           align-items: center; justify-content: center; gap: 6px; }
-  .step .n { font-family: var(--emoji); font-size: clamp(19px, 1.95vw, 27px); line-height: 1;
+  .step .n { font-family: var(--emoji); font-size: 34px; line-height: 1;
              height: 1.35em; display: flex; align-items: center; justify-content: center; }
   .step .n.num { font-family: var(--mono); font-size: clamp(10.5px, 1vw, 12.5px);
                  letter-spacing: .14em; color: var(--muted); line-height: 1.6; }
@@ -349,18 +363,18 @@
              font-size: var(--t-card); letter-spacing: -.012em; }
   .step.out { border-color: var(--rose); background: var(--rose-dim); }
   .step .t { min-height: 2.5em; display: flex; align-items: center; justify-content: center; }
-  .arrow { color: var(--line-2); font-size: clamp(15px, 1.5vw, 21px); flex: none;
+  .arrow { color: var(--line-2); font-size: 30px; flex: none;
            align-self: center; line-height: 1; }
 
-  .chips { display: flex; flex-wrap: wrap; gap: 13px; }
-  .chip { font-family: var(--mono); font-size: var(--t-card); padding: 11px 18px;
+  .chips { display: flex; flex-wrap: wrap; gap: 22px; }
+  .chip { font-family: var(--mono); font-size: var(--t-card); padding: 20px 32px;
           border-radius: 999px; background: var(--card); border: 1px solid var(--line-2); color: var(--ink-2); }
   .chip .e { margin-right: 8px; }
   .chip.a { border-color: var(--apricot); color: #a4552a; background: #fdf0e7; }
   .chip.p { border-color: var(--plum); color: var(--plum); background: var(--plum-dim); }
   .chip.t { border-color: var(--teal); color: var(--teal); background: var(--teal-dim); }
 
-  .rail { display: flex; align-items: center; gap: 14px; padding: 9px var(--pad);
+  .rail { flex: none; display: flex; align-items: center; gap: 14px; padding: 9px 24px;
           border-top: 1px solid var(--line); font-family: var(--mono); font-size: 13px;
           color: var(--muted); background: var(--paper-2); }
   .rail .track { flex: 1; height: 3px; background: var(--line); position: relative; border-radius: 3px; }
@@ -374,7 +388,7 @@
   :focus-visible { outline: 2px solid var(--plum); outline-offset: 2px; }
 
   .notes { display: none; border-top: 1px solid var(--line); background: var(--paper-2);
-           padding: 14px var(--pad) 18px; font-size: 13.5px; color: var(--ink-2); line-height: 1.6;
+           padding: 14px 24px 18px; font-size: 13.5px; color: var(--ink-2); line-height: 1.6;
            max-height: 34vh; overflow-y: auto; }
   body.notes-on .notes { display: block; }
   .notes b { color: var(--ink); }
@@ -385,7 +399,7 @@
   /* A heading, a hairline that sweeps in under it, then either a two column
      table or a row of labelled cards. Body copy is short and declarative.
      Colour on the heading accent and the card label only. */
-  .htitle { display: flex; flex-direction: column; gap: clamp(9px, 1.3vh, 15px); }
+  .htitle { display: flex; flex-direction: column; gap: 14px; }
   .htitle .bar { height: 1px; background: var(--line-2); transform-origin: left center; }
   .slide.live .htitle .bar { animation: sweep .62s cubic-bezier(.2,.75,.3,1) both; animation-delay: .2s; }
   .htitle h2 em { font-style: normal; color: var(--teal); }
@@ -393,34 +407,34 @@
   .htitle h2 em.r { color: var(--rose); }
   .htitle h2 em.a { color: #a4552a; }
 
-  .gcards { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(15px, 2.2vw, 32px);
+  .gcards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
              align-items: stretch; grid-auto-rows: 1fr; }
   .gcards.g3 { grid-template-columns: repeat(3, 1fr); }
   @media (max-width: 900px) { .gcards, .gcards.g3 { grid-template-columns: 1fr; } }
-  .gcard { background: var(--card); border: 1px solid var(--line); border-radius: 18px;
-           padding: clamp(15px, 1.8vw, 26px); display: flex; flex-direction: column; gap: 10px; }
+  .gcard { background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+           padding: 23px 28px; display: flex; flex-direction: column; gap: 8px; }
   .gcard .lab { font-family: var(--display); font-weight: 600; letter-spacing: -.015em;
                 font-size: var(--t-strong); color: var(--teal); }
   .gcard.p .lab { color: var(--plum); }
   .gcard.r .lab { color: var(--rose); }
   .gcard.m .lab { color: var(--ink-2); }
   .gcard.a .lab { color: #a4552a; }
-  .gcard p { font-size: var(--t-card); color: var(--ink-2); line-height: 1.58;
+  .gcard p { font-size: var(--t-card); color: var(--ink-2); line-height: 1.4;
              text-align: left; hyphens: none; }
   .gcard p + p { margin-top: -2px; }
   .gcard code, .gcard .mono { font-family: var(--mono); font-size: .93em; color: var(--plum); }
 
-  table.tbl { border-collapse: collapse; width: 100%; max-width: 1120px;
+  table.tbl { border-collapse: collapse; width: 100%; max-width: 1520px;
               font-size: var(--t-card); }
   table.tbl th { font-family: var(--mono); font-weight: 400; text-align: left;
                  font-size: var(--t-micro); letter-spacing: .1em;
                  text-transform: uppercase; color: var(--muted);
-                 padding: 0 0 9px; border-bottom: 1px solid var(--line-2); }
-  table.tbl td { padding: clamp(9px, 1.35vh, 15px) 0; border-bottom: 1px solid var(--line);
+                 padding: 0 0 18px; border-bottom: 1px solid var(--line-2); }
+  table.tbl td { padding: 15px 0; border-bottom: 1px solid var(--line);
                  color: var(--ink-2); line-height: 1.5; vertical-align: baseline; }
   table.tbl td:first-child { font-family: var(--display); font-weight: 600; color: var(--ink);
                  font-size: var(--t-strong); letter-spacing: -.012em;
-                 padding-right: clamp(18px, 2.4vw, 40px); white-space: nowrap; width: 1%; }
+                 padding-right: 52px; white-space: nowrap; width: 1%; }
   table.tbl td + td + td { font-family: var(--mono); color: var(--muted); white-space: nowrap;
                  text-align: right; font-size: var(--t-small); }
   table.tbl tr:last-child td { border-bottom: none; }
@@ -436,7 +450,7 @@
   .slide.live table.tbl tbody tr:nth-child(6) { animation-delay: .98s; }
 
   .foot-note { font-family: var(--mono); font-size: var(--t-small);
-               color: var(--muted); line-height: 1.6; }
+               color: var(--muted); line-height: 1.5; }
   .foot-note b { color: var(--ink-2); font-weight: 500; }
 
 
@@ -447,32 +461,67 @@
   .blankcell.c { animation-delay: 1.2s; }
   .blankcell.d { animation-delay: .3s; }
 
-  .snippet { background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-             padding: clamp(13px, 1.6vw, 22px) clamp(15px, 1.8vw, 24px);
+  .snippet { background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+             padding: 26px 34px;
              font-family: var(--mono); font-size: var(--t-small);
-             line-height: 1.75; color: var(--ink-2); white-space: pre-wrap; overflow-x: auto; }
+             line-height: 1.62; color: var(--ink-2); white-space: pre-wrap; overflow-x: auto; }
   .snippet .k { color: var(--plum); }
   .snippet .g { color: var(--teal); }
   .snippet .r { color: var(--rose); }
   .snippet .m { color: var(--muted); }
 
   .qslide .inner { justify-content: center; }
-  .qslide h1 { font-size: var(--t-h1); max-width: 21ch; line-height: 1.08; }
+  .qslide h1 { font-size: var(--t-h1); max-width: none; line-height: 1.16;
+                text-wrap: balance; }
   .qslide .sub { font-family: var(--mono); font-size: var(--t-small);
-                 color: var(--muted); margin-top: 22px; letter-spacing: .03em; }
+                 color: var(--muted); margin-top: 30px; letter-spacing: .03em;
+                 max-width: none; white-space: nowrap; }
 
   .caution { font-family: var(--mono); font-size: var(--t-small);
-             color: var(--muted); border-left: 3px solid var(--line-2);
-             padding: 2px 0 2px 16px; line-height: 1.75; }
+             color: var(--muted); border-left: 5px solid var(--line-2);
+             padding: 4px 0 4px 26px; line-height: 1.7; }
   .caution b { color: var(--rose); font-weight: 500; }
   .ph { color: var(--line-2); }
 
-  @media print { .slide { display: flex !important; page-break-after: always; min-height: 100vh; }
+  /* One big visual on the left, two cards on the right, 35 / 65.
+     The visual is the anchor, so the card type steps up with it. */
+  .spot .cols { grid-template-columns: 35fr 65fr; gap: 72px; align-items: center; }
+  .spot figure { align-items: center; }
+  .spot .gcard .lab { font-size: 32px; }   /* 16pt */
+  .spot .gcard p { font-size: 28px; line-height: 1.5; }  /* 14pt */
+  .spot .gcard { padding: 25px 34px; }
+  .spot .foot-note { font-size: 24px; }    /* 12pt */
+
+  .connect .cols { grid-template-columns: 58fr 42fr; gap: 80px; align-items: center; }
+  .connect h2 { max-width: 22ch; font-size: 50px; line-height: 1.12; }
+  .connect .cleft { display: flex; flex-direction: column; gap: 40px; }
+  .connect .reshead { font-family: var(--mono); font-size: var(--t-small); color: var(--muted);
+                      letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; }
+  .connect .res ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .connect .res li { display: grid; grid-template-columns: 1fr; gap: 2px; }
+  .connect .res b { font-family: var(--body); font-weight: 600; font-size: var(--t-small);
+                    color: var(--ink); }
+  .connect .res span { font-family: var(--mono); font-size: var(--t-small); color: var(--plum); }
+  .connect .cright { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+  .connect .cright svg { width: 290px; height: auto; border-radius: 20px; }
+  .connect .qcap { font-family: var(--mono); font-size: var(--t-micro); color: var(--muted); }
+
+  .saltrow { display: grid; grid-template-columns: 220px 1fr; gap: 44px; align-items: center; }
+  .saltrow .meme { width: 220px; height: 220px; object-fit: cover; border-radius: 22px;
+                   display: block; box-shadow: 0 10px 34px rgba(32,26,25,.18); }
+
+  @media print {
+    body { height: auto; overflow: visible; }
+    .viewport { display: block; }
+    .deck { position: static; transform: none; box-shadow: none; }
+    .slide { display: flex !important; position: relative; inset: auto;
+             width: 1920px; height: 1080px; page-break-after: always; }
                  table.tbl tbody tr { opacity: 1 !important; animation: none !important; }
                  .slide .inner > *, .pop, .scene .grow { opacity: 1 !important; animation: none !important; }
                  .rail { display: none; } }
 </style>
 
+<div class="viewport" id="viewport">
 <div class="deck" id="deck">
 <!-- 01 title ------------------------------------------------------------ -->
 <section class="slide title">
@@ -526,7 +575,10 @@
       <h2>Take this with a <em class="a">grain of salt</em></h2>
       <div class="bar"></div>
     </div>
-    <p class="lead">Before we start, three things about where this talk comes from.</p>
+    <div class="saltrow">
+      <img class="meme" src="{{MEME}}" alt="Take it with a grain of salt">
+      <p class="lead">Before we start, three things about where this talk comes from.</p>
+    </div>
     <div class="gcards g3">
       <div class="gcard a pop">
         <span class="lab">This is my own work</span>
@@ -543,7 +595,6 @@
         <p>Where I am not sure about something, I will say so on the slide rather than round it up.</p>
       </div>
     </div>
-    <p class="foot-note">The one real story in here is on slide 26, and it has no figures attached to it.</p>
   </div>
   <div class="notes">
     <span class="t">disclaimer &nbsp;//&nbsp; 30 seconds</span>
@@ -557,8 +608,8 @@
 <section class="slide qslide">
   <div class="inner">
     <p class="eyebrow">The question this talk is about</p>
-    <h1>Can we trust an LLM judge before we audit the judge?</h1>
-    <p class="sub">I want to walk you through one example from start to finish, including the parts where we got it wrong.</p>
+    <h1>Can we trust an LLM judge<br>before we audit the judge?</h1>
+    <p class="sub">I want to walk you through one example from start to finish, including what we got wrong.</p>
   </div>
   <div class="notes">
     <span class="t">framing &nbsp;//&nbsp; 20 seconds</span>
@@ -574,24 +625,23 @@
       <h2>What is an <em>AI agent</em>?</h2>
       <div class="bar"></div>
     </div>
-    <p class="lead">It is a model with tools attached and a loop around it. It plans, calls a tool,
-      looks at what came back, and decides what to do next, until it finishes or runs out of steps.</p>
+    <p class="lead">A model with tools and a loop around it: plan, call a tool, read the result, decide again.</p>
     <div class="gcards">
       <div class="gcard pop">
         <span class="lab">Uses tools</span>
-        <p>The agent can act on other systems. It can look up an order, query a database, or issue a refund.</p>
+        <p>The agent acts on other systems. It can look up an order, query a database, or issue a refund.</p>
       </div>
       <div class="gcard pop">
         <span class="lab">Decides what to do next</span>
-        <p>It picks the next action from the task and from whatever the last step returned. The path is not fixed in advance.</p>
+        <p>It picks the next action from the task and from what the last step returned. The path is not fixed in advance.</p>
       </div>
       <div class="gcard m pop">
         <span class="lab">We need to evaluate the whole process</span>
-        <p>Checking the final response tells us whether the answer is correct. It does not tell us whether the agent got there the right way.</p>
+        <p>Checking the final response tells us the answer is correct. It does not tell us how the agent got there.</p>
       </div>
       <div class="gcard r pop">
         <span class="lab">Things can go wrong along the way</span>
-        <p>It might pick the wrong tool, pass the wrong argument, repeat a call, or do work it did not need to do, and still land on the correct answer.</p>
+        <p>It might pick the wrong tool, pass a wrong argument, or repeat a call, and still land on the right answer.</p>
       </div>
     </div>
   </div>
@@ -610,19 +660,19 @@
       <h2>What is <em>LLM as a judge</em>?</h2>
       <div class="bar"></div>
     </div>
-    <p class="lead">We ask a second model to read the first model's output and give it a score, so that nobody has to read every case by hand.</p>
+    <p class="lead">A second model reads the first model's output and scores it, so nobody reads every case by hand.</p>
     <div class="gcards">
       <div class="gcard pop">
         <span class="lab">Reads another model's work</span>
-        <p>It gets the request, the response, and sometimes the whole trace, and returns a number on a fixed scale.</p>
+        <p>It gets the request, the response, and sometimes the whole trace, and returns a number.</p>
       </div>
       <div class="gcard pop">
         <span class="lab">Handles volumes people cannot</span>
-        <p>A person needs a few minutes per case. The judge costs a fraction of a cent and runs overnight. That is why we started using one.</p>
+        <p>A person needs minutes per case. The judge costs a fraction of a cent and runs overnight. That is why we started using one.</p>
       </div>
       <div class="gcard m pop">
         <span class="lab">It explains itself convincingly</span>
-        <p>It also writes a paragraph explaining the score. That paragraph is written to read well, and nothing checks whether it is true.</p>
+        <p>It also writes a paragraph explaining the score. That paragraph is written to read well, and nothing checks it.</p>
       </div>
       <div class="gcard r pop">
         <span class="lab">It is also a model</span>
@@ -644,7 +694,7 @@
       <h2>Is anyone here hungry?</h2>
       <p class="say">Keep your hand up if you ordered food on your phone this week. Supper counts.</p>
     </div>
-    <figure style="max-width:770px">
+    <figure>
       <svg class="scene" viewBox="0 0 900 260" role="img" aria-label="A table with a pizza, a bowl of noodles, chopsticks and warm hanging lamps">
         <g class="lamp">
           <line x1="140" y1="0" x2="140" y2="34" stroke="#cfc2b6" stroke-width="2"/>
@@ -659,7 +709,7 @@
         <rect x="40" y="152" width="820" height="96" rx="18" fill="#f2ebe4"/>
         <rect x="40" y="152" width="820" height="12" rx="6" fill="#e6ddd4"/>
 
-        <g class="grow d1">
+        <g transform="translate(-34,0)"><g class="grow d1">
           <circle cx="292" cy="186" r="68" fill="#f0be3f"/>
           <circle cx="292" cy="186" r="56" fill="#ef8f5a"/>
           <circle cx="292" cy="186" r="52" fill="#f2a765"/>
@@ -676,27 +726,29 @@
             <line x1="247" y1="160" x2="337" y2="212"/>
             <line x1="247" y1="212" x2="337" y2="160"/>
           </g>
-        </g>
-        <g class="grow d2">
+        </g></g>
+        <g transform="translate(40,0)"><g class="grow d2">
           <ellipse cx="560" cy="200" rx="66" ry="24" fill="#fffcf9" stroke="#e6ddd4" stroke-width="2"/>
           <ellipse cx="560" cy="196" rx="49" ry="17" fill="#f0be3f" opacity=".65"/>
           <ellipse cx="572" cy="192" rx="12" ry="5" fill="#7b4b94" opacity=".45"/>
           <ellipse cx="546" cy="200" rx="10" ry="4" fill="#c9455b" opacity=".5"/>
-        </g>
-        <g class="grow d3">
+        </g></g>
+        <g transform="translate(22,0)"><g class="grow d3">
           <rect x="424" y="172" width="6" height="58" rx="3" fill="#cfc2b6" transform="rotate(9 427 201)"/>
           <rect x="438" y="172" width="6" height="58" rx="3" fill="#cfc2b6" transform="rotate(14 441 201)"/>
-        </g>
-        <g class="grow d4">
+        </g></g>
+        <g transform="translate(88,0)"><g class="grow d4">
           <rect x="668" y="172" width="52" height="62" rx="10" fill="#fffcf9" stroke="#cfc2b6" stroke-width="2"/>
           <rect x="676" y="182" width="36" height="5" rx="2.5" fill="#cfc2b6"/>
           <rect x="676" y="194" width="26" height="5" rx="2.5" fill="#cfc2b6"/>
           <rect x="676" y="206" width="32" height="5" rx="2.5" fill="#0e9a93" opacity=".6"/>
-        </g>
+        </g></g>
 
-        <g>
+        <g transform="translate(-34,0)">
           <path class="steam" d="M268 120 c0 -14 14 -14 14 -28 c0 -10 -8 -12 -8 -20" stroke="#cfc2b6" stroke-width="3" fill="none" stroke-linecap="round"/>
           <path class="steam b" d="M312 120 c0 -16 14 -16 14 -32 c0 -10 -8 -12 -8 -18" stroke="#cfc2b6" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(40,0)">
           <path class="steam c" d="M556 170 c0 -14 13 -14 13 -28 c0 -9 -7 -11 -7 -18" stroke="#cfc2b6" stroke-width="3" fill="none" stroke-linecap="round"/>
         </g>
 
@@ -704,7 +756,7 @@
         <circle class="spark b" cx="80" cy="124" r="4" fill="#ef8f5a"/>
         <circle class="spark c" cx="470" cy="80" r="4.5" fill="#7b4b94"/>
       </svg>
-      <figcaption>We will follow one order all the way through. Every number later in the talk comes from it.</figcaption>
+      <figcaption>We will follow this one order all the way through, and every number later in the talk comes from it.</figcaption>
     </figure>
   </div>
   <div class="notes">
@@ -739,15 +791,15 @@
 </section>
 
 <!-- 08 it arrives wrong -------------------------------------------------- -->
-<section class="slide">
+<section class="slide spot">
   <div class="inner">
     <div class="htitle">
       <p class="eyebrow">Twenty minutes later</p>
       <h2>The order arrives, and it is wrong</h2>
       <div class="bar"></div>
     </div>
-    <div class="cols narrow">
-      <figure style="max-width:262px">
+    <div class="cols">
+      <figure style="max-width:446px">
         <svg class="scene" viewBox="0 0 300 380" role="img" aria-label="A phone showing a photo of a wrong pizza and a refund request">
           <rect x="24" y="10" width="252" height="360" rx="30" fill="#fffcf9" stroke="#cfc2b6" stroke-width="2.5"/>
           <rect x="118" y="24" width="64" height="8" rx="4" fill="#e6ddd4"/>
@@ -784,15 +836,15 @@
       <div class="gcards" style="grid-template-columns:1fr">
         <div class="gcard m pop">
           <span class="lab">What the system receives</span>
-          <p>A photo, a few lines of free text, the order record, and the refund policy. The claim is worth twenty two dollars.</p>
+          <p>A photo, a few lines of free text, the order record, and the refund policy. The claim is twenty two dollars.</p>
         </div>
         <div class="gcard r pop">
           <span class="lab">Who reads it</span>
-          <p>Nobody opens the photo. A model reads it first about nine times out of ten, and it has roughly four seconds.</p>
+          <p>Nobody opens the photo. A model reads it first about nine times out of ten, with four seconds.</p>
         </div>
       </div>
     </div>
-    <p class="foot-note">We decided to automate this years ago. What we never decided was who checks the answers.</p>
+    <p class="foot-note">We automated this years ago. We never decided who checks the answers.</p>
   </div>
   <div class="notes">
     <span class="t">the case &nbsp;//&nbsp; 45 seconds</span>
@@ -823,7 +875,7 @@
     </div>
     <p class="lead">The benchmark checks the final result. But the agent made several decisions
       before getting there. Did it take the right path?</p>
-    <p class="foot-note">If the agent looked up the wrong policy and still paid the right amount, the score comes out the same.</p>
+    <p class="foot-note">A wrong policy lookup that still pays the right amount scores the same.</p>
   </div>
   <div class="notes">
     <span class="t">the trajectory &nbsp;//&nbsp; 1 minute</span>
@@ -864,15 +916,14 @@
       <div class="bar"></div>
     </div>
     <div class="snippet"><span class="m"># judge input</span>
-<span class="k">photo:</span>      &lt;the image the customer sent&gt;      <span class="m">(vision configs only)</span>
-<span class="k">complaint:</span>  "this is not what I ordered, half of it is on the bag"
+<span class="k">photo:</span>      &lt;the image the customer sent&gt;   <span class="m">(vision configs only)</span>
+<span class="k">complaint:</span>  "this is not what I ordered"
 <span class="k">trace:</span>      &lt;the six steps the agent took&gt;
-<span class="k">reply:</span>      &lt;the refund letter the agent wrote&gt;
-<span class="k">policy:</span>     &lt;the refund policy&gt;                <span class="m">(reference configs only)</span>
-
+<span class="k">reply:</span>      &lt;the refund letter it wrote&gt;
+<span class="k">policy:</span>     &lt;the refund policy&gt;             <span class="m">(reference configs only)</span>
 <span class="m"># judge output</span>
 <span class="g">score:</span>      8 / 10
-<span class="g">reasoning:</span>  "Handled politely, policy correctly cited, customer retained..."</div>
+<span class="g">reasoning:</span>  "Handled politely, policy correctly cited..."</div>
     <p class="foot-note">Anything below 7 counts as a fail here. We ran two judges so we could check one against the other.</p>
   </div>
   <div class="notes">
@@ -1043,7 +1094,7 @@
       <div class="stat"><b class="plum" data-count="0">0</b>
         <span>changes to the input</span></div>
     </div>
-    <p class="caution">Ten is a small sample, so this tells us the blanks can be recovered, not how often they happen. <b>One possibility</b> is that the call is nondeterministic and the model sometimes returns nothing at all. We could not see inside the API, so we do not know for certain.</p>
+    <p class="caution">Ten is a small sample, so this tells us blanks can be recovered, not how often they happen. <b>One possibility</b> is that the call is nondeterministic and sometimes returns nothing. We could not see inside the API, so we do not know for certain.</p>
   </div>
   <div class="notes">
     <span class="t">the finding &nbsp;//&nbsp; 1 minute</span>
@@ -1056,8 +1107,8 @@
 <section class="slide">
   <div class="inner">
     <div class="demo-head">
-      <div><p class="eyebrow">Demo &nbsp;//&nbsp; runs offline in this page</p><h3>Let us score the same eight orders three times</h3></div>
-      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <div><p class="eyebrow">Demo &nbsp;//&nbsp; runs offline in this page</p><h3>The same six orders, scored three times</h3></div>
+      <div style="display:flex;gap:18px;align-items:center;flex-wrap:nowrap">
         <button class="go" id="d1-run">Score them</button>
         <div class="switch">
           <button data-demo="1" data-mode="bug" aria-pressed="true">report the mean</button>
@@ -1070,14 +1121,13 @@
       <div class="readout">
         <div id="d1-state"></div>
         <div class="big" id="d1-big">&hellip;</div>
-        <div class="lbl" id="d1-lbl">press the button to run the first pass</div>
-        <div class="kv"><span>passes run</span><b id="d1-passes">0 / 3</b></div>
+        <div class="lbl" id="d1-lbl">press the button to score them</div>
         <div class="kv"><span>same score every pass</span><b id="d1-same">&middot;</b></div>
         <div class="kv"><span>crossed the pass line</span><b id="d1-flip">&middot;</b></div>
-        <div class="kv"><span>mean spread</span><b id="d1-spread">&middot;</b></div>
+        <div class="kv"><span>spread</span><b id="d1-spread">&middot;</b></div>
       </div>
     </div>
-    <p class="banner">Eight orders from the same example. Fixed data, no network. Press the button three times.</p>
+    <p class="banner">Six orders from the worked example. Fixed data, no network.</p>
   </div>
   <div class="notes">
     <span class="t">demo, part one &nbsp;//&nbsp; 1.5 minutes</span>
@@ -1122,7 +1172,7 @@
 <section class="slide">
   <div class="inner">
     <div class="demo-head">
-      <div><p class="eyebrow">Demo &nbsp;//&nbsp; runs offline in this page</p><h3>What happens to the number when we drop the blanks</h3></div>
+      <div><p class="eyebrow">Demo &nbsp;//&nbsp; runs offline in this page</p><h3>What dropping the blanks does to the number</h3></div>
       <div class="switch">
         <button data-demo="2" data-mode="bug" aria-pressed="true">drop the blanks</button>
         <button data-demo="2" data-mode="fix" aria-pressed="false">retry, keep them</button>
@@ -1134,13 +1184,13 @@
         <div id="d2-state"></div>
         <div class="big" id="d2-big">0.74</div>
         <div class="lbl">agreement with human reviewers</div>
-        <div class="kv"><span>orders counted</span><b id="d2-n">5 of 8</b></div>
+        <div class="kv"><span>orders counted</span><b id="d2-n">3 of 6</b></div>
         <div class="kv"><span>orders dropped</span><b id="d2-drop">3 blank</b></div>
         <div class="kv"><span>on clear photos</span><b id="d2-easy">0.74</b></div>
         <div class="kv"><span>on blurry photos</span><b id="d2-hard">never measured</b></div>
       </div>
     </div>
-    <p class="banner">Flip the switch and the headline number goes down. That is the fix working, not the fix failing.</p>
+    <p class="banner">Flip the switch and the headline number goes down.</p>
   </div>
   <div class="notes">
     <span class="t">demo, part two &nbsp;//&nbsp; 1.5 minutes</span>
@@ -1153,13 +1203,14 @@
 <section class="slide qslide">
   <div class="inner">
     <p class="eyebrow">How we read that</p>
-    <h1>The number went down because the hard cases came back in.</h1>
-    <p class="sub">Same judge, same prompt, same reviewers. We think this is the more realistic figure, but we would want to see it on a second dataset before saying that firmly.</p>
+    <h1>The number went down because<br>the hard cases came back in.</h1>
+    <p class="sub">Same judge, same prompt, same reviewers. We think this is the more realistic figure.</p>
   </div>
   <div class="notes">
     <span class="t">interpretation &nbsp;//&nbsp; 40 seconds</span>
-    This is the sentence people quote back to you. Say it slowly, then the caveat on the subtitle.
-    The caveat is what keeps it a research claim.
+    This is the sentence people quote back to you, so say it slowly. Then add the caveat out loud,
+    because it is no longer on the slide: we would want to see this on a second dataset before
+    saying it firmly. That caveat is what keeps it a research claim rather than a headline.
   </div>
 </section>
 
@@ -1266,7 +1317,7 @@
         <tr><td>With photo</td><td>the customer's image as well</td><td>closer to our labels</td></tr>
       </tbody>
     </table>
-    <p class="caution">These are directions we saw, not effect sizes we would publish. The practical version is simpler: the judge can only check what it can see. If the thing you care about is not in its input, no amount of prompt wording will get it back.</p>
+    <p class="caution">These are directions we saw, not effect sizes we would publish. The practical version: the judge can only check what it can see. If the thing you care about is not in its input, no prompt wording gets it back.</p>
   </div>
   <div class="notes">
     <span class="t">what helped &nbsp;//&nbsp; 1.5 minutes</span>
@@ -1279,7 +1330,7 @@
 <section class="slide">
   <div class="inner">
     <div class="demo-head">
-      <div><p class="eyebrow">Demo &nbsp;//&nbsp; runs offline in this page</p><h3>What a second judge catches when it only checks correctness</h3></div>
+      <div><p class="eyebrow">Demo &nbsp;//&nbsp; runs offline in this page</p><h3>What a second judge catches</h3></div>
       <div class="switch">
         <button data-demo="3" data-mode="bug" aria-pressed="true">graded judge only</button>
         <button data-demo="3" data-mode="fix" aria-pressed="false">add a binary judge</button>
@@ -1296,7 +1347,7 @@
         <div class="kv"><span>correct claims wrongly refused</span><b id="d3-fr">36%</b></div>
       </div>
     </div>
-    <p class="banner">The second judge answers yes or no instead of giving a score. Watch the last row, which does not move.</p>
+    <p class="banner">The second judge answers yes or no. Watch the last row.</p>
   </div>
   <div class="notes">
     <span class="t">demo, part three &nbsp;//&nbsp; 1.5 minutes</span>
@@ -1322,7 +1373,7 @@
         <tr><td>Separate</td><td>quality and correctness as two questions, not one score</td></tr>
       </tbody>
     </table>
-    <p class="foot-note">None of this is clever, and that is rather the point. The checks are cheap, we just were not running them. The repo will run all four on your own CSV.</p>
+    <p class="foot-note">None of this is clever, and that is the point. The checks are cheap. The repo runs all four on your CSV.</p>
   </div>
   <div class="notes">
     <span class="t">takeaway &nbsp;//&nbsp; 1.5 minutes</span>
@@ -1331,29 +1382,36 @@
 </section>
 
 <!-- 30 close --------------------------------------------------------------- -->
-<section class="slide">
+<section class="slide connect">
   <div class="inner">
-    <p class="eyebrow">Thank you</p>
-    <h2>An LLM judge is useful, and it is also<br>a model that needs evaluating.</h2>
+    <p class="eyebrow">Thank you for your time</p>
     <div class="cols">
-      <div class="qr">
-        {{QR2}}
-        <div class="qt"><b>github.com/ImSuMyatNoe/judge-audit</b>the four checks, the demos, and this deck</div>
+      <div class="cleft">
+        <h2>An LLM judge is useful, and it is also a model that needs evaluating.</h2>
+        <div class="res">
+          <p class="reshead">Resources</p>
+          <ul>
+            <li><b>Repo and the four checks</b><span>github.com/ImSuMyatNoe/judge-audit</span></li>
+            <li><b>These slides, live</b><span>imsumyatnoe.github.io/judge-audit</span></li>
+            <li><b>Papers and contact</b><span>imsumyatnoe.github.io</span></li>
+          </ul>
+        </div>
       </div>
-      <div class="qr">
-        {{QR1}}
-        <div class="qt"><b>imsumyatnoe.github.io</b>papers, and the easiest way to reach me</div>
+      <div class="cright">
+        {{QR2}}
+        <p class="qcap">github.com/ImSuMyatNoe/judge-audit</p>
       </div>
     </div>
     <p class="plain">Su Myat Noe &nbsp;&middot;&nbsp; NII Tokyo &nbsp;&middot;&nbsp; Beyond the Vibes, Session 03, SGInnovate</p>
   </div>
   <div class="notes">
     <span class="t">close &nbsp;//&nbsp; 30 seconds</span>
-    End on the sentence, not on the QR codes. It is deliberately not "judges are bad". Then stop
-    talking and let them scan.
+    End on the sentence, not on the QR code. It is deliberately not "judges are bad". Then stop
+    talking and let them scan. One code, so nobody has to choose which one to point at.
   </div>
 </section>
 
+</div>
 </div>
 
 <div class="notes" id="notesPanel" hidden></div>
@@ -1586,9 +1644,7 @@
     { id: "ORD-40134", icon: "🍢", dish: "satay set, cold", runs: [5, 6, 6] },
     { id: "ORD-40205", icon: "🫓", dish: "prata, squashed", runs: [7, 8, 8] },
     { id: "ORD-40297", icon: "🍜", dish: "hokkien mee, spilled", runs: [6, 5, 7] },
-    { id: "ORD-40318", icon: "🍲", dish: "fish soup, wrong size", runs: [9, 8, 9] },
-    { id: "ORD-40402", icon: "🍱", dish: "nasi lemak, spilled", runs: [7, 6, 7] },
-    { id: "ORD-40476", icon: "🍜", dish: "wanton mee, missing side", runs: [8, 8, 8] }
+    { id: "ORD-40318", icon: "🍲", dish: "fish soup, wrong size", runs: [9, 8, 9] }
   ];
   const THRESH = 7;
   let d1Passes = 0, d1Mode = "bug";
@@ -1652,7 +1708,7 @@
     if (bigEl) bigEl.style.color = d1Passes ? "" : "var(--line-2)";
     set("d1-passes", d1Passes + " / 3");
     if (d1Passes === 0) {
-      set("d1-big", "…"); set("d1-lbl", "press the button to run the first pass");
+      set("d1-big", "…"); set("d1-lbl", "press the button to score them");
       set("d1-same", "·"); set("d1-flip", "·"); set("d1-spread", "·");
     } else {
       const mean = D1.reduce((a, t) =>
@@ -1684,7 +1740,7 @@
       const chip = document.createElement("span");
       chip.className = d1Mode === "bug" ? "state bug" : "state fix";
       chip.textContent = d1Mode === "bug"
-        ? (d1Passes >= 2 ? "spread not reported" : "one pass, reported as the result")
+        ? (d1Passes >= 2 ? "spread not reported" : "reported as the result")
         : "gap reported";
       st.appendChild(chip);
     }
@@ -1703,13 +1759,11 @@
 
   const D2 = [
     { id: "ORD-40033", icon: "🍕", dish: "clear photo", score: 8, human: 8 },
-    { id: "ORD-40119", icon: "🍛", dish: "clear photo", score: 6, human: 6 },
     { id: "ORD-40240", icon: "🌫️", dish: "very blurry", score: null, human: 4, retry: 6 },
     { id: "ORD-40371", icon: "🍲", dish: "mostly clear", score: 9, human: 9 },
     { id: "ORD-40488", icon: "🌫️", dish: "very blurry", score: null, human: 3, retry: 7 },
     { id: "ORD-40555", icon: "🍜", dish: "clear photo", score: 5, human: 5 },
-    { id: "ORD-40667", icon: "🌫️", dish: "very blurry", score: null, human: 8, retry: 6 },
-    { id: "ORD-40724", icon: "🍱", dish: "mostly clear", score: 7, human: 7 }
+    { id: "ORD-40667", icon: "🌫️", dish: "very blurry", score: null, human: 8, retry: 6 }
   ];
   let d2Mode = "bug";
 
@@ -1843,7 +1897,8 @@
   slides.forEach((slide, k) => {
     const head = document.createElement("div");
     head.className = "slide-head";
-    head.innerHTML = '<span>LLM as a Judge Is Probably Lying to You</span>';
+    head.innerHTML = '<span>LLM as a Judge Is Probably Lying to You</span>' +
+                     '<img class="logo" src="{{LOGO}}" alt="Beyond the Vibes">';
     slide.insertBefore(head, slide.firstChild);
 
     const foot = document.createElement("div");
@@ -1852,6 +1907,15 @@
                      (k === 0 ? "" : String(k + 1).padStart(2, "0")) + '</span>';
     slide.appendChild(foot);
   });
+
+  const stage = document.getElementById("deck");
+  const viewport = document.getElementById("viewport");
+  function fit() {
+    const r = viewport.getBoundingClientRect();
+    stage.style.setProperty("--s", Math.min(r.width / 1920, r.height / 1080));
+  }
+  window.addEventListener("resize", fit);
+  fit();
 
   const notes = slides.map(s => s.querySelector(".notes"));
   const panel = document.getElementById("notesPanel");
