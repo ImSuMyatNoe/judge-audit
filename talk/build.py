@@ -1,4 +1,4 @@
-"""Assemble the deck: template plus the photo and the two QR codes.
+"""Assemble the deck: template plus the photo, the two QR codes, the event logo and one meme.
 
     python talk/build.py
 
@@ -25,12 +25,15 @@ def main() -> int:
     template = (HERE / "_btv_template.html").read_text()
     photo = (HERE / "assets" / "photo.txt").read_text().strip()
     qr = json.loads((HERE / "assets" / "qr.json").read_text())
+    extra = json.loads((HERE / "assets" / "extra.json").read_text())
 
-    marker = '<section class="slide">'
+    marker = '<section class="slide'
     page = (template
             .replace("{{PHOTO}}", photo)
             .replace("{{QR1}}", qr["portfolio"])
-            .replace("{{QR2}}", qr["repo"]))
+            .replace("{{QR2}}", qr["repo"])
+            .replace("{{LOGO}}", extra["logo"])
+            .replace("{{MEME}}", extra["meme"]))
     if "{{" in page:
         raise SystemExit("a placeholder was left unfilled")
 
