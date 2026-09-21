@@ -72,11 +72,11 @@
   }
   .slide.on { display: flex; flex-direction: column; }
 
-  .slide-head { display: flex; align-items: center; gap: 12px; flex: none; height: 42px;
+  .slide-head { display: flex; align-items: center; gap: 12px; flex: none; height: 64px;
     font-family: var(--mono); font-size: 22px; letter-spacing: .04em; color: var(--muted); }
   .slide-head .who { margin-left: auto; }
-  .slide-head .logo { margin-left: auto; display: block; height: 42px; width: auto;
-    border-radius: 10px; background: #17131c; padding: 0; }
+  .slide-head .logo { margin-left: auto; display: block; height: 64px; width: auto;
+    border-radius: 12px; background: #17131c; }
 
   .slide-foot {
     flex: none; border-top: 1px solid var(--line); height: 56px;
@@ -1901,7 +1901,7 @@
     const head = document.createElement("div");
     head.className = "slide-head";
     head.innerHTML = '<span>LLM as a Judge Is Probably Lying to You</span>' +
-                     '<img class="logo" src="{{LOGO}}" alt="Beyond the Vibes">';
+                     (k === 0 ? '<img class="logo" src="{{LOGO}}" alt="Beyond the Vibes">' : '');
     slide.insertBefore(head, slide.firstChild);
 
     const foot = document.createElement("div");

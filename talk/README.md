@@ -90,8 +90,10 @@ Typeface is **Poppins** throughout, with **Roboto Mono** for the running header,
 captions and code. Both load from Google Fonts and fall back to Helvetica and
 Menlo offline.
 
-The Beyond the Vibes logo sits top right on every slide at a uniform 46px on a
-dark chip, so it holds on the cream ground.
+The Beyond the Vibes logo sits top right on the title slide only, at 64px on a
+dark chip so the white wordmark holds on the cream ground. Every other slide
+carries just the running title, so the logo reads as a cover mark rather than a
+watermark.
 
 Two layout variants step outside the base scale on purpose, and only these two:
 
