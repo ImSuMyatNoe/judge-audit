@@ -72,11 +72,11 @@
   }
   .slide.on { display: flex; flex-direction: column; }
 
-  .slide-head { display: flex; align-items: center; gap: 12px; flex: none; height: 64px;
+  .slide-head { display: flex; align-items: center; gap: 12px; flex: none; height: 42px;
     font-family: var(--mono); font-size: 22px; letter-spacing: .04em; color: var(--muted); }
   .slide-head .who { margin-left: auto; }
-  .slide-head .logo { margin-left: auto; display: block; height: 64px; width: auto;
-    border-radius: 12px; background: #17131c; }
+  .slide-head .logo { margin-left: auto; display: block; height: 42px; width: auto;
+    border-radius: 10px; background: #17131c; padding: 0; }
 
   .slide-foot {
     flex: none; border-top: 1px solid var(--line); height: 56px;
@@ -550,10 +550,9 @@
       <img src="{{PHOTO}}" alt="Su Myat Noe">
       <table class="tbl">
         <tbody>
-          <tr><td>Background</td><td>PhD in computer vision, University of Miyazaki, 2025</td></tr>
-          <tr><td>Now</td><td>Project Researcher at NII and LLMC, Tokyo</td></tr>
           <tr><td>Focus</td><td>Multimodal safety, vision language evaluation, agentic AI, AI for law</td></tr>
           <tr><td>Day job</td><td>Checking whether a model's safety refusal is grounded in the image, or only in its own sentence</td></tr>
+          <tr><td>Based in</td><td>Tokyo</td></tr>
         </tbody>
       </table>
     </div>
@@ -564,10 +563,8 @@
   </div>
   <div class="notes">
     <span class="t">who is talking &nbsp;//&nbsp; 20 seconds</span>
-    Twenty seconds. Say the trajectory out loud, because it is the reason you noticed any of this:
-    "I did my PhD in computer vision, so I spent years looking at pixels. Now I check whether a
-    model's refusal is actually about the pixels, or only about its own sentence." Point at the QR,
-    say it comes back at the end, move on.
+    Twenty seconds. The last row is the only one that matters. Point at the QR, say it comes back
+    at the end, move on.
   </div>
 </section>
 
@@ -1901,7 +1898,7 @@
     const head = document.createElement("div");
     head.className = "slide-head";
     head.innerHTML = '<span>LLM as a Judge Is Probably Lying to You</span>' +
-                     (k === 0 ? '<img class="logo" src="{{LOGO}}" alt="Beyond the Vibes">' : '');
+                     '<img class="logo" src="{{LOGO}}" alt="Beyond the Vibes">';
     slide.insertBefore(head, slide.firstChild);
 
     const foot = document.createElement("div");
