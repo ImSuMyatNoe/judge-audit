@@ -2,9 +2,9 @@
 
 **LLM as a Judge Is Probably Lying to You** · 31 slides · about 27:50 of planned content.
 
-These are the same notes that are inside the deck behind the `N` key, so the two cannot drift apart.
-Right arrow steps through a slide's reveals first, then moves to the next slide. Down arrow skips
-straight to the next slide. The step counter in the bottom bar shows where you are.
+Generated from the deck, so these and the `N` panel cannot drift apart.
+Right arrow steps through a slide's reveals first, then moves on. Down arrow skips to the next
+slide. The step counter sits in the bottom bar.
 
 ---
 
@@ -288,11 +288,11 @@ straight to the next slide. The step counter in the bottom bar shows where you a
 
 **Goal:** keep the previous slide honest. This is the slide that makes the talk credible.
 
-**Say:** "Before I go further, let me be careful about what that actually showed. What I can say is that in this example the response did not move when the evidence it cited was removed, the control patch did not move it either, and the judge gave it nine out of ten regardless." [click] "What I cannot say is that the model ignored the image, or that it hallucinated, or that this happens at some rate. A model might be using redundant cues, or the surrounding context, or features that just correlate with a knife. So masking is evidence about whether the stated reason is load bearing. It is not proof about what happened inside the model." [click] "And that is why I say the judgment was not grounded in the available evidence, rather than saying the model hallucinated. The first one is what I observed. The second is a story about why."
+**Say:** "Before I go further, let me be careful about what that actually showed. What I can say is that in this example the model's response did not move when the evidence it cited was removed, the control patch did not move it either, and the judge scored it nine out of ten regardless." [click] "What I cannot say is that the model ignored the image, or that it hallucinated, or that this happens at some rate. It might be using redundant cues, or the surrounding context, or features that just correlate with a knife. So covering the object is evidence about whether the stated reason is load bearing. It is not proof about what happened inside the model." [click] "So the narrow claim is that the model's stated reason was not verifiably grounded in the manipulated evidence. That is what I observed. Anything stronger is a story about why."
 
 **Click:** the cannot say card, then the caution.
 
-**Remember:** report what was measured, not the story about why.
+**Remember:** this whole slide is about the model. The judge gets the same treatment later.
 
 ---
 
@@ -342,7 +342,7 @@ straight to the next slide. The step counter in the bottom bar shows where you a
 
 **Goal:** the input contract, and the most actionable slide for a practitioner.
 
-**Say:** "And there was another very basic question underneath all of this. What evidence did I actually give the judge? Text only, it can assess the writing, and it genuinely cannot check the image, because it never received one. Add the image and visual verification becomes possible. Add a reference and comparison becomes possible. And the fourth row is the one almost nobody runs. Send the same image with the cited object covered, and evidence sensitivity becomes testable." [click] "Two sentences that belong together. A judge can only verify evidence it can actually see. And giving it the evidence does not guarantee that it uses the evidence correctly. Which means before you change the judge model or rewrite the prompt, look at what you actually sent it."
+**Say:** "And there was another very basic question underneath all of this. What evidence did I actually give the judge? With text only it can assess the writing and the internal consistency, and it genuinely cannot verify the image, because it never received one. Add the image and consistency with what is visible becomes checkable, though having the image does not show that the image influenced the judgment. Add a reference and you can measure agreement with it, but agreeing with a reference is not the same thing as being correct or grounded. And the fourth row is the one almost nobody runs. Send the same image with the cited object covered, and now you can test whether the evaluation moves when the evidence moves." [click] "Two sentences that belong together. A judge can only verify evidence it can actually see. And giving it the evidence does not guarantee that it uses the evidence correctly. So before you change the judge model or rewrite the prompt, look at what you actually sent it."
 
 **Click:** the caution, after the table.
 
@@ -360,7 +360,7 @@ straight to the next slide. The step counter in the bottom bar shows where you a
 
 **1 run:** "Okay. Eight out of ten."
 
-**2 run again:** "Same input, same judge, and the number moved. I am not claiming every judge does this every time. This is the test: fix the input, repeat the measurement, and look at whether it moves. That is stability."
+**2 run again:** "Now a basic measurement question. If I run the same thing again, do I get the same measurement? These demo states are fixed so the demo is reproducible on stage, and I am not claiming every judge changes on every retry. The point is the test, not the number. If this were my real pipeline, this is the first thing I would measure systematically: same input, same rubric, same judge, repeated runs, and how much does the measurement move? That is stability."
 
 **3 blank:** "Now I do not have a bad score. I have no measurement at all. That is availability, and this is exactly where dropna becomes dangerous if I never count what disappeared." [press again to retry] "Same input, asked once more, and it scores."
 
@@ -374,31 +374,31 @@ straight to the next slide. The step counter in the bottom bar shows where you a
 
 ---
 
-## Slide 28 — So what do I actually test now?
+## Slide 28 — Five tests I run before I trust a judge
 
 **Time:** 1:15
 
-**Goal:** the five words, and the idea that a perturbation needs an expectation.
+**Goal:** teach how to test. The next slide is what to report, so keep those separate.
 
-**Say:** "These are different failures, so they need different tests. Repeat, can I reproduce the measurement. Perturb, does it respond to evidence that should matter. Count, what failed to become a measurement at all, and never let an API failure quietly turn into dataset filtering. Compare, keep a small human labelled sample, because agreement tells me there is a gap and the individual disagreements tell me what kind. And separate, because quality and correctness and grounding are different properties and one score cannot carry all of them." [click] "One thing about perturb. Changing the input is not yet a test. It becomes a test when I write down what I expect to happen first. Remove the visual evidence, and I expect the grounding judgment to become uncertain or unavailable. Swap in contradictory evidence, and I expect the evaluation to respond." [click] "The expectation depends on the task. The discipline is writing it down before you run it."
+**Say:** "These are different failures, so they need different tests. After going through all of this I ended up with five, and this slide is how I run them. Repeat: can I reproduce the measurement? Perturb: does the evaluation respond when I change evidence that should matter? Count: what failed to become a measurement at all? Compare: how does this line up with a small human labelled sample? And separate: am I accidentally asking one number to represent quality, correctness, grounding, safety and policy at the same time?" [click] "There is one detail about perturbation that I think is really important. Just changing the input is not automatically a meaningful test. Before I change it, I write down what I expect to happen. If I remove the visual evidence needed for a grounding judgment, I should expect that judgment to become uncertain or unavailable. If I put in contradictory evidence, I should expect the evaluation to respond." [click] "The expectation depends on the task. The part that matters is deciding the expected behaviour before you look at the result."
 
 **Click:** the code, then the note.
 
-**Remember:** repeat, perturb, count, compare, separate. A perturbation needs an expectation.
+**Remember:** this slide is how to test. Perturbation without an expectation is not a test.
 
 ---
 
-## Slide 29 — What I check now, before I trust a judge number
+## Slide 29 — What I publish beside a judge number
 
 **Time:** 1:15
 
-**Goal:** the slide people photograph. Five words, nothing added.
+**Goal:** the photo slide. Same five words, but this is what to report, not how to test.
 
-**Say:** "So this is what I check now, before I trust a judge number." [click through one at a time] "Repeat. Perturb. Count. Compare. Separate. None of it is clever, and that is the point. The checks are cheap, and the repo runs all five on your own CSV."
+**Say:** "That was how I test it. This is what I report. If I publish a judge number now, I want these things sitting beside it." [click] "Repeat: show me the spread." [click] "Perturb: tell me what changed, what you expected, and what actually happened." [click] "Count: tell me what never became a measurement." [click] "Compare: human agreement, and the disagreements." [click] "And separate the properties you are actually measuring. That's it. Repeat, perturb, count, compare, separate." [pause, stand still, let them photograph it]
 
-**Click:** one row per click. Then stand still and let people photograph it.
+**Click:** one row per click. No new ideas on this slide.
 
-**Remember:** repeat, perturb, count, compare, separate. Do not add anything.
+**Remember:** 28 was how to test. This is what to report.
 
 ---
 
