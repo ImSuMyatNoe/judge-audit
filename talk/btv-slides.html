@@ -390,7 +390,8 @@
   .notes { display: none; border-top: 1px solid var(--line); background: var(--paper-2);
            padding: 14px 24px 18px; font-size: 13.5px; color: var(--ink-2); line-height: 1.6;
            max-height: 34vh; overflow-y: auto; }
-  body.notes-on .notes { display: block; }
+  .deck .notes { display: none !important; }   /* script lives in the panel, never on the slide */
+  body.notes-on #notesPanel { display: block; }
   .notes b { color: var(--ink); }
   .notes .t { font-family: var(--mono); color: var(--plum); font-size: 12.5px;
               letter-spacing: .09em; text-transform: uppercase; display: block; margin-bottom: 6px; }
@@ -548,7 +549,7 @@
                  table.tbl tbody tr { opacity: 1 !important; animation: none !important; }
                  .slide .inner > *, .pop, .scene .grow { opacity: 1 !important; animation: none !important; }
                  .slide [data-rv]:not(.rv-on) { opacity: 1 !important; visibility: visible !important; }
-                 .rail { display: none; } }
+                 .rail, .notes, #notesPanel { display: none !important; } }
 </style>
 
 <div class="viewport" id="viewport">
