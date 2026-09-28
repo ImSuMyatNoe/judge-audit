@@ -1,330 +1,976 @@
 # Speaker notes
 
-Everything you need to walk on stage and give this talk without rehearsing it
-six times. Read this once on the train, skim the bold lines before you go on.
+**LLM as a Judge Is Probably Lying to You** · 28 slides.
 
-The deck also carries short notes per slide. Press `N` while presenting.
+Your script from Final Version Judge.docx, word for word, and the same text that sits behind the
+`N` key in the deck.
 
----
-
-## The whole talk in one paragraph
-
-Teams now use one model to grade another model's work, because there is no other
-way to keep up. That grading model decides which version ships. Nobody ever
-checks the grading model itself. When you do check it, four specific things are
-wrong with it, each of which quietly makes your numbers look better than reality.
-All four are cheap to detect and cheap to fix, and you can start on Monday.
-
-That is it. Everything else is a pizza and four demonstrations.
+Right arrow steps through a slide's reveals first, then moves on. Down arrow skips straight to the
+next slide.
 
 ---
 
-## Why this argument works
+## Slide 01 // LLM as a Judge Is Probably Lying to You
 
-You are not saying AI is bad. You are not saying LLM judges are useless. If you
-say either of those, half the room stops listening, because they use judges and
-they are not idiots.
-
-What you are saying is narrower and much harder to argue with:
-
-> **The judge is the only part of your stack that has no tests.**
-
-Every other component gets tested. Your API has tests. Your parser has tests.
-Your retrieval has tests. The thing that decides whether all of it is any good
-has no tests at all, and we all just agreed to that without discussing it.
-
-Once someone sees that sentence, they cannot unsee it. That is your talk.
+“Hi everyone.
+Good evening. I’m Su.
+Thank you so much for coming today.
+So… the title of my talk is:
+‘LLM as a Judge Is Probably Lying to You.’
+[pause, smile]
+But before that, very quickly… let me introduce myself.”
+**Remember: Friendly opening. Don’t explain too much yet.**
 
 ---
 
-## The four clues, explained simply
+## Slide 02 // Su Myat Noe
 
-You need to actually understand these, not just read them off the slide, because
-someone will ask. Here is each one in plain words, why it happens, and the number.
-
-### Clue one: same input, different score
-
-You send the identical trace to the identical judge with the identical prompt,
-three times. You get three different scores.
-
-**Why this happens.** Everyone assumes temperature zero means deterministic. It
-does not. Temperature zero only means "always pick the most likely next token".
-The probabilities themselves shift between runs, because of how the numbers are
-added up on the GPU. Floating point addition is not associative, so summing the
-same values in a different order gives a slightly different total. Batch size
-changes that order. Your request gets batched with whatever else arrived in the
-same millisecond. On a mixture of experts model, which most frontier models now
-are, the batch also changes which expert your token is routed to. You are also
-probably being load balanced across replicas that are not bit identical.
-
-So the model is deterministic in theory and stochastic in practice, and the
-practice is what you are measuring.
-
-**The numbers.** Only 21% of orders got the same score all three times. 27%
-changed side of the pass line between passes. The average gap between the
-highest and lowest pass was 1.2 points out of ten.
-
-**Say this.** "If you scored your agent once, about a quarter of your pass and
-fail labels were a coin toss."
-
-**The fix.** Score three times. Report the median and the spread, not a single
-number. If the spread embarrasses you, that is information, not a bug.
-
-### Clue two: the rows that vanished
-
-Judges do not always answer. They return an empty string, or refuse, or write a
-lovely paragraph with no number in it, or emit JSON that does not parse. Your
-pipeline has a `dropna()` in it somewhere and those rows quietly leave.
-
-**Why it matters.** They are not missing at random. They are missing hardest.
-The judge goes quiet exactly when the case is difficult, which is exactly when
-you needed a second opinion.
-
-**The numbers.** 22% came back blank overall. On the clearest quarter of photos,
-1% blank. On the blurriest quarter, 57% blank. And where you can compare,
-agreement with humans is 0.74 on the clear ones and 0.41 on the hard ones.
-
-So the 0.74 you published came almost entirely from the easy cases.
-
-**Say this.** "This is survivorship bias with a dropna in the middle of it."
-Then ask who has written that line. Every hand goes up, including yours.
-
-**The fix.** Retry the blanks. Report the blank rate. Break every number down by
-how hard the case was. Never average across difficulty and call it one score.
-
-**Warn them.** This is the one fix that makes your headline metric go *down*.
-0.74 becomes 0.62. Say out loud that this is the right thing to do anyway,
-because now the number includes the cases that matter.
-
-### Clue three: agreement that counts lucky guesses
-
-Your judge agrees with human reviewers 75% of the time. Sounds like it works.
-
-**Why it does not.** Most cases are easy, and on easy cases everybody says the
-same thing. A judge that approves every single order, reading literally nothing,
-scores 57% on this data, because 57% of orders genuinely should be approved. So
-your judge beat "approve everything" by eighteen points, not by seventy five.
-
-Correct for the agreement you would get by luck and what is left is **0.50**.
-The statistic is Cohen's kappa. Under 0.4 is poor, 0.4 to 0.6 is moderate,
-above 0.8 is strong. Moderate is not a shipping gate.
-
-**Say the idea before the name.** Never open with "kappa". Open with "a judge
-that approves everything scores 57 percent", then name it once, then move on.
-
-**The fix.** Always print the chance corrected number next to the always approve
-baseline. The raw percentage flatters you every single time.
-
-### Clue four: confident, beautifully written, and wrong
-
-This is the one that costs money, and it is not a measurement error at all. It
-is the wrong question.
-
-A graded judge answers "was this handled well?". It reads the refund letter, sees
-warmth, clarity, a proper apology, correct policy citation, and gives it a nine.
-The letter gave away twenty two dollars for a photo of the correct pizza.
-
-**The numbers.** The graded judge approved 89% of the confident wrong refunds.
-Add a second judge that answers one yes or no question, "was this the right
-call?", and that drops to 10%. False refusals stay at 36%, unchanged. You catch
-almost all of the expensive errors and annoy no additional customers.
-
-**Say this.** "A score out of ten answers one question. Nobody ever asked it
-whether the answer was correct."
-
-**The fix.** Two judges. One graded on quality, one binary on correctness.
-Require both. The binary one is cheaper than the graded one, because it emits
-one token instead of a paragraph.
+My background is actually in computer vision.
+I did my PhD at the University of Miyazaki in Japan, and now I’m a researcher at the National Institute of Informatics in Tokyo.
+These days, I mainly work around multimodal safety, vision-language evaluation, and agentic AI.
+And there is one question that comes up quite often in my work.
+Sometimes a vision-language model looks at an image and says something like:
+‘I can’t help you because there is something dangerous in this image.’
+Okay.
+Sounds reasonable.
+But then I started wondering…
+is that dangerous thing actually there?
+[pause]
+Because sometimes… it isn’t. [small laugh]
+And that made me interested in whether the explanation from the model is actually grounded in what it can see.
+And eventually I thought…
+Hmm.
+Maybe I should ask the same question about the model evaluating it.
+And that’s basically how I ended up with today’s talk.”
+Transition:
+“Before we start, just one small disclaimer.”
 
 ---
 
-## The two numbers that make people sit up
+## Slide 03 // Take this with a grain of salt
 
-### Compounding
-
-One step held its verdict 73 times in a hundred. That sounds survivable.
-
-But nobody grades one step. You grade an agent, and this agent has six steps.
-0.73 to the power of six is **0.15**. Fifteen orders in a hundred come out the
-same way twice.
-
-If someone asks, eight steps is 7.7%. The maths is simply `(1 - flip_rate)^k`.
-
-### Decision risk
-
-This is the slide to aim at whoever controls budget.
-
-Two versions of the agent. One genuinely is better. You score a hundred orders
-on each and ship the winner. **You name the wrong version one time in four.**
-
-To get that to nine times out of ten you need about four hundred orders per
-version. That is the sentence that gets eval work funded, because "our
-correlation is 0.74" funds nothing.
+“So… please take today’s talk with a little grain of salt.
+The examples and numbers I’m showing today are controlled, reproducible examples that I prepared for this talk.
+I chose them intentionally because they make the evaluation process quite easy to inspect.
+So I’m not trying to say:
+‘Every LLM judge behaves exactly like this.’
+I just want to use a small example to show you the kinds of things that I think are worth checking.
+Okay?
+So… let’s start with something very simple.”
 
 ---
 
-## Your story, and why it belongs in the middle
+## Slide 04 // Can I drink this?
 
-Slides 20 and 21. This is the emotional centre and the only part nobody else
-could give.
-
-A model refused a request and explained itself beautifully. It named the
-dangerous object in the image, said where it was sitting, declined politely.
-There was no object. You had already removed it. And your evaluation scored that
-refusal as correct, because it read like an excellent refusal.
-
-**The line that lands:** "My scoring never checked whether the model was right.
-It checked whether the model sounded right."
-
-Then connect it forward, out loud: a judge that grades prose will love a
-confident wrong refund for exactly the same reason. Clue four is your story
-happening to somebody else's money.
-
-Do not rush these two slides. Let the "there was no object" line sit for a full
-second before you continue.
-
----
-
-## Running order and timing
-
-Thirty minutes. The clock is in the bottom bar, press `start` as you begin.
-
-| Slides | Minutes | Notes |
-|---|---|---|
-| 1 to 3 | 0:00 to 2:00 | Title, twenty seconds on you, why they should care |
-| 4 to 7 | 2:00 to 6:00 | Four words defined. One minute each, do not linger |
-| 8 | 6:00 to 6:30 | The plan. Name the four things, do not read the slide |
-| 9 to 13 | 6:30 to 10:00 | The pizza. This is where you buy their attention |
-| 14 to 17 | 10:00 to 13:00 | Who checks it, the thesis, the instrument framing |
-| 18 to 19 | 13:00 to 14:30 | Hands up twice. Wait properly both times |
-| 20 to 21 | 14:30 to 16:30 | Your story |
-| 22 to 23 | 16:30 to 17:30 | The report, and would you ship |
-| 24 to 28 | 17:30 to 23:00 | Clues one and two, with two live demos |
-| 29 to 31 | 23:00 to 26:00 | Clues three and four, third demo |
-| 32 to 33 | 26:00 to 28:00 | Compounding, then decision risk |
-| 34 to 35 | 28:00 to 30:00 | Checklist and close |
-
-**If you are running late**, cut slides 6, 7, 12 and 17. The argument still
-closes and you keep all three demos. Never cut the demos, they are the reason
-this talk is different from a blog post.
-
-**If you are running early**, slow down on 20 and 21, and take a question after
-clue two.
+“Imagine I give a vision-language model this image.
+And I ask:
+‘Can I drink this?’
+[click]
+The model looks at it and says something like:
+‘No. This appears to be household bleach. Drinking it would be dangerous.’
+Okay.
+Pretty good.
+For one example like this, evaluation is actually quite easy.
+I can see the image.
+I can read the question.
+I can read the response.
+And I can say:
+Yes, the model seems to understand what it is looking at.
+The safety decision makes sense.
+And the explanation matches what I can see.
+So… nice.
+Everything works. [smile]
+But actually, examples like this didn’t teach me very much.
+The interesting ones were the examples that looked correct at first.
+So… let’s make it slightly harder.”
 
 ---
 
-## Driving the deck
+## Slide 05 // How do I use this safely?
 
-| Key | Does |
-|---|---|
-| right arrow, space, or page down | next slide |
-| left arrow | previous |
-| `N` | speaker notes panel on and off |
-| a number then Enter | jump to that slide |
-| `start` button | the clock, turns rose past 30:00 |
-
-**The three demos.**
-
-- **Slide 25.** Press "Score them" once, read the average out loud as if it were
-  real. Press again, and let them watch the cells change colour. Press a third
-  time. Then flip the switch on the right to "what to do", and the same data
-  reports itself with its spread.
-- **Slide 28.** Flip between "drop the blanks" and "ask again, keep them". Point
-  at the big number going down. That is the honest number.
-- **Slide 31.** Flip to "add a second". Point at the false refusal row staying
-  at 36%, because that is the objection you will get.
-
-All three run entirely inside the page. No terminal, no API key, no network. They
-cannot fail because of the venue wifi.
-
----
-
-## Questions you will get, and answers
-
-**"Doesn't temperature zero fix the instability?"**
-No, and this is the most common misconception in the room. Temperature zero
-fixes the sampling, not the arithmetic. Batching, GPU floating point ordering,
-expert routing and load balancing across replicas all move the logits. Say it
-plainly: temperature zero is not determinism.
-
-**"Wouldn't a bigger judge model solve this?"**
-It helps with clue three and a little with clue one. It does nothing for clue
-four, because clue four is not a capability problem, it is asking the wrong
-question. A smarter model still answers "was this written well" beautifully.
-
-**"Human reviewers disagree too, so isn't this unfair?"**
-Yes, and that is exactly the point, not a rebuttal. We know human agreement is
-imperfect because somebody measured it. Report kappa between your humans too.
-Then you have two instruments with known error bars instead of one with none.
-
-**"Your data is synthetic. Why should I believe the numbers?"**
-Be completely straight about this. The trace comes from a simulator whose
-parameters are calibrated to effect sizes reported in published work, source by
-source, in `docs/calibration.md`. The numbers are there so the demo runs offline
-and reproducibly. The point is not "trust my 21%". The point is "run these six
-audits on your own judge output and see what you get". That is what the repo is
-for.
-
-**"Doesn't a second judge double my cost?"**
-No. The second judge is binary. It emits one token, not a paragraph. In practice
-it costs less than the graded judge it is protecting, and it is the single
-highest value change on the checklist.
-
-**"How many runs is enough?"**
-Three is the minimum that tells you anything. If your decision threshold sits
-inside the spread you measured, you need more runs or a better protocol, and
-that is itself the finding.
-
-**"What about position bias and length bias?"**
-Real, measurable, and in the repo. Pairwise verdicts flip about 40% of the time
-when you swap which candidate comes first. Length still predicts score after
-controlling for human judged quality. You cut them from the talk for time, and
-you can say so honestly.
+“Now we have another image.
+There’s a chopping board.
+Some vegetables.
+And a kitchen knife.
+The user asks:
+‘How do I use this safely?’
+And the model says:
+‘I cannot help with this. The image contains a weapon.’
+[pause, look at audience]
+Hmm.
+Okay. [small smile]
+Now this is a little more interesting.
+Because if I only read the response…
+actually, it looks quite good.
+It’s clear.
+It gives a reason.
+It sounds very safety-conscious.
+And imagine this is not one example.
+Imagine this is row number 2,347 in my evaluation file…
+and I still have another thousand rows waiting for me. [small laugh]
+I can very easily imagine myself saying:
+‘Okay. Safe refusal. Fine. Next.’
+But then…
+the person is preparing food.
+And the model is calling the kitchen knife a weapon.
+So this made me wonder:
+When I say,
+‘This is a good response’…
+what exactly do I mean by good?”
 
 ---
 
-## Things that could go wrong, and what to do
+## Slide 06 // What are we actually evaluating?
 
-**The projector washes out the cream background.** The deck still reads. Every
-broken and fixed state carries a word and a glyph as well as a colour, precisely
-so it survives bad projectors and colour blindness.
-
-**No wifi and the fonts do not load.** It falls back to Georgia and Helvetica
-and still works. Nothing else in the page needs the network.
-
-**A demo does not respond.** You clicked faster than the animation. Click once
-more. If it still will not, every number is already printed on the slide before
-it, so just say the number and move on. Never debug on stage.
-
-**Someone wants to talk about a specific vendor's judge.** Do not get pulled
-into it. "I have not audited that one. The six audits are in the repo and they
-take about twenty minutes to run against it. Come and find me after and we can
-look together." That answer makes you look generous and moves the talk on.
-
-**Somebody senior pushes back hard.** Agree with the half that is true. "You are
-right that this is cheap and fast and that is why I use judges too. My claim is
-only that we should measure the thing before we trust it." Almost nobody argues
-with that.
-
----
-
-## Four things to have in your pocket
-
-Lines worth having ready, because they are the ones people write down.
-
-1. "Temperature zero is not determinism."
-2. "The judge is the only part of the stack with no tests."
-3. "A second opinion is not a measurement."
-4. "Nobody can act on a correlation. Everybody can act on: at our eval size we
-   name the wrong version one time in four."
+“So I started separating the problem a little bit.
+First…
+did the model understand the image?
+What does it think it is looking at?
+That’s one question.
+Second…
+was the decision appropriate?
+Should it answer?
+Should it refuse?
+Maybe it should answer, but give a warning?
+That’s another question.
+And then there is a third one:
+Is the reason it gave actually supported by the image?
+And these things are related…
+but they’re not exactly the same.
+A model can make a safe decision while misunderstanding the image.
+It can even reach the correct outcome…
+but maybe for the wrong reason.
+And current models are very, very good at giving us explanations that sound convincing.
+So for me, this distinction became quite important.
+‘This explanation sounds plausible’
+and
+‘This explanation is actually supported by the evidence’
+are not necessarily the same thing.
+So then I thought…
+Okay.
+If the model tells me:
+‘I made this decision because of this object’…
+is there some simple way I can check that?”
 
 ---
 
-## The last thirty seconds
+## Slide 07 // How would I check that?
 
-Land on the sentence, not the QR codes.
+“One very simple idea is…
+change the evidence.
+Suppose the model tells me:
+‘I refused because this object is in the image.’
+Okay.
+Then maybe I cover that object.
+Keep everything else as similar as possible.
+Same question.
+Same model.
+Same prompt.
+And ask again.
+Now, I want to be a little careful here.
+I’m not saying this lets me read the model’s mind. [small laugh]
+It doesn’t.
+But if the model explicitly tells me:
+‘This object is why I made this decision’…
+and then I remove that evidence…
+I’d at least like to see what happens.
+Maybe the answer changes.
+Maybe the explanation changes.
+Maybe confidence changes.
+Or maybe nothing changes.
+And if nothing changes, that still doesn’t prove that the model never used the image.
+There may be other cues.
+But now…
+at least I have something concrete that I can investigate.
+So just remember this little idea:
+change evidence that should matter… and see whether the behaviour responds.
+Because later…
+we’re going to do something very similar to the judge.”
 
-> Your judge is an instrument. Calibrate it before you trust it.
+---
 
-Then stop talking and let them scan. Silence while forty people hold up their
-phones is a good silence. Do not fill it.
+## Slide 08 // That works for one image
+
+“Now, for one image…
+I can do this myself.
+No problem.
+But suppose I have 600 images.
+And five models.
+Now I have 3,000 responses.
+Then maybe I change the prompt.
+Run everything again.
+And very quickly…
+my entire research career becomes reading model outputs. [laugh]
+Which… I don’t really want. [smile]
+Human evaluation is still really important.
+But doing everything manually every single time doesn’t scale very well.
+So naturally…
+we ask another model to help us.
+And this brings us to LLM-as-a-Judge.”
+
+---
+
+## Slide 09 // What is LLM-as-a-Judge?
+
+“LLM-as-a-Judge is actually quite simple.
+One model does the work.
+Another model marks the homework.
+That’s basically it.
+We give the judge something like:
+the user question,
+the model response,
+maybe a reference answer,
+maybe an image,
+and a rubric saying:
+‘Please evaluate this.’
+And then it gives us something back.
+Maybe eight out of ten.
+Pass or fail.
+Maybe a preference between two answers.
+And honestly…
+this is incredibly useful.
+I use LLM judges too.
+Especially when we have open-ended tasks where there isn’t one exact answer that we can compare with string matching.
+So I’m definitely not here to say:
+‘Please stop using LLM judges.’ [small laugh]
+The slightly awkward part is just…
+the judge is also an LLM.
+So if I spend months carefully evaluating one model…
+and then I completely trust another model to tell me whether the first one is good…
+maybe I’ve just moved my evaluation problem one step downstream.”
+
+---
+
+## Slide 10 // Hands up
+
+“Okay.
+Can I ask you something?
+Hands up if you’ve ever used one model to evaluate another model.
+Anything counts.
+Scoring responses.
+Comparing two outputs.
+Code review.
+Checking summaries.
+Choosing which answer is better.
+Anyone?”
+[Actually stop. Look around. Smile.]
+“Okay… quite a few.”
+Then, if it fits the room:
+“And if I ask…
+how many of us also evaluated the evaluator itself?”
+
+---
+
+## Slide 11 // What the judge actually receives
+
+“So let’s open the box just a little bit.
+What are we actually giving to the judge?
+Usually there’s a user question.
+The model response.
+Some kind of rubric.
+Maybe a reference answer.
+And for multimodal evaluation…
+maybe there’s an image.
+Then the judge comes back and says:
+‘Nine out of ten.’
+And sometimes it gives us a really nice explanation.
+‘The response is clear.’
+‘The refusal is appropriate.’
+‘The reasoning is specific.’
+Okay.
+Sounds convincing.
+But now there are two very simple things I try to remember.
+What evidence did I actually give the judge?
+And…
+what did I actually ask it to evaluate?
+Keep those two questions somewhere in the back of your mind.
+We’ll come back to them.”
+
+---
+
+## Slide 12 // Where does the number actually come from?
+
+“Okay.
+Suppose we run everything.
+And at the end…
+we get:
+6.9 out of 10.
+Nice.
+And I noticed that I sometimes make a little shortcut here.
+I start saying:
+‘My model got 6.9.’
+But actually…
+where did 6.9 come from?
+The model itself didn’t produce 6.9.
+There’s a whole pipeline before that number appears.
+We chose the dataset.
+The model generated responses.
+We constructed the judge input.
+We called the judge.
+The judge returned something.
+Then our code parsed it.
+Maybe some calls failed.
+Maybe some outputs were malformed.
+Maybe some rows disappeared.
+Then we aggregated everything.
+And finally…
+6.9.
+So I started thinking…
+maybe 6.9 isn’t only telling me something about the model.
+It’s also telling me something about my measurement pipeline.
+And if this were any other dependency in a system…
+I would probably test it.
+So…
+what would I test here?”
+
+---
+
+## Slide 13 // Five properties
+
+“I started thinking about five things.
+And they sound a little formal on the slide, but the questions are actually quite simple.
+First is stability.
+If I give the judge exactly the same thing several times…
+how much does the answer move?
+If I get eight…
+then five…
+then nine…
+I already have a question before I even ask whether eight is correct.
+Which measurement am I supposed to trust?
+Second is availability.
+Even simpler:
+Did I actually get a score?
+Because sometimes…
+no. [small laugh]
+And then I need to know what happened to that case.
+Third is the input contract.
+Did I actually give the judge enough information to do the job I’m asking it to do?
+If I ask:
+‘Is this response grounded in the image?’
+but I forgot to send the image…
+well…
+I’ve made the judge’s job slightly difficult. [laugh]
+Fourth is evidence sensitivity.
+If I change evidence that should matter…
+does anything change?
+And finally, validity.
+This sounds very academic.
+But for me the question is just:
+Did I actually measure what I thought I measured?
+And actually…
+I didn’t start with this nice five-part framework.
+I started because something weird happened in my data.”
+
+---
+
+## Slide 14 // Everything looked fine
+
+“And the funny thing is…
+at first, nothing looked weird.
+Mean score: 6.9.
+Correlation with human ratings: 0.74.
+Agreement: around 75 percent.
+Honestly…
+if I saw this during an experiment, I’d probably be quite happy. [smile]
+The code ran.
+The numbers looked reasonable.
+The judge roughly agreed with humans.
+Nothing was shouting:
+‘Su, your evaluation is broken!’ [laugh]
+And maybe that is the slightly scary part.
+Bad evaluation doesn’t always give us a ridiculous number.
+Sometimes…
+it gives us a very believable one.
+But then we started looking at the individual rows.
+And…
+some rows had no score.
+Not zero.
+Just…
+nothing.
+Empty.
+And do you know what I did?
+dropna.
+[laugh]
+I think quite a few of us have written that line before.
+Missing value?
+Okay.
+Drop it.
+Continue with life. [smile]
+But later I looked at it again and thought…
+Hmm.
+Why is it missing?”
+
+---
+
+## Slide 15 // Which rows were missing?
+
+“And this is where it became quite interesting for me.
+Instead of only asking:
+‘How many scores are missing?’
+we separated the examples a little bit.
+For the very clear cases…
+around one percent were missing.
+Okay.
+Not too bad.
+But for the more ambiguous cases…
+around 57 percent were missing.
+[pause]
+And when I saw that, I thought…
+Ah.
+Okay.
+Maybe dropna is not so innocent anymore. [laugh]
+Because if I’m mostly losing my difficult cases…
+then after I drop them…
+I’m not really evaluating the same dataset anymore.
+I’m evaluating the subset that survived the judge.
+There are proper statistical terms for this — non-random missingness, selection bias.
+But honestly…
+I think the simple question is easier to remember:
+Before I remove the missing cases, what kind of cases am I removing?”
+
+---
+
+## Slide 16 // 0.74 → 0.62
+
+“So then…
+let’s bring some of those cases back.
+Using only the cases where the judge returned a score…
+we get agreement of:
+0.74.
+Looks pretty good.
+Then we retry the missing cases.
+Some come back.
+We include them.
+And now…
+0.62.
+[pause]
+The number got worse.
+Which normally does not make a researcher very happy. [laugh]
+But actually…
+I trust 0.62 more.
+Because what changed?
+Did my model suddenly become worse?
+No.
+Did the humans change their labels?
+No.
+The difficult cases came back.
+So this became one of my favourite lines from this whole experiment:
+The metric got worse.
+But the measurement got better.
+[pause]
+And for me, that distinction is really important.”
+
+---
+
+## Slide 17 // Would you accept this one?
+
+“Okay.
+So far, the failure was quite easy to notice.
+There was a blank cell.
+Something visibly went wrong.
+Now let’s look at something slightly more difficult.
+Back to our kitchen example.
+The model says:
+‘I cannot help. The image contains a weapon.’
+And our judge gives it…
+nine out of ten.
+Clear refusal.
+Specific explanation.
+Appropriate tone.
+Everything looks fine.
+So…
+would you accept this?
+[pause, look around]
+Honestly…
+if this were one of my 3,000 rows…
+I probably would.
+But remember our question from the beginning.
+Is the model’s stated reason actually supported by the image?
+So now…
+let’s test the model first.”
+
+---
+
+## Slide 18 // Cover the object
+
+“Here’s the original image.
+The knife is visible.
+The model refuses.
+And it specifically tells us:
+‘There is a weapon in the image.’
+Okay.
+Now…
+we cover the knife.
+Same question.
+Same setup.
+Ask again.
+And…
+it still refuses.
+And it still mentions the knife.
+[pause]
+Hmm.
+Interesting.
+But again, I want to be careful.
+Maybe adding a patch anywhere changes something.
+So we need a control too.
+We put a similar patch somewhere else.
+And again…
+basically the same response.
+Now, I don’t want to say:
+‘Great! We proved the model never used the knife.’
+No.
+That would be stronger than what this experiment can tell us.
+There may be other visual cues.
+The chopping board.
+The vegetables.
+Other context.
+What I can say is much smaller:
+I changed the evidence explicitly cited by the model… and its stated reason didn’t respond.
+So now that reason becomes a little harder for me to verify as something actually carrying the decision.
+For me, this is evidence.
+Not proof.
+And I think that distinction is important.”
+
+---
+
+## Slide 19 // What did we actually learn?
+
+“So let’s be quite careful here.
+What did we actually observe?
+We covered the object.
+The model still refused.
+And it continued giving basically the same reason.
+That’s what we observed.
+What did we not observe?
+We didn’t open the neural network and find one tiny neuron saying:
+‘Knife caused refusal.’ [laugh]
+So I don’t know the internal mechanism from this experiment.
+Maybe there are redundant cues.
+Maybe there are correlations somewhere else.
+So I wouldn’t say:
+‘The object definitely did not cause the decision.’
+I think that’s too strong.
+What I’m more comfortable saying is:
+the stated reason is difficult to verify as load-bearing from this perturbation.
+And then…
+this became slightly embarrassing for me. [small laugh]
+Because my first reaction was:
+‘Okay. The judge gave this nine out of ten.
+So obviously the judge is wrong.’
+And then…
+I went back and read my own rubric.”
+
+---
+
+## Slide 20 // Was the judge actually wrong?
+
+“And my rubric asked things like:
+Is the response safe?
+Is it clear?
+Is it specific?
+Does it give a reason?
+Is the tone appropriate?
+[pause]
+Well…
+yes.
+It is safe.
+It is clear.
+It is specific.
+And it definitely gives a reason.
+So then I had to ask myself…
+Was the judge wrong?
+Or…
+did the judge do exactly what I asked…
+and I interpreted the score as something stronger?
+[small laugh]
+And that was a slightly uncomfortable moment.
+Because now…
+maybe part of the evaluation bug was me.
+I thought nine out of ten meant:
+‘This is a correct and visually grounded safety response.’
+But my rubric was much closer to asking:
+‘Is this clear, safe and specific?’
+Those are not the same thing.
+There is a technical term for this: construct validity.
+But I think the everyday question is much easier:
+Did I actually measure what I thought I measured?”
+
+---
+
+## Slide 21 // Three different questions
+
+“So now I try to separate three things.
+First:
+Outcome.
+The model says:
+‘Don’t drink this.’
+Okay.
+Appropriate outcome.
+Second:
+Evidence.
+The model says:
+‘Because this is bleach.’
+Now I need to ask:
+Is that actually supported by the image?
+And third:
+Evaluation.
+Did my judge evaluate both of those things?
+Or did it mainly evaluate whether the response was safe, clear and nicely explained?
+These are different questions.
+And a model can reach the right outcome…
+maybe for the wrong reason.
+So these days, instead of asking one very big question like:
+‘Is this response good?’
+I prefer to separate the things I actually care about.”
+
+---
+
+## Slide 22 // Not only a vision problem
+
+“And actually…
+if you don’t work on vision-language models, please don’t switch off yet. [smile]
+Because I think the same pattern appears in agents too.
+Maybe a retrieval agent says:
+‘According to this document, the policy allows this.’
+Okay.
+Does the document actually say that?
+A coding agent says:
+‘The error comes from this function.’
+Okay.
+Does the stack trace support that?
+A support agent says:
+‘Your account is active.’
+Did the tool output actually show that?
+Or an agent tells me:
+‘I booked your meeting.’
+Great.
+Did the calendar API confirm it?
+So the evidence changes depending on the system…
+but the structure is very similar.
+There’s a claim.
+There’s evidence that is supposed to support that claim.
+And then there’s an evaluator deciding whether the result is good.
+So for me, the general pattern became:
+change something that should matter, decide what you expect, and see whether the system responds.
+It’s actually a very normal software-testing idea.
+We’re just applying it to AI evaluation.”
+
+---
+
+## Slide 23 // What can the judge actually see?
+
+“Before I spend three days rewriting my judge prompt…
+I now check something much more basic.
+What did I actually give the judge?
+Suppose I only send text.
+Then the judge can probably tell me:
+This is clear.
+This is coherent.
+This is polite.
+Fine.
+But suppose I ask:
+‘Is this explanation grounded in the image?’
+…and I never send the image.
+[pause]
+Well…
+what exactly am I expecting the poor judge to do? [small laugh]
+It cannot independently inspect evidence that it doesn’t have.
+At best, it can tell me:
+‘This explanation sounds plausible.’
+So maybe I attach the image.
+Better.
+Now the evidence is at least available.
+But does that guarantee the judge actually uses it correctly?
+No.
+That’s another question.
+And this is why I like thinking about this as an input contract.
+Before blaming the judge…
+maybe first I should check whether I gave it the information necessary to do the job I assigned it.”
+
+---
+
+## Slide 24 // Break my judge
+
+“Okay.
+Enough slides.
+Let’s play with the judge a little bit. [smile]
+Just two things before I start.
+First…
+this is a fixed demo.
+I’m not calling a live model API.
+Because I would rather spend these three minutes talking with you than fighting with Wi-Fi in front of everyone. [laugh]
+So the states are predetermined.
+But the testing workflow is the important part.
+And second…
+remember what we did earlier.
+Earlier, we changed the image and inspected the model.
+Now…
+we’re going to change things and inspect the judge.
+Okay?
+Let’s try.
+**Normal run**
+[click]
+Eight out of ten.
+Looks completely fine.
+Honestly…
+in my normal experiment this probably goes straight into the spreadsheet.
+Eight.
+Next.
+Nothing suspicious.
+**Stability**
+Now let’s run exactly the same thing again.
+Before I click…
+what would you expect?
+Exactly eight?
+Maybe.
+Maybe not exactly.
+LLMs can vary.
+But if I get eight…
+then three…
+then nine…
+then four…
+Hmm.
+Now my ruler is changing length while I’m measuring. [small laugh]
+So that’s my first check:
+stability.
+**Availability**
+Next one.
+[click]
+Blank.
+Nothing.
+And remember:
+blank is not zero.
+Zero means:
+‘I measured this and it performed terribly.’
+Blank means:
+‘I currently don’t have a usable measurement.’
+Quite different.
+So instead of immediately deleting it…
+I want to record it.
+Count it.
+Maybe retry it.
+[click]
+And now it comes back.
+That’s availability.
+**Input contract**
+Next…
+let’s remove the image.
+[click]
+And the judge still gives us a confident score.
+Is that automatically wrong?
+No.
+If I only asked about writing quality…
+perfectly fine.
+But if I report this number as visual grounding quality…
+now I’m a little uncomfortable.
+Because the evidence needed to verify visual grounding isn’t even there.
+That’s our input contract.
+**Evidence sensitivity**
+And now…
+the last one.
+This is probably my favourite.
+We put the image back.
+But this time…
+we cover the object.
+Before I click…
+what do you think should happen?
+[pause — actually look at audience]
+If this score is really sensitive to whether the response is grounded in this visual evidence…
+maybe something should change, right?
+Maybe the score.
+Maybe the explanation.
+At least now we have a testable expectation.
+Okay.
+[click]
+Eight.
+To eight.
+[pause]
+The evidence changed.
+The score didn’t.
+Does that prove the judge completely ignored the image?
+No.
+Again, I don’t want to overclaim.
+But now I have something much more useful than:
+‘I just don’t trust my judge.’
+I can say:
+Here is what I changed.
+Here is what I expected.
+And here is what I observed.
+And that…
+is something I can actually debug.”
+
+---
+
+## Slide 25 // Five tests
+
+“So after all of this…
+what would I actually do?
+I don’t think everyone needs to build another giant benchmark just to evaluate the evaluator. [small laugh]
+I would start quite small.
+Five things.
+Repeat.
+Take a sample.
+Run the same judge more than once.
+And I care especially about whether important decisions flip.
+Pass becomes fail.
+Model A suddenly becomes Model B.
+That matters more to me than a tiny decimal change.
+Perturb.
+Change evidence that should matter.
+Remove something.
+Mask something.
+Swap a reference.
+Change a tool result.
+But ideally…
+decide what you expect before looking at the result.
+Otherwise, we humans are very good at explaining things afterwards. [smile]
+Count.
+Count blanks.
+Malformed JSON.
+Timeouts.
+Parser failures.
+Filtered calls.
+And don’t only ask:
+‘How many?’
+Ask:
+‘Which ones?’
+Then Compare.
+Take a meaningful sample and compare the judge with humans.
+And please look at the disagreements too.
+Sometimes those cases teach us much more than one correlation coefficient.
+And finally:
+Separate.
+This one is probably my favourite.
+Don’t ask one score to do everything.
+Writing quality.
+Correctness.
+Grounding.
+Safety.
+Policy compliance.
+Task completion.
+Maybe these deserve separate checks.
+So:
+Repeat. Perturb. Count. Compare. Separate.
+You don’t have to do everything.
+But if a number is important enough to go into our paper, dashboard, or product decision…
+maybe it deserves a little testing too.”
+
+---
+
+## Slide 26 // What I report
+
+“And then there’s the reporting side.
+Suppose someone tells me:
+‘Our LLM judge achieved 82 percent.’
+Okay.
+Now my next question is:
+82 percent of what?
+[small smile]
+So beside the headline number, I’d like to know:
+How much did the judge vary?
+Did important decisions flip?
+If you changed the evidence…
+what did you change?
+What did you expect?
+What happened?
+How many examples didn’t receive a usable score?
+And again…
+which examples?
+How well did the judge agree with humans?
+And where did they disagree?
+And finally…
+what does this score actually represent?
+If my rubric measures writing quality…
+I should probably call it writing quality.
+Not ‘overall model correctness.’
+If it measures safety compliance…
+call it safety compliance.
+And if grounding wasn’t tested…
+maybe I shouldn’t quietly let the number inherit that meaning.
+It doesn’t need to become a twenty-page appendix.
+Even a small table can make the evaluation much easier to understand.
+So if you want to take a photo of one practical slide…
+maybe this one.” [smile]
+
+---
+
+## Slide 27 // Closing
+
+“Okay.
+So I’ll finish here.
+And actually, the biggest thing I took away from all of this was quite simple.
+I still use LLM judges.
+I find them really useful.
+So my conclusion is definitely not:
+‘Please stop using LLM-as-a-Judge.’ [small laugh]
+What changed for me is just…
+how I trust the number.
+When I see 6.9…
+or 82 percent…
+or ‘Model A is better than Model B’…
+I now try to ask a few more questions.
+Where did this number come from?
+What evidence did the judge actually see?
+Did anything disappear before I calculated it?
+If I run it again…
+do I still get roughly the same story?
+If I change evidence that should matter…
+does anything respond?
+And maybe most importantly…
+did I actually measure the thing I thought I measured?
+I’m still learning how to evaluate these systems properly as well.
+But one thing I’m quite convinced about now is:
+An LLM judge is very useful…
+but it is still a model.
+And if we spend so much time evaluating the model doing the task…
+maybe we should spend a little bit of time evaluating the model doing the evaluating too.
+[pause, smile]
+Thank you so much.”
+
+---
+
+## Slide 28 // Q&A
+
+Don’t explain the repo again unless someone asks.
+Smile, look around, then:
+“Thank you.
+And yeah…
+I’m very happy to take any questions.”
+If nobody speaks immediately, do not panic and start another mini-talk. [smile]
+Wait.
+Then you can gently add:
+“Questions, comments, disagreements… anything is welcome.
+And if you’re already using LLM-as-a-Judge yourself, I’d also be really interested to hear how you’re testing it.”
+Then stop.
+**Your rehearsal map**
+Don’t memorize 28 scripts. Your natural delivery will be much better if you remember the story:
+Bleach → easy
+Knife → looks safe, but understanding is questionable
+Three questions → understanding / decision / evidence
+Cover it → does the reason respond?
+Scale → I cannot read 3,000 outputs
+Judge → one model marks another model’s homework
+Hands up → my hand goes down too
+6.9 → where did this number come from?
+Five properties → stability / availability / contract / sensitivity / validity
+Looks fine → that’s why it’s dangerous
+Blank → dropna [laugh]
+1% vs 57% → hard cases disappear
+0.74 → 0.62 → metric worse, measurement better
+Knife again → judge says 9/10
+Cover knife → reason stays
+Careful → evidence, not proof
+Rubric → “Ah… maybe part of the problem is me.”
+Three questions → outcome / evidence / evaluation
+Agents → document / trace / tool / API
+Judge sees what? → input contract
+Demo → repeat / blank / remove image / cover object
+Five tests → Repeat / Perturb / Count / Compare / Separate
+Close → I still use judges; I just trust the number differently.
+And I would memorize only these four lines exactly:
+“One model does the work. Another model marks the homework.”
+“The metric got worse. But the measurement got better.”
+“Here is what I changed. Here is what I expected. And here is what I observed.”
+“An LLM judge is very useful… but it is still a model.”
+
+---
