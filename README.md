@@ -28,8 +28,10 @@ three demos built into the page.
 
 | File | What it is |
 |---|---|
-| `docs/judge-audit-talk.pdf` | The talk exactly as presented in Singapore. 30 slides, speaker notes in the PowerPoint this was exported from |
-| `talk/btv-slides.html` | The interactive version of the deck. Fewer slides, but the three demos run live in the page and you drive them from the slide. Speaker notes behind `N` |
+| `docs/index.html` | The slides page. The same 30 slides as the PDF, one per screen, arrow keys to move |
+| `docs/judge-audit-talk.pdf` | The talk exactly as presented in Singapore. 30 slides |
+| `docs/interactive.html` | The older interactive deck. Fewer slides, but the three demos run live in the page and you drive them from the slide. Speaker notes behind `N` |
+| `talk/btv-slides.html` | The source of that interactive deck |
 | `talk/_btv_template.html` | The source it is built from. Edit this one |
 | `talk/build.py` | Assembles the template plus the photo and QR codes into the deck and into `docs/index.html` |
 | `talk/slides.html` | An older, longer research version of the same argument, kept for reference |
@@ -38,25 +40,18 @@ three demos built into the page.
 
 ## The slides
 
-There are two versions, and they are not the same length.
+**https://imsumyatnoe.github.io/judge-audit/**
 
-**The talk as presented** is the PDF:
-**https://imsumyatnoe.github.io/judge-audit/judge-audit-talk.pdf**
-30 slides, the version given at SGInnovate on 28 September 2026. Start here if
-you want to read the argument.
+30 slides, the talk as given at SGInnovate on 28 September 2026. Arrow keys,
+click, or swipe to move. The same slides as a single file are at
+**https://imsumyatnoe.github.io/judge-audit/judge-audit-talk.pdf**, and the page
+and the PDF are generated from the same PowerPoint, so they cannot drift apart.
 
-**The interactive version** is live at
-**https://imsumyatnoe.github.io/judge-audit/** (see `PUBLISHING.md`), or open
-`talk/btv-slides.html` locally in any browser. It has fewer slides, because it
-predates the final edit, but it is the only place where the three demos run:
-you press the buttons on the slide and the numbers move. There is a link to the
-PDF in the bottom left corner of the page.
-
-The PDF is exported from the PowerPoint, and the interactive page is built from
-`talk/_btv_template.html`, so the two drift apart unless both are rebuilt.
-
-Both files are built from `talk/_btv_template.html` by `python talk/build.py`,
-so edit the template and rebuild rather than editing the output.
+An earlier interactive version of the deck lives at
+**https://imsumyatnoe.github.io/judge-audit/interactive.html**. It has fewer
+slides, because it predates the final edit, but it is the only place where the
+three demos run: you press the buttons on the slide and the numbers move. It is
+built from `talk/_btv_template.html` by `python talk/build.py`.
 
 
 ## What the demo shows
