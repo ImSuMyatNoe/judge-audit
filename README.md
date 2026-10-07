@@ -28,7 +28,8 @@ three demos built into the page.
 
 | File | What it is |
 |---|---|
-| `talk/btv-slides.html` | The deck. 35 slides, three live demos you drive from the slide, speaker notes behind `N` |
+| `docs/judge-audit-talk.pdf` | The talk exactly as presented in Singapore. 30 slides, speaker notes in the PowerPoint this was exported from |
+| `talk/btv-slides.html` | The interactive version of the deck. Fewer slides, but the three demos run live in the page and you drive them from the slide. Speaker notes behind `N` |
 | `talk/_btv_template.html` | The source it is built from. Edit this one |
 | `talk/build.py` | Assembles the template plus the photo and QR codes into the deck and into `docs/index.html` |
 | `talk/slides.html` | An older, longer research version of the same argument, kept for reference |
@@ -37,8 +38,22 @@ three demos built into the page.
 
 ## The slides
 
-Live at **https://imsumyatnoe.github.io/judge-audit/** once GitHub Pages is on
-(see `PUBLISHING.md`). Locally, open `talk/btv-slides.html` in any browser.
+There are two versions, and they are not the same length.
+
+**The talk as presented** is the PDF:
+**https://imsumyatnoe.github.io/judge-audit/judge-audit-talk.pdf**
+30 slides, the version given at SGInnovate on 28 September 2026. Start here if
+you want to read the argument.
+
+**The interactive version** is live at
+**https://imsumyatnoe.github.io/judge-audit/** (see `PUBLISHING.md`), or open
+`talk/btv-slides.html` locally in any browser. It has fewer slides, because it
+predates the final edit, but it is the only place where the three demos run:
+you press the buttons on the slide and the numbers move. There is a link to the
+PDF in the bottom left corner of the page.
+
+The PDF is exported from the PowerPoint, and the interactive page is built from
+`talk/_btv_template.html`, so the two drift apart unless both are rebuilt.
 
 Both files are built from `talk/_btv_template.html` by `python talk/build.py`,
 so edit the template and rebuild rather than editing the output.
