@@ -28,12 +28,13 @@ three demos built into the page.
 
 | File | What it is |
 |---|---|
-| `docs/index.html` | The slides page. The same 30 slides as the PDF, one per screen, arrow keys to move |
-| `docs/judge-audit-talk.pdf` | The talk exactly as presented in Singapore. 30 slides |
+| `docs/index.html` | The slides page. The same 31 slides as the PDF, one per screen, arrow keys to move |
+| `docs/judge-audit-talk.pdf` | The talk as presented at PyCon Hong Kong 2026. 31 slides |
 | `docs/interactive.html` | The older interactive deck. Fewer slides, but the three demos run live in the page and you drive them from the slide. Speaker notes behind `N` |
 | `talk/btv-slides.html` | The source of that interactive deck |
 | `talk/_btv_template.html` | The source it is built from. Edit this one |
 | `talk/build.py` | Assembles the template plus the photo and QR codes into the deck and into `docs/index.html` |
+| `vlm/` | One real perturbation run on a vision-language judge: one case, three conditions, fifteen scored runs. Real model output, unlike `data/`, which is synthetic |
 | `talk/slides.html` | An older, longer research version of the same argument, kept for reference |
 | `talk/SCRIPT.md` | The talk word for word, in a conversational speaking style, plus how to take questions mid flow |
 | `talk/SPEAKER-NOTES.md` | What to say, why each number is true, the questions you will get, and what to do when something breaks on stage |
@@ -42,7 +43,8 @@ three demos built into the page.
 
 **https://imsumyatnoe.github.io/judge-audit/**
 
-30 slides, the talk as given at SGInnovate on 28 September 2026. Arrow keys,
+31 slides: the PyCon Hong Kong 2026 version of the talk first given at
+SGInnovate on 28 September 2026. Arrow keys,
 click, or swipe to move. The same slides as a single file are at
 **https://imsumyatnoe.github.io/judge-audit/judge-audit-talk.pdf**, and the page
 and the PDF are generated from the same PowerPoint, so they cannot drift apart.
